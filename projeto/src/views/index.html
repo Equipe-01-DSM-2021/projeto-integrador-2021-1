@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html>
+  <!-- Configurações da página como idioma, fontes e outros arquivos necessários -->
   <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <link
       href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
       rel="stylesheet"
@@ -10,27 +14,35 @@
       rel="stylesheet"
     />
     <link href="/Projeto/public/styles/index.css" rel="stylesheet" />
+
     <title>Início | Análise de Dados Eleitorais</title>
   </head>
+
   <body>
     <header>
+      <!-- Título da Página -->
       <h1>Análise de Dados Eleitorais</h1>
+
       <div class="icons">
+        <!-- Ícone de alteração de tema (dark ou light mode) -->
         <img
           id="theme"
           src="/Projeto/public/img/icon-theme.png"
           alt="Alterar tema"
         />
+        <!-- Ícone de "ajuda". Ao ser clicado: adição da classe .active e abertura de uma seção de "dúvidas frequentes" -->
         <img id="help" src="/Projeto/public/img/icon-help.png" alt="Ajuda" />
       </div>
     </header>
 
     <main>
+      <!-- Menu de busca -->
       <div class="search">
         <div class="input-group">
+          <!-- Filtro de região -->
           <div class="filter">
             <label for="region">Região:</label>
-            <select name="region" id="region" placeholder="">
+            <select name="region" id="region">
               <option value="default">Selecionar região</option>
               <option value="vale-do-paraiba">Vale do Paraíba</option>
               <option value="vale-historico">Vale Histórico</option>
@@ -39,6 +51,8 @@
               <option value="regiao-bragantina">Região Bragantina</option>
             </select>
           </div>
+
+          <!-- Filtro de cidade -->
           <div class="filter">
             <label for="city">Cidade:</label>
             <select name="city" id="city">
@@ -49,6 +63,8 @@
               <option value="4">Ubatuba</option>
             </select>
           </div>
+
+          <!-- Filtro de cargo -->
           <div class="filter">
             <label for="role">Cargo:</label>
             <select name="role" id="role">
@@ -58,10 +74,12 @@
               <option value="prefeito">Prefeito</option>
             </select>
           </div>
+
+          <!-- Filtro de ano -->
           <div class="filter">
             <label for="year">Ano:</label>
             <select name="year" id="year">
-              <option value="default" >Selecionar ano</option>
+              <option value="default">Selecionar ano</option>
               <option value="2018">2018</option>
               <option value="2014">2014</option>
               <option value="2010">2010</option>
@@ -69,14 +87,18 @@
           </div>
         </div>
 
+        <!-- Botões de redefinição de filtros e de envio de dados -->
         <div class="button-group">
-          <button>Refinir</button>
+          <button>Limpar</button>
           <button>Buscar</button>
         </div>
       </div>
 
+      <!-- Conteúdo central -->
       <p>Selecione os filtros e realize uma pesquisa!</p>
     </main>
+
+    <!-- Rodapé -->
     <footer>
       <p>
         Fonte dos Dados:
