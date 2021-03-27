@@ -145,7 +145,7 @@ button:hover {
     display:flex;
     align-items: center;
     justify-content:center;
-    margin-left: 10px;
+    /* margin-left: 10px; */
 }
 
 .graphic-description {
@@ -179,6 +179,18 @@ button:hover {
     cursor: pointer;
     margin-left: 15px;
     float: right;
+}
+
+/* Tamanho do gráfico sem zoom */
+.graphic-normal {
+  max-width: 160px;
+  max-height: 150px;
+}
+
+/* Tamanho do gráfico com zoom */
+.graphic-zoom {
+  max-width: 500px;
+  max-height: 400px;
 }
 
 /*RODAPÉ -----------------------------*/
