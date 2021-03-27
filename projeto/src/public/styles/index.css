@@ -104,6 +104,7 @@ select {
 
 /* BOTÕES DA BARRA DE PESQUISA -----------------------------*/
 button {
+  font-family: Roboto, sans-serif;
   width: 112px;
   height: 32px;
   color: var(--color-text-in-primary);
@@ -115,11 +116,14 @@ button {
   margin-left: 15px;
 }
 
-button:hover {
-  background:var(--color-button-hover);
-  
+.button-group button a {
+  text-decoration: none;
+  color: var(--color-text-in-primary);
 }
 
+button:hover {
+  background:var(--color-button-hover); 
+}
 
 /*CONTEÚDO CENTRAL DA PÁGINA -----------------------------*/
 main p {
