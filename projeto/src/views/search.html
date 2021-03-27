@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<!-- Configurações da página como idioma, fontes e outros arquivos necessários -->
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Frank+Ruhl+Libre&display=swap" rel="stylesheet" />
+  <link href="../public/styles/search.css" rel="stylesheet" />
+
+  <title>Resultado | Análise de Dados Eleitorais</title>
+</head>
+
+<body>
+  <header>
+    <!-- Título da Página -->
+    <h1>Análise de Dados Eleitorais</h1>
+
+    <div class="icons">
+      <!-- Ícone de alteração de tema (dark ou light mode) -->
+      <img id="theme" src="../public/img/icon-theme.png" alt="Alterar tema" />
+      <!-- Ícone de "ajuda". Ao ser clicado: adição da classe .active e abertura de uma seção de "dúvidas frequentes" -->
+      <img id="help" src="../public/img/icon-help.png" alt="Ajuda" />
+    </div>
+  </header>
+
+  <main>
+    <!-- Menu de busca -->
+    <div class="search">
+      <div class="input-group">
+        <!-- Filtro de região -->
+        <div class="filter">
+          <label for="region">Região:</label>
+          <select name="region" id="region">
+            <option value="default">Selecionar região</option>
+            <option value="vale-do-paraiba">Vale do Paraíba</option>
+            <option value="vale-historico">Vale Histórico</option>
+            <option value="litoral-norte">Litoral Norte</option>
+            <option value="serra-da-mantiqueira">Serra da Mantiqueira</option>
+            <option value="regiao-bragantina">Região Bragantina</option>
+          </select>
+        </div>
+
+        <!-- Filtro de cidade -->
+        <div class="filter">
+          <label for="city">Cidade:</label>
+          <select name="city" id="city">
+            <option value="default">Selecionar cidade</option>
+            <option value="1">São José dos Campos</option>
+            <option value="2">Taubaté</option>
+            <option value="3">Monteiro Lobato</option>
+            <option value="4">Ubatuba</option>
+          </select>
+        </div>
+
+        <!-- Filtro de cargo -->
+        <div class="filter">
+          <label for="role">Cargo:</label>
+          <select name="role" id="role">
+            <option value="default">Selecionar cargo</option>
+            <option value="presidente">Presidente</option>
+            <option value="governador">Governador</option>
+            <option value="prefeito">Prefeito</option>
+          </select>
+        </div>
+
+        <!-- Filtro de ano -->
+        <div class="filter">
+          <label for="year">Ano:</label>
+          <select name="year" id="year">
+            <option value="default">Selecionar ano</option>
+            <option value="2018">2018</option>
+            <option value="2014">2014</option>
+            <option value="2010">2010</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Botões de redefinição de filtros e de envio de dados -->
+      <div class="button-group">
+        <button>Limpar</button>
+        <button>Buscar</button>
+      </div>
+    </div>
+
+    <!-- Exibição dos cards com o resultado da busca -->
+    <div class="result">
+      <div class="card">
+        <div class="graphic">EXEMPLO DE GRÁFICO AQUI</div>
+        <div class="graphic-description">
+          <h2>Título do Gráfico</h2>
+          <p>Legendas e descrição</p>
+
+          <div class="icon-actions">
+            <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
+            <img id="download" src="../public/img/icon-download.png" alt="Baixar" />
+            <!-- Ícone de zoom -->
+            <img id="zoom" src="../public/img/icon-zoom.png" alt="Aumentar gráfico" />
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="graphic">EXEMPLO DE GRÁFICO AQUI</div>
+          <div class="graphic-description">
+            <h2>Título do Gráfico</h2>
+            <p>Legendas e descrição</p>
+
+            <div class="icon-actions">
+              <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
+              <img id="download" src="../public/img/icon-download.png" alt="Baixar" />
+              <!-- Ícone de zoom -->
+              <img id="zoom" src="../public/img/icon-zoom.png" alt="Aumentar gráfico" />
+            </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="graphic">EXEMPLO DE GRÁFICO AQUI</div>
+          <div class="graphic-description">
+            <h2>Título do Gráfico</h2>
+            <p>Legendas e descrição</p>
+
+            <div class="icon-actions">
+              <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
+              <img id="download" src="../public/img/icon-download.png" alt="Baixar" />
+              <!-- Ícone de zoom -->
+              <img id="zoom" src="../public/img/icon-zoom.png" alt="Aumentar gráfico" />
+            </div>
+          </div>
+      </div>
+
+      <div class="card">
+        <div class="graphic">EXEMPLO DE GRÁFICO AQUI</div>
+          <div class="graphic-description">
+            <h2>Título do Gráfico</h2>
+            <p>Legendas e descrição</p>
+
+            <div class="icon-actions">
+              <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
+              <img id="download" src="../public/img/icon-download.png" alt="Baixar" />
+              <!-- Ícone de zoom -->
+              <img id="zoom" src="../public/img/icon-zoom.png" alt="Aumentar gráfico" />
+            </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="graphic">EXEMPLO DE GRÁFICO AQUI</div>
+          <div class="graphic-description">
+            <h2>Título do Gráfico</h2>
+            <p>Legendas e descrição</p>
+
+            <div class="icon-actions">
+              <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
+              <img id="download" src="../public/img/icon-download.png" alt="Baixar" />
+              <!-- Ícone de zoom -->
+              <img id="zoom" src="../public/img/icon-zoom.png" alt="Aumentar gráfico" />
+            </div>
+          </div>
+      </div>
+
+      <div class="card">
+        <div class="graphic">EXEMPLO DE GRÁFICO AQUI</div>
+          <div class="graphic-description">
+            <h2>Título do Gráfico</h2>
+            <p>Legendas e descrição</p>
+
+            <div class="icon-actions">
+              <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
+              <img id="download" src="../public/img/icon-download.png" alt="Baixar" />
+              <!-- Ícone de zoom -->
+              <img id="zoom" src="../public/img/icon-zoom.png" alt="Aumentar gráfico" />
+            </div>
+          </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Rodapé -->
+  <footer>
+    <p>
+      Fonte dos Dados:
+      <a target="_blank"
+        href="https://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais-1/repositorio-de-dados-eleitorais">
+        Tribunal Superior Eleitoral
+      </a>
+    </p>
+  </footer>
+</body>
+
+</html>
