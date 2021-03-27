@@ -189,8 +189,8 @@ button:hover {
 
 /* Tamanho do gráfico com zoom */
 .graphic-zoom {
-  max-width: 500px;
-  max-height: 400px;
+  width: 800px;
+  height: 900px;
 }
 
 /*MODAL DE ZOOM DO GRÁFICO -----------------------------*/
