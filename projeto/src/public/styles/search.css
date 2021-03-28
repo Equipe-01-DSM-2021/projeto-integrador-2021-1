@@ -171,6 +171,8 @@ button:hover {
     position: absolute;
     bottom: 0;
     right: 0;
+    display: flex;
+    flex-direction: row;
 }
 
 #zoom, #download {
@@ -196,7 +198,7 @@ button:hover {
 
 /*MODAIS DE ZOOM DO GRÁFICO, AJUDA E DOWNLOAD -----------------------------*/
 /* ZOOM DO GRÁFICO -----------------------------*/
-.modal-overlay, .modal-overlay-help, .modal-overlay-download {
+.modal-overlay, .modal-overlay-help {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.7);
@@ -209,7 +211,7 @@ button:hover {
   visibility: hidden;
 }
 
-.modal-overlay-help.active, .modal-overlay.active, .modal-overlay-download.active {
+.modal-overlay-help.active, .modal-overlay.active {
   opacity: 1;
   visibility: visible;
 }
@@ -269,33 +271,59 @@ button:hover {
 }
 
 /*DOWNLOAD -----------------------------*/
-.modal-overlay-download .modal {
-  width: 164px;
-  height: 184px;
-  border-radius:10px;
-  display: grid;
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-  padding: 50px 0 0 0;
-  position:relative;
+
+.tooltip {
+  /* Used to position the arrow */
+  position: relative;
 }
 
-.modal-overlay-download .modal img {
+/* Show the arrow and content when hovering the trigger element */
+.tooltip.active .tooltip-content {
+  opacity: 1;
+}
+
+.tooltip {
+  /* Position */
+  right: 0;
+  position: absolute;
+  transform: translate(80%, -10px);
+  border-radius: 10px;
+
+  /* Displayed on top of other element */
+  z-index: 10;
+}
+
+.tooltip-content {
+  /* Invisible by default */
+  opacity: 0;
+
+  /* Background color, must be the same as the border color of arrow */
+  background-color: var(--color-background-card);
+
+  width: 148px;
+  height: 176px;
+  border-radius:10px;
+  display:flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 10px 0 0 0;
+}
+
+.tooltip-content img {
   width: 35px;
   height: 35px;
-  position: absolute;
-  top: 10px;
-  left: 10px;
   cursor: pointer;
+  margin-left: 10px;
 }
 
-.modal-overlay-download .modal a {
+.tooltip-content a {
   color:var(--color-title-card);
   font-family: Roboto, sans-serif;
-  font-size: 24px;
+  font-size: 22px;
   text-decoration: none;
 }
 
-.modal-overlay-download .modal a:hover {
+.tooltip-content a:hover {
   background: var(--color-format-option-hover);
 }
 

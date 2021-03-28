@@ -6,6 +6,6 @@ const Modal = {
       document.querySelector(".modal-overlay-help").classList.toggle("active");
     },
     toggleDownload() {
-      document.querySelector(".modal-overlay-download").classList.toggle("active");
+      document.querySelector(".tooltip").classList.toggle("active");
     },
   };
