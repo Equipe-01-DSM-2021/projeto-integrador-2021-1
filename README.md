@@ -29,12 +29,22 @@ Tem por objetivo proporcionar à "TV Vanguarda" um site de busca por informaçõ
 
 > Status do Projeto: Em andamento
 
+#### Entregas de Sprints
+Cada entrega será realizada a partir da criação de uma **tag**, onde a relação de nomes pode ser observada a seguir:
+| Sprint| Tag           | Lançamento | Status    |
+|:-----:|:-------------:|:----------:|:---------:|
+| 01    | **sprint-01** | 28/03/2021 | Entregue  |
+| 02    | em breve...   | 18/04/2021 | Planejada |
+| 03    | em breve...   | 16/05/2021 | Planejada |
+| 04    | em breve...   | 05/06/2021 | Planejada |
+
+→ [Voltar ao topo](#topo)
 
 <span id="metodologias">
 
 ## :pushpin: Metodologias e Princípios
 - **Metodologia Ágil:** Framework [Scrum](https://www.desenvolvimentoagil.com.br/scrum/), prática que consiste em dividir o desenvolvimento do projeto em blocos de trabalho chamados de Sprints, com duração de, neste caso, 3 semanas cada. Ao final de cada ciclo há algum tipo de entrega ao cliente, que avaliará o trabalho e então dará um feedback sobre o andamento do projeto.
-- **KISS** (Keep It Simple and Stupid) e **DRY** (Don't Repeat Yourself), princípios da programação que defendem a criação de códigos simples e intuitivos quanto a nomenclatura e funcionalidades, e sem repetições (ocorrência única de uma função).
+- **KISS** (Keep It Simple, Stupid) e **DRY** (Don't Repeat Yourself), princípios da programação que defendem a criação de códigos simples e intuitivos quanto a nomenclatura e funcionalidades, e sem repetições (ocorrência única de uma função).
 
 → [Voltar ao topo](#topo)
 
