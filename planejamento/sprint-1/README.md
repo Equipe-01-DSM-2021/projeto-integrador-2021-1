@@ -55,6 +55,8 @@ Depois da definição do wireframe, iniciou-se o trabalho de codificação, pass
 ### Demonstração do Protótipo
 ![](/prototipo/demo.gif)
 
+OBS.: Para reproduzir os mesmos resultados, utilize o editor de código Visual Studio Code juntamente com a extensão "Live Server". Ao clonar este repositório, abra o arquivo "index.html" (no caminho "projeto/src/views/") e digite o comando "crtl"+"shift"+"p", escolhendo a opção "Open with Live Server" para o projeto se iniciar localmente.
+
 → [Voltar ao topo](#topo)
 
 <span id="org-equipe">
@@ -63,7 +65,9 @@ Depois da definição do wireframe, iniciou-se o trabalho de codificação, pass
 Para melhor organização do projeto, foi levantado as habilidades técnicas da equipe assim que decididas as ferramentas e tecnologias que seriam usadas, dividindo provisoriamente os integrantes em dois times principais: time Frontend e time backend, cada um com responsabilidades distintas mas sempre em comunicação. A princípio, o time Frontend focou em aprender mais sobre HTML, CSS e JavaScript, enquanto que a capitã deste time lidava com as bibliotecas JavaScript, já no time Backend, o time se focou em relacionar os dados que tínhamos a disposição, procurando inclusive outras bases de dados e explorando funcionalidades de bibliorecas Python enquanto realizaram testes com a ferramenta [Jupyter Notebook](https://jupyter.org/) e manipulação de arquivos CSV com o [Orange](https://orangedatamining.com/).
 - A documentação e acompanhamento de atividades ficou a cargo da Scrum Master da equipe, que também colaborava com os dois times de trabalho.
   - Observe adiante o gráfico Burndown gerado pela equipe nesta primeira sprint, onde o eixo X são os dias trabalhados na sprint e os valores do eixo Y representam as entregas e esforços realizados com o passar do tempo.
-![](burndown-sprint-1.PNG) 
+![](burndown-chart-sprint-1.PNG) 
+
+<img src="burndown-tarefas-1.PNG" align="center">
 
 → [Voltar ao topo](#topo)
 
@@ -74,7 +78,7 @@ Tendo em vista o trabalho remoto que a equipe teria que se encaixar, foram defin
 
 → [Voltar ao topo](#topo)
 
-<span id="tap">
+<span id="tag">
 
 ## :label: Tag: sprint-01
 Para marcar a entrega feita na primeira sprint, foi criada uma tag neste repositório com o nome "sprint-01", que corresponde ao estado em que se encontra o projeto do dia da entrega, ou seja, dia 28/03/2021. Com a tag, sempre será possível visualizar como estava o repositório ao fim da primeira sprint, por mais que o projeto sofra alterações, pois tags em si não são mutáveis conforme o tempo, sendo a maneira escolhida pelo time para sinalizar as entregas até o fim do projeto.
