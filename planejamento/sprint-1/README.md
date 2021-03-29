@@ -63,7 +63,7 @@ Depois da definição do wireframe, iniciou-se o trabalho de codificação, pass
 Para melhor organização do projeto, foi levantado as habilidades técnicas da equipe assim que decididas as ferramentas e tecnologias que seriam usadas, dividindo provisoriamente os integrantes em dois times principais: time Frontend e time backend, cada um com responsabilidades distintas mas sempre em comunicação. A princípio, o time Frontend focou em aprender mais sobre HTML, CSS e JavaScript, enquanto que a capitã deste time lidava com as bibliotecas JavaScript, já no time Backend, o time se focou em relacionar os dados que tínhamos a disposição, procurando inclusive outras bases de dados e explorando funcionalidades de bibliorecas Python enquanto realizaram testes com a ferramenta [Jupyter Notebook](https://jupyter.org/) e manipulação de arquivos CSV com o [Orange](https://orangedatamining.com/).
 - A documentação e acompanhamento de atividades ficou a cargo da Scrum Master da equipe, que também colaborava com os dois times de trabalho.
   - Observe adiante o gráfico Burndown gerado pela equipe nesta primeira sprint, onde o eixo X são os dias trabalhados na sprint e os valores do eixo Y representam as entregas e esforços realizados com o passar do tempo.
-![](burndown-chart-1.png) 
+![](burndown-sprint-1.PNG) 
 
 → [Voltar ao topo](#topo)
 
