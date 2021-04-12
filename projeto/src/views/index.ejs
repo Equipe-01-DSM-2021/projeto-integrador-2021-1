@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<!-- Configurações da página como idioma, fontes e outros arquivos necessários -->
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Frank+Ruhl+Libre&display=swap" rel="stylesheet" />
+  <link href="/styles/index.css" rel="stylesheet" />
+
+  <title>Início | Análise de Dados Eleitorais</title>
+</head>
+
+<body>
+  <header>
+    <!-- Título da Página -->
+    <h1>Análise de Dados Eleitorais</h1>
+
+    <div class="icons">
+      <!-- Ícone de alteração de tema (dark ou light mode) -->
+      <img id="theme" src="/img/icon-theme.png" alt="Alterar tema" />
+      <!-- Ícone de "ajuda". Ao ser clicado: adição da classe .active e abertura de uma seção de "dúvidas frequentes" -->
+      <img id="help" src="/img/icon-help.png" alt="Ajuda" onclick="Modal.toggleHelp()" />
+    </div>
+  </header>
+
+  <main>
+    <!-- Menu de busca -->
+    <div class="search">
+      <form id="form-search" action="/search" method="GET">
+        <div class="input-group">
+          <!-- Filtro de região -->
+          <div class="filter">
+            <label for="region">Região:</label>
+            <select name="region" id="region"> 
+              <option value="default">Selecionar região</option>
+              <option value="vale-do-paraiba">Vale do Paraíba</option>
+              <option value="vale-historico">Vale Histórico</option>
+              <option value="litoral-norte">Litoral Norte</option>
+              <option value="serra-da-mantiqueira">Serra da Mantiqueira</option>
+              <option value="regiao-bragantina">Região Bragantina</option>
+            </select>
+          </div>
+
+          <!-- Filtro de cidade -->
+          <div class="filter">
+            <label for="city">Cidade:</label>
+            <select name="city" id="city">
+              <option value="default">Selecionar cidade</option>
+              <option value="1">São José dos Campos</option>
+              <option value="2">Taubaté</option>
+              <option value="3">Monteiro Lobato</option>
+              <option value="4">Ubatuba</option>
+            </select>
+          </div>
+
+          <!-- Filtro de cargo -->
+          <div class="filter">
+            <label for="role">Cargo:</label>
+            <select name="role" id="role">
+              <option value="default">Selecionar cargo</option>
+              <option value="presidente">Presidente</option>
+              <option value="governador">Governador</option>
+              <option value="prefeito">Prefeito</option>
+            </select>
+          </div>
+
+          <!-- Filtro de ano -->
+          <div class="filter">
+            <label for="year">Ano:</label>
+            <select name="year" id="year">
+              <option value="default">Selecionar ano</option>
+              <option value="2018">2018</option>
+              <option value="2014">2014</option>
+              <option value="2010">2010</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Botões de redefinição de filtros e de envio de dados -->
+        <div class="button-group">
+          <button onclick="clearFilters()">Limpar</button>
+              <button
+              form="form-search" 
+              type="submit" 
+              title="Salvar Dados">Buscar</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Conteúdo central -->
+    <p>Selecione os filtros e realize uma pesquisa!</p>
+  </main>
+
+  <!-- Modal de dúvidas frequentes -->
+  <div class="modal-overlay-help">
+    <div class="modal">
+      <div class="modal-header">
+        <h2>Dúvidas Frequentes</h2>
+        <img id="close" src="/img/icon-close.png" alt="Fechar janela" onclick="Modal.toggleHelp()" />
+      </div>
+
+      <div class="questions">
+        <div class="question">
+          <h3>Como fazer uma busca?</h3>
+          <p>Selecione uma região ou uma cidade no menu de busca, assim como o "Cargo" e o “Ano”, e clique em “Buscar”.
+          </p>
+        </div>
+
+        <div class="question">
+          <h3>Como ampliar os gráficos?</h3>
+          <p>Clique no icone de lupa, localizado no canto inferior direito de cada card.</p>
+        </div>
+
+        <div class="question">
+          <h3>Como exportar os dados?</h3>
+          <p>Clique no ícone de download, localizado no canto inferior direito de cada card, e escolha um formato de
+            arquivo para baixar.</p>
+        </div>
+
+        <div class="question">
+          <h3>Como mudar o tema do site para modo escuro?</h3>
+          <p>Clique no ícone ao lado do interrogação, localizado no canto superior direito do site.</p>
+        </div>
+
+      </div>
+      <small>Não encontrou o que procurava? Cheque o <a
+          href="https://github.com/Equipe-01-DSM-2021/projeto-integrador-2021-1" target="_blank"> Manual </a> </small>
+    </div>
+  </div>
+  </div>
+
+  <!-- Rodapé -->
+  <footer>
+    <p>
+      Fonte dos Dados:
+      <a target="_blank"
+        href="https://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais-1/repositorio-de-dados-eleitorais">
+        Tribunal Superior Eleitoral
+      </a>
+    </p>
+  </footer>
+
+  <script src="/scripts/modals.js"></script>
+</body>
+
+</html>
