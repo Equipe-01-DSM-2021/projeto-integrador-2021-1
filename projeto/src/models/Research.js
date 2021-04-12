@@ -1,0 +1,1 @@
+/* Funções que mexem com dados (buscar, cadastrar, atualizar, deletar) */

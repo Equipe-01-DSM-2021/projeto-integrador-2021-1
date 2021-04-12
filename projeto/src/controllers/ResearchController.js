@@ -1,0 +1,1 @@
+/* Chamadas de funções e controle de funcionalidades que cada rota representa */
