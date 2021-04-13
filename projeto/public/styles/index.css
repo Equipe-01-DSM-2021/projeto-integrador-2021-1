@@ -66,13 +66,16 @@ h1 {
   border-radius: 7px;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
   margin: 20px auto;
+  display: flex;
+  align-items: center;
+  justify-content:center;
 }
 
 form {
   display: flex;
   align-items: center;
   justify-content:center;
-  padding: 15px;
+  padding: 15px 10px;
 }
 
 /* FILTROS DA BARRA DE PESQUISA -----------------------------*/
@@ -80,8 +83,6 @@ form {
   display: flex;
   align-items: center;
   justify-content:space-between;
-  margin-left: 8px;
-  margin-right: 8px;
 }
 
 .filter {
@@ -121,6 +122,12 @@ button {
   cursor: pointer;
   font-size: 16px;
   margin-left: 15px;
+}
+.button-group {
+  display: flex;
+  align-items: center;
+  justify-content:center;
+  padding: 15px 10px;
 }
 
 .button-group button a {
