@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css?family=Frank+Ruhl+Libre&display=swap" rel="stylesheet" />
   <link href="/styles/index.css" rel="stylesheet" />
 
-  <title>Início | Análise de Dados Eleitorais</title>
+  <title>Análise de Dados Eleitorais</title>
 </head>
 
 <body>
@@ -19,7 +19,7 @@
     <h1>Análise de Dados Eleitorais</h1>
 
     <div class="icons">
-      <!-- Ícone de "ajuda". Ao ser clicado: adição da classe .active e abertura de uma seção de "dúvidas frequentes" -->
+      <!-- Ícone de "ajuda" (habilita modal de "dúvidas frequentes" quando clicado) -->
       <img id="help" src="/img/icon-help.png" alt="Ajuda" onclick="Modal.toggleHelp()" />
     </div>
   </header>
@@ -78,7 +78,7 @@
         </div>
       </form>
       
-        <!-- Botões de redefinição de filtros e de envio de dados -->
+        <!-- Botões de limpar campos dos filtros e de enviar dados -->
         <div class="button-group">
           <button onclick="clearFilters()">Limpar</button>
           <button form="form-search" type="submit" title="Salvar Dados">Buscar</button>
@@ -129,6 +129,7 @@
 
   <!-- Rodapé -->
   <footer>
+    <!-- Link para fonte de dados usada para a análise -->
     <p>
       Fonte dos Dados:
       <a target="_blank"
@@ -138,9 +139,12 @@
     </p>
   </footer>
 
+  <!-- Script JS que controla os modais -->
   <script src="/scripts/modals.js"></script>
+
+  <!-- Função do botão "limpar" -->
   <script>
-    // Função para limpar filtros
+    // limpa filtros
     function clearFilters() {
       var form = document.getElementById('form-search')
       form.reset()
