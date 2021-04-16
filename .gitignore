@@ -1,1 +1,4 @@
 projeto/node_modules/*
+jupyter-notebooks/data/*.csv
+jupyter-notebooks/data/*.pdf
+jupyter-notebooks/.ipynb_checkpoints
