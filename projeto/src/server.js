@@ -8,7 +8,7 @@ const path = require('path')
 server.set('view engine', 'ejs')
 
 //configuração da localização da pasta views
-server.set('views', path.join(__dirname, 'views'))
+server.set('views', path.join(__dirname, 'views/templates'))
 
 //habilita arquivos estáticos (imagens, estilos, scripts de interação...)
 server.use(express.static('public'))
