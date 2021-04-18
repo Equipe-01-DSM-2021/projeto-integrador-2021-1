@@ -79,6 +79,10 @@ Agora, para que o notebook seja manipulado localmente, execute o seguinte comand
 jupyter notebook
 ```
 
+<div align="center">
+  <img src="demo-jupyter-instalacao.gif" alt="Demonstração do servidor ativo">
+</div>
+
 → [Voltar ao topo](#topo)
 
 
