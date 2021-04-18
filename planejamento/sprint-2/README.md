@@ -37,32 +37,32 @@ A prioridade do cliente para com a entrega da segunda sprint se mostrou por meio
 Abaixo pode-se observar uma série de exeplos de visualização gerados pela análise de dados, onde o municípo utilizado para gerar esses resultados foi "São José dos Campos", no ano de 2018 para as eleições estadual e federal, e 2020 para eleição municipal.
 - Para todas as análises há um título e um breve texto antes da célula de código para explicar o que será gerado, e assim que a célula é acionada, a visualização aparece logo abaixo.
 
-###  Candidato eleito
+####  Candidato eleito
 <div align="center">
   <img src="demo-jupyter-candidato.gif" alt="Candidato">
 </div>
 
-### Comparecimento às urnas
+#### Comparecimento às urnas
 <div align="center">
   <img src="demo-jupyter-comparecimento.gif" alt="Gráfico de Comparecimento">
 </div>
 
-### Grau de escolaridade
+#### Grau de escolaridade
 <div align="center">
   <img src="demo-jupyter-escolaridade.gif" alt="Gráfico de Grau de escolaridade">
 </div>
 
-### Estado civil
+#### Estado civil
 <div align="center">
   <img src="demo-jupyter-estado-civil.gif" alt="Gráfico de Estado civil">
 </div>
 
-### Faixa etária
+#### Faixa etária
 <div align="center">
   <img src="demo-jupyter-faixa-etaria.gif" alt="Gráfico de Faixa etária">
 </div>
 
-### 🎲 Rodando o Jupyter Notebook
+## 🎲 Rodando o Jupyter Notebook
 Antes de utilizar nosso notebook pela primeira vez, é preciso instalar as bibliotecas Python necessárias, incluindo a instalação do Jupyter Notebook. Para isso, depois de baixar esse repositório, basta abrir a pasta "jupyter-notebooks" no terminal, localizada na raíz desse projeto, e executar os comandos abaixo. Depois é só aguardar o download e a instalação concluírem.
 - OBS.: Lembrando que antes de tudo deve-se ter o Python já instalado (faça o download [aqui](https://www.python.org/downloads/))
 
