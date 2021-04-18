@@ -29,7 +29,7 @@ No entanto, até a metade da sprint houveram complicações e atrasos com relaç
 
 <span id="analise">
 
-# Análise de Dados
+# :mag: Análise de Dados
 A prioridade do cliente para com a entrega da segunda sprint se mostrou por meio de tarefas classificadas como de "back-end", a análise de dados em si. Para aplicar filtros, consultas e manipular os CSVs disponíveis, foi utilizado o [Jupyter Notebook](https://jupyter.org/), uma aplicação web gratuita que gera um ambiente onde é possível juntar textos explicativos em Markdown com linhas de códigos que podem ser facilmente compiladas lá mesmo.
 
 ## Demonstração de consultas no Jupyter Notebook
@@ -73,8 +73,8 @@ Abaixo pode-se observar uma série de exeplos de visualização gerados pela an�
 </div>
 
 ## Demonstração completa
-Clique no link abaixo para visualizar o Jupyter Notebook completo, com a aplicação dos anos de 2018 e 2020 nas análises:
-> [Análise de dados completa](...)
+O link abaixo irá te levar a um vídeo onde há a visualização completa do Jupyter Notebook. A análise contida no vídeo não é de São José dos Campos, mas sim com dados de Monteiro Lobato, também exemplificado com a utilização dos anos de 2018 (eleições para presidente e governador) e 2020 (eleição para prefeito).
+> [Análise de dados completa](https://youtu.be/PgWyatCUSWo)
 
 ## 🎲 Rodando o Jupyter Notebook
 Antes de utilizar nosso notebook pela primeira vez, é preciso instalar as bibliotecas Python necessárias, incluindo a instalação do Jupyter Notebook. Para isso, depois de baixar esse repositório, basta abrir a pasta "jupyter-notebooks" no terminal, localizada na raíz desse projeto, e executar os comandos abaixo. Depois é só aguardar o download e a instalação concluírem.
@@ -85,12 +85,12 @@ Antes de utilizar nosso notebook pela primeira vez, é preciso instalar as bibli
 pip install jupyter
 
 # Instale as bibliotecas necessárias
-pip install -r requirements.txt
+ pip install -r requirements.txt
 ```
 Agora, para que o notebook seja manipulado localmente, execute o seguinte comando:
 
 ```powershell 
-jupyter notebook
+ jupyter notebook
 ```
 
 <div align="center">
@@ -102,7 +102,7 @@ jupyter notebook
 
 <span id="site">
 
-# Site
+# :desktop_computer: Site
 Ainda que a prioridade do cliente para a segunda entrega parcial seja majoritariamente tarefas de análise de dados, houveram trabalhos em paralelo para continuar o desenvolvimento do site. Esses trabalhos envolveram estudo, testes e aplicação de conceitos de [JavaScript](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript), assim como sua aplicação no servidor utilizando o Node.js. Abaixo é posível conferir os primeiros passos da instituição do servidor no projeto.
 
 ## Demonstração do servidor ativo
@@ -116,22 +116,22 @@ OBS.: Para reproduzir os mesmos resultados, baixe o [Node.js](https://nodejs.org
 Faça o download deste repositório, ou, caso possuia o [Git](https://git-scm.com/), você pode clonar o repositório com o seguinte comando:
 
 ```bash 
-$ git clone https://github.com/Equipe-01-DSM-2021/projeto-integrador-2021-1.git
+ git clone https://github.com/Equipe-01-DSM-2021/projeto-integrador-2021-1.git
 ```
 Depois de clonar o repositório (ou baixá-lo):
 
-```bash
+```powershell 
 # Acesse a pasta do projeto no terminal/cmd
-$ cd projeto-integrador-2021-1/projeto
+ cd projeto-integrador-2021-1/projeto
 
 # Vá para a pasta src
-$ cd src
+ cd src
 
 # Instale as dependências
-$ npm install
+ npm install
 
 # Execute a aplicação
-$ npm run dev
+ npm run dev
 
 # O servidor inciará na porta:3000 - acesse http://localhost:3000
 ```
