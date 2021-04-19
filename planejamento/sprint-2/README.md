@@ -78,7 +78,8 @@ O link abaixo irá te levar a um vídeo onde há a visualização completa do Ju
 
 ## 🎲 Rodando o Jupyter Notebook
 Antes de utilizar nosso notebook pela primeira vez, é preciso instalar as bibliotecas Python necessárias, incluindo a instalação do Jupyter Notebook. Para isso, depois de baixar esse repositório, basta abrir a pasta "jupyter-notebooks" no terminal, localizada na raíz desse projeto, e executar os comandos abaixo. Depois é só aguardar o download e a instalação concluírem.
-- OBS.: Lembrando que antes de tudo deve-se ter o Python já instalado (faça o download [aqui](https://www.python.org/downloads/))
+- **OBS. 1:** Lembrando que antes de tudo deve-se ter o Python já instalado (faça o download [aqui](https://www.python.org/downloads/))
+- **OBS. 2:** Para ver os gráficos pelo "GitHub", é preciso usar [este link](https://nbviewer.jupyter.org/github/Equipe-01-DSM-2021/projeto-integrador-2021-1/blob/5784d903e1f3df0cd2ed09846ad0b1cca9fc403f/jupyter-notebooks/AnaliseDadosEleitorais.ipynb), pois a biblioteca que usamos, o Plotly, gera gráficos interativos que não são suportados pelo visualizador do GitHub.
 
 ```powershell 
 # Instale o Jupyter Notebook
