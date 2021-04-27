@@ -1,25 +1,28 @@
 /* Chamadas de funções e controle de funcionalidades que cada rota representa */
 
+const Search = require("../models/Search");
+
 module.exports = {
-    index(req, res) {
-        //retorna a tela inicial
-        return res.render('index')
-    },
+  index(response) {
+    /* retorna a tela inicial */
+    return response.render("index");
+  },
 
-    search(req, res) {
-        //captura os filros enviados pelo botão do form
-        const region = req.query.region
-        const city = req.query.city
-        const role = req.query.role 
-        const year = req.query.year
+  search(request, response) {
+    /*
+     * captura dos filtros enviados pelo form e
+     * envio para função que realiza a busca na base de dados
+     */
+    const filters = {
+      region: String(request.query.region),
+      city: String(request.query.city),
+      role: String(request.query.role),
+      year: Number(request.query.year),
+    };
 
-        /* TESTE */
-        //retorna um JSON para o front com os filtros capturados
-        return res.json({
-            region: region, 
-            city: city, 
-            role: role,
-            year: year
-        })
-    }    
-}
+    const Cards = Search.enableCards();
+
+    /* retorna o template com os dados dos cards que serão exibidos */
+    return response.render("index", { cards: Cards });
+  },
+};
