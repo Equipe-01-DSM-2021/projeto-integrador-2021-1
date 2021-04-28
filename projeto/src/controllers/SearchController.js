@@ -3,7 +3,7 @@
 const Search = require("../models/Search");
 
 module.exports = {
-  index(response) {
+  index(request, response) {
     /* retorna a tela inicial */
     return response.render("index");
   },

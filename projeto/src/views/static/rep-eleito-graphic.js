@@ -1,6 +1,5 @@
 /* Config. global do gráfico que deixa a cor dos numeros do eixo y brancas (#ffff) */
 Chart.defaults.global.defaultFontColor = "#ffff";
-
 var ctx = document.getElementById('g-rep-eleito').getContext('2d');
 var myChart = new Chart(ctx, {
     type: 'bar',

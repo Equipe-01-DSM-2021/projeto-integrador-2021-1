@@ -8,4 +8,4 @@ const Modal = {
     toggleDownload() {
       document.querySelector(".tooltip").classList.toggle("active");
     },
-  };
+};

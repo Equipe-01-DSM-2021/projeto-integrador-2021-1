@@ -9,6 +9,7 @@
   <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css?family=Frank+Ruhl+Libre&display=swap" rel="stylesheet" />
   <link href="/styles/index.css" rel="stylesheet" />
+  <link href="/styles/search.css" rel="stylesheet" />
 
   <title>Análise de Dados Eleitorais</title>
 </head>
@@ -85,8 +86,35 @@
         </div>
     </div>
 
-    <!-- Conteúdo central -->
-    <p>Selecione os filtros e realize uma pesquisa!</p>
+    <!-- Exibição da página sem pesquisa: -->
+    <!-- <p>Selecione os filtros e realize uma pesquisa!</p> -->
+
+    <!-- Exibição dos cards com o resultado da busca -->
+    <div class="result">
+      <% cards.forEach((card) => { %> 
+        <div class="card">
+          <div class="graphic">
+            <div class="graphic-normal">
+              <canvas id="<%= card.canvasId %>" width="auto" height="auto"></canvas> <!-- canvasId -->
+              <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+              <script src="#"></script> <!-- scriptGraphic // SERÁ ALTERADO EM BREVE -->
+            </div>
+          </div>
+
+          <div class="graphic-description">
+            <h2><%= card.title %></h2> <!-- title -->
+            <p><%= card.description %></p> <!-- description -->
+
+            <div class="icon-actions">
+              <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
+              <img id="download" src="/img/icon-download.png" alt="Baixar" />
+              <!-- Ícone de zoom -->
+              <img id="zoom" src="/img/icon-zoom.png" alt="Aumentar gráfico" />
+            </div>
+          </div>
+        </div>
+      <% }) %> 
+    </div>
   </main>
 
   <!-- Modal de dúvidas frequentes -->
