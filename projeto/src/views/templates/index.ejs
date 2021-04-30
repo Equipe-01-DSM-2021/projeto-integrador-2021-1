@@ -2,7 +2,7 @@
 <html>
 <!-- Configurações da página como idioma, fontes e outros arquivos necessários -->
 
-<head>
+<head lang="pt-BR">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -95,9 +95,45 @@
         <div class="card">
           <div class="graphic">
             <div class="graphic-normal">
-              <canvas id="<%= card.canvasId %>" width="auto" height="auto"></canvas> <!-- canvasId -->
+              <canvas id="id-<%= card.canvasId %>" width="auto" height="auto"></canvas> <!-- canvasId -->
               <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
-              <script src="#"></script> <!-- scriptGraphic // SERÁ ALTERADO EM BREVE -->
+
+              <!-- CRIAÇÃO DO GRÁFICO SEM ZOOM -->
+                <script>
+                  Chart.defaults.global.defaultFontColor = "#ffff";
+                  var ctx = document.getElementById("id-<%- card.canvasId %>").getContext('2d');
+                  var myChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                      labels: <%- JSON.stringify(card.labels); %>,
+                      datasets: [{
+                        label: 'Total',
+                        data: <%- JSON.stringify(card.data); %>,
+                        backgroundColor: 'rgba(154, 219, 249, 0.4)',
+                        borderColor: 'rgba(154, 219, 249)',
+                        borderWidth: 1,
+                      }]
+                    },
+                    options: {
+                      legend: {
+                        display: false
+                      },
+                      scales: {
+                        yAxes: [{
+                          ticks: {
+                            beginAtZero: true,
+                          }
+                        }],
+                        /* Retira os valores do eixo X da exibição */
+                        xAxes: [{
+                          display: false,
+                        }],
+                      }
+                    }
+                  })
+                </script>
+              <!-- // CRIAÇÃO DO GRÁFICO SEM ZOOM -->
+
             </div>
           </div>
 
