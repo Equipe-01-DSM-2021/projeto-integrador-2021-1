@@ -20,6 +20,15 @@ module.exports = {
       year: Number(request.query.year),
     };
 
+    const data = Search.get(
+      filters.region,
+      filters.city,
+      filters.role,
+      filters.year
+    );
+
+    Search.updateCards(data);
+
     const Cards = Search.enableCards();
 
     /* retorna o template com os dados dos cards que serão exibidos */

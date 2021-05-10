@@ -1,1 +1,0 @@
-# Scripts para busca de dados no CSV
