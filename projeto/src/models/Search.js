@@ -4,7 +4,7 @@ const { spawn } = require("child_process");
 /* Dados dos CARDS */
 const cards = [
   {
-    id: 1,
+    id: 0,
     canvasId: "g-rep-eleito",
     title: "Representante eleito",
     description: "Legendas e descrição",
@@ -13,7 +13,7 @@ const cards = [
     data: [46, 134, 88],
   },
   {
-    id: 2,
+    id: 1,
     canvasId: "g-escolaridade",
     title: "Escolaridade",
     description: "Legendas e descrição",
@@ -31,7 +31,7 @@ const cards = [
     data: [33, 33, 43, 33, 35, 33, 23, 31],
   },
   {
-    id: 3,
+    id: 2,
     canvasId: "g-genero",
     title: "Gênero",
     description: "Legendas e descrição",
@@ -40,7 +40,7 @@ const cards = [
     data: [100, 97],
   },
   {
-    id: 4,
+    id: 3,
     canvasId: "g-estado-civil",
     title: "Estado civil",
     description: "Legendas e descrição",
@@ -55,7 +55,7 @@ const cards = [
     data: [34, 44, 54, 44, 44],
   },
   {
-    id: 5,
+    id: 4,
     canvasId: "g-nomsocial-def",
     title: "Possuintes de nome social ou deficiência",
     description: "Legendas e descrição",
@@ -64,7 +64,7 @@ const cards = [
     data: [54, 34],
   },
   {
-    id: 6,
+    id: 5,
     canvasId: "g-faixa-etaria",
     title: "Faixa etária",
     description: "Legendas e descrição",
@@ -112,9 +112,11 @@ module.exports = {
     });
   },
 
+  /* Função que atualiza os dados dos cards com os valores do json */
   updateCards(dataSearch) {
-    //atualizando os dados do card de escolaridade
-    cards[1].labels = dataSearch.x;
-    cards[1].data = dataSearch.y;
+    //atribui a label um array com todas as chaves
+    cards[1].labels = Object.keys(dataSearch);
+    //atribui a data um array com todos os valores
+    cards[1].data = Object.values(dataSearch);
   },
 };
