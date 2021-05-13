@@ -1,18 +1,18 @@
 /*GLOBAL -----------------------------*/
 :root {
-  --color-primary: rgba(95,121,157,1);
+  --color-primary: rgba(95, 121, 157, 1);
   --color-text-in-primary: white;
-  --color-background:#F1F1F1;
-  --color-text-in-background:rgba(147,172,191,1);
+  --color-background: #f1f1f1;
+  --color-text-in-background: rgba(147, 172, 191, 1);
   --color-background-card: white;
-  --color-title-card: rgba(0,0,0,0.8);
-  --color-description-card: rgba(0,0,0,0.6);
-  --color-background-search-menu: rgba(212,212,212,1);
-  --color-text-in-search-menu:rgba(0,0,0,0.8);
+  --color-title-card: rgba(0, 0, 0, 0.8);
+  --color-description-card: rgba(0, 0, 0, 0.6);
+  --color-background-search-menu: rgba(212, 212, 212, 1);
+  --color-text-in-search-menu: rgba(0, 0, 0, 0.8);
   --color-placeholder-select: gray;
-  --color-button:rgba(147,172,191,1);
-  --color-button-hover:rgba(95,121,157,0.7);
-  --color-link:rgba(147,172,191,1);
+  --color-button: rgba(147, 172, 191, 1);
+  --color-button-hover: rgba(95, 121, 157, 0.7);
+  --color-link: rgba(147, 172, 191, 1);
 }
 
 * {
@@ -44,7 +44,7 @@ header {
 }
 
 h1 {
-  color:var(--color-text-in-primary);
+  color: var(--color-text-in-primary);
   font-family: Frank Ruhl Libre;
   font-weight: Bold;
   font-size: 24px;
@@ -68,13 +68,13 @@ h1 {
   margin: 20px auto;
   display: flex;
   align-items: center;
-  justify-content:center;
+  justify-content: center;
 }
 
 form {
   display: flex;
   align-items: center;
-  justify-content:center;
+  justify-content: center;
   padding: 15px 10px;
 }
 
@@ -82,7 +82,7 @@ form {
 .input-group {
   display: flex;
   align-items: center;
-  justify-content:space-between;
+  justify-content: space-between;
 }
 
 .filter {
@@ -102,10 +102,10 @@ select {
   width: 160px;
   height: 32px;
   font-size: 16px;
-  color:var(--color-placeholder-select);
+  color: var(--color-placeholder-select);
   font-family: Roboto;
   background: var(--color-text-in-primary);
-  border: 1px solid rgba(95,121,157,1);
+  border: 1px solid rgba(95, 121, 157, 1);
   border-radius: 3px;
   cursor: pointer;
 }
@@ -116,7 +116,7 @@ button {
   width: 112px;
   height: 32px;
   color: var(--color-text-in-primary);
-  border:none;
+  border: none;
   background: var(--color-button);
   border-radius: 5px;
   cursor: pointer;
@@ -126,7 +126,7 @@ button {
 .button-group {
   display: flex;
   align-items: center;
-  justify-content:center;
+  justify-content: center;
   padding: 15px 10px;
 }
 
@@ -136,7 +136,7 @@ button {
 }
 
 button:hover {
-  background:var(--color-button-hover); 
+  background: var(--color-button-hover);
 }
 
 /*CONTEÚDO CENTRAL DA PÁGINA -----------------------------*/
@@ -147,7 +147,7 @@ main p {
   font-size: 36px;
   text-align: center;
   margin: 15% auto;
-  cursor:context-menu;
+  cursor: context-menu;
 }
 
 /*MODAL DE AJUDA -----------------------------*/
@@ -164,14 +164,14 @@ main p {
   visibility: hidden;
 }
 
-.modal-overlay-help.active{
+.modal-overlay-help.active {
   opacity: 1;
   visibility: visible;
 }
 
 .modal {
   background: var(--color-background-card);
-  color:var(--color-title-card);
+  color: var(--color-title-card);
   font-family: Frank Ruhl Libre;
   font-size: 18px;
   text-align: center;
@@ -182,14 +182,14 @@ main p {
 }
 
 .modal-header img {
-  position:absolute;
+  position: absolute;
   right: 30px;
   top: 30px;
   cursor: pointer;
 }
 
 .modal-overlay-help .modal-header h2 {
-  color:var(--color-title-card);
+  color: var(--color-title-card);
   font-family: Frank Ruhl Libre;
   font-size: 28px;
 }
@@ -200,7 +200,7 @@ main p {
   height: 400px;
 }
 
-.question + .question{
+.question + .question {
   margin-top: 10px;
 }
 
@@ -222,12 +222,11 @@ footer {
   display: flex;
   text-align: center;
   align-items: center;
-  justify-content:center;
-  
+  justify-content: center;
 }
 
 footer p a {
- text-decoration: none;
- cursor: pointer;
- color: var(--color-link);
+  text-decoration: none;
+  cursor: pointer;
+  color: var(--color-link);
 }

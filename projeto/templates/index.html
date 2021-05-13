@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<!-- Configurações da página como idioma, fontes e outros arquivos necessários -->
+
+<head lang="pt-BR">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Frank+Ruhl+Libre&display=swap" rel="stylesheet" />
+  <link href="../static/css/index.css" rel="stylesheet" />
+  <link href="../static/css/index.css" rel="stylesheet" />
+  <script src="../static/js/jquery-3.6.0.min.js"></script>
+  <!-- Script JS que controla os modais -->
+  <script src="../static/js/modals.js"></script>
+
+  <title>Análise de Dados Eleitorais</title>
+</head>
+
+<body>
+  <header>
+    <!-- Título da Página -->
+    <h1>Análise de Dados Eleitorais</h1>
+
+    <div class="icons">
+      <!-- Ícone de "ajuda" (habilita modal de "dúvidas frequentes" quando clicado) -->
+      <img id="help" src="../static/img/icon-help.png" alt="Ajuda" onclick="Modal.toggleHelp()" />
+    </div>
+  </header>
+
+  <main>
+    <!-- Menu de busca -->
+    <div class="search">
+      <form id="form-search">
+        <div class="input-group">
+          <!-- Filtro de região -->
+          <div class="filter">
+            <label for="region">Região:</label>
+            <select name="region" id="region">
+              <option value="default">Selecionar região</option>
+              <option value="vale_do_paraiba">Vale do Paraíba</option>
+              <option value="vale_historico">Vale Histórico</option>
+              <option value="litoral_norte">Litoral Norte</option>
+              <option value="serra_da_mantiqueira">Serra da Mantiqueira</option>
+              <option value="regiao_bragantina">Região Bragantina</option>
+            </select>
+          </div>
+
+          <!-- Filtro de cidade -->
+          <div class="filter">
+            <label for="city">Cidade:</label>
+            <select name="city" id="city">
+              <option value="default">Selecionar cidade</option>
+              <!-- Cidades do Vale do Paraíba -->
+              <option value="Aparecida">Aparecida</option>
+              <option value="Caçapava">Caçapava</option>
+              <option value="Cachoeira Paulista">Cachoeira Paulista</option>
+              <option value="Canas">Canas</option>
+              <option value="Cunha">Cunha</option>
+              <option value="Guaratinguetá">Guaratinguetá</option>
+              <option value="Igaratá">Igaratá</option>
+              <option value="Jacareí">Jacareí</option>
+              <option value="Jambeiro">Jambeiro</option>
+              <option value="Lagoinha">Lagoinha</option>
+              <option value="Lorena">Lorena</option>
+              <option value="Natividade da Serra">Natividade da Serra</option>
+              <option value="Paraibuna">Paraibuna</option>
+              <option value="Pindamonhangaba">Pindamonhangaba</option>
+              <option value="Piquete">Piquete</option>
+              <option value="Potim">Potim</option>
+              <option value="Redenção da Serra">Redenção da Serra</option>
+              <option value="Roseira">Roseira</option>
+              <option value="Santa Branca">Santa Branca</option>
+              <option value="São José dos Campos">São José dos Campos</option>
+              <option value="São Luís do Paraitinga">São Luís do Paraitinga</option>
+              <option value="Taubaté">Taubaté</option>
+              <option value="Tremembé">Tremembé</option>
+              <!-- Cidades do Vale Histórico -->
+              <option value="Arapeí">Arapeí</option>
+              <option value="Areias">Areias</option>
+              <option value="Bananal">Bananal</option>
+              <option value="Cruzeiro">Cruzeiro</option> 
+              <option value="Lavrinhas">Lavrinhas</option>
+              <option value="Queluz">Queluz</option>
+              <option value="São José do Barreiro">São José do Barreiro</option>
+              <option value="Silveiras">Silveiras</option>
+              <!-- Cidades do Litoral Norte -->
+              <option value="Caraguatatuba">Caraguatatuba</option>
+              <option value="Ilhabela">Ilhabela</option>
+              <option value="São Sebastião">São Sebastião</option>
+              <option value="Ubatuba">Ubatuba</option>
+              <!-- Cidades do Serra da Mantiqueira -->
+              <option value="Campos do Jordão">Campos do Jordão</option>
+              <option value="Monteiro Lobato">Monteiro Lobato</option>
+              <option value="Santo Antônio do Pinhal">Santo Antônio do Pinhal</option>
+              <option value="São Bento do Sapucaí">São Bento do Sapucaí</option>
+              <!-- Cidades do Região Bragantina -->
+              <option value="Atibaia">Atibaia</option>
+              <option value="Bom Jesus dos Perdões">Bom Jesus dos Perdões</option>
+              <option value="Bragança Paulista">Bragança Paulista</option>
+              <option value="Joanópolis">Joanópolis</option>
+              <option value="Nazaré Paulista">Nazaré Paulista</option>
+              <option value="Piracaia">Piracaia</option>
+              <option value="Vargem">Vargem</option>
+            </select>
+          </div>
+
+          <!-- Filtro de cargo -->
+          <div class="filter">
+            <label for="role">Cargo:</label>
+            <select name="role" id="role">
+              <option value="default">Selecionar cargo</option>
+              <option value="presidente">Presidente</option>
+              <option value="governador">Governador</option>
+              <option value="prefeito">Prefeito</option>
+            </select>
+          </div>
+
+          <!-- Filtro de ano -->
+          <div class="filter">
+            <label for="year">Ano:</label>
+            <select name="year" id="year">
+              <option value="default">Selecionar ano</option>
+              <option value="2021">2021</option>
+              <option value="2020">2020</option>
+              <option value="2019">2019</option>
+              <option value="2018">2018</option>
+              <option value="2017">2017</option>
+              <option value="2016">2016</option>
+            </select>
+          </div>
+        </div>
+      </form>
+      
+        <!-- Botões de limpar campos dos filtros e de enviar dados -->
+        <div class="button-group">
+          <button onclick="clearFilters()">Limpar</button>
+          <button title="Salvar Dados" onclick="enableCards()">Buscar</button>
+        </div>
+    </div>
+
+    <!-- Exibição dos cards com o resultado da busca -->
+    <div class="result">
+      <p>Selecione os filtros e realize uma pesquisa!</p>
+    </div>
+  </main>
+
+  <!-- Modal de dúvidas frequentes -->
+  <div class="modal-overlay-help">
+    <div class="modal">
+      <div class="modal-header">
+        <h2>Dúvidas Frequentes</h2>
+        <img id="close" src="../static/img/icon-close.png" alt="Fechar janela" onclick="Modal.toggleHelp()" />
+      </div>
+
+      <div class="questions">
+        <div class="question">
+          <h3>Como fazer uma busca?</h3>
+          <p>Selecione uma região ou uma cidade no menu de busca, assim como o "Cargo" e o “Ano”, e clique em “Buscar”.
+          </p>
+        </div>
+
+        <div class="question">
+          <h3>Como ampliar os gráficos?</h3>
+          <p>Clique no icone de lupa, localizado no canto inferior direito de cada card.</p>
+        </div>
+
+        <div class="question">
+          <h3>Como exportar os dados?</h3>
+          <p>Clique no ícone de download, localizado no canto inferior direito de cada card, e escolha um formato de
+            arquivo para baixar.</p>
+        </div>
+
+        <div class="question">
+          <h3>Como mudar o tema do site para modo escuro?</h3>
+          <p>Clique no ícone ao lado do interrogação, localizado no canto superior direito do site.</p>
+        </div>
+
+      </div>
+      <small>Não encontrou o que procurava? Cheque o <a
+          href="https://github.com/Equipe-01-DSM-2021/projeto-integrador-2021-1" target="_blank"> Manual </a> </small>
+    </div>
+  </div>
+  </div>
+
+  <!-- Rodapé -->
+  <footer>
+    <!-- Link para fonte de dados usada para a análise -->
+    <p>
+      Fonte dos Dados:
+      <a target="_blank"
+        href="https://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais-1/repositorio-de-dados-eleitorais">
+        Tribunal Superior Eleitoral
+      </a>
+    </p>
+  </footer>
+
+  <!-- Função do botão "limpar" -->
+  <script>
+    // limpa filtros
+    function clearFilters() {
+      var form = document.getElementById('form-search')
+      form.reset()
+    }
+
+    //ativa os cards
+    function enableCards() {
+        $.ajax({
+          url: "http://localhost:5000/data",
+          dataType: "json",
+          success: function (data) {
+            //capturando os valores dos campos da busca
+            var cityField = document.querySelector('#city')
+            var city = cityField.value
+            console.log(city)
+            
+            //div para mostrar os cards
+            results = document.getElementsByClassName('results')
+            results.innerHTML = " "
+          },
+        });
+      };
+  </script>
+</body>
+
+</html>
