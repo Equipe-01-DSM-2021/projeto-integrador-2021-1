@@ -31,7 +31,7 @@
   <main>
     <!-- Menu de busca -->
     <div class="search">
-      <form id="form-search">
+      <form id="form-search" action="/" method="GET">
         <div class="input-group">
           <!-- Filtro de região -->
           <div class="filter">
@@ -135,7 +135,7 @@
         <!-- Botões de limpar campos dos filtros e de enviar dados -->
         <div class="button-group">
           <button onclick="clearFilters()">Limpar</button>
-          <button title="Salvar Dados" onclick="enableCards()">Buscar</button>
+          <button type="submit" title="Salvar Dados" onclick="enableCards()">Buscar</button>
         </div>
     </div>
 
@@ -143,6 +143,8 @@
     <div class="result">
       <p>Selecione os filtros e realize uma pesquisa!</p>
     </div>
+
+    <p id="results"></p>
   </main>
 
   <!-- Modal de dúvidas frequentes -->
@@ -205,18 +207,23 @@
 
     //ativa os cards
     function enableCards() {
+        //capturando os valores dos campos da busca
+        var cityField = document.querySelector('#city')
+        var city = cityField.value
+
+        var yearField = document.querySelector('#year')
+        var year = yearField.value
+
+        var roleField = document.querySelector('#role')
+        var role = roleField.value
+
         $.ajax({
-          url: "http://localhost:5000/data",
+          url: "http://localhost:5000/data?city=" + city + "&year=" + year + "&role=" + role,
           dataType: "json",
-          success: function (data) {
-            //capturando os valores dos campos da busca
-            var cityField = document.querySelector('#city')
-            var city = cityField.value
-            console.log(city)
-            
+          success: function (data) {           
             //div para mostrar os cards
-            results = document.getElementsByClassName('results')
-            results.innerHTML = " "
+            results = document.getElementById('results')
+            results.innerHTML = data
           },
         });
       };
