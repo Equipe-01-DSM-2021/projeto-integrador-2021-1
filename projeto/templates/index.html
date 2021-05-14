@@ -194,6 +194,8 @@
       </a>
     </p>
   </footer>
+  <!-- Script do Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
 
   <!-- Função do botão "limpar" -->
   <script>
@@ -216,7 +218,50 @@
             
             //div para mostrar os cards
             results = document.getElementsByClassName('results')
-            results.innerHTML = " "
+
+            // Inserindo o HTML do gráfico
+            // Se o script não achar o canvas, vai precisar colocar o html direto no código e ativar/desativar ele conforme
+            // for o caso, eu acho
+            results.innerHTML = `
+              <div class="card">
+                <div class="graphic">
+                  <div class="graphic-normal">
+                    <canvas id="chart" width="auto" height="auto"></canvas>
+                  </div>
+                </div>
+              </div>
+            `
+            //configurando o gráfico
+            Chart.defaults.global.defaultFontColor = "#ffff";
+            var ctx = document.getElementById("chart").getContext('2d');
+            var myChart = new Chart(ctx, {
+              type: 'bar',
+              data: {
+                labels: Object.keys(data),
+                datasets: [{
+                  label: 'Total',
+                  data: Object.values(data),
+                  backgroundColor: 'rgba(154, 219, 249, 0.4)',
+                  borderColor: 'rgba(154, 219, 249)',
+                  borderWidth: 1,
+                }]
+              },
+              options: {
+                legend: {
+                  display: false
+                },
+                scales: {
+                  yAxes: [{
+                    ticks: {
+                      beginAtZero: true
+                    }
+                  }],
+                  xAxes: [{
+                    display: false,
+                  }]
+                }
+              }
+            })
           },
         });
       };
