@@ -1,0 +1,27 @@
+/*GLOBAL -----------------------------*/
+:root {
+  --color-primary: #64b5f6;
+  --color-background: #eff8ff;
+  --color-secondary: #ffffff;
+  --color-text-in-background: #50525f;
+  --color-title-card: #50525f;
+  --color-description-card: #50525f;
+  --color-border-select: #e2e5e7;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/*DEFINIÇÕES DO BODY E DO MAIN -----------------------------*/
+body {
+  background-color: var(--color-background);
+  font-family: "Roboto", sans-serif;
+}
+
+main {
+  width: 85%;
+  margin: 20px auto;
+}

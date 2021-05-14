@@ -8,8 +8,11 @@
 
   <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css?family=Frank+Ruhl+Libre&display=swap" rel="stylesheet" />
+  <link href="../static/css/main.css" rel="stylesheet" />
   <link href="../static/css/index.css" rel="stylesheet" />
-  <link href="../static/css/index.css" rel="stylesheet" />
+  <link href="../static/css/menu.css" rel="stylesheet" />
+  <link href="../static/css/modal.css" rel="stylesheet" />
+  <link href="../static/css/search-options.css" rel="stylesheet" />
   <script src="../static/js/jquery-3.6.0.min.js"></script>
   <!-- Script JS que controla os modais -->
   <script src="../static/js/modals.js"></script>
@@ -20,37 +23,38 @@
 <body>
   <header>
     <!-- Título da Página -->
-    <h1>Análise de Dados Eleitorais</h1>
-
-    <div class="icons">
-      <!-- Ícone de "ajuda" (habilita modal de "dúvidas frequentes" quando clicado) -->
-      <img id="help" src="../static/img/icon-help.png" alt="Ajuda" onclick="Modal.toggleHelp()" />
+    <div id="logo">
+      <img src="../static/img/icon-logo.svg" alt="Logo - Eleitorado.com"/>
+      <h1>Análise de Dados Eleitorais</h1>
     </div>
+    
+    <nav id="navigation">
+      <a id="start" href="#">Início</a>
+      <a id="project" href="project.html">Sobre o projeto</a>
+      <a id="us" href="about-us.html">Sobre nós</a>
+      <a id="help" onclick="Modal.toggleHelp()">Dúvidas</a>
+    </nav>
   </header>
 
   <main>
+    <div class="options">
+      <a id="search-city" href="#">Pesquisa por cidades</a>
+      <a id="search-regions" href="regions.html">Comparação de Regiões</a>
+    </div>
+
+    <div class="action">
+      <h2>Faça uma pesquisa:</h2>
+    </div>
+
     <!-- Menu de busca -->
-    <div class="search">
+    <div class="search">      
       <form id="form-search" action="/" method="GET">
         <div class="input-group">
-          <!-- Filtro de região -->
-          <div class="filter">
-            <label for="region">Região:</label>
-            <select name="region" id="region">
-              <option value="default">Selecionar região</option>
-              <option value="vale_do_paraiba">Vale do Paraíba</option>
-              <option value="vale_historico">Vale Histórico</option>
-              <option value="litoral_norte">Litoral Norte</option>
-              <option value="serra_da_mantiqueira">Serra da Mantiqueira</option>
-              <option value="regiao_bragantina">Região Bragantina</option>
-            </select>
-          </div>
-
           <!-- Filtro de cidade -->
           <div class="filter">
             <label for="city">Cidade:</label>
             <select name="city" id="city">
-              <option value="default">Selecionar cidade</option>
+              <option value="default"></option>
               <!-- Cidades do Vale do Paraíba -->
               <option value="Aparecida">Aparecida</option>
               <option value="Caçapava">Caçapava</option>
@@ -109,7 +113,7 @@
           <div class="filter">
             <label for="role">Cargo:</label>
             <select name="role" id="role">
-              <option value="default">Selecionar cargo</option>
+              <option value="default"></option>
               <option value="presidente">Presidente</option>
               <option value="governador">Governador</option>
               <option value="prefeito">Prefeito</option>
@@ -120,7 +124,7 @@
           <div class="filter">
             <label for="year">Ano:</label>
             <select name="year" id="year">
-              <option value="default">Selecionar ano</option>
+              <option value="default"></option>
               <option value="2021">2021</option>
               <option value="2020">2020</option>
               <option value="2019">2019</option>
@@ -132,11 +136,15 @@
         </div>
       </form>
       
-        <!-- Botões de limpar campos dos filtros e de enviar dados -->
-        <div class="button-group">
-          <button onclick="clearFilters()">Limpar</button>
-          <button type="submit" title="Salvar Dados" onclick="enableCards()">Buscar</button>
-        </div>
+      <!-- Botões de limpar campos dos filtros e de enviar dados -->
+      <div class="button-group">
+        <button onclick="clearFilters()">
+          <img src="../static/img/icon-clear.svg">
+        </button>
+        <button id="search" type="submit" title="Pesquisar" onclick="enableCards()">
+          <img src="../static/img/icon-search.svg">
+        </button>
+      </div>
     </div>
 
     <!-- Exibição dos cards com o resultado da busca -->
@@ -158,24 +166,23 @@
       <div class="questions">
         <div class="question">
           <h3>Como fazer uma busca?</h3>
-          <p>Selecione uma região ou uma cidade no menu de busca, assim como o "Cargo" e o “Ano”, e clique em “Buscar”.
+          <p>Selecione uma região ou cidade no menu de busca, assim como o "Cargo" e o “Ano”, e clique no ícone da lupa.
           </p>
         </div>
 
         <div class="question">
           <h3>Como ampliar os gráficos?</h3>
-          <p>Clique no icone de lupa, localizado no canto inferior direito de cada card.</p>
+          <p>Clique no ícone de expandir, localizado no canto inferior direito de cada card.</p>
         </div>
 
         <div class="question">
           <h3>Como exportar os dados?</h3>
-          <p>Clique no ícone de download, localizado no canto inferior direito de cada card, e escolha um formato de
-            arquivo para baixar.</p>
+          <p>Clique no ícone de download, localizado no canto inferior direito de cada card.</p>
         </div>
 
         <div class="question">
-          <h3>Como mudar o tema do site para modo escuro?</h3>
-          <p>Clique no ícone ao lado do interrogação, localizado no canto superior direito do site.</p>
+          <h3>Como comparar regiões?</h3>
+          <p>Há uma área dedicada à comparação entre regiões, <a href="regions.html">clique aqui</a> para fazer a busca.</p>
         </div>
 
       </div>
@@ -185,17 +192,6 @@
   </div>
   </div>
 
-  <!-- Rodapé -->
-  <footer>
-    <!-- Link para fonte de dados usada para a análise -->
-    <p>
-      Fonte dos Dados:
-      <a target="_blank"
-        href="https://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais-1/repositorio-de-dados-eleitorais">
-        Tribunal Superior Eleitoral
-      </a>
-    </p>
-  </footer>
   <!-- Script do Chart.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
 

@@ -1,0 +1,102 @@
+/* OPÇÕES PARA ESCOLHA DE PÁGINA (BUSCA POR CIDADE OU REGIÃO) -------------*/
+.options {
+  font-size: 18px;
+  background: var(--color-background);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 20px 40px;
+  margin: 72px auto 20px;
+}
+
+.options a {
+  text-decoration: none;
+  color: var(--color-text-in-background);
+  padding: 5px 15% 10px;
+}
+
+/*"BARRA" DE PESQUISA -----------------------------*/
+.action {
+  background: var(--color-background-search-menu);
+  margin: 20px auto 30px;
+}
+
+.action h2 {
+  font-size: 22px;
+  font-weight: normal;
+  color: var(--color-text-in-background);
+  padding-left: 5px;
+  border-color: var(--color-primary);
+  border-style: none none none solid;
+  border-width: 4px;
+}
+
+.search {
+  width: 80%;
+  background: var(--color-background-search-menu);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  margin: 20px auto;
+}
+
+/* FILTROS DA BARRA DE PESQUISA -----------------------------*/
+.input-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.filter {
+  margin: 0 10px;
+}
+
+label {
+  color: var(--color-text-in-background);
+  font-weight: Regular;
+  font-size: 18px;
+  margin-bottom: 10px;
+  display: block;
+}
+
+select {
+  width: 160px;
+  height: 32px;
+  font-size: 16px;
+  background: var(--color-secondary);
+  border: 1px solid var(--color-border-select);
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 30px;
+  color: var(--color-text-in-background);
+}
+
+#city {
+  width: 450px;
+  margin-left: 10px;
+}
+
+#role,
+#year {
+  width: 200px;
+}
+
+/* BOTÕES DA BARRA DE PESQUISA -----------------------------*/
+button {
+  border: none;
+  background: var(--color-background);
+  cursor: pointer;
+  height: 32px;
+  width: 32px;
+  margin-bottom: 5px;
+}
+
+.button-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#search {
+  margin-left: 20px;
+}

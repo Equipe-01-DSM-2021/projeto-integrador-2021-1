@@ -1,8 +1,4 @@
 import pandas as pd
-import sys
-# Função que busca quantidade de cada tipo de valor na determinada coluna
-# Exemplo, retornar quantos tem ensino superior completo, quantos tem ensino
-# medio completo... Retorna um json com o resultado
 
 
 def SearchForColumn(path,  columnToSearch, CityToSearch):
@@ -34,17 +30,7 @@ def SearchForColumn(path,  columnToSearch, CityToSearch):
     return df_result
 
 
-# Exemplo
-path = "jupyter-notebooks\data\perfil_eleitorado_2020.csv"
-city = str(sys.argv[1]).upper()
+path = 'jupyter-notebooks/data/perfil_eleitorado_2020.csv'
 
-# TODO Quantidade no dataframe
-
-
-def main(city):
-    result = SearchForColumn(path, "DS_GRAU_ESCOLARIDADE", city)
-    print(result)
-
-
-if __name__ == '__main__':
-    main()
+result = SearchForColumn(path, "DS_GRAU_ESCOLARIDADE", "SÃO JOSÉ DOS CAMPOS")
+print(result)
