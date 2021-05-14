@@ -196,6 +196,8 @@
       </a>
     </p>
   </footer>
+  <!-- Script do Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
 
   <!-- Função do botão "limpar" -->
   <script>
@@ -207,26 +209,70 @@
 
     //ativa os cards
     function enableCards() {
-        //capturando os valores dos campos da busca
-        var cityField = document.querySelector('#city')
-        var city = cityField.value
+      //capturando os valores dos campos da busca
+      var cityField = document.querySelector('#city')
+      var city = cityField.value
 
-        var yearField = document.querySelector('#year')
-        var year = yearField.value
+      var yearField = document.querySelector('#year')
+      var year = yearField.value
 
-        var roleField = document.querySelector('#role')
-        var role = roleField.value
+      var roleField = document.querySelector('#role')
+      var role = roleField.value
 
-        $.ajax({
-          url: "http://localhost:5000/data?city=" + city + "&year=" + year + "&role=" + role,
-          dataType: "json",
-          success: function (data) {           
-            //div para mostrar os cards
-            results = document.getElementById('results')
-            results.innerHTML = data
-          },
-        });
-      };
+      $.ajax({
+        url: "http://localhost:5000/data?city=" + city + "&year=" + year + "&role=" + role,
+        dataType: "json",
+        success: function (data) {           
+          //div para mostrar os cards
+          results = document.getElementById('results')
+          results.innerHTML = data
+
+          // Inserindo o HTML do gráfico
+          // Se o script não achar o canvas, vai precisar colocar o html direto no código e ativar/desativar ele conforme
+          // for o caso, eu acho
+          results.innerHTML = `
+            <div class="card">
+              <div class="graphic">
+                <div class="graphic-normal">
+                  <canvas id="chart" width="auto" height="auto"></canvas>
+                </div>
+              </div>
+            </div>
+          `
+          //configurando o gráfico
+          Chart.defaults.global.defaultFontColor = "#ffff";
+          var ctx = document.getElementById("chart").getContext('2d');
+          var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+              labels: Object.keys(data),
+              datasets: [{
+                label: 'Total',
+                data: Object.values(data),
+                backgroundColor: 'rgba(154, 219, 249, 0.4)',
+                borderColor: 'rgba(154, 219, 249)',
+                borderWidth: 1,
+              }]
+            },
+            options: {
+              legend: {
+                display: false
+              },
+              scales: {
+                yAxes: [{
+                  ticks: {
+                    beginAtZero: true
+                  }
+                }],
+                xAxes: [{
+                  display: false,
+                }]
+              }
+            }
+          })
+        },
+      });
+    };
   </script>
 </body>
 
