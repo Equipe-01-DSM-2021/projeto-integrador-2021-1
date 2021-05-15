@@ -25,10 +25,10 @@
 
 /*CONTEÚDO CENTRAL DA PÁGINA -----------------------------*/
 main p {
-  color: var(--color-text-in-background);
-  font-weight: normal;
+  color: #9396A9;
+  font-weight: 300;
   font-size: 30px;
   text-align: center;
-  margin: 13% auto;
+  margin: 10% auto;
   cursor: context-menu;
 }

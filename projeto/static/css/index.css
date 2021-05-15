@@ -15,3 +15,13 @@
 #search-by-city a{
     font-weight: bold;
 }
+
+/*CONTEÚDO CENTRAL DA PÁGINA -----------------------------*/
+main p {
+    color: #9396A9;
+    font-weight: 300;
+    font-size: 30px;
+    text-align: center;
+    margin: 10% auto;
+    cursor: context-menu;
+  }

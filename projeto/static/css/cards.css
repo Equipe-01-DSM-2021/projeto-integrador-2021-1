@@ -145,3 +145,11 @@
     padding: 3px 15px;
     width: 85px;
 }
+
+#github:hover {
+    filter: brightness(90%);
+}
+
+#linkedin:hover {
+    filter: brightness(90%);
+}
