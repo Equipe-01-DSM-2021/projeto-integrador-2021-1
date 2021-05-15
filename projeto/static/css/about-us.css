@@ -1,0 +1,30 @@
+/* LINK DA PÁGINA DESTAQUE -----------------------------*/
+#us {
+  font-weight: bold;
+  padding-bottom: 3px;
+  border-color: var(--color-primary);
+  border-style: none none solid none;
+  border-width: 3px;
+}
+
+.action {
+  background: var(--color-background-search-menu);
+  margin: 72px auto 30px;
+}
+
+.action h2 {
+  font-size: 22px;
+  font-weight: normal;
+  color: var(--color-text-in-background);
+  padding-left: 5px;
+  border-color: var(--color-primary);
+  border-style: none none none solid;
+  border-width: 4px;
+}
+
+/*CONTEÚDO CENTRAL DA PÁGINA -----------------------------*/
+main p {
+  font-size: 18px;
+  color: var(--color-text-in-background);
+  line-height: 28px;
+}

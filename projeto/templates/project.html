@@ -11,7 +11,8 @@
   <link href="../static/css/main.css" rel="stylesheet" />
   <link href="../static/css/menu.css" rel="stylesheet" />
   <link href="../static/css/modal.css" rel="stylesheet" />
-  <link href="../static/css/projeto.css" rel="stylesheet" />
+  <link href="../static/css/project.css" rel="stylesheet" />
+  <link href="../static/css/cards.css" rel="stylesheet" />
   <script src="../static/js/jquery-3.6.0.min.js"></script>
   <!-- Script JS que controla os modais -->
   <script src="../static/js/modals.js"></script>
@@ -29,7 +30,7 @@
     
     <!-- Navegação-->
     <nav id="navigation">
-      <a id="start" href="#">Início</a>
+      <a id="start" href="index.html">Início</a>
       <a id="project" href="project.html">Sobre o projeto</a>
       <a id="us" href="about-us.html">Sobre nós</a>
       <a id="help" onclick="Modal.toggleHelp()">Dúvidas</a>
@@ -154,7 +155,7 @@
                 </div>
             </div>
 
-            <!--planejamento-->
+            <!--desenvolvimento-->
             <div id="development">
                 <div class="about-content">
                     <div class="img-container">
@@ -199,8 +200,44 @@
         </div>
     </div>
 </main>
-<div id="footer"> 
+
+  <!-- Modal de dúvidas frequentes -->
+  <div class="modal-overlay-help">
+    <div class="modal">
+      <div class="modal-header">
+        <h2>Dúvidas Rápidas</h2>
+        <img id="close" src="../static/img/icon-close.png" alt="Fechar janela" onclick="Modal.toggleHelp()" />
+      </div>
+
+      <div class="questions">
+        <div class="question">
+          <h3>Como fazer uma busca?</h3>
+          <p>Selecione uma região ou cidade no menu de busca,&nbsp;assim como o "Cargo" e o “Ano”,&nbsp;e clique no ícone da lupa.
+          </p>
+        </div>
+
+        <div class="question">
+          <h3>Como ampliar os gráficos?</h3>
+          <p>Clique no ícone de expandir,&nbsp;localizado no canto inferior direito de cada card.</p>
+        </div>
+
+        <div class="question">
+          <h3>Como exportar os dados?</h3>
+          <p>Clique no ícone de download,&nbsp;localizado no canto inferior direito de cada card.</p>
+        </div>
+
+        <div class="question">
+          <h3>Como comparar regiões?</h3>
+          <p>Há uma área dedicada à comparação entre regiões,&nbsp;<a href="regions.html"> clique aqui</a> para fazer a busca.</p>
+        </div>
+
+      </div>
+      <small>Não encontrou o que procurava? Cheque o <a
+          href="https://github.com/Equipe-01-DSM-2021/projeto-integrador-2021-1" target="_blank"> Manual </a> </small>
+    </div>
+  </div>
+  <footer>
     <a href="https://www.flaticon.com/packs/data-science-14?word=data%20science" target="_blank">Ícones feitos por Smashicons (www.flaticon.com)</a>
-</div>
+  </footer>
 </body>
 </html>

@@ -1,0 +1,147 @@
+/* ESTILIZAÇÃO DE CARDS -------------------------------------------*/
+.cards-summary {
+    background: var(--color-secondary);
+    width: 249.37px;
+    height: 169px;
+    padding-top: 9px;
+    padding-left: 19px;
+    padding-right: 19px;
+    border: 0.5px solid var(--color-border-summary);
+    border-radius: 7.6563px;
+    border-left-color: var(--color-primary);
+    border-left-width: 3.5px;
+}
+
+.cards-summary .header-cards-summary {
+    display: flex;
+    justify-content: space-between;
+}
+
+.header-cards-summary p {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 30px;
+    color: var(--color-primary);
+}
+
+.header-cards-summary a {
+    border: none;
+    background: var(--color-secondary);
+    cursor: pointer;
+    height: 32px;
+    width: 32px;
+    padding: 0;
+    margin: 0;
+}
+
+.header-cards-summary img:hover {
+    filter: brightness(90%);
+}
+
+.text-cards-summary p {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 23px;
+    color: var(--color-text-in-background);
+}
+
+.result, .group-members {
+    width:90%;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    margin: auto;
+}
+
+.card, .member {
+    background-color: var(--color-secondary);
+    height: 170px;
+    width: 334px;
+    margin: 20px;
+    padding: 20px;
+    border: 0.915427px solid #EAEAEA;
+    box-shadow: 0px 0.915427px 3.66171px rgba(0, 0, 0, 0.25);
+    border-radius: 7.6563px;
+    border-left-color: var(--color-primary);
+    border-left-width: 3.5px;
+    position: relative;
+}
+
+.graphic {
+    display:flex;
+    align-items: center;
+    justify-content:center;
+    margin-left: 10px;
+}
+
+.graphic-description {
+    position: relative;
+}
+
+.graphic-description h2, .member h5 {
+    color:var(--color-text-in-background);
+    font-size: 18px;
+    font-weight: normal;
+}
+
+.graphic-description p {
+    color:var(--color-text-in-background);
+    font-family: Roboto, sans-serif;
+    font-size: 14px;
+    text-align: center;
+}
+
+.icon-actions {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+#zoom, #download {
+    width: 25px;
+    height: 25px;
+    overflow: hidden;
+    cursor: pointer;
+    margin-left: 15px;
+    float: right;
+}
+
+.member h6 {    
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 23px;
+    color: var(--color-text-in-background);
+}
+
+.member p {
+    font-weight: 300;
+    font-size: 13px;
+    line-height: 21px;
+    color: var(--color-text-in-background);
+}
+
+.social {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin-bottom: 10px;
+}
+
+.social a {
+    text-decoration: none;
+    background: var(--color-secondary);
+    border: 0.868955px solid #dddddd;
+    box-sizing: border-box;
+    border-radius: 4.34477px;  
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 15px;
+    text-align: center;
+    letter-spacing: 0.01em;
+    color:  var(--color-primary); 
+    margin-right: 10px;
+    padding: 3px 15px;
+    width: 85px;
+}

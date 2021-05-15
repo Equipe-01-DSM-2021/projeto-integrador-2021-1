@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<!-- Configurações da página como idioma, fontes e outros arquivos necessários -->
+
+<head lang="pt-BR">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="../static/css/main.css" rel="stylesheet" />
+  <link href="../static/css/about-us.css" rel="stylesheet" />
+  <link href="../static/css/menu.css" rel="stylesheet" />
+  <link href="../static/css/modal.css" rel="stylesheet" />
+  <link href="../static/css/cards.css" rel="stylesheet" />
+  <script src="../static/js/jquery-3.6.0.min.js"></script>
+  <!-- Script JS que controla os modais -->
+  <script src="../static/js/modals.js"></script>
+
+  <title>Análise de Dados Eleitorais</title>
+</head>
+
+<body>
+  <header>
+    <!-- Título da Página -->
+    <div id="logo">
+      <img src="../static/img/icon-logo.svg" alt="Logo - Eleitorado.com"/>
+      <h1>Análise de Dados Eleitorais</h1>
+    </div>
+    
+    <nav id="navigation">
+      <a id="start" href="index.html">Início</a>
+      <a id="project" href="project.html">Sobre o projeto</a>
+      <a id="us" href="about-us.html">Sobre nós</a>
+      <a id="help" onclick="Modal.toggleHelp()">Dúvidas</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="options">
+      <a id="search-city" href="#">Pesquisa por cidades</a>
+      <a id="search-regions" href="regions.html">Comparação de Regiões</a>
+    </div>
+
+    <!-- Título -->
+    <div class="action">
+      <h2>Sobre nós</h2>
+    </div>
+    <p>
+      Muito prazer! <br>
+      Somos da primeira turma do curso de Desenvolvimento de Software Multiplataforma (DSM),
+      na FATEC Professor Jessen Vidal, em São José dos Campos - São Paulo. 
+      Este projeto está sendo realizado no primeiro semestre!
+    </p>
+    <p>
+      Neste grupo, temos vários tipos de pessoas com gostos pelas mais diversas áreas
+      da tecnologia, veja o que cada um pôde contribuir para a construção deste projeto
+    </p>
+
+    <div class="group-members">
+      <div class="member">
+        <h5>Maria Gabriela G. S. Reis</h5>
+        <h6>Scrum Master</h6>
+        <p> 
+          Acompanhamento e documentação de atividades,&nbsp;bem como organização do grupo e comunicação com o cliente,&nbsp; 
+          além de dev fullstack do projeto
+        </p>
+        <div class="social">
+          <a href="https://github.com/MariaGabrielaReis">GitHub</a>
+          <a href="https://www.linkedin.com/in/mariagabrielareis/">LinkedIn</a>
+        </div>
+      </div>
+
+      <div class="member">
+        <h5>Adriano Andrade Almeida</h5>
+        <h6>Dev Team</h6>
+        <p> 
+          Cientista de dados,&nbsp;manipulou bases de dados em CSV e desenvolveu o Jupyter Notebook
+        </p>
+        <div class="social">
+          <a href="https://github.com/aeroadriano">GitHub</a>
+          <a href="https://www.linkedin.com/in/aeroadriano/">LinkedIn</a>
+        </div>
+      </div>
+
+      <div class="member">
+        <h5>Ana Carolina dos Santos</h5>
+        <h6>Dev Team</h6>
+        <p> 
+          Graduação em Adm, Hotelaria e Turismo,  Pós em Negócios, Funcionária Pública há 8 anos, em busca de novos desafios na área da TI , 
+          contribuição no desenvolvimento do projeto.
+        </p>
+        <div class="social">
+          <a href="https://github.com/annakks">GitHub</a>
+          <a href="https://www.linkedin.com/in/ana-santos-856436145/">LinkedIn</a>
+        </div>
+      </div>
+
+      <div class="member">
+        <h5>Antônio A. R. Nepomuceno</h5>
+        <h6>Dev Team</h6>
+        <p>Dev back-end do projeto (mas também Desenvolvedor de jogos independentes),&nbsp;trabalhou na conversão de dados no projeto</p>
+        <div class="social">
+          <a href="https://github.com/Nepoun">GitHub</a>
+          <a href="https://www.linkedin.com/in/antonio-nepomuceno-04943720a/">LinkedIn</a>
+        </div>
+      </div>
+
+      <div class="member">
+        <h5>Caio Victor Dias</h5>
+        <h6>Dev Team</h6>
+        <p> Olá!</p>
+        <div class="social">
+          <a href="https://github.com/CaioVitorDias1">GitHub</a>
+          <a href="https://www.linkedin.com/in/caio-vitor-c1">LinkedIn</a>
+        </div>
+      </div>
+
+      <div class="member">
+        <h5>Giovana Thaís O. Silva</h5>
+        <h6>Dev Team</h6>
+        <p> 
+          Dev front-end do projeto, trabalhou na construção das páginas web e atuou como suporte no desenvolvimento do Jupyter Notebook.
+        </p>
+        <div class="social">
+          <a href="https://github.com/gioliveirass">GitHub</a>
+          <a href="https://www.linkedin.com/in/gioliveirass">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Modal de dúvidas frequentes -->
+  <div class="modal-overlay-help">
+    <div class="modal">
+      <div class="modal-header">
+        <h2>Dúvidas Rápidas</h2>
+        <img id="close" src="../static/img/icon-close.png" alt="Fechar janela" onclick="Modal.toggleHelp()" />
+      </div>
+
+      <div class="questions">
+        <div class="question">
+          <h3>Como fazer uma busca?</h3>
+          <p>Selecione uma região ou cidade no menu de busca,&nbsp;assim como o "Cargo" e o “Ano”,&nbsp;e clique no ícone da lupa.
+          </p>
+        </div>
+
+        <div class="question">
+          <h3>Como ampliar os gráficos?</h3>
+          <p>Clique no ícone de expandir,&nbsp;localizado no canto inferior direito de cada card.</p>
+        </div>
+
+        <div class="question">
+          <h3>Como exportar os dados?</h3>
+          <p>Clique no ícone de download,&nbsp;localizado no canto inferior direito de cada card.</p>
+        </div>
+
+        <div class="question">
+          <h3>Como comparar regiões?</h3>
+          <p>Há uma área dedicada à comparação entre regiões,&nbsp;<a href="regions.html"> clique aqui</a> para fazer a busca.</p>
+        </div>
+
+      </div>
+      <small>Não encontrou o que procurava? Cheque o <a
+          href="https://github.com/Equipe-01-DSM-2021/projeto-integrador-2021-1" target="_blank"> Manual </a> </small>
+    </div>
+  </div>
+  </div>
+
+  <!-- Script JS que controla os modais -->
+  <script src="\projeto\public\scripts\modals.js"></script>
+</body>
+</html>

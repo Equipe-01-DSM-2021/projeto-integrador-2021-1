@@ -48,56 +48,6 @@
     margin-top: 21px;
 }
 
-.cards-summary {
-    background: var(--color-secondary);
-    width: 249.37px;
-    height: 169px;
-    padding-top: 9px;
-    padding-left: 19px;
-    padding-right: 19px;
-    border: 0.5px solid var(--color-border-summary);
-    border-radius: 7.6563px;
-    border-left-color: var(--color-primary);
-    border-left-width: 3.5px;
-}
-
-.cards-summary .header-cards-summary {
-
-
-    display: flex;
-    justify-content: space-between;
-}
-
-.header-cards-summary p {
-    font-style: normal;
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 30px;
-    color: var(--color-primary);
-}
-
-.header-cards-summary a {
-    border: none;
-    background: var(--color-secondary);
-    cursor: pointer;
-    height: 32px;
-    width: 32px;
-    padding: 0;
-    margin: 0;
-}
-
-.header-cards-summary img:hover {
-    filter: brightness(90%);
-}
-
-.text-cards-summary p{
-    font-style: normal;
-    font-weight: normal;
-    font-size: 14px;
-    line-height: 23px;
-    color: var(--color-text-in-background);
-}
-
 /*----------------------------------------*/
 /*configurações das informações do projeto*/
 /*----------------------------------------*/
@@ -179,7 +129,7 @@
 /*footer*/
 /*------*/
 
-#footer {
+footer {
     width: 100%;
     height: 72px;
     background: var(--color-secondary);
@@ -193,7 +143,7 @@
     margin-top: 70px;
 }
 
-#footer a {
+footer a {
     font-style: normal;
     font-weight: normal;
     font-size: 18px;
@@ -201,6 +151,6 @@
     color: var(--color-primary);
 }
 
-#footer a:hover {
+footer a:hover {
     color: var(--color-a-hover);
 }

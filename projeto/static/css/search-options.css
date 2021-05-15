@@ -71,7 +71,7 @@ select {
   color: var(--color-text-in-background);
 }
 
-#city {
+#city, #region {
   width: 450px;
   margin-left: 10px;
 }

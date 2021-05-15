@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link href="../static/css/main.css" rel="stylesheet" />
-  <link href="../static/css/index.css" rel="stylesheet" />
+  <link href="../static/css/regions.css" rel="stylesheet" />
   <link href="../static/css/menu.css" rel="stylesheet" />
   <link href="../static/css/modal.css" rel="stylesheet" />
   <link href="../static/css/search-options.css" rel="stylesheet" />
@@ -39,7 +39,7 @@
 
   <main>
     <div class="options">
-      <a id="search-city" href="#">Pesquisa por cidades</a>
+      <a id="search-city" href="index.html">Pesquisa por cidades</a>
       <a id="search-regions" href="regions.html">Comparação de Regiões</a>
     </div>
 
@@ -51,62 +51,16 @@
     <div class="search">      
       <form id="form-search" action="/" method="GET">
         <div class="input-group">
-          <!-- Filtro de cidade -->
+          <!-- Filtro de região -->
           <div class="filter">
-            <label for="city">Cidade:</label>
-            <select name="city" id="city">
+            <label for="region">Região:</label>
+            <select name="region" id="region">
               <option value="default"></option>
-              <!-- Cidades do Vale do Paraíba -->
-              <option value="Aparecida">Aparecida</option>
-              <option value="Caçapava">Caçapava</option>
-              <option value="Cachoeira Paulista">Cachoeira Paulista</option>
-              <option value="Canas">Canas</option>
-              <option value="Cunha">Cunha</option>
-              <option value="Guaratinguetá">Guaratinguetá</option>
-              <option value="Igaratá">Igaratá</option>
-              <option value="Jacareí">Jacareí</option>
-              <option value="Jambeiro">Jambeiro</option>
-              <option value="Lagoinha">Lagoinha</option>
-              <option value="Lorena">Lorena</option>
-              <option value="Natividade da Serra">Natividade da Serra</option>
-              <option value="Paraibuna">Paraibuna</option>
-              <option value="Pindamonhangaba">Pindamonhangaba</option>
-              <option value="Piquete">Piquete</option>
-              <option value="Potim">Potim</option>
-              <option value="Redenção da Serra">Redenção da Serra</option>
-              <option value="Roseira">Roseira</option>
-              <option value="Santa Branca">Santa Branca</option>
-              <option value="São José dos Campos">São José dos Campos</option>
-              <option value="São Luís do Paraitinga">São Luís do Paraitinga</option>
-              <option value="Taubaté">Taubaté</option>
-              <option value="Tremembé">Tremembé</option>
-              <!-- Cidades do Vale Histórico -->
-              <option value="Arapeí">Arapeí</option>
-              <option value="Areias">Areias</option>
-              <option value="Bananal">Bananal</option>
-              <option value="Cruzeiro">Cruzeiro</option> 
-              <option value="Lavrinhas">Lavrinhas</option>
-              <option value="Queluz">Queluz</option>
-              <option value="São José do Barreiro">São José do Barreiro</option>
-              <option value="Silveiras">Silveiras</option>
-              <!-- Cidades do Litoral Norte -->
-              <option value="Caraguatatuba">Caraguatatuba</option>
-              <option value="Ilhabela">Ilhabela</option>
-              <option value="São Sebastião">São Sebastião</option>
-              <option value="Ubatuba">Ubatuba</option>
-              <!-- Cidades do Serra da Mantiqueira -->
-              <option value="Campos do Jordão">Campos do Jordão</option>
-              <option value="Monteiro Lobato">Monteiro Lobato</option>
-              <option value="Santo Antônio do Pinhal">Santo Antônio do Pinhal</option>
-              <option value="São Bento do Sapucaí">São Bento do Sapucaí</option>
-              <!-- Cidades do Região Bragantina -->
-              <option value="Atibaia">Atibaia</option>
-              <option value="Bom Jesus dos Perdões">Bom Jesus dos Perdões</option>
-              <option value="Bragança Paulista">Bragança Paulista</option>
-              <option value="Joanópolis">Joanópolis</option>
-              <option value="Nazaré Paulista">Nazaré Paulista</option>
-              <option value="Piracaia">Piracaia</option>
-              <option value="Vargem">Vargem</option>
+              <option value="vale-do-paraiba">Vale do Paraíba</option>
+              <option value="vale-historico">Vale Histórico</option>
+              <option value="litoral-norte">Litoral Norte</option>
+              <option value="serra-da-mantiqueira">Serra da Mantiqueira</option>
+              <option value="regiao-bragantina">Região Bragantina</option>
             </select>
           </div>
 
