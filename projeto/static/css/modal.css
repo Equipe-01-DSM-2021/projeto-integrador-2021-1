@@ -45,16 +45,12 @@
   border-style: none none none solid;
   border-width: 4px;
   width: 300px;
-}
-
-.questions {
-  font-size: 28px;
-  margin-bottom: 1%;
+  margin-bottom: 15px;
 }
 
 .questions {
   text-align: left;
-  margin-bottom: 15px;
+  margin-bottom: 30px;
 }
 
 .question h3 {
@@ -62,6 +58,7 @@
   font-weight: 600;
   font-size: 20px;
   line-height: 40px;
+  margin-bottom: 0;
 }
 
 .question p {

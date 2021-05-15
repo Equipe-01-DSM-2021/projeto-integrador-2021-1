@@ -13,6 +13,16 @@
   border-width: 4px;
 }
 
+#search-by-region {
+  border-color: var(--color-primary);
+  border-style: none none solid none;
+  border-width: 3.5px;
+}
+
+#search-by-region a {
+  font-weight: bold;
+}
+
 /*CONTEÚDO CENTRAL DA PÁGINA -----------------------------*/
 main p {
   color: var(--color-text-in-background);

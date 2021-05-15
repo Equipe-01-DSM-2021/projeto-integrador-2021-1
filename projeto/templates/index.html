@@ -53,8 +53,9 @@
       </div>
 
       <!--realizar pesquisas-->
-      <div id="search-action">
+    <div id="search-action">
         <h2>Faça uma pesquisa:</h2>
+    </div>
 
         <!-- Menu de busca -->
         <div class="search">
@@ -186,67 +187,41 @@
     </main>
 
     <!-- Modal de dúvidas frequentes -->
-    <div class="modal-overlay-help">
-      <div class="modal">
-        <div class="modal-header">
-          <h2>Dúvidas Rápidas</h2>
-          <img
-            id="close"
-            src="../static/img/icon-close.png"
-            alt="Fechar janela"
-            onclick="Modal.toggleHelp()"
-          />
-        </div>
-
-        <div class="questions">
-          <div class="question">
-            <h3>Como fazer uma busca?</h3>
-            <p>
-              Selecione uma região ou cidade no menu de busca,&nbsp;assim como o
-              "Cargo" e o “Ano”,&nbsp;e clique no ícone da lupa.
-            </p>
-          </div>
-
-          <div class="question">
-            <h3>Como ampliar os gráficos?</h3>
-            <p>
-              Clique no ícone de expandir,&nbsp;localizado no canto inferior
-              direito de cada card.
-            </p>
-          </div>
-
-          <div class="question">
-            <h3>Como exportar os dados?</h3>
-            <p>
-              Clique no ícone de download,&nbsp;localizado no canto inferior
-              direito de cada card.
-            </p>
-          </div>
-
-          <div class="question">
-            <h3>Como comparar regiões?</h3>
-            <p>
-              Há uma área dedicada à comparação entre regiões,&nbsp;<a
-                href="regions.html"
-              >
-                clique aqui</a
-              >
-              para fazer a busca.
-            </p>
-          </div>
-
-          <small
-            >Não encontrou o que procurava? Cheque o
-            <a
-              href="https://github.com/Equipe-01-DSM-2021/projeto-integrador-2021-1"
-              target="_blank"
-            >
-              Manual
-            </a>
-          </small>
-        </div>
+  <div class="modal-overlay-help">
+    <div class="modal">
+      <div class="modal-header">
+        <h2>Dúvidas Rápidas</h2>
+        <img id="close" src="../static/img/icon-close.png" alt="Fechar janela" onclick="Modal.toggleHelp()" />
       </div>
+
+      <div class="questions">
+        <div class="question">
+          <h3>Como fazer uma busca?</h3>
+          <p>Selecione uma região ou cidade no menu de busca,&nbsp;assim como o "Cargo" e o “Ano”,&nbsp;e clique no ícone da lupa.
+          </p>
+        </div>
+
+        <div class="question">
+          <h3>Como ampliar os gráficos?</h3>
+          <p>Clique no ícone de expandir,&nbsp;localizado no canto inferior direito de cada card.</p>
+        </div>
+
+        <div class="question">
+          <h3>Como exportar os dados?</h3>
+          <p>Clique no ícone de download,&nbsp;localizado no canto inferior direito de cada card.</p>
+        </div>
+
+        <div class="question">
+          <h3>Como comparar regiões?</h3>
+          <p>Há uma área dedicada à comparação entre regiões,&nbsp;<a href="regions.html"> clique aqui</a> para fazer a busca.</p>
+        </div>
+
+      </div>
+      <small>Não encontrou o que procurava? Cheque o <a
+          href="https://github.com/Equipe-01-DSM-2021/projeto-integrador-2021-1" target="_blank"> Manual </a> </small>
     </div>
+  </div>
+  </div>
 
     <!-- Script do Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>

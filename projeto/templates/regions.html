@@ -38,14 +38,20 @@
   </header>
 
   <main>
-    <div class="options">
-      <a id="search-city" href="index.html">Pesquisa por cidades</a>
-      <a id="search-regions" href="regions.html">Comparação de Regiões</a>
+    <!--tipo de pesquisa-->
+    <div id="search-by">
+      <div id="search-by-city">
+        <a class="search-by-link" href="index.html">Pesquisa por cidades</a>
+      </div>
+      <div id="search-by-region">
+        <a class="search-by-link" href="#">Comparação de Regiões</a>
+      </div>
     </div>
 
-    <div class="action">
+    <!--realizar pesquisas-->
+  <div id="search-action">
       <h2>Faça uma pesquisa:</h2>
-    </div>
+  </div>
 
     <!-- Menu de busca -->
     <div class="search">      
@@ -88,27 +94,32 @@
               <option value="2016">2016</option>
             </select>
           </div>
+          <!-- Botões de limpar campos dos filtros e de enviar dados -->
+          <div class="button-group">
+            <button onclick="clearFilters()">
+              <img src="../static/img/icon-clear.svg" />
+            </button>
+            <button
+              id="search"
+              type="submit"
+              title="Pesquisar"
+              onclick="enableCards()"
+            >
+              <img src="../static/img/icon-search.svg" />
+            </button>
+          </div>
         </div>
       </form>
-      
-      <!-- Botões de limpar campos dos filtros e de enviar dados -->
-      <div class="button-group">
-        <button onclick="clearFilters()">
-          <img src="../static/img/icon-clear.svg">
-        </button>
-        <button id="search" type="submit" title="Pesquisar" onclick="enableCards()">
-          <img src="../static/img/icon-search.svg">
-        </button>
-      </div>
     </div>
+  </div>
 
-    <!-- Exibição dos cards com o resultado da busca -->
-    <div class="result">
-      <p>Selecione os filtros e realize uma pesquisa!</p>
-    </div>
+  <!-- Exibição dos cards com o resultado da busca -->
+  <div class="result">
+    <p>Selecione os filtros e realize uma pesquisa!</p>
+  </div>
 
-    <p id="results"></p>
-  </main>
+  <p id="results"></p>
+</main>
 
   <!-- Modal de dúvidas frequentes -->
   <div class="modal-overlay-help">
