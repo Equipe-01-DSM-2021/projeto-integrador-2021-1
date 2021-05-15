@@ -1,102 +1,106 @@
 /* OPÇÕES PARA ESCOLHA DE PÁGINA (BUSCA POR CIDADE OU REGIÃO) -------------*/
-.options {
-  font-size: 18px;
-  background: var(--color-background);
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  padding: 20px 40px;
-  margin: 72px auto 20px;
+
+#search-by {
+    margin-top: 7%;
+    display: flex;
+    justify-content: space-between;
 }
 
-.options a {
-  text-decoration: none;
-  color: var(--color-text-in-background);
-  padding: 5px 15% 10px;
+#search-by-city {
+    width: 50%;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    padding: 0.5%;
 }
 
-/*"BARRA" DE PESQUISA -----------------------------*/
-.action {
-  background: var(--color-background-search-menu);
-  margin: 20px auto 30px;
+#search-by-city:hover {
+    background-color: #D7EEFF;
 }
 
-.action h2 {
-  font-size: 22px;
-  font-weight: normal;
-  color: var(--color-text-in-background);
-  padding-left: 5px;
-  border-color: var(--color-primary);
-  border-style: none none none solid;
-  border-width: 4px;
+#search-by-region {
+    width: 50%;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    padding: 0.5%;
 }
 
-.search {
-  width: 80%;
-  background: var(--color-background-search-menu);
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  margin: 20px auto;
+#search-by-region:hover {
+    background-color: #D7EEFF;
 }
 
-/* FILTROS DA BARRA DE PESQUISA -----------------------------*/
+.search-by-link {
+    text-decoration: none;
+    color: var(--color-text-in-background);
+}
+
+/* FORMULÁRIO DE PESQUISA -------------*/
+
+#search-action h2 {
+    margin-top: 2%;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    color: var(--color-text-in-background);
+    padding-left: 11px;
+    border-style: none none none solid;
+    border-width: 4px;
+    border-radius: 3px;
+    border-color: var(--color-primary);
+    margin-bottom: 1.5%;
+}
+
+#form-search label {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    color: var(--color-text-in-background);
+    display: block;
+}
+
+#form-search select {
+    width: 80%;
+    height: 32px;
+    font-size: 16px;
+    background: var(--color-secondary);
+    border: 1px solid var(--color-border-select);
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 30px;
+    color: var(--color-text-in-background);
+}
+
 .input-group {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+    display: flex;
+    justify-content: space-between;
 }
 
 .filter {
-  margin: 0 10px;
+    width: 100%;
+    padding: 0;
 }
 
-label {
-  color: var(--color-text-in-background);
-  font-weight: Regular;
-  font-size: 18px;
-  margin-bottom: 10px;
-  display: block;
-}
-
-select {
-  width: 160px;
-  height: 32px;
-  font-size: 16px;
-  background: var(--color-secondary);
-  border: 1px solid var(--color-border-select);
-  border-radius: 5px;
-  cursor: pointer;
-  margin-right: 30px;
-  color: var(--color-text-in-background);
-}
-
-#city {
-  width: 450px;
-  margin-left: 10px;
-}
-
-#role,
-#year {
-  width: 200px;
-}
-
-/* BOTÕES DA BARRA DE PESQUISA -----------------------------*/
 button {
-  border: none;
-  background: var(--color-background);
-  cursor: pointer;
-  height: 32px;
-  width: 32px;
-  margin-bottom: 5px;
+    border: none;
+    background: var(--color-background);
+    cursor: pointer;
+    height: 32px;
+    width: 32px;
+    margin-bottom: 5px;
 }
 
+img:hover {
+    filter: brightness(90%);
+}
+  
 .button-group {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2%;
 }
-
+  
 #search {
-  margin-left: 20px;
+    margin-left: 20px;
 }

@@ -9,10 +9,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link href="../static/css/main.css" rel="stylesheet" />
-  <link href="../static/css/index.css" rel="stylesheet" />
   <link href="../static/css/menu.css" rel="stylesheet" />
   <link href="../static/css/modal.css" rel="stylesheet" />
   <link href="../static/css/search-options.css" rel="stylesheet" />
+  <link href="../static/css/index.css" rel="stylesheet" />
   <script src="../static/js/jquery-3.6.0.min.js"></script>
   <!-- Script JS que controla os modais -->
   <script src="../static/js/modals.js"></script>
@@ -20,257 +20,262 @@
   <title>Análise de Dados Eleitorais</title>
   <link rel="shortcut icon" href="../static/img/favicon.ico" />
 </head>
-
 <body>
-  <header>
-    <!-- Título da Página -->
-    <div id="logo">
-      <img src="../static/img/icon-logo.svg" alt="Logo - Eleitorado.com"/>
-      <h1>Análise de Dados Eleitorais</h1>
-    </div>
-    
-    <nav id="navigation">
-      <a id="start" href="#">Início</a>
-      <a id="project" href="project.html">Sobre o projeto</a>
-      <a id="us" href="about-us.html">Sobre nós</a>
-      <a id="help" onclick="Modal.toggleHelp()">Dúvidas</a>
-    </nav>
-  </header>
-
-  <main>
-    <div class="options">
-      <a id="search-city" href="#">Pesquisa por cidades</a>
-      <a id="search-regions" href="regions.html">Comparação de Regiões</a>
-    </div>
-
-    <div class="action">
-      <h2>Faça uma pesquisa:</h2>
-    </div>
-
-    <!-- Menu de busca -->
-    <div class="search">      
-      <form id="form-search" action="/" method="GET">
-        <div class="input-group">
-          <!-- Filtro de cidade -->
-          <div class="filter">
-            <label for="city">Cidade:</label>
-            <select name="city" id="city">
-              <option value="default"></option>
-              <!-- Cidades do Vale do Paraíba -->
-              <option value="Aparecida">Aparecida</option>
-              <option value="Caçapava">Caçapava</option>
-              <option value="Cachoeira Paulista">Cachoeira Paulista</option>
-              <option value="Canas">Canas</option>
-              <option value="Cunha">Cunha</option>
-              <option value="Guaratinguetá">Guaratinguetá</option>
-              <option value="Igaratá">Igaratá</option>
-              <option value="Jacareí">Jacareí</option>
-              <option value="Jambeiro">Jambeiro</option>
-              <option value="Lagoinha">Lagoinha</option>
-              <option value="Lorena">Lorena</option>
-              <option value="Natividade da Serra">Natividade da Serra</option>
-              <option value="Paraibuna">Paraibuna</option>
-              <option value="Pindamonhangaba">Pindamonhangaba</option>
-              <option value="Piquete">Piquete</option>
-              <option value="Potim">Potim</option>
-              <option value="Redenção da Serra">Redenção da Serra</option>
-              <option value="Roseira">Roseira</option>
-              <option value="Santa Branca">Santa Branca</option>
-              <option value="São José dos Campos">São José dos Campos</option>
-              <option value="São Luís do Paraitinga">São Luís do Paraitinga</option>
-              <option value="Taubaté">Taubaté</option>
-              <option value="Tremembé">Tremembé</option>
-              <!-- Cidades do Vale Histórico -->
-              <option value="Arapeí">Arapeí</option>
-              <option value="Areias">Areias</option>
-              <option value="Bananal">Bananal</option>
-              <option value="Cruzeiro">Cruzeiro</option> 
-              <option value="Lavrinhas">Lavrinhas</option>
-              <option value="Queluz">Queluz</option>
-              <option value="São José do Barreiro">São José do Barreiro</option>
-              <option value="Silveiras">Silveiras</option>
-              <!-- Cidades do Litoral Norte -->
-              <option value="Caraguatatuba">Caraguatatuba</option>
-              <option value="Ilhabela">Ilhabela</option>
-              <option value="São Sebastião">São Sebastião</option>
-              <option value="Ubatuba">Ubatuba</option>
-              <!-- Cidades do Serra da Mantiqueira -->
-              <option value="Campos do Jordão">Campos do Jordão</option>
-              <option value="Monteiro Lobato">Monteiro Lobato</option>
-              <option value="Santo Antônio do Pinhal">Santo Antônio do Pinhal</option>
-              <option value="São Bento do Sapucaí">São Bento do Sapucaí</option>
-              <!-- Cidades do Região Bragantina -->
-              <option value="Atibaia">Atibaia</option>
-              <option value="Bom Jesus dos Perdões">Bom Jesus dos Perdões</option>
-              <option value="Bragança Paulista">Bragança Paulista</option>
-              <option value="Joanópolis">Joanópolis</option>
-              <option value="Nazaré Paulista">Nazaré Paulista</option>
-              <option value="Piracaia">Piracaia</option>
-              <option value="Vargem">Vargem</option>
-            </select>
-          </div>
-
-          <!-- Filtro de cargo -->
-          <div class="filter">
-            <label for="role">Cargo:</label>
-            <select name="role" id="role">
-              <option value="default"></option>
-              <option value="presidente">Presidente</option>
-              <option value="governador">Governador</option>
-              <option value="prefeito">Prefeito</option>
-            </select>
-          </div>
-
-          <!-- Filtro de ano -->
-          <div class="filter">
-            <label for="year">Ano:</label>
-            <select name="year" id="year">
-              <option value="default"></option>
-              <option value="2021">2021</option>
-              <option value="2020">2020</option>
-              <option value="2019">2019</option>
-              <option value="2018">2018</option>
-              <option value="2017">2017</option>
-              <option value="2016">2016</option>
-            </select>
-          </div>
+    <header>
+        <!-- Título da Página -->
+        <div id="logo">
+          <img src="../static/img/icon-logo.svg" alt="Logo - Eleitorado.com"/>
+          <h1>Análise de Dados Eleitorais</h1>
         </div>
-      </form>
-      
-      <!-- Botões de limpar campos dos filtros e de enviar dados -->
-      <div class="button-group">
-        <button onclick="clearFilters()">
-          <img src="../static/img/icon-clear.svg">
-        </button>
-        <button id="search" type="submit" title="Pesquisar" onclick="enableCards()">
-          <img src="../static/img/icon-search.svg">
-        </button>
-      </div>
-    </div>
+        
+        <nav id="navigation">
+          <a id="start" href="#">Início</a>
+          <a id="project" href="project.html">Sobre o projeto</a>
+          <a id="us" href="about-us.html">Sobre nós</a>
+          <a id="help" onclick="Modal.toggleHelp()">Dúvidas</a>
+        </nav>
+      </header>
 
-    <!-- Exibição dos cards com o resultado da busca -->
-    <div class="result">
-      <p>Selecione os filtros e realize uma pesquisa!</p>
-    </div>
-
-    <p id="results"></p>
-  </main>
-
-  <!-- Modal de dúvidas frequentes -->
-  <div class="modal-overlay-help">
-    <div class="modal">
-      <div class="modal-header">
-        <h2>Dúvidas Frequentes</h2>
-        <img id="close" src="../static/img/icon-close.png" alt="Fechar janela" onclick="Modal.toggleHelp()" />
-      </div>
-
-      <div class="questions">
-        <div class="question">
-          <h3>Como fazer uma busca?</h3>
-          <p>Selecione uma região ou cidade no menu de busca, assim como o "Cargo" e o “Ano”, e clique no ícone da lupa.
-          </p>
-        </div>
-
-        <div class="question">
-          <h3>Como ampliar os gráficos?</h3>
-          <p>Clique no ícone de expandir, localizado no canto inferior direito de cada card.</p>
-        </div>
-
-        <div class="question">
-          <h3>Como exportar os dados?</h3>
-          <p>Clique no ícone de download, localizado no canto inferior direito de cada card.</p>
-        </div>
-
-        <div class="question">
-          <h3>Como comparar regiões?</h3>
-          <p>Há uma área dedicada à comparação entre regiões, <a href="regions.html">clique aqui</a> para fazer a busca.</p>
-        </div>
-
-      </div>
-      <small>Não encontrou o que procurava? Cheque o <a
-          href="https://github.com/Equipe-01-DSM-2021/projeto-integrador-2021-1" target="_blank"> Manual </a> </small>
-    </div>
-  </div>
-  </div>
-
-  <!-- Script do Chart.js -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
-
-  <!-- Função do botão "limpar" -->
-  <script>
-    // limpa filtros
-    function clearFilters() {
-      var form = document.getElementById('form-search')
-      form.reset()
-    }
-
-    //ativa os cards
-    function enableCards() {
-      //capturando os valores dos campos da busca
-      var cityField = document.querySelector('#city')
-      var city = cityField.value
-
-      var yearField = document.querySelector('#year')
-      var year = yearField.value
-
-      var roleField = document.querySelector('#role')
-      var role = roleField.value
-
-      $.ajax({
-        url: "http://localhost:5000/data?city=" + city + "&year=" + year + "&role=" + role,
-        dataType: "json",
-        success: function (data) {           
-          //div para mostrar os cards
-          results = document.getElementById('results')
-          results.innerHTML = data
-
-          // Inserindo o HTML do gráfico
-          // Se o script não achar o canvas, vai precisar colocar o html direto no código e ativar/desativar ele conforme
-          // for o caso, eu acho
-          results.innerHTML = `
-            <div class="card">
-              <div class="graphic">
-                <div class="graphic-normal">
-                  <canvas id="chart" width="auto" height="auto"></canvas>
-                </div>
-              </div>
+      <main>
+        <!--tipo de pesquisa-->
+        <div id="search-by">
+            <div id="search-by-city">
+                <a class="search-by-link" href="#">Pesquisa por cidades</a>
             </div>
-          `
-          //configurando o gráfico
-          Chart.defaults.global.defaultFontColor = "#ffff";
-          var ctx = document.getElementById("chart").getContext('2d');
-          var myChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-              labels: Object.keys(data),
-              datasets: [{
-                label: 'Total',
-                data: Object.values(data),
-                backgroundColor: 'rgba(154, 219, 249, 0.4)',
-                borderColor: 'rgba(154, 219, 249)',
-                borderWidth: 1,
-              }]
-            },
-            options: {
-              legend: {
-                display: false
-              },
-              scales: {
-                yAxes: [{
-                  ticks: {
-                    beginAtZero: true
-                  }
-                }],
-                xAxes: [{
-                  display: false,
-                }]
-              }
-            }
-          })
-        },
-      });
-    };
-  </script>
-</body>
+            <div id="search-by-region">
+                <a class="search-by-link" href="regions.html">Comparação de Regiões</a>
+            </div>
+        </div>
 
+        <!--realizar pesquisas-->
+        <div id="search-action">
+            <h2>Faça uma pesquisa:</h2>
+
+            <!-- Menu de busca -->
+            <div class="search">      
+                <form id="form-search" action="/" method="GET">
+                <div class="input-group">
+                    <!-- Filtro de cidade -->
+                    <div class="filter">
+                    <label for="city">Cidade:</label>
+                    <select name="city" id="city">
+                        <option value="default"></option>
+                        <!-- Cidades do Vale do Paraíba -->
+                        <option value="Aparecida">Aparecida</option>
+                        <option value="Caçapava">Caçapava</option>
+                        <option value="Cachoeira Paulista">Cachoeira Paulista</option>
+                        <option value="Canas">Canas</option>
+                        <option value="Cunha">Cunha</option>
+                        <option value="Guaratinguetá">Guaratinguetá</option>
+                        <option value="Igaratá">Igaratá</option>
+                        <option value="Jacareí">Jacareí</option>
+                        <option value="Jambeiro">Jambeiro</option>
+                        <option value="Lagoinha">Lagoinha</option>
+                        <option value="Lorena">Lorena</option>
+                        <option value="Natividade da Serra">Natividade da Serra</option>
+                        <option value="Paraibuna">Paraibuna</option>
+                        <option value="Pindamonhangaba">Pindamonhangaba</option>
+                        <option value="Piquete">Piquete</option>
+                        <option value="Potim">Potim</option>
+                        <option value="Redenção da Serra">Redenção da Serra</option>
+                        <option value="Roseira">Roseira</option>
+                        <option value="Santa Branca">Santa Branca</option>
+                        <option value="São José dos Campos">São José dos Campos</option>
+                        <option value="São Luís do Paraitinga">São Luís do Paraitinga</option>
+                        <option value="Taubaté">Taubaté</option>
+                        <option value="Tremembé">Tremembé</option>
+                        <!-- Cidades do Vale Histórico -->
+                        <option value="Arapeí">Arapeí</option>
+                        <option value="Areias">Areias</option>
+                        <option value="Bananal">Bananal</option>
+                        <option value="Cruzeiro">Cruzeiro</option> 
+                        <option value="Lavrinhas">Lavrinhas</option>
+                        <option value="Queluz">Queluz</option>
+                        <option value="São José do Barreiro">São José do Barreiro</option>
+                        <option value="Silveiras">Silveiras</option>
+                        <!-- Cidades do Litoral Norte -->
+                        <option value="Caraguatatuba">Caraguatatuba</option>
+                        <option value="Ilhabela">Ilhabela</option>
+                        <option value="São Sebastião">São Sebastião</option>
+                        <option value="Ubatuba">Ubatuba</option>
+                        <!-- Cidades do Serra da Mantiqueira -->
+                        <option value="Campos do Jordão">Campos do Jordão</option>
+                        <option value="Monteiro Lobato">Monteiro Lobato</option>
+                        <option value="Santo Antônio do Pinhal">Santo Antônio do Pinhal</option>
+                        <option value="São Bento do Sapucaí">São Bento do Sapucaí</option>
+                        <!-- Cidades do Região Bragantina -->
+                        <option value="Atibaia">Atibaia</option>
+                        <option value="Bom Jesus dos Perdões">Bom Jesus dos Perdões</option>
+                        <option value="Bragança Paulista">Bragança Paulista</option>
+                        <option value="Joanópolis">Joanópolis</option>
+                        <option value="Nazaré Paulista">Nazaré Paulista</option>
+                        <option value="Piracaia">Piracaia</option>
+                        <option value="Vargem">Vargem</option>
+                    </select>
+                    </div>
+        
+                    <!-- Filtro de cargo -->
+                    <div class="filter">
+                    <label for="role">Cargo:</label>
+                    <select name="role" id="role">
+                        <option value="default"></option>
+                        <option value="presidente">Presidente</option>
+                        <option value="governador">Governador</option>
+                        <option value="prefeito">Prefeito</option>
+                    </select>
+                    </div>
+        
+                    <!-- Filtro de ano -->
+                    <div class="filter">
+                    <label for="year">Ano:</label>
+                    <select name="year" id="year">
+                        <option value="default"></option>
+                        <option value="2021">2021</option>
+                        <option value="2020">2020</option>
+                        <option value="2019">2019</option>
+                        <option value="2018">2018</option>
+                        <option value="2017">2017</option>
+                        <option value="2016">2016</option>
+                    </select>
+                    </div>
+
+                    <!-- Botões de limpar campos dos filtros e de enviar dados -->
+                    <div class="button-group">
+                        <button onclick="clearFilters()">
+                            <img src="../static/img/icon-clear.svg">
+                        </button>
+                        <button id="search" type="submit" title="Pesquisar" onclick="enableCards()">
+                            <img src="../static/img/icon-search.svg">
+                        </button>
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Exibição dos cards com o resultado da busca -->
+        <div class="result">
+            <p>Selecione os filtros e realize uma pesquisa!</p>
+        </div>
+    
+        <p id="results"></p>
+    </main>
+
+    <!-- Modal de dúvidas frequentes -->
+    <div class="modal-overlay-help">
+        <div class="modal">
+        <div class="modal-header">
+            <h2>Dúvidas Frequentes</h2>
+            <img id="close" src="../static/img/icon-close.png" alt="Fechar janela" onclick="Modal.toggleHelp()" />
+        </div>
+
+        <div class="questions">
+            <div class="question">
+            <h3>Como fazer uma busca?</h3>
+            <p>Selecione uma região ou cidade no menu de busca, assim como o "Cargo" e o “Ano”, e clique no ícone da lupa.
+            </p>
+            </div>
+
+            <div class="question">
+            <h3>Como ampliar os gráficos?</h3>
+            <p>Clique no ícone de expandir, localizado no canto inferior direito de cada card.</p>
+            </div>
+
+            <div class="question">
+            <h3>Como exportar os dados?</h3>
+            <p>Clique no ícone de download, localizado no canto inferior direito de cada card.</p>
+            </div>
+
+            <div class="question">
+            <h3>Como comparar regiões?</h3>
+            <p>Há uma área dedicada à comparação entre regiões, <a href="regions.html">clique aqui</a> para fazer a busca.</p>
+            </div>
+
+        </div>
+        <small>Não encontrou o que procurava? Cheque o <a
+            href="https://github.com/Equipe-01-DSM-2021/projeto-integrador-2021-1" target="_blank"> Manual </a> </small>
+        </div>
+    </div>
+    </div>
+
+    <!-- Script do Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+
+    <!-- Função do botão "limpar" -->
+    <script>
+        // limpa filtros
+        function clearFilters() {
+        var form = document.getElementById('form-search')
+        form.reset()
+        }
+
+        //ativa os cards
+        function enableCards() {
+        //capturando os valores dos campos da busca
+        var cityField = document.querySelector('#city')
+        var city = cityField.value
+
+        var yearField = document.querySelector('#year')
+        var year = yearField.value
+
+        var roleField = document.querySelector('#role')
+        var role = roleField.value
+
+        $.ajax({
+            url: "http://localhost:5000/data?city=" + city + "&year=" + year + "&role=" + role,
+            dataType: "json",
+            success: function (data) {           
+            //div para mostrar os cards
+            results = document.getElementById('results')
+            results.innerHTML = data
+
+            // Inserindo o HTML do gráfico
+            // Se o script não achar o canvas, vai precisar colocar o html direto no código e ativar/desativar ele conforme
+            // for o caso, eu acho
+            results.innerHTML = `
+                <div class="card">
+                <div class="graphic">
+                    <div class="graphic-normal">
+                    <canvas id="chart" width="auto" height="auto"></canvas>
+                    </div>
+                </div>
+                </div>
+            `
+            //configurando o gráfico
+            Chart.defaults.global.defaultFontColor = "#ffff";
+            var ctx = document.getElementById("chart").getContext('2d');
+            var myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                labels: Object.keys(data),
+                datasets: [{
+                    label: 'Total',
+                    data: Object.values(data),
+                    backgroundColor: 'rgba(154, 219, 249, 0.4)',
+                    borderColor: 'rgba(154, 219, 249)',
+                    borderWidth: 1,
+                }]
+                },
+                options: {
+                legend: {
+                    display: false
+                },
+                scales: {
+                    yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                    }],
+                    xAxes: [{
+                    display: false,
+                    }]
+                }
+                }
+            })
+            },
+        });
+        };
+    </script>
+      
+</body>
 </html>
