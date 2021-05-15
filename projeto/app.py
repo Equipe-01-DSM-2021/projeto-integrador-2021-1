@@ -59,5 +59,20 @@ def searchData():
     return jsonify(result)
 
 
+@app.route('/project')
+def project():
+    return render_template('project.html')
+
+
+@app.route('/about-us')
+def about():
+    return render_template('about-us.html')
+
+
+@app.route('/search-region')
+def regions():
+    return render_template('regions.html')
+
+
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000)
