@@ -7,6 +7,8 @@
   --color-title-card: #50525f;
   --color-description-card: #50525f;
   --color-border-select: #e2e5e7;
+  --color-border-summary: #D5ECFF;
+  --color-a-hover: #B6DFFF;
 }
 
 * {

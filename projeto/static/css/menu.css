@@ -41,3 +41,9 @@ nav a {
 #help {
   cursor: pointer;
 }
+
+/*hover*/
+
+#start:hover, #project:hover, #us:hover, #help:hover {
+  color: var(--color-primary);
+}
