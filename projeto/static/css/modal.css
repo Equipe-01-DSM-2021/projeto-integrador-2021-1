@@ -48,7 +48,11 @@
 }
 
 .questions {
-  padding-top: 10px;
+  font-size: 28px;
+  margin-bottom: 1%;
+}
+
+.questions {
   text-align: left;
   margin-bottom: 15px;
 }
@@ -69,7 +73,7 @@
 }
 
 .question + .question {
-  margin-top: 10px;
+  margin-top: 1%;
 }
 
 small {

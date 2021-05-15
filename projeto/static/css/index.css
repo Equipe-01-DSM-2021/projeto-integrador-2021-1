@@ -1,24 +1,17 @@
-/* LINK DA PÁGINA DESTAQUE -----------------------------*/
 #start {
-  font-weight: bold;
-  padding-bottom: 3px;
-  border-color: var(--color-primary);
-  border-style: none none solid none;
-  border-width: 3px;
+    font-weight: bold;
+    padding-bottom: 3px;
+    border-color: var(--color-primary);
+    border-style: none none solid none;
+    border-width: 3px;
 }
 
-#search-city {
-  border-color: var(--color-primary);
-  border-style: none none solid none;
-  border-width: 4px;
+#search-by-city {
+    border-color: var(--color-primary);
+    border-style: none none solid none;
+    border-width: 3.5px;
 }
 
-/*CONTEÚDO CENTRAL DA PÁGINA -----------------------------*/
-main p {
-  color: var(--color-text-in-background);
-  font-weight: normal;
-  font-size: 30px;
-  text-align: center;
-  margin: 13% auto;
-  cursor: context-menu;
+#search-by-city a{
+    font-weight: bold;
 }
