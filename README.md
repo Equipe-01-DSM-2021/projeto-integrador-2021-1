@@ -8,13 +8,10 @@
 
 <p align="center">
     <a href="#sobre">Sobre</a> | 
-    <a href="#metodologias">Metodologia e Princípios</a> | 
     <a href="#backlogs">Backlogs</a> | 
     <a href="#user-stories">User Stories</a> | 
     <a href="#prototipo">Protótipo</a> | 
     <a href="#tecnologias">Tecnologias</a>
-    <br>
-    <a href="#manual">Manual do Usuário</a> | 
     <a href="#equipe">Equipe</a> | 
     <a href="#final">Apresentação Final</a> | 
     <a href="#licenca">Licença</a>
@@ -24,30 +21,21 @@
 
 ## :bookmark_tabs: Sobre o projeto
 
-Tem por objetivo proporcionar à "TV Vanguarda" um site de busca por informações do eleitorado atual localizado dentro de sua cobertura no Estado de São Paulo, podendo obter características como relações de estado civil, escolaridade, gênero, entre outras variáveis em regiões macro (como o Vale do Paraíba) ou micro (as cidades que compões o Vale do Paraíba).
+Tem por objetivo proporcionar à "TV Vanguarda" um site de análise de dados com a exibição de estatísticas do eleitorado localizado dentro de sua cobertura no Estado de São Paulo, podendo obter diversas características, como gráficos e tabelas de estado civil, escolaridade e faixa etária, além de informações sobre renda e evolução na quantidade de eleitores, tanto no âmbito municipal (de cada cidade) quanto macro-regiões, como o Vale do Paraíba.
 
-_Projeto integrador baseado em metodologia ágil, procurando desenvolver Proatividade, Autonomia, Colaboração e Entrega de resultados_
+_Projeto integrador baseado em metodologia ágil (SCRUM), procurando desenvolver Proatividade, Autonomia, Colaboração e Entrega de resultados_
 
 > Status do Projeto: Em andamento
 
-#### Entregas de Sprints
+### Entregas de Sprints
 
-Cada entrega será realizada a partir da criação de uma **tag**, onde a relação de nomes pode ser observada a seguir:
-| Sprint| Tag | Lançamento | Status |
-|:-----:|:-------------:|:----------:|:---------:|
-| 01 | [sprint-01](https://github.com/Equipe-01-DSM-2021/projeto-integrador-2021-1/releases/tag/sprint-01) | 28/03/2021 | Entregue |
-| 02 | [sprint-02](https://github.com/Equipe-01-DSM-2021/projeto-integrador-2021-1/releases/tag/sprint-02) | 18/04/2021 | Entregue |
-| 03 | em breve... | 16/05/2021 | Planejada |
-| 04 | em breve... | 05/06/2021 | Planejada |
-
-→ [Voltar ao topo](#topo)
-
-<span id="metodologias">
-
-## :pushpin: Metodologias e Princípios
-
-- **Metodologia Ágil:** Framework [Scrum](https://www.desenvolvimentoagil.com.br/scrum/), prática que consiste em dividir o desenvolvimento do projeto em blocos de trabalho chamados de Sprints, com duração de, neste caso, 3 semanas cada. Ao final de cada ciclo há algum tipo de entrega ao cliente, que avaliará o trabalho e então dará um feedback sobre o andamento do projeto.
-- **KISS** (Keep It Simple, Stupid) e **DRY** (Don't Repeat Yourself), princípios da programação que defendem a criação de códigos simples e intuitivos quanto a nomenclatura e funcionalidades, e sem repetições (ocorrência única de uma função).
+Cada entrega será realizada a partir da criação de uma **tag**. Observe a relação a seguir:
+| Sprint| Tag | Lançamento | Status | Histórico |
+|:-----:|:-------------:|:----------:|:---------:|:---------:|
+| 01 | [sprint-01](https://github.com/Equipe-01-DSM-2021/projeto-integrador-2021-1/releases/tag/sprint-01) | 28/03/2021 | Entregue | [Entrega parcial 1](/planejamento/sprint-1) |
+| 02 | [sprint-02](https://github.com/Equipe-01-DSM-2021/projeto-integrador-2021-1/releases/tag/sprint-02) | 18/04/2021 | Entregue | [Entrega parcial 2](/planejamento/sprint-2) |
+| 03 | [sprint-03](https://github.com/Equipe-01-DSM-2021/projeto-integrador-2021-1/releases/tag/sprint-03) | 16/05/2021 | Entregue | [Entrega parcial 3](/planejamento/sprint-3) |
+| 04 | Em breve... | 05/06/2021 | Planejada | Em breve... |
 
 → [Voltar ao topo](#topo)
 
@@ -63,11 +51,11 @@ Cada entrega será realizada a partir da criação de uma **tag**, onde a relaç
 | :----: | :----------------------------------------------------------------------------- | :--------: |
 | RF 01  | Geração de estatísticas sobre eleitorado                                       |    #01     |
 | RF 02  | Verificação características do eleitorado de acordo com o representante eleito |    #02     |
-| RF 03  | Verificação da cidade com média mais alta e mais baixa de idade na região      |    #04     |
+| RF 03  | Verificação das cidades com mais jovens e mais idosos na região                |    #04     |
 | RF 04  | Exportação dos resultados da busca                                             |    #06     |
 | RF 05  | Verificação da renda média do eleitorado                                       |    #03     |
 | RF 06  | Comparação renda média do Vale do Paraíba com outras regiões                   |    #05     |
-| RF 07  | Geração de estatísticas sobre comparecimento e ausência da última eleição      | #11 e #12  |
+| RF 07  | Geração de estatísticas sobre comparecimento e ausência às urnas               | #11 e #12  |
 | RF 08  | Geração de estatísticas sobre a evolução da quantidade de eleitores            |    #13     |
 
 #### Requisitos Não Funcionais
@@ -92,7 +80,7 @@ Cada entrega será realizada a partir da criação de uma **tag**, onde a relaç
 |  02  | Levantamento de Requisitos |
 |  03  | Protótipo Dinâmico         |
 |  04  | Organização da equipe      |
-|  05  | Organização do repósitório |
+|  05  | Organização do repositório |
 
 #### Sprint 2
 
@@ -100,7 +88,7 @@ Cada entrega será realizada a partir da criação de uma **tag**, onde a relaç
 | :------------------------: | :----------------------------------------------------------------------------- | :--------: |
 |           RF 01            | Geração de estatísticas sobre eleitorado                                       |    #01     |
 |           RF 02            | Verificação características do eleitorado de acordo com o representante eleito |    #02     |
-|           RF 07            | Geração de estatísticas sobre comparecimento e ausência da última eleição      | #11 e #12  |
+|           RF 07            | Geração de estatísticas sobre comparecimento e ausência às urnas               | #11 e #12  |
 
 #### Sprint 3
 
@@ -109,13 +97,15 @@ Cada entrega será realizada a partir da criação de uma **tag**, onde a relaç
 |           RF 03            | Verificação das cidades com mais jovens e mais idosos na região |    #04     |
 |           RF 05            | Verificação da renda média do eleitorado                        |    #03     |
 |           RF 06            | Comparação da renda média do Vale do Paraíba com outras regiões |    #05     |
+|           RF 08            | Verificação da evolução na quantidade de eleitores              |    #13     |
 
 #### Sprint 4
 
-| Item do Backlog do Produto | Descrição                                          | User Story |
-| :------------------------: | :------------------------------------------------- | :--------: |
-|           RF 04            | Exportação dos resultados da busca                 |    #06     |
-|           RF 08            | Verificação da evolução na quantidade de eleitores |    #13     |
+| Item do Backlog do Produto | Descrição                          | User Story |
+| :------------------------: | :--------------------------------- | :--------: |
+|           RF 04            | Exportação dos resultados da busca |    #06     |
+
+- **OBS:** Para a quarta sprint, os maiores esforços estarão no desenvolvimento do site e aplicação de melhorias na análise de dados (Jupyter Notebook).
 
 :round_pushpin: Para ver o planejamento completo das sprints, como entregas, tarefas e prazos, assim como estatísticas do time, [clique aqui](/planejamento).
 
@@ -127,22 +117,22 @@ Cada entrega será realizada a partir da criação de uma **tag**, onde a relaç
 
 Informações informais sobre as funções do sistema (como uma única tarefa pode oferecer determinado valor)
 
-| Código | Quem       | O que?                                                                                                                                                  | Para                                                |
-| :----: | :--------- | :------------------------------------------------------------------------------------------------------------------------------------------------------ | :-------------------------------------------------- |
-|  #01   | Jornalista | Quer saber a classificação do eleitorado a partir do estado civil, esolaridade e faixa etária, além da quantidade de eleitores que utilizam nome social | Obter conteúdo para sua matéria                     |
-|  #02   | Jornalista | Quer relacionar as características do eleitorado de acordo com o representante eleito em determinada região                                             | Obter conteúdo para sua matéria                     |
-|  #03   | Jornalista | Quer saber a renda média do eleitorado de determinada região                                                                                            | Obter conteúdo para sua matéria                     |
-|  #04   | Jornalista | Quer sabe, daquela região, a cidade com o eleitorado mais jovem e mais velho                                                                            | Obter conteúdo para sua matéria                     |
-|  #05   | Jornalista | Quer saber comparar a renda média de eleitores do Vale do Paraíba com a de outras regiões do Estado                                                     | Obter conteúdo para sua matéria                     |
-|  #06   | Jornalista | Quer automatizar a exportação das estatíticas                                                                                                           | Publicar gráficos e dados em diferentes plataformas |
-|  #07   | Jornalista | Quer poder relacionar características do eleitorado de acordo com o representante eleito em determinada região de eleições futuras                      | Continuar obtendo conteúdo para sua matéria         |
-|  #08   | Jornalista | Quer entender o código                                                                                                                                  | Fazer customizações                                 |
-|  #09   | Jornalista | Quer que o back-end seja feito em Python                                                                                                                | Fazer customizações                                 |
-|  #10   | Jornalista | Quer ler uma documentação simples                                                                                                                       | Saber usar a aplicação                              |
-|  #11   | Jornalista | Quer saber a porcentagem de eleitores justificados da última eleição                                                                                    | Obter conteúdo para sua matéria                     |
-|  #12   | Jornalista | Quer saber a porcentagem de eleitores ausentes da última eleição                                                                                        | Obter conteúdo para sua matéria                     |
-|  #13   | Jornalista | Quer saber a evolução do número de eleitores                                                                                                            | Obter conteúdo para sua matéria                     |
-|  #14   | Jornalista | Quer a análise de dados feita em Jupyter Notebook                                                                                                       | Obter visualização prévia das estatísticas          |
+| Código | Quem       | O que?                                                                                                                                                   | Para                                                |
+| :----: | :--------- | :------------------------------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------- |
+|  #01   | Jornalista | Quer saber a classificação do eleitorado a partir do estado civil, escolaridade e faixa etária, além da quantidade de eleitores que utilizam nome social | Obter conteúdo para sua matéria                     |
+|  #02   | Jornalista | Quer relacionar as características do eleitorado de acordo com o representante eleito em determinada região                                              | Obter conteúdo para sua matéria                     |
+|  #03   | Jornalista | Quer saber a renda média do eleitorado de determinada região                                                                                             | Obter conteúdo para sua matéria                     |
+|  #04   | Jornalista | Quer saber, daquela região, a cidade com mais eleitores jovem e mais eleitores idosos                                                                    | Obter conteúdo para sua matéria                     |
+|  #05   | Jornalista | Quer comparar a renda média de eleitores do Vale do Paraíba com a de outras regiões do Estado                                                            | Obter conteúdo para sua matéria                     |
+|  #06   | Jornalista | Quer automatizar a exportação das estatísticas                                                                                                           | Publicar gráficos e dados em diferentes plataformas |
+|  #07   | Jornalista | Quer poder relacionar características do eleitorado de acordo com o representante eleito em determinada região de eleições futuras                       | Continuar obtendo conteúdo para sua matéria         |
+|  #08   | Jornalista | Quer entender o código                                                                                                                                   | Fazer customizações                                 |
+|  #09   | Jornalista | Quer que o back-end seja feito em Python                                                                                                                 | Fazer customizações                                 |
+|  #10   | Jornalista | Quer ler uma documentação simples                                                                                                                        | Saber usar a aplicação                              |
+|  #11   | Jornalista | Quer saber a percentagem de eleitores justificados da última eleição                                                                                     | Obter conteúdo para sua matéria                     |
+|  #12   | Jornalista | Quer saber a percentagem de eleitores ausentes da última eleição                                                                                         | Obter conteúdo para sua matéria                     |
+|  #13   | Jornalista | Quer saber a evolução do número de eleitores                                                                                                             | Obter conteúdo para sua matéria                     |
+|  #14   | Jornalista | Quer a análise de dados feita em Jupyter Notebook                                                                                                        | Obter visualização prévia das estatísticas          |
 
 → [Voltar ao topo](#topo)
 
@@ -154,36 +144,33 @@ Antes de realmente desenvolver o projeto, foi idealizado um layout específico, 
 
 ![](/prototipo/demo.gif)
 
+Depois de alguns feedbacks, o time desenvolveu um novo protótipo e layout para o site, contando com mais páginas em sua navegação, além de novos estilos e ícones. Observe o resultado da atualização do protótipo:
+
+![](/prototipo/demo-2.gif)
+
 → [Voltar ao topo](#topo)
 
 <span id="tecnologias">
 
 ## 🛠️ Tecnologias
 
-As seguintes ferramentas, linguagens, bibliotecas e tecnologias serão e estão sendo usadas na construção do projeto:
+As seguintes ferramentas, linguagens, bibliotecas e tecnologias foram usadas na construção do projeto:
 
-- [Figma](http://www.figma.com): Prototipação
+- [Figma](http://www.figma.com): Prototipagem
 - [HTML](https://developer.mozilla.org/pt-BR/docs/Web/HTML): Estrutura das páginas do site
 - [CSS](https://developer.mozilla.org/pt-BR/docs/Web/CSS): Estilização do site
 - [JavaScript](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript): Interações do site
 - [Python](https://www.python.org/): Back-end
+- [Flask](https://flask.palletsprojects.com/en/2.0.x/): Servidor
 - [Jupyter Notebook](https://jupyter.org/): Análise de dados
+- [Pandas](https://pandas.pydata.org/docs/): Análise de dados
+- [NumPy](https://numpy.org/doc/stable/): Análise de dados
 - [Plotly](https://plotly.com/python/): Geração de gráficos (Jupyter Notebook)
-- [Node.js](https://nodejs.org/en/): Servidor
 - [Chart.js](https://www.chartjs.org/): Geração de gráficos (site)
-- [EJS](https://ejs.co/): Template engine
 - [Visual Studio Code](https://code.visualstudio.com/): Codificação
 - [Discord](https://discord.com/): Comunicação
 - [GitHub](https://github.com/): Versionamento
 - [Google Sheets](https://www.google.com/sheets/about/): Acompanhamento do gráfico de burndown
-
-→ [Voltar ao topo](#topo)
-
-<span id="manual">
-
-## :open_book: Manual do Usuário
-
-> Em breve
 
 → [Voltar ao topo](#topo)
 
@@ -204,9 +191,9 @@ As seguintes ferramentas, linguagens, bibliotecas e tecnologias serão e estão 
 
 <span id="final">
 
-## :clapper: **Apresentação Final do Projeto**
+## :clapper: Apresentação Final do Projeto
 
-**Clique no link abaixo para visualizar o vídeo final do projeto:**
+Clique no link abaixo para visualizar o vídeo final do projeto:
 
 > Vídeo (Em breve)
 
@@ -216,6 +203,6 @@ As seguintes ferramentas, linguagens, bibliotecas e tecnologias serão e estão 
 
 ## :page_with_curl: Licença
 
-Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE.md) para mais detalhes.
+Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
 
 → [Voltar ao topo](#topo)
