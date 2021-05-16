@@ -94,25 +94,26 @@
               <option value="2016">2016</option>
             </select>
           </div>
-          <!-- Botões de limpar campos dos filtros e de enviar dados -->
-          <div class="button-group">
-            <button onclick="clearFilters()">
-              <img src="../static/img/icon-clear.svg" />
-            </button>
-            <button
-              id="search"
-              type="submit"
-              title="Pesquisar"
-              onclick="enableCards()"
-            >
-              <img src="../static/img/icon-search.svg" />
-            </button>
-          </div>
         </div>
       </form>
     </div>
   </div>
 
+  <!-- Botões de limpar campos dos filtros e de enviar dados -->
+  <div class="button-group">
+    <button onclick="clearFilters()">
+      <img src="../static/img/icon-clear.svg" />
+    </button>
+    <button
+      id="search"
+      type="submit"
+      title="Pesquisar"
+      onclick="enableCards()"
+    >
+      <img src="../static/img/icon-search.svg" />
+    </button>
+  </div>
+  
   <!-- Exibição dos cards com o resultado da busca -->
   <div class="result">
     <p>Selecione os filtros e realize uma pesquisa!</p>
@@ -237,5 +238,4 @@
     };
   </script>
 </body>
-
 </html>
