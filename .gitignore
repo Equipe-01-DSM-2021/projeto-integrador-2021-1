@@ -1,5 +1,6 @@
 # Jupyter Notebook e CSVs
 jupyter-notebooks/data/*.pdf
+jupyter-notebooks/data/*.csv
 jupyter-notebooks/.ipynb_checkpoints
 
 # Flask/Python
