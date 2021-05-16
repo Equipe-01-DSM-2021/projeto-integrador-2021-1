@@ -1,7 +1,8 @@
 import pandas as pd
 
 
-def SearchForColumn(path,  columnToSearch, CityToSearch):
+def SearchForColumn(path, columnToSearch, city):
+    # realizando a busca
     col_list = ["NM_MUNICIPIO", columnToSearch]
 
     # Lê o csv
@@ -14,7 +15,7 @@ def SearchForColumn(path,  columnToSearch, CityToSearch):
 
     # Remove a coluna da cidade
     df_result = iter_csv.loc[iter_csv["NM_MUNICIPIO"] ==
-                             CityToSearch].drop(columns=["NM_MUNICIPIO"], axis=1)
+                             city].drop(columns=["NM_MUNICIPIO"], axis=1)
 
     # Converte para json
     df_result = df_result.value_counts().to_json()
@@ -28,9 +29,3 @@ def SearchForColumn(path,  columnToSearch, CityToSearch):
     df_result = df_result.replace("'", "")
 
     return df_result
-
-
-path = 'jupyter-notebooks/data/perfil_eleitorado_2020.csv'
-
-result = SearchForColumn(path, "DS_GRAU_ESCOLARIDADE", "SÃO JOSÉ DOS CAMPOS")
-print(result)
