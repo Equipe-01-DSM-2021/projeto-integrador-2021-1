@@ -53,6 +53,7 @@
       <h2>Faça uma pesquisa:</h2>
   </div>
 
+  <div id="search-all">
     <!-- Menu de busca -->
     <div class="search">      
       <form id="form-search" action="/" method="GET">
@@ -97,23 +98,23 @@
         </div>
       </form>
     </div>
-  </div>
-
-  <!-- Botões de limpar campos dos filtros e de enviar dados -->
-  <div class="button-group">
-    <button onclick="clearFilters()">
-      <img src="../static/img/icon-clear.svg" />
-    </button>
-    <button
-      id="search"
-      type="submit"
-      title="Pesquisar"
-      onclick="enableCards()"
-    >
-      <img src="../static/img/icon-search.svg" />
-    </button>
-  </div>
   
+
+    <!-- Botões de limpar campos dos filtros e de enviar dados -->
+    <div class="button-group">
+      <button onclick="clearFilters()">
+        <img src="../static/img/icon-clear.svg" />
+      </button>
+      <button
+        id="search"
+        type="submit"
+        title="Pesquisar"
+        onclick="enableCards()"
+      >
+        <img src="../static/img/icon-search.svg" />
+      </button>
+    </div>
+  </div>
   <!-- Exibição dos cards com o resultado da busca -->
   <div class="result">
     <p>Selecione os filtros e realize uma pesquisa!</p>

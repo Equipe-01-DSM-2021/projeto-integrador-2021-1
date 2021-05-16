@@ -36,6 +36,11 @@
 
 /* FORMULÁRIO DE PESQUISA -------------*/
 
+#search-all {
+  display: flex;
+  justify-content: space-between;
+}
+
 #search-action h2 {
   margin-top: 2%;
   font-style: normal;
@@ -59,7 +64,6 @@
 }
 
 #form-search select {
-  width: 80%;
   height: 32px;
   font-size: 16px;
   background: var(--color-secondary);
@@ -68,6 +72,10 @@
   cursor: pointer;
   margin-right: 30px;
   color: var(--color-text-in-background);
+}
+
+select#city, select#region, select#role, select#year {
+  width: 330px;
 }
 
 #city,
