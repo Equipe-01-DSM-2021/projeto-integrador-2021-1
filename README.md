@@ -32,9 +32,9 @@ _Projeto integrador baseado em metodologia ágil (SCRUM), procurando desenvolver
 Cada entrega será realizada a partir da criação de uma **tag**. Observe a relação a seguir:
 | Sprint| Tag | Lançamento | Status | Histórico |
 |:-----:|:-------------:|:----------:|:---------:|:---------:|
-| 01 | [sprint-01](https://github.com/Equipe-01-DSM-2021/projeto-integrador-2021-1/releases/tag/sprint-01) | 28/03/2021 | Entregue | [Entrega parcial 1](/planejamento/sprint-1) |
-| 02 | [sprint-02](https://github.com/Equipe-01-DSM-2021/projeto-integrador-2021-1/releases/tag/sprint-02) | 18/04/2021 | Entregue | [Entrega parcial 2](/planejamento/sprint-2) |
-| 03 | [sprint-03](https://github.com/Equipe-01-DSM-2021/projeto-integrador-2021-1/releases/tag/sprint-03) | 16/05/2021 | Entregue | [Entrega parcial 3](/planejamento/sprint-3) |
+| 01 | [sprint-01](https://github.com/Equipe-01-DSM-2021/projeto-integrador-2021-1/releases/tag/sprint-01) | 28/03/2021 | Entregue | [ver relatório](/planejamento/sprint-1/README.md) |
+| 02 | [sprint-02](https://github.com/Equipe-01-DSM-2021/projeto-integrador-2021-1/releases/tag/sprint-02) | 18/04/2021 | Entregue | [ver relatório](/planejamento/sprint-2/README.md) |
+| 03 | [sprint-03](https://github.com/Equipe-01-DSM-2021/projeto-integrador-2021-1/releases/tag/sprint-03) | 16/05/2021 | Entregue | [ver relatório](/planejamento/sprint-3/README.md) |
 | 04 | Em breve... | 05/06/2021 | Planejada | Em breve... |
 
 → [Voltar ao topo](#topo)
