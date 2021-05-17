@@ -56,8 +56,6 @@ def searchData():
 
     # executando a busca e retornando o resultado
     result = SearchForColumn(csvPath, "DS_GRAU_ESCOLARIDADE", city.upper())
-    print(result)
-    print(type(result))
 
     return jsonify(result)
 

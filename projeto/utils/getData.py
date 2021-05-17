@@ -17,15 +17,17 @@ def SearchForColumn(path, columnToSearch, city):
     df_result = iter_csv.loc[iter_csv["NM_MUNICIPIO"] ==
                              city].drop(columns=["NM_MUNICIPIO"], axis=1)
 
-    # Converte para json
+    # Converte para dicionário
     df_result = df_result.value_counts().to_json()
 
-    # Formata o json para remover os erros
+    # Remove os erros
     df_result = df_result.replace("(", "")
     df_result = df_result.replace(")", "")
     df_result = df_result.replace("   ", "")
     df_result = df_result.replace(",',)", "")
     df_result = df_result.replace(',":', '":')
     df_result = df_result.replace("'", "")
+
+    print(df_result)
 
     return df_result
