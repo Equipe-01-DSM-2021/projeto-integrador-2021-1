@@ -68,15 +68,22 @@
     position: relative;
 }
 
+.card {
+    padding-left: 0;
+    padding-bottom: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
 .graphic {
     display:flex;
     align-items: center;
     justify-content:center;
     margin-left: 10px;
-}
+}   
 
 .graphic-description {
-    position: relative;
+    margin-left: 20px;
 }
 
 .graphic-description h2, .member h5 {
@@ -85,17 +92,28 @@
     font-weight: normal;
 }
 
-.graphic-description p {
+.graphic-description h2 {
+    text-align: center;
+}
+
+.graphic-description a {
+    text-align: center;
+    text-decoration: none;
     color:var(--color-text-in-background);
     font-family: Roboto, sans-serif;
     font-size: 14px;
-    text-align: center;
+}
+
+.graphic-description a:hover {
+    color: var(--color-primary);
 }
 
 .icon-actions {
     position: absolute;
     bottom: 0;
     right: 0;
+    margin-bottom: 10px;
+    margin-right: 10px;
 }
 
 #zoom, #download {

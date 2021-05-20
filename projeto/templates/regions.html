@@ -13,6 +13,7 @@
   <link href="../static/css/menu.css" rel="stylesheet" />
   <link href="../static/css/modal.css" rel="stylesheet" />
   <link href="../static/css/search-options.css" rel="stylesheet" />
+  <link href="../static/css/cards.css" rel="stylesheet" />
   <script src="../static/js/jquery-3.6.0.min.js"></script>
   <!-- Script JS que controla os modais -->
   <script src="../static/js/modals.js"></script>
@@ -116,11 +117,10 @@
     </div>
   </div>
   <!-- Exibição dos cards com o resultado da busca -->
-  <div class="result">
+  <div id="search-result">
     <p>Selecione os filtros e realize uma pesquisa!</p>
   </div>
 
-  <p id="results"></p>
 </main>
 
   <!-- Modal de dúvidas frequentes -->
@@ -169,6 +169,9 @@
     function clearFilters() {
       var form = document.getElementById('form-search')
       form.reset()
+
+      results = document.getElementById("search-result");
+      results.innerHTML = '<p>Selecione os filtros e realize uma pesquisa!</p>'
     }
 
     //ativa os cards
@@ -188,21 +191,49 @@
         dataType: "json",
         success: function (data) {           
           //div para mostrar os cards
-          results = document.getElementById('results')
+          phase = document.querySelector("#search-result p");
+          phase.innerHTML = "";
+          results = document.getElementById('search-result')
           results.innerHTML = data
 
           // Inserindo o HTML do gráfico
           // Se o script não achar o canvas, vai precisar colocar o html direto no código e ativar/desativar ele conforme
           // for o caso, eu acho
           results.innerHTML = `
-            <div class="card">
-              <div class="graphic">
-                <div class="graphic-normal">
-                  <canvas id="chart" width="auto" height="auto"></canvas>
+              <div class="result">
+                <div class="card">
+                  <div class="graphic">
+                    <div class="graphic-normal">
+                      <!-- CANVAS DO GRÁFICO -->
+                      <canvas id="chart" width="150px" height="140px"></canvas>
+                    </div>
+                  </div>
+                  <div class="graphic-description">
+                    <h2>Título</h2>
+                    <a href="#">Fonte dos dados</a>
+
+                    <div class="icon-actions">
+                      <!-- Ícone de zoom -->
+                      <img
+                        id="zoom"
+                        src="../static/img/icon-zoom.svg"
+                        alt="Aumentar gráfico"
+                        onclick="Modal.toggleZoom()"
+                      />
+                      <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
+                      <img
+                        id="download"
+                        src="../static/img/icon-download.svg"
+                        alt="Baixar"
+                        onclick="Modal.toggleDownload()"
+                      />
+                    </div>
+                  </div>
                 </div>
+
               </div>
-            </div>
-          `
+          `;
+
           //configurando o gráfico
           Chart.defaults.global.defaultFontColor = "#ffff";
           var ctx = document.getElementById("chart").getContext('2d');

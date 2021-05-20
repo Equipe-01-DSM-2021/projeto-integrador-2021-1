@@ -17,7 +17,7 @@
 }
 
 /*CONTEÚDO CENTRAL DA PÁGINA -----------------------------*/
-main p {
+#search-result p {
   color: #9396a9;
   font-weight: 300;
   font-size: 30px;
