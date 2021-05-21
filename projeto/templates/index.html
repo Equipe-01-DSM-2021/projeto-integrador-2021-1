@@ -264,6 +264,22 @@
             phase.innerHTML = "";
             results = document.getElementById("search-result");
             data = JSON.parse(data);
+            // pega só as chaves (nome dos cards)
+            console.log(Object.keys(data))
+            //pega só o nome do primeiro card (escolaridade, e depois é atribuído ao card, olha lá)
+            console.log(Object.keys(data)[0])
+
+            // se o json tiver com array como no link, o JSON parse para de funcionar (só descomentar isso e tentar rodar)
+            // data.escolaridade.forEach(function (val) {
+            //   var keys = Object.keys(val);
+            //   keys.forEach(function(key){ 
+            //     console.log(val[key]);
+            //   });
+            // });
+
+            // tentando pegar as keys de escolaridade (mas não funfa)
+            console.log(Object.keys(data.escolaridade))
+            console.log(Object.keys(data['escolaridade']))
 
             // Inserindo o HTML do gráfico
             results.innerHTML = `
@@ -277,7 +293,7 @@
                   </div>
                   <div class="graphic-description">
                     <!-- DADOS DO GRÁFICO -->
-                    <h2>Escolaridade</h2>
+                    <h2>${Object.keys(data)[0]}</h2>
                     <a href="https://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais-1/repositorio-de-dados-eleitorais" target="_blank">Fonte dos dados</a>
 
                     <div class="icon-actions">

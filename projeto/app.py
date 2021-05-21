@@ -55,7 +55,7 @@ def searchData():
     csvPath = pathData + f"\perfil_eleitorado_{year}.csv"
 
     # executando a busca e retornando o resultado
-    result = SearchForColumn(csvPath, "DS_GRAU_ESCOLARIDADE", city.upper())
+    result = SearchForColumn(csvPath, city.upper())
 
     return jsonify(result)
 
