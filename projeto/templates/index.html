@@ -264,22 +264,6 @@
             phase.innerHTML = "";
             results = document.getElementById("search-result");
             data = JSON.parse(data);
-            // pega só as chaves (nome dos cards)
-            console.log(Object.keys(data))
-            //pega só o nome do primeiro card (escolaridade, e depois é atribuído ao card, olha lá)
-            console.log(Object.keys(data)[0])
-
-            // se o json tiver com array como no link, o JSON parse para de funcionar (só descomentar isso e tentar rodar)
-            // data.escolaridade.forEach(function (val) {
-            //   var keys = Object.keys(val);
-            //   keys.forEach(function(key){ 
-            //     console.log(val[key]);
-            //   });
-            // });
-
-            // tentando pegar as keys de escolaridade (mas não funfa)
-            console.log(Object.keys(data.escolaridade))
-            console.log(Object.keys(data['escolaridade']))
 
             // Inserindo o HTML do gráfico
             results.innerHTML = `
@@ -293,7 +277,69 @@
                   </div>
                   <div class="graphic-description">
                     <!-- DADOS DO GRÁFICO -->
-                    <h2>${Object.keys(data)[0]}</h2>
+                    <h2>Escolaridade</h2>
+                    <a href="https://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais-1/repositorio-de-dados-eleitorais" target="_blank">Fonte dos dados</a>
+
+                    <div class="icon-actions">
+                      <!-- Ícone de zoom -->
+                      <img
+                        id="zoom"
+                        src="../static/img/icon-zoom.svg"
+                        alt="Aumentar gráfico"
+                        onclick="Modal.toggleZoom()"
+                      />
+                      <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
+                      <img
+                        id="download"
+                        src="../static/img/icon-download.svg"
+                        alt="Baixar"
+                        onclick="Modal.toggleDownload()"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card">
+                  <div class="graphic">
+                    <div class="graphic-normal">
+                      <!-- CANVAS DO GRÁFICO -->
+                      <canvas id="chart-1" width="150px" height="140px"></canvas>
+                    </div>
+                  </div>
+                  <div class="graphic-description">
+                    <!-- DADOS DO GRÁFICO -->
+                    <h2>Estado civil</h2>
+                    <a href="https://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais-1/repositorio-de-dados-eleitorais" target="_blank">Fonte dos dados</a>
+
+                    <div class="icon-actions">
+                      <!-- Ícone de zoom -->
+                      <img
+                        id="zoom"
+                        src="../static/img/icon-zoom.svg"
+                        alt="Aumentar gráfico"
+                        onclick="Modal.toggleZoom()"
+                      />
+                      <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
+                      <img
+                        id="download"
+                        src="../static/img/icon-download.svg"
+                        alt="Baixar"
+                        onclick="Modal.toggleDownload()"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card">
+                  <div class="graphic">
+                    <div class="graphic-normal">
+                      <!-- CANVAS DO GRÁFICO -->
+                      <canvas id="chart-2" width="150px" height="140px"></canvas>
+                    </div>
+                  </div>
+                  <div class="graphic-description">
+                    <!-- DADOS DO GRÁFICO -->
+                    <h2>Faixa Etaria</h2>
                     <a href="https://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais-1/repositorio-de-dados-eleitorais" target="_blank">Fonte dos dados</a>
 
                     <div class="icon-actions">
@@ -319,41 +365,44 @@
           `;
             //configurando o gráfico
             contCanvas = 0;
-            Chart.defaults.global.defaultFontColor = "#ffff";
-            var ctx = document.getElementById("chart-" + contCanvas).getContext("2d");
-            var myChart = new Chart(ctx, {
-              type: "bar",
-              data: {
-                labels: Object.keys(data),
-                datasets: [
-                  {
-                    label: "Total",
-                    data: Object.values(data),
-                    backgroundColor: "rgba(154, 219, 249, 0.4)",
-                    borderColor: "rgba(154, 219, 249)",
-                    borderWidth: 1,
+            data.cards.forEach(function(card){
+              Chart.defaults.global.defaultFontColor = "#ffff";
+              var ctx = document.getElementById("chart-" + contCanvas).getContext("2d");
+              var myChart = new Chart(ctx, {
+                type: "bar",
+                data: {
+                  labels: Object.keys(card),
+                  datasets: [
+                    {
+                      label: "Total",
+                      data: Object.values(card),
+                      backgroundColor: "rgba(154, 219, 249, 0.4)",
+                      borderColor: "rgba(154, 219, 249)",
+                      borderWidth: 1,
+                    },
+                  ],
+                },
+                options: {
+                  legend: {
+                    display: false,
                   },
-                ],
-              },
-              options: {
-                legend: {
-                  display: false,
-                },
-                scales: {
-                  yAxes: [
-                    {
-                      ticks: {
-                        beginAtZero: true,
+                  scales: {
+                    yAxes: [
+                      {
+                        ticks: {
+                          beginAtZero: true,
+                        },
                       },
-                    },
-                  ],
-                  xAxes: [
-                    {
-                      display: false,
-                    },
-                  ],
+                    ],
+                    xAxes: [
+                      {
+                        display: false,
+                      },
+                    ],
+                  },
                 },
-              },
+              });
+              contCanvas = contCanvas + 1
             });
           },
         });

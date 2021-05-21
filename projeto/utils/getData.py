@@ -29,8 +29,20 @@ def SearchForColumn(path, CityToSearch):
     ).to_json()
     ds_faixa_etaria_string = ds_faixa_etaria_string.replace("  ", "")
 
-    string_completa = '{' + f'"Escolaridade": {ds_grau_escolaridade_string}, "Estado Civil": {ds_estado_civil_string}, "Faixa Etária": {ds_faixa_etaria_string}' + '}'
+    # Cria a string do json
+        # Estrutura:
+        # { 
+        #   "cards": [
+        #       dados do grau de escolaridade (Ex.: {"Analfabeto":200})
+        #       dados do estado civil (Ex.: {"Solteiro":200})
+        #       dados da faixa etária (Ex.: {"18 anos":200})
+        #   ]
+        # }
 
-    # com o array
-    # string_completa = '{' + '"Escolaridade": [{' + ds_grau_escolaridade_string + '}], "Estado Civil": [{' + ds_estado_civil_string + '}], "Faixa Etária": [{' + ds_faixa_etaria_string + '}]}'
+    string_completa = '{ "cards": [ ' + ds_grau_escolaridade_string + ', ' + ds_estado_civil_string + ', ' + ds_faixa_etaria_string + ' ] }'
+
+    # Exibe os dados no console
+    print(string_completa)
+
+    # Retorna a string do json
     return string_completa
