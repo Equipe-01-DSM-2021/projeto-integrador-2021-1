@@ -231,6 +231,7 @@
         var form = document.getElementById("form-search");
         form.reset();
 
+        // Limpa os cards
         results = document.getElementById("search-result");
         results.innerHTML = '<p>Selecione os filtros e realize uma pesquisa!</p>'
       }
@@ -247,6 +248,7 @@
         var roleField = document.querySelector("#role");
         var role = roleField.value;
 
+        //gerando os gráficos com os dados recebidos por json
         $.ajax({
           url:
             "http://localhost:5000/data?city=" +
@@ -270,7 +272,7 @@
                   <div class="graphic">
                     <div class="graphic-normal">
                       <!-- CANVAS DO GRÁFICO -->
-                      <canvas id="chart" width="150px" height="140px"></canvas>
+                      <canvas id="chart-0" width="150px" height="140px"></canvas>
                     </div>
                   </div>
                   <div class="graphic-description">
@@ -300,8 +302,9 @@
               </div>
           `;
             //configurando o gráfico
+            contCanvas = 0;
             Chart.defaults.global.defaultFontColor = "#ffff";
-            var ctx = document.getElementById("chart").getContext("2d");
+            var ctx = document.getElementById("chart-" + contCanvas).getContext("2d");
             var myChart = new Chart(ctx, {
               type: "bar",
               data: {
