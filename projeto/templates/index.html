@@ -226,6 +226,14 @@
 
     <!-- Função do botão "limpar" -->
     <script>
+
+      // variáveis globais
+      function global() {
+        var dataKeys = []; // Dados para zoom
+        var dataValues = []; // Dados para zoom
+        var dataAll = []; // Dados para exportação
+      }
+
       // limpa filtros
       function clearFilters() {
         var form = document.getElementById("form-search");
@@ -264,6 +272,11 @@
             phase.innerHTML = "";
             results = document.getElementById("search-result");
             data = JSON.parse(data);
+
+            //zerando variáveis globais
+            global.dataKeys = [];
+            global.dataValues = [];
+            global.dataAll = [];
 
             // Inserindo o HTML do gráfico
             results.innerHTML = `
@@ -402,8 +415,21 @@
                   },
                 },
               });
-              contCanvas = contCanvas + 1
+
+              // Salvando os dados recebidos pelo back em variáveis globais
+              global.dataKeys.push(Object.keys(card));
+              global.dataValues.push(Object.values(card));
+              global.dataAll.push(card);
+
+              // Acrescentando 1 no contCanvas
+              contCanvas = contCanvas + 1;
+
             });
+
+            // verificando variáveis globais
+            console.log(global.dataKeys)
+            console.log(global.dataValues)
+            console.log(global.dataAll)
           },
         });
       }
