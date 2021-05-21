@@ -57,29 +57,17 @@
   <div id="search-all">
     <!-- Menu de busca -->
     <div class="search">      
-      <form id="form-search" action="/" method="GET">
+      <form id="form-search" action="/search-region" method="GET">
         <div class="input-group">
-          <!-- Filtro de região -->
+          <!-- Filtro de comparação -->
           <div class="filter">
-            <label for="region">Região:</label>
-            <select name="region" id="region">
+            <label for="comparison">Tipo de comparação:</label>
+            <select name="comparison" id="comparison">
               <option value="default"></option>
-              <option value="vale-do-paraiba">Vale do Paraíba</option>
-              <option value="vale-historico">Vale Histórico</option>
-              <option value="litoral-norte">Litoral Norte</option>
-              <option value="serra-da-mantiqueira">Serra da Mantiqueira</option>
-              <option value="regiao-bragantina">Região Bragantina</option>
-            </select>
-          </div>
-
-          <!-- Filtro de cargo -->
-          <div class="filter">
-            <label for="role">Cargo:</label>
-            <select name="role" id="role">
-              <option value="default"></option>
-              <option value="presidente">Presidente</option>
-              <option value="governador">Governador</option>
-              <option value="prefeito">Prefeito</option>
+              <option value="jovens">Por quantidade de eleitores jovens</option>
+              <option value="idosos">Por quantidade de eleitores idosos</option>
+              <option value="renda">Por renda</option>
+              <option value="evolucao">Por evolução na quantidade de eleitores</option>
             </select>
           </div>
 
@@ -177,17 +165,14 @@
     //ativa os cards
     function enableCards() {
       //capturando os valores dos campos da busca
-      var cityField = document.querySelector('#city')
-      var city = cityField.value
+      var comparisonField = document.querySelector('#comparison')
+      var comparison = comparisonField.value
 
       var yearField = document.querySelector('#year')
       var year = yearField.value
 
-      var roleField = document.querySelector('#role')
-      var role = roleField.value
-
       $.ajax({
-        url: "http://localhost:5000/data?city=" + city + "&year=" + year + "&role=" + role,
+        url: "http://localhost:5000/data-regions?comparison=" + comparison + "&year=" + year,
         dataType: "json",
         success: function (data) {           
           //div para mostrar os cards
@@ -195,79 +180,10 @@
           phase.innerHTML = "";
           results = document.getElementById('search-result')
           results.innerHTML = data
-
-          // Inserindo o HTML do gráfico
-          // Se o script não achar o canvas, vai precisar colocar o html direto no código e ativar/desativar ele conforme
-          // for o caso, eu acho
-          results.innerHTML = `
-              <div class="result">
-                <div class="card">
-                  <div class="graphic">
-                    <div class="graphic-normal">
-                      <!-- CANVAS DO GRÁFICO -->
-                      <canvas id="chart" width="150px" height="140px"></canvas>
-                    </div>
-                  </div>
-                  <div class="graphic-description">
-                    <h2>Título</h2>
-                    <a href="#">Fonte dos dados</a>
-
-                    <div class="icon-actions">
-                      <!-- Ícone de zoom -->
-                      <img
-                        id="zoom"
-                        src="../static/img/icon-zoom.svg"
-                        alt="Aumentar gráfico"
-                        onclick="Modal.toggleZoom()"
-                      />
-                      <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
-                      <img
-                        id="download"
-                        src="../static/img/icon-download.svg"
-                        alt="Baixar"
-                        onclick="Modal.toggleDownload()"
-                      />
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-          `;
-
-          //configurando o gráfico
-          Chart.defaults.global.defaultFontColor = "#ffff";
-          var ctx = document.getElementById("chart").getContext('2d');
-          var myChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-              labels: Object.keys(data),
-              datasets: [{
-                label: 'Total',
-                data: Object.values(data),
-                backgroundColor: 'rgba(154, 219, 249, 0.4)',
-                borderColor: 'rgba(154, 219, 249)',
-                borderWidth: 1,
-              }]
-            },
-            options: {
-              legend: {
-                display: false
-              },
-              scales: {
-                yAxes: [{
-                  ticks: {
-                    beginAtZero: true
-                  }
-                }],
-                xAxes: [{
-                  display: false,
-                }]
-              }
-            }
-          })
-        },
-      });
-    };
+          console.log(data)                   
+        }
+      })
+    }
   </script>
 </body>
 </html>

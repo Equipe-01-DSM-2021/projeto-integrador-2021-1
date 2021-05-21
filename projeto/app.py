@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 from flask import jsonify
 from utils.getData import SearchForColumn
+from utils.ageData import ageComparisonYoung, ageComparisonSenior
 from flask import Flask
 from flask_cors import CORS
 from os import walk
@@ -56,6 +57,29 @@ def searchData():
 
     # executando a busca e retornando o resultado
     result = SearchForColumn(csvPath, city.upper())
+
+    return jsonify(result)
+
+
+@app.route('/data-regions')
+def comparisonData():
+    # capturando os parâmetros para a busca
+    comparison = request.args.get('comparison')
+    year = request.args.get('year')
+    print(f'Ano: {year}, {comparison}')
+
+    # apontando o arquivo para a busca (buscando o caminho)
+    pathData = ''
+    for path, _, files in walk('..\jupyter-notebooks\data'):
+        pathData = str(path)
+
+    csvPath = pathData + f"\perfil_eleitorado_{year}.csv"
+
+    # executando a busca e retornando o resultado
+    if comparison == 'jovens':
+        result = ageComparisonYoung(year, csvPath)
+    elif comparison == 'idosos':
+        result = ageComparisonSenior(year, csvPath)
 
     return jsonify(result)
 

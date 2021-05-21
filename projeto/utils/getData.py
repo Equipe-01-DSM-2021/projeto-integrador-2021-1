@@ -30,16 +30,17 @@ def SearchForColumn(path, CityToSearch):
     ds_faixa_etaria_string = ds_faixa_etaria_string.replace("  ", "")
 
     # Cria a string do json
-        # Estrutura:
-        # { 
-        #   "cards": [
-        #       dados do grau de escolaridade (Ex.: {"Analfabeto":200})
-        #       dados do estado civil (Ex.: {"Solteiro":200})
-        #       dados da faixa etária (Ex.: {"18 anos":200})
-        #   ]
-        # }
+    # Estrutura:
+    # {
+    #   "cards": [
+    #       dados do grau de escolaridade (Ex.: {"Analfabeto":200})
+    #       dados do estado civil (Ex.: {"Solteiro":200})
+    #       dados da faixa etária (Ex.: {"18 anos":200})
+    #   ]
+    # }
 
-    string_completa = '{ "cards": [ ' + ds_grau_escolaridade_string + ', ' + ds_estado_civil_string + ', ' + ds_faixa_etaria_string + ' ] }'
+    string_completa = '{ "cards": [ ' + ds_grau_escolaridade_string + \
+        ', ' + ds_estado_civil_string + ', ' + ds_faixa_etaria_string + ' ] }'
 
     # Exibe os dados no console
     print(string_completa)
