@@ -74,6 +74,10 @@
   color: var(--color-text-in-background);
 }
 
+select#comparison {
+  width: 560px;
+}
+
 select#city, select#region, select#role, select#year {
   width: 330px;
 }

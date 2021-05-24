@@ -8,12 +8,14 @@
 
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
   <link href="../static/css/main.css" rel="stylesheet" />
-  <link href="../static/css/regions.css" rel="stylesheet" />
   <link href="../static/css/menu.css" rel="stylesheet" />
   <link href="../static/css/modal.css" rel="stylesheet" />
   <link href="../static/css/search-options.css" rel="stylesheet" />
+  <link href="../static/css/regions.css" rel="stylesheet" />
   <link href="../static/css/cards.css" rel="stylesheet" />
+
   <script src="../static/js/jquery-3.6.0.min.js"></script>
   <!-- Script JS que controla os modais -->
   <script src="../static/js/modals.js"></script>
@@ -151,13 +153,21 @@
   <!-- Script do Chart.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
 
-  <!-- Função do botão "limpar" -->
   <script>
-    // limpa filtros
+    // variáveis globais
+    function global() {
+      var dataKeys = []; // Dados para zoom
+      var dataValues = []; // Dados para zoom
+      var dataAll = []; // Dados para exportação
+    }
+
+    // Função de limpar pesquisa
     function clearFilters() {
+      // limpa filtros
       var form = document.getElementById('form-search')
       form.reset()
 
+      // Limpa os cards
       results = document.getElementById("search-result");
       results.innerHTML = '<p>Selecione os filtros e realize uma pesquisa!</p>'
     }
@@ -171,6 +181,14 @@
       var yearField = document.querySelector('#year')
       var year = yearField.value
 
+      //define o tipo de gráfico que será exibido
+      var typeChart = ""
+      if (comparison == "jovens" || comparison == "idosos") {
+        typeChart = 'bar';
+      } else {
+        typeChart = 'line';
+      };
+
       $.ajax({
         url: "http://localhost:5000/data-regions?comparison=" + comparison + "&year=" + year,
         dataType: "json",
@@ -179,8 +197,265 @@
           phase = document.querySelector("#search-result p");
           phase.innerHTML = "";
           results = document.getElementById('search-result')
-          results.innerHTML = data
-          console.log(data)                   
+          data = JSON.parse(JSON.stringify(data));
+          console.log(data)
+
+          //zerando variáveis globais
+          global.dataKeys = [];
+          global.dataValues = [];
+          global.dataAll = [];
+
+          results.innerHTML = `
+            <div class="result">
+              <div class="card">
+                <div class="graphic">
+                  <div class="graphic-normal">
+                    <!-- CANVAS DO GRÁFICO -->
+                    <canvas id="chart-0" width="150px" height="140px"></canvas>
+                  </div>
+                </div>
+                <div class="graphic-description">
+                  <!-- DADOS DO GRÁFICO -->
+                  <h2>Título</h2>
+                  <a href="https://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais-1/repositorio-de-dados-eleitorais" target="_blank">Fonte dos dados</a>
+
+                  <div class="icon-actions">
+                    <!-- Ícone de zoom -->
+                    <img
+                      id="zoom"
+                      src="../static/img/icon-zoom.svg"
+                      alt="Aumentar gráfico"
+                      onclick="Modal.toggleZoom()"
+                    />
+
+                    <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
+                    <img
+                      id="download"
+                      src="../static/img/icon-download.svg"
+                      alt="Baixar"
+                      onclick="Modal.toggleDownload()"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="graphic">
+                  <div class="graphic-normal">
+                    <!-- CANVAS DO GRÁFICO -->
+                    <canvas id="chart-1" width="150px" height="140px"></canvas>
+                  </div>
+                </div>
+                <div class="graphic-description">
+                  <!-- DADOS DO GRÁFICO -->
+                  <h2>Título</h2>
+                  <a href="https://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais-1/repositorio-de-dados-eleitorais" target="_blank">Fonte dos dados</a>
+
+                  <div class="icon-actions">
+                    <!-- Ícone de zoom -->
+                    <img
+                      id="zoom"
+                      src="../static/img/icon-zoom.svg"
+                      alt="Aumentar gráfico"
+                      onclick="Modal.toggleZoom()"
+                    />
+
+                    <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
+                    <img
+                      id="download"
+                      src="../static/img/icon-download.svg"
+                      alt="Baixar"
+                      onclick="Modal.toggleDownload()"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="graphic">
+                  <div class="graphic-normal">
+                    <!-- CANVAS DO GRÁFICO -->
+                    <canvas id="chart-2" width="150px" height="140px"></canvas>
+                  </div>
+                </div>
+                <div class="graphic-description">
+                  <!-- DADOS DO GRÁFICO -->
+                  <h2>Título</h2>
+                  <a href="https://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais-1/repositorio-de-dados-eleitorais" target="_blank">Fonte dos dados</a>
+
+                  <div class="icon-actions">
+                    <!-- Ícone de zoom -->
+                    <img
+                      id="zoom"
+                      src="../static/img/icon-zoom.svg"
+                      alt="Aumentar gráfico"
+                      onclick="Modal.toggleZoom()"
+                    />
+
+                    <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
+                    <img
+                      id="download"
+                      src="../static/img/icon-download.svg"
+                      alt="Baixar"
+                      onclick="Modal.toggleDownload()"
+                    />
+                  </div>
+                </div>
+              </div>              
+
+              <div class="card">
+                <div class="graphic">
+                  <div class="graphic-normal">
+                    <!-- CANVAS DO GRÁFICO -->
+                    <canvas id="chart-3" width="150px" height="140px"></canvas>
+                  </div>
+                </div>
+                <div class="graphic-description">
+                  <!-- DADOS DO GRÁFICO -->
+                  <h2>Título</h2>
+                  <a href="https://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais-1/repositorio-de-dados-eleitorais" target="_blank">Fonte dos dados</a>
+
+                  <div class="icon-actions">
+                    <!-- Ícone de zoom -->
+                    <img
+                      id="zoom"
+                      src="../static/img/icon-zoom.svg"
+                      alt="Aumentar gráfico"
+                      onclick="Modal.toggleZoom()"
+                    />
+
+                    <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
+                    <img
+                      id="download"
+                      src="../static/img/icon-download.svg"
+                      alt="Baixar"
+                      onclick="Modal.toggleDownload()"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="graphic">
+                  <div class="graphic-normal">
+                    <!-- CANVAS DO GRÁFICO -->
+                    <canvas id="chart-4" width="150px" height="140px"></canvas>
+                  </div>
+                </div>
+                <div class="graphic-description">
+                  <!-- DADOS DO GRÁFICO -->
+                  <h2>Título</h2>
+                  <a href="https://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais-1/repositorio-de-dados-eleitorais" target="_blank">Fonte dos dados</a>
+
+                  <div class="icon-actions">
+                    <!-- Ícone de zoom -->
+                    <img
+                      id="zoom"
+                      src="../static/img/icon-zoom.svg"
+                      alt="Aumentar gráfico"
+                      onclick="Modal.toggleZoom()"
+                    />
+
+                    <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
+                    <img
+                      id="download"
+                      src="../static/img/icon-download.svg"
+                      alt="Baixar"
+                      onclick="Modal.toggleDownload()"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="graphic">
+                  <div class="graphic-normal">
+                    <!-- CANVAS DO GRÁFICO -->
+                    <canvas id="chart-5" width="150px" height="140px"></canvas>
+                  </div>
+                </div>
+                <div class="graphic-description">
+                  <!-- DADOS DO GRÁFICO -->
+                  <h2>Título</h2>
+                  <a href="https://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais-1/repositorio-de-dados-eleitorais" target="_blank">Fonte dos dados</a>
+
+                  <div class="icon-actions">
+                    <!-- Ícone de zoom -->
+                    <img
+                      id="zoom"
+                      src="../static/img/icon-zoom.svg"
+                      alt="Aumentar gráfico"
+                      onclick="Modal.toggleZoom()"
+                    />
+
+                    <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
+                    <img
+                      id="download"
+                      src="../static/img/icon-download.svg"
+                      alt="Baixar"
+                      onclick="Modal.toggleDownload()"
+                    />
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          `;
+                   
+          //configurando o gráfico
+          var contCanvas = 0;
+          data.cards.forEach(function(card){
+            Chart.defaults.global.defaultFontColor = "#ffff";
+            var ctx = document.getElementById("chart-" + contCanvas).getContext("2d");
+            var myChart = new Chart(ctx, {
+              type: typeChart,
+              data: {
+                labels: card['Cidades'],
+                datasets: [
+                  {
+                    label: "Total",
+                    data: card['Quantia'],
+                    backgroundColor: "rgba(154, 219, 249, 0.4)",
+                    borderColor: "rgba(154, 219, 249)",
+                    borderWidth: 1,
+                  },
+                ],
+              },
+              options: {
+                legend: {
+                  display: false,
+                },
+                scales: {
+                  yAxes: [
+                    {
+                      ticks: {
+                        beginAtZero: true,
+                      },
+                    },
+                  ],
+                  xAxes: [
+                    {
+                      display: false,
+                    },
+                  ],
+                },
+              },
+            })
+
+            // Salvando os dados recebidos pelo back em variáveis globais
+            global.dataKeys.push(card['Cidades']);
+            global.dataValues.push(card['Quantia']);
+            global.dataAll.push(card);
+
+            // Acrescentando 1 no contCanvas
+            contCanvas = contCanvas + 1;
+
+          });
+          
+          // verificando variáveis globais
+          console.log(global.dataKeys)
+          console.log(global.dataValues)
+          console.log(global.dataAll)
         }
       })
     }
