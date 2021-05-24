@@ -69,7 +69,7 @@ def ageComparisonYoung(year, csvPath):
     dfm = pd.DataFrame(columns=["Macrorregião", "Município",
                        "Jovens_pct", "Jovens_abs", "Idosos_pct", "Idosos_abs"])
 
-    # Calcula a porcentagem de eleitores jovens e idosos em cada município
+# Calcula a porcentagem de eleitores jovens e idosos em cada município
     for cidade in CoberturaVanguarda.keys():
         filtroCidade = dfe.query("NM_MUNICIPIO == @cidade")
         filtroEleitoresTotal = filtroCidade['QT_ELEITORES_PERFIL'].sum()
@@ -88,7 +88,7 @@ def ageComparisonYoung(year, csvPath):
         f25anos = (filtroEleitoresFaixaEtaria[filtroEleitoresFaixaEtaria.index.str.startswith(
             '25 a 29 anos')]).values
 
-        # Caso alguma faixa etária não exista no município analisado,
+# Caso alguma faixa etária não exista no município analisado,
         # é atribuído o valor 0 à ela, para não atrapalhar nos cálculos.
         if len(f18anos) == 0:
             f18anos = 0
@@ -171,7 +171,69 @@ def ageComparisonYoung(year, csvPath):
     topJovensRegiaoBragantinaAbsoluto = np.concatenate(
         topJovensRegiaoBragantina.Jovens_abs.tolist(), axis=0)
 
-    return topJovensCoberturaVanguardaMunicipio
+
+# RETORNO DA FUNÇÃO
+
+    # ESTRUTURAS DA RSPOSTA
+
+# com listas
+    # vanguarda = [str(topJovensCoberturaVanguardaMunicipio),
+    #              str(topJovensCoberturaVanguardaAbsoluto),
+    #              str(topJovensCoberturaVanguardaPorcentagem)]
+
+    # valeParaiba = [str(topJovensValeParaibaMunicipio),
+    #                str(topJovensValeParaibaAbsoluto),
+    #                str(topJovensValeParaibaPorcentagem)]
+
+    # valeHistorico = [str(topJovensValeHistoricoMunicipio),
+    #                  str(topJovensValeHistoricoAbsoluto),
+    #                  str(topJovensValeHistoricoPorcentagem)]
+
+    # litoralNorte = [str(topJovensLitoralNorteMunicipio),
+    #                 str(topJovensLitoralNorteAbsoluto),
+    #                 str(topJovensLitoralNortePorcentagem)]
+
+    # serraMantiqueira = [str(topJovensSerraMantiqueiraMunicipio),
+    #                     str(topJovensSerraMantiqueiraAbsoluto),
+    #                     str(topJovensSerraMantiqueiraPorcentagem)]
+
+    # regiaoBragantina = [str(topJovensRegiaoBragantinaMunicipio),
+    #                     str(topJovensRegiaoBragantinaAbsoluto),
+    #                     str(topJovensRegiaoBragantinaPorcentagem)]
+
+    # cards = {"Vanguarda": vanguarda, "ValeParaiba": valeParaiba, "ValeHistorico": valeHistorico,
+    #          "Litoral": litoralNorte, "Serra": serraMantiqueira, "RegiaoBragantina": regiaoBragantina}
+
+# com objetos
+    vanguarda = {"Cidades": str(topJovensCoberturaVanguardaMunicipio),
+                 "Quantia": str(topJovensCoberturaVanguardaAbsoluto),
+                 "Porcentagem": str(topJovensCoberturaVanguardaPorcentagem)}
+
+    valeParaiba = {"Cidades": str(topJovensValeParaibaMunicipio),
+                   "Quantia": str(topJovensValeParaibaAbsoluto),
+                   "Porcentagem": str(topJovensValeParaibaPorcentagem)}
+
+    valeHistorico = {"Cidades": str(topJovensValeHistoricoMunicipio),
+                     "Quantia": str(topJovensValeHistoricoAbsoluto),
+                     "Porcentagem": str(topJovensValeHistoricoPorcentagem)}
+
+    litoralNorte = {"Cidades": str(topJovensLitoralNorteMunicipio),
+                    "Quantia": str(topJovensLitoralNorteAbsoluto),
+                    "Porcentagem": str(topJovensLitoralNortePorcentagem)}
+
+    serraMantiqueira = {"Cidades": str(topJovensSerraMantiqueiraMunicipio),
+                        "Quantia": str(topJovensSerraMantiqueiraAbsoluto),
+                        "Porcentagem": str(topJovensSerraMantiqueiraPorcentagem)}
+
+    regiaoBragantina = {"Cidades": str(topJovensRegiaoBragantinaMunicipio),
+                        "Quantia": str(topJovensRegiaoBragantinaAbsoluto),
+                        "Porcentagem": str(topJovensRegiaoBragantinaPorcentagem)}
+
+    cards = {"Vanguarda": vanguarda, "ValeParaiba": valeParaiba, "ValeHistorico": valeHistorico,
+             "Litoral": litoralNorte, "Serra": serraMantiqueira, "RegiaoBragantina": regiaoBragantina}
+
+    print(cards)
+    return cards
 
 
 def ageComparisonSenior(year, csvPath):
