@@ -148,6 +148,32 @@
           href="https://github.com/Equipe-01-DSM-2021/projeto-integrador-2021-1" target="_blank"> Manual </a> </small>
     </div>
   </div>
+
+        <!-- Modal de zoom em gráficos-->
+    <div class="modal-overlay">
+      <div class="modal-container-zoom">
+        <div class="modal-header">
+          <h2 id="chartTitle">Representante eleito</h2>
+          <img
+            id="close"
+            src="../static/img/icon-close.png"
+            alt="Fechar janela"
+            onclick="Modal.toggleZoom()"
+          />
+        </div>
+
+        <div class="zoom-graphic">
+          <!-- Gráfico com zoom -->
+          <div id="chart-zoom-container">
+            <div class="graphic-zoom">   
+                <p id='canvas'></p>
+                <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>  
+            </div>
+          </div>
+          <!-- // Gráfico com zoom -->
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- Script do Chart.js -->
@@ -225,7 +251,7 @@
                       id="zoom"
                       src="../static/img/icon-zoom.svg"
                       alt="Aumentar gráfico"
-                      onclick="Modal.toggleZoom()"
+                      onclick="Modal.toggleZoom(0, 'Titulo0')"
                     />
 
                     <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
@@ -257,7 +283,7 @@
                       id="zoom"
                       src="../static/img/icon-zoom.svg"
                       alt="Aumentar gráfico"
-                      onclick="Modal.toggleZoom()"
+                      onclick="Modal.toggleZoom(1, 'Titulo1')"
                     />
 
                     <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
@@ -289,7 +315,7 @@
                       id="zoom"
                       src="../static/img/icon-zoom.svg"
                       alt="Aumentar gráfico"
-                      onclick="Modal.toggleZoom()"
+                      onclick="Modal.toggleZoom(2, 'titulo2')"
                     />
 
                     <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
@@ -321,7 +347,7 @@
                       id="zoom"
                       src="../static/img/icon-zoom.svg"
                       alt="Aumentar gráfico"
-                      onclick="Modal.toggleZoom()"
+                      onclick="Modal.toggleZoom(3, 'titulo3')"
                     />
 
                     <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
@@ -353,7 +379,7 @@
                       id="zoom"
                       src="../static/img/icon-zoom.svg"
                       alt="Aumentar gráfico"
-                      onclick="Modal.toggleZoom()"
+                      onclick="Modal.toggleZoom(4, 'titulo4')"
                     />
 
                     <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
@@ -385,7 +411,7 @@
                       id="zoom"
                       src="../static/img/icon-zoom.svg"
                       alt="Aumentar gráfico"
-                      onclick="Modal.toggleZoom()"
+                      onclick="Modal.toggleZoom(5, 'titulo5')"
                     />
 
                     <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
