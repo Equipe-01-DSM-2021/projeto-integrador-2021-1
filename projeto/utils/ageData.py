@@ -69,7 +69,7 @@ def ageComparisonYoung(year, csvPath):
     dfm = pd.DataFrame(columns=["Macrorregião", "Município",
                        "Jovens_pct", "Jovens_abs", "Idosos_pct", "Idosos_abs"])
 
-# Calcula a porcentagem de eleitores jovens e idosos em cada município
+    # Calcula a porcentagem de eleitores jovens e idosos em cada município
     for cidade in CoberturaVanguarda.keys():
         filtroCidade = dfe.query("NM_MUNICIPIO == @cidade")
         filtroEleitoresTotal = filtroCidade['QT_ELEITORES_PERFIL'].sum()
@@ -88,7 +88,7 @@ def ageComparisonYoung(year, csvPath):
         f25anos = (filtroEleitoresFaixaEtaria[filtroEleitoresFaixaEtaria.index.str.startswith(
             '25 a 29 anos')]).values
 
-# Caso alguma faixa etária não exista no município analisado,
+    # Caso alguma faixa etária não exista no município analisado,
         # é atribuído o valor 0 à ela, para não atrapalhar nos cálculos.
         if len(f18anos) == 0:
             f18anos = 0
@@ -113,7 +113,7 @@ def ageComparisonYoung(year, csvPath):
     # Número de muncípios que aparecerão no ranking
     top = 3
 
-# Ranking de municípios com mais jovens
+    # Ranking de municípios com mais jovens
     topJovens = dfm[['Macrorregião', 'Município', 'Jovens_pct', 'Jovens_abs']]
     topJovensCoberturaVanguarda = topJovens.sort_values(
         "Jovens_pct", ascending=False).head(top)
@@ -128,7 +128,7 @@ def ageComparisonYoung(year, csvPath):
     topJovensRegiaoBragantina = topJovens.query(
         'Macrorregião == "REGIÃO BRAGANTINA"').sort_values("Jovens_pct", ascending=False).head(top)
 
-# JOVENS POR REGIÃO
+    # JOVENS POR REGIÃO
     # Cobertura Vanguarda
     topJovensCoberturaVanguardaMunicipio = topJovensCoberturaVanguarda.Município.tolist()
     topJovensCoberturaVanguardaPorcentagem = np.concatenate(
@@ -171,10 +171,9 @@ def ageComparisonYoung(year, csvPath):
     topJovensRegiaoBragantinaAbsoluto = np.concatenate(
         topJovensRegiaoBragantina.Jovens_abs.tolist(), axis=0)
 
+    # RETORNO DA FUNÇÃO
 
-# RETORNO DA FUNÇÃO
-
-    # ESTRUTURAS DA RSPOSTA
+    # ESTRUTURA DA ReSPOSTA
     vanguarda = {"Cidades": topJovensCoberturaVanguardaMunicipio,
                  "Quantia": str(topJovensCoberturaVanguardaAbsoluto).strip('[]').split(),
                  "Porcentagem": str(topJovensCoberturaVanguardaPorcentagem).strip('[]').split()}
@@ -215,7 +214,7 @@ def ageComparisonSenior(year, csvPath):
     dfm = pd.DataFrame(columns=["Macrorregião", "Município",
                        "Jovens_pct", "Jovens_abs", "Idosos_pct", "Idosos_abs"])
 
-# Calcula a porcentagem de eleitores jovens e idosos em cada município
+    # Calcula a porcentagem de eleitores jovens e idosos em cada município
     for cidade in CoberturaVanguarda.keys():
         filtroCidade = dfe.query("NM_MUNICIPIO == @cidade")
         filtroEleitoresTotal = filtroCidade['QT_ELEITORES_PERFIL'].sum()
@@ -277,7 +276,7 @@ def ageComparisonSenior(year, csvPath):
     # Número de muncípios que aparecerão no ranking
     top = 3
 
-# Ranking de municípios com mais idosos
+    # Ranking de municípios com mais idosos
     topIdosos = dfm[['Macrorregião', 'Município', 'Idosos_pct', 'Idosos_abs']]
     topIdososCoberturaVanguarda = topIdosos.sort_values(
         "Idosos_pct", ascending=False).head(top)
@@ -292,7 +291,7 @@ def ageComparisonSenior(year, csvPath):
     topIdososRegiaoBragantina = topIdosos.query(
         'Macrorregião == "REGIÃO BRAGANTINA"').sort_values("Idosos_pct", ascending=False).head(top)
 
-# IDOSOS POR REGIÃO
+    # IDOSOS POR REGIÃO
     # Cobertura Vanguarda
     topIdososCoberturaVanguardaMunicipio = topIdososCoberturaVanguarda.Município.tolist()
     topIdososCoberturaVanguardaPorcentagem = np.concatenate(
@@ -335,9 +334,9 @@ def ageComparisonSenior(year, csvPath):
     topIdososRegiaoBragantinaAbsoluto = np.concatenate(
         topIdososRegiaoBragantina.Idosos_abs.tolist(), axis=0)
 
-# RETORNO DA FUNÇÃO
+    # RETORNO DA FUNÇÃO
 
-    # ESTRUTURAS DA RSPOSTA
+    # ESTRUTURAS DA RESPOSTA
     vanguarda = {"Cidades": topIdososCoberturaVanguardaMunicipio,
                  "Quantia": str(topIdososCoberturaVanguardaAbsoluto).strip('[]').split(),
                  "Porcentagem": str(topIdososCoberturaVanguardaPorcentagem).strip('[]').split()}
@@ -368,6 +367,133 @@ def ageComparisonSenior(year, csvPath):
     print(cards)
     return cards
 
-# def incomeComparison():
+
+def incomeComparison(csvPath):
+
+    # DataFrame da renda dos municípios
+    dfr = pd.read_csv(csvPath, sep=';', error_bad_lines=False)
+
+    # Filtrando somente as informações de salário médio mensal do DataFrame "dfr"
+    df_sp = dfr.query(
+        'Nome == "Salário médio mensal"').loc[:, 'Localidade':'2018']
+    df_sp = df_sp.drop(columns=["2006", "2007"])
+    df_sp['Localidade'] = df_sp['Localidade'].str.upper()
+
+    # Criando um DataFrame "dfmc" de macrorregiões e cidades a partir do dicionário
+    dfmc = pd.DataFrame(columns=["Município", "Macrorregião"])
+
+    for cidade in CoberturaVanguarda.keys():
+        dfmc = dfmc.append(pd.DataFrame(
+            {"Município": [cidade], "Macrorregião": [CoberturaVanguarda[cidade]]}))
+
+    # Filtrando cidades e serapando em macrorregiões de cobertura da TV Vanguarda
+    df_vanguarda = df_sp.loc[df_sp['Localidade'].isin(dfmc.Município.values)]
+    df_paraiba = df_sp.loc[df_sp['Localidade'].isin(dfmc.query(
+        'Macrorregião == "VALE DO PARAÍBA"').Município.values)]
+    df_historico = df_sp.loc[df_sp['Localidade'].isin(
+        dfmc.query('Macrorregião == "VALE HISTÓRICO"').Município.values)]
+    df_litoral = df_sp.loc[df_sp['Localidade'].isin(
+        dfmc.query('Macrorregião == "LITORAL NORTE"').Município.values)]
+    df_serra = df_sp.loc[df_sp['Localidade'].isin(dfmc.query(
+        'Macrorregião == "SERRA DA MANTIQUEIRA"').Município.values)]
+    df_bragantina = df_sp.loc[df_sp['Localidade'].isin(
+        dfmc.query('Macrorregião == "REGIÃO BRAGANTINA"').Município.values)]
+
+    # Média de salários mensais, por macrorregiões e cidades da cobertura da TV Vanguarda
+    vanguarda = []
+    paraiba = []
+    historico = []
+    litoral = []
+    serra = []
+    bragantina = []
+
+    for n in list(range(2008, 2019)):
+        vanguarda.append(df_vanguarda[str(n)].mean())
+        paraiba.append(df_paraiba[str(n)].mean())
+        historico.append(df_historico[str(n)].mean())
+        litoral.append(df_litoral[str(n)].mean())
+        serra.append(df_serra[str(n)].mean())
+        bragantina.append(df_bragantina[str(n)].mean())
+
+    # Formatando um DataFrame para média de salários mensais com uma casa descimal
+    vanguarda_cobertura = {'2008': round(vanguarda[0], 1),
+                           '2009': round(vanguarda[1], 1),
+                           '2010': round(vanguarda[2], 1),
+                           '2011': round(vanguarda[3], 1),
+                           '2012': round(vanguarda[4], 1),
+                           '2013': round(vanguarda[5], 1),
+                           '2014': round(vanguarda[6], 1),
+                           '2015': round(vanguarda[7], 1),
+                           '2016': round(vanguarda[8], 1),
+                           '2017': round(vanguarda[9], 1),
+                           '2018': round(vanguarda[10], 1)}
+
+    vanguarda_paraiba = {'2008': round(paraiba[0], 1),
+                         '2009': round(paraiba[1], 1),
+                         '2010': round(paraiba[2], 1),
+                         '2011': round(paraiba[3], 1),
+                         '2012': round(paraiba[4], 1),
+                         '2013': round(paraiba[5], 1),
+                         '2014': round(paraiba[6], 1),
+                         '2015': round(paraiba[7], 1),
+                         '2016': round(paraiba[8], 1),
+                         '2017': round(paraiba[9], 1),
+                         '2018': round(paraiba[10], 1)}
+
+    vanguarda_historico = {'2008': round(historico[0], 1),
+                           '2009': round(historico[1], 1),
+                           '2010': round(historico[2], 1),
+                           '2011': round(historico[3], 1),
+                           '2012': round(historico[4], 1),
+                           '2013': round(historico[5], 1),
+                           '2014': round(historico[6], 1),
+                           '2015': round(historico[7], 1),
+                           '2016': round(historico[8], 1),
+                           '2017': round(historico[9], 1),
+                           '2018': round(historico[10], 1)}
+
+    vanguarda_litoral = {'2008': round(litoral[0], 1),
+                         '2009': round(litoral[1], 1),
+                         '2010': round(litoral[2], 1),
+                         '2011': round(litoral[3], 1),
+                         '2012': round(litoral[4], 1),
+                         '2013': round(litoral[5], 1),
+                         '2014': round(litoral[6], 1),
+                         '2015': round(litoral[7], 1),
+                         '2016': round(litoral[8], 1),
+                         '2017': round(litoral[9], 1),
+                         '2018': round(litoral[10], 1)}
+
+    vanguarda_serra = {'2008': round(serra[0], 1),
+                       '2009': round(serra[1], 1),
+                       '2010': round(serra[2], 1),
+                       '2011': round(serra[3], 1),
+                       '2012': round(serra[4], 1),
+                       '2013': round(serra[5], 1),
+                       '2014': round(serra[6], 1),
+                       '2015': round(serra[7], 1),
+                       '2016': round(serra[8], 1),
+                       '2017':  round(serra[9], 1),
+                       '2018': round(serra[10], 1)}
+
+    vanguarda_bragantina = {'2008': round(bragantina[0], 1),
+                            '2009': round(bragantina[1], 1),
+                            '2010': round(bragantina[2], 1),
+                            '2011': round(bragantina[3], 1),
+                            '2012': round(bragantina[4], 1),
+                            '2013': round(bragantina[5], 1),
+                            '2014': round(bragantina[6], 1),
+                            '2015': round(bragantina[7], 1),
+                            '2016': round(bragantina[8], 1),
+                            '2017': round(bragantina[9], 1),
+                            '2018': round(bragantina[10], 1)}
+
+    cards = {"Vanguarda": vanguarda_cobertura, "ValeParaiba": vanguarda_paraiba,
+             "ValeHistorico": vanguarda_historico, "Litoral": vanguarda_litoral,
+             "Serra": vanguarda_serra, "RegiaoBragantina": vanguarda_bragantina}
+
+    print(cards)
+    return cards
+
 
 # def evolutionComparison():

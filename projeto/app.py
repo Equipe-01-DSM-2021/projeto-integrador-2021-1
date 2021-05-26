@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request
 from flask import jsonify
 from utils.getData import SearchForColumn
-from utils.ageData import ageComparisonYoung, ageComparisonSenior
+from utils.ageData import ageComparisonYoung, ageComparisonSenior, incomeComparison
 from flask import Flask
 from flask_cors import CORS
 from os import walk
@@ -80,6 +80,9 @@ def comparisonData():
         result = ageComparisonYoung(year, csvPath)
     elif comparison == 'idosos':
         result = ageComparisonSenior(year, csvPath)
+    elif comparison == 'renda':
+        csvPath = pathData + f"\cadastro_central_de_empresas.csv"
+        result = incomeComparison(csvPath)
 
     return jsonify(result)
 
