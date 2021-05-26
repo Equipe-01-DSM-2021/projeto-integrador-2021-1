@@ -175,59 +175,29 @@ def ageComparisonYoung(year, csvPath):
 # RETORNO DA FUNÇÃO
 
     # ESTRUTURAS DA RSPOSTA
+    vanguarda = {"Cidades": topJovensCoberturaVanguardaMunicipio,
+                 "Quantia": str(topJovensCoberturaVanguardaAbsoluto).strip('[]').split(),
+                 "Porcentagem": str(topJovensCoberturaVanguardaPorcentagem).strip('[]').split()}
 
-# com listas
-    # vanguarda = [str(topJovensCoberturaVanguardaMunicipio),
-    #              str(topJovensCoberturaVanguardaAbsoluto),
-    #              str(topJovensCoberturaVanguardaPorcentagem)]
+    valeParaiba = {"Cidades": topJovensValeParaibaMunicipio,
+                   "Quantia": str(topJovensValeParaibaAbsoluto).strip('[]').split(),
+                   "Porcentagem": str(topJovensValeParaibaPorcentagem).strip('[]').split()}
 
-    # valeParaiba = [str(topJovensValeParaibaMunicipio),
-    #                str(topJovensValeParaibaAbsoluto),
-    #                str(topJovensValeParaibaPorcentagem)]
+    valeHistorico = {"Cidades": topJovensValeHistoricoMunicipio,
+                     "Quantia": str(topJovensValeHistoricoAbsoluto).strip('[]').split(),
+                     "Porcentagem": str(topJovensValeHistoricoPorcentagem).strip('[]').split()}
 
-    # valeHistorico = [str(topJovensValeHistoricoMunicipio),
-    #                  str(topJovensValeHistoricoAbsoluto),
-    #                  str(topJovensValeHistoricoPorcentagem)]
+    litoralNorte = {"Cidades": topJovensLitoralNorteMunicipio,
+                    "Quantia": str(topJovensLitoralNorteAbsoluto).strip('[]').split(),
+                    "Porcentagem": str(topJovensLitoralNortePorcentagem).strip('[]').split()}
 
-    # litoralNorte = [str(topJovensLitoralNorteMunicipio),
-    #                 str(topJovensLitoralNorteAbsoluto),
-    #                 str(topJovensLitoralNortePorcentagem)]
+    serraMantiqueira = {"Cidades": topJovensSerraMantiqueiraMunicipio,
+                        "Quantia": str(topJovensSerraMantiqueiraAbsoluto).strip('[]').split(),
+                        "Porcentagem": str(topJovensSerraMantiqueiraPorcentagem).strip('[]').split()}
 
-    # serraMantiqueira = [str(topJovensSerraMantiqueiraMunicipio),
-    #                     str(topJovensSerraMantiqueiraAbsoluto),
-    #                     str(topJovensSerraMantiqueiraPorcentagem)]
-
-    # regiaoBragantina = [str(topJovensRegiaoBragantinaMunicipio),
-    #                     str(topJovensRegiaoBragantinaAbsoluto),
-    #                     str(topJovensRegiaoBragantinaPorcentagem)]
-
-    # cards = {"Vanguarda": vanguarda, "ValeParaiba": valeParaiba, "ValeHistorico": valeHistorico,
-    #          "Litoral": litoralNorte, "Serra": serraMantiqueira, "RegiaoBragantina": regiaoBragantina}
-
-# com objetos
-    vanguarda = {"Cidades": str(topJovensCoberturaVanguardaMunicipio),
-                 "Quantia": str(topJovensCoberturaVanguardaAbsoluto),
-                 "Porcentagem": str(topJovensCoberturaVanguardaPorcentagem)}
-
-    valeParaiba = {"Cidades": str(topJovensValeParaibaMunicipio),
-                   "Quantia": str(topJovensValeParaibaAbsoluto),
-                   "Porcentagem": str(topJovensValeParaibaPorcentagem)}
-
-    valeHistorico = {"Cidades": str(topJovensValeHistoricoMunicipio),
-                     "Quantia": str(topJovensValeHistoricoAbsoluto),
-                     "Porcentagem": str(topJovensValeHistoricoPorcentagem)}
-
-    litoralNorte = {"Cidades": str(topJovensLitoralNorteMunicipio),
-                    "Quantia": str(topJovensLitoralNorteAbsoluto),
-                    "Porcentagem": str(topJovensLitoralNortePorcentagem)}
-
-    serraMantiqueira = {"Cidades": str(topJovensSerraMantiqueiraMunicipio),
-                        "Quantia": str(topJovensSerraMantiqueiraAbsoluto),
-                        "Porcentagem": str(topJovensSerraMantiqueiraPorcentagem)}
-
-    regiaoBragantina = {"Cidades": str(topJovensRegiaoBragantinaMunicipio),
-                        "Quantia": str(topJovensRegiaoBragantinaAbsoluto),
-                        "Porcentagem": str(topJovensRegiaoBragantinaPorcentagem)}
+    regiaoBragantina = {"Cidades": topJovensRegiaoBragantinaMunicipio,
+                        "Quantia": str(topJovensRegiaoBragantinaAbsoluto).strip('[]').split(),
+                        "Porcentagem": str(topJovensRegiaoBragantinaPorcentagem).strip('[]').split()}
 
     cards = {"Vanguarda": vanguarda, "ValeParaiba": valeParaiba, "ValeHistorico": valeHistorico,
              "Litoral": litoralNorte, "Serra": serraMantiqueira, "RegiaoBragantina": regiaoBragantina}
@@ -245,7 +215,7 @@ def ageComparisonSenior(year, csvPath):
     dfm = pd.DataFrame(columns=["Macrorregião", "Município",
                        "Jovens_pct", "Jovens_abs", "Idosos_pct", "Idosos_abs"])
 
-    # Calcula a porcentagem de eleitores jovens e idosos em cada município
+# Calcula a porcentagem de eleitores jovens e idosos em cada município
     for cidade in CoberturaVanguarda.keys():
         filtroCidade = dfe.query("NM_MUNICIPIO == @cidade")
         filtroEleitoresTotal = filtroCidade['QT_ELEITORES_PERFIL'].sum()
@@ -365,7 +335,38 @@ def ageComparisonSenior(year, csvPath):
     topIdososRegiaoBragantinaAbsoluto = np.concatenate(
         topIdososRegiaoBragantina.Idosos_abs.tolist(), axis=0)
 
-    return topIdososCoberturaVanguardaMunicipio
+# RETORNO DA FUNÇÃO
+
+    # ESTRUTURAS DA RSPOSTA
+    vanguarda = {"Cidades": topIdososCoberturaVanguardaMunicipio,
+                 "Quantia": str(topIdososCoberturaVanguardaAbsoluto).strip('[]').split(),
+                 "Porcentagem": str(topIdososCoberturaVanguardaPorcentagem).strip('[]').split()}
+
+    valeParaiba = {"Cidades": topIdososValeParaibaMunicipio,
+                   "Quantia": str(topIdososValeParaibaAbsoluto).strip('[]').split(),
+                   "Porcentagem": str(topIdososValeParaibaPorcentagem).strip('[]').split()}
+
+    valeHistorico = {"Cidades": topIdososValeHistoricoMunicipio,
+                     "Quantia": str(topIdososValeHistoricoAbsoluto).strip('[]').split(),
+                     "Porcentagem": str(topIdososValeHistoricoPorcentagem).strip('[]').split()}
+
+    litoralNorte = {"Cidades": topIdososLitoralNorteMunicipio,
+                    "Quantia": str(topIdososLitoralNorteAbsoluto).strip('[]').split(),
+                    "Porcentagem": str(topIdososLitoralNortePorcentagem).strip('[]').split()}
+
+    serraMantiqueira = {"Cidades": topIdososSerraMantiqueiraMunicipio,
+                        "Quantia": str(topIdososSerraMantiqueiraAbsoluto).strip('[]').split(),
+                        "Porcentagem": str(topIdososSerraMantiqueiraPorcentagem).strip('[]').split()}
+
+    regiaoBragantina = {"Cidades": topIdososRegiaoBragantinaMunicipio,
+                        "Quantia": str(topIdososRegiaoBragantinaAbsoluto).strip('[]').split(),
+                        "Porcentagem": str(topIdososRegiaoBragantinaPorcentagem).strip('[]').split()}
+
+    cards = {"Vanguarda": vanguarda, "ValeParaiba": valeParaiba, "ValeHistorico": valeHistorico,
+             "Litoral": litoralNorte, "Serra": serraMantiqueira, "RegiaoBragantina": regiaoBragantina}
+
+    print(cards)
+    return cards
 
 # def incomeComparison():
 
