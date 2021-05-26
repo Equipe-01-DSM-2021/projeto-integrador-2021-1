@@ -1,4 +1,6 @@
 const Modal = {
+
+  // MODAL ZOOM
   toggleZoom(chartCod, chartTitle, labelStringY) {
     // Ativação do modal
     document.querySelector(".modal-overlay").classList.toggle("active");
@@ -46,15 +48,9 @@ const Modal = {
             }
         }
     });
-
-
-
-
-
   },
-  toggleHelp() {
-    document.querySelector(".modal-overlay-help").classList.toggle("active");
-  },
+
+  // MODAL DOWNLOAD
   toggleDownload() {
     document.querySelector(".tooltip").classList.toggle("active");
   },

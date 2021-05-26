@@ -1,243 +1,208 @@
 <!DOCTYPE html>
 <html>
-<!-- Configurações da página como idioma, fontes e outros arquivos necessários -->
+    <head lang="pt-BR">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head lang="pt-BR">
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link 
+        href="https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;500;600;700&display=swap" 
+        rel="stylesheet"
+    />
 
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link href="../static/css/main.css" rel="stylesheet" />
-  <link href="../static/css/menu.css" rel="stylesheet" />
-  <link href="../static/css/modal.css" rel="stylesheet" />
-  <link href="../static/css/project.css" rel="stylesheet" />
-  <link href="../static/css/cards.css" rel="stylesheet" />
-  <script src="../static/js/jquery-3.6.0.min.js"></script>
-  <!-- Script JS que controla os modais -->
-  <script src="../static/js/modals.js"></script>
+    <link href="../static/css/main.css" rel="stylesheet" />
+    <link href="../static/css/menu.css" rel="stylesheet" />
+    <link href="../static/css/modal.css" rel="stylesheet" />
+    <link href="../static/css/project.css" rel="stylesheet" />
+    <link href="../static/css/cards.css" rel="stylesheet" />
+    <script src="../static/js/jquery-3.6.0.min.js"></script>
+    <script src="../static/js/modals.js"></script>
 
-  <title>Sobre o projeto</title>
-  <link rel="shortcut icon" href="../static/img/favicon.ico" />
-</head>
-<body>
-    <header>
-    <!-- Título da Página -->
-    <div id="logo">
-      <img src="../static/img/icon-logo.svg" alt="Logo - Eleitorado.com"/>
-      <h1>Análise de Dados Eleitorais</h1>
-    </div>
-    
-    <!-- Navegação-->
-    <nav id="navigation">
-      <a id="start" href="/">Início</a>
-      <a id="project" href="/project">Sobre o projeto</a>
-      <a id="us" href="/about-us">Sobre nós</a>
-      <a id="help" onclick="Modal.toggleHelp()">Dúvidas</a>
-    </nav>
-  </header>
-  <main>
-      <div id="content">
-        <h1>Sobre o projeto: Eleitorado.com</h1>
-
-        <!--cards do sumário-->
-        <div id="summary">
-            <!--introdução-->
-            <div class="cards-summary">
-                <div class="header-cards-summary"> 
-                    <div>
-                        <p>Introdução</p>
-                    </div>
-                    <div>
-                        <a href="#anchor-introduction">
-                            <img src="../static/img/icon-follow.svg">
-                        </a>
-                    </div>
-                </div>
-                <div class="text-cards-summary">
-                    <p>O que é o Eleitorado.com? </p>
-                    <p>Como ele surgiu? </p> 
-                    <p>A resposta para essas perguntas se encontra na seção “Introdução”.</p>
-                </div>
-            </div>
-
-            <!--planejamento-->
-            <div class="cards-summary">
-                <div class="header-cards-summary"> 
-                    <div>
-                        <p>Planejamento</p>
-                    </div>
-                    <div>
-                        <a href="#anchor-planning">
-                            <img src="../static/img/icon-follow.svg">
-                        </a>
-                    </div>
-                </div>
-                <div class="text-cards-summary">
-                    <p>
-                        Após definir o projeto, foi necessário planejar os passos que levariam ao sucesso dele. Confira na seção “Planejamento”.
-                    </p>
-                </div>
-            </div>
-
-            <!--desenvolvimento-->
-            <div class="cards-summary">
-                <div class="header-cards-summary"> 
-                    <div>
-                        <p>Desenvolvimento</p>
-                    </div>
-                    <div>
-                        <a href="#anchor-development">
-                            <img src="../static/img/icon-follow.svg">
-                        </a>
-                    </div>
-                </div>
-                <div class="text-cards-summary">
-                    <p>
-                        Com o planejamento pronto, chega a hora de por a mão na massa! Confira o desenvolvimento na seção de mesmo nome.
-                    </p>
-
-                </div>
-            </div>
-            
-            <!--resultados-->
-            <div class="cards-summary">
-                <div class="header-cards-summary"> 
-                    <div>
-                        <p>Resultados</p>
-                    </div>
-                    <div>
-                        <a href="#anchor-results">
-                            <img src="../static/img/icon-follow.svg">
-                        </a>
-                    </div>
-                </div>
-                <div class="text-cards-summary">
-                    <p>
-                        Na seção “Resultados” localizam-se todas as versões do Eleitorado.com, desenvolvidas durante cada sprint.
-                    </p>
-                </div>
-            </div>
+    <title>Sobre o projeto</title>
+    <link rel="shortcut icon" href="../static/img/favicon.ico" />
+    </head>
+    <body>
+        <header>
+        <!-- Título da Página -->
+        <div id="logo">
+        <img src="../static/img/icon-logo.svg" alt="Logo - Eleitorado.com"/>
+        <h1>Análise de Dados Eleitorais</h1>
         </div>
+        
+        <!-- Navegação-->
+        <nav id="navigation">
+        <a id="start" href="/">Início</a>
+        <a id="project" href="/project">Sobre o projeto</a>
+        <a id="us" href="/about-us">Sobre nós</a>
+        </nav>
+    </header>
+    <main>
+            <div id="content">
+                <h1>Sobre o projeto: Eleitorado.com</h1>
 
-        <!-- Dados do projeto -->
-        <div id="about-project">
-            <!--introdução-->
-            <div id="introduction">
-                <div class="about-content">
-                    <div class="img-container">
-                        <img src="../static/img/flaticon-introduction.svg" alt="Introdução" >
+                <!--cards do sumário-->
+                <div id="summary">
+                    <!--introdução-->
+                    <div class="cards-summary">
+                        <div class="header-cards-summary"> 
+                            <div>
+                                <p>Introdução</p>
+                            </div>
+                            <div>
+                                <a href="#anchor-introduction">
+                                    <img src="../static/img/icon-follow.svg">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="text-cards-summary">
+                            <p>O que é o Eleitorado.com? </p>
+                            <p>Como ele surgiu? </p> 
+                            <p>A resposta para essas perguntas se encontra na seção “Introdução”.</p>
+                        </div>
                     </div>
+
+                    <!--planejamento-->
+                    <div class="cards-summary">
+                        <div class="header-cards-summary"> 
+                            <div>
+                                <p>Planejamento</p>
+                            </div>
+                            <div>
+                                <a href="#anchor-planning">
+                                    <img src="../static/img/icon-follow.svg">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="text-cards-summary">
+                            <p>
+                                Após definir o projeto, foi necessário planejar os passos que levariam ao sucesso dele. Confira na seção “Planejamento”.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!--desenvolvimento-->
+                    <div class="cards-summary">
+                        <div class="header-cards-summary"> 
+                            <div>
+                                <p>Desenvolvimento</p>
+                            </div>
+                            <div>
+                                <a href="#anchor-development">
+                                    <img src="../static/img/icon-follow.svg">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="text-cards-summary">
+                            <p>
+                                Com o planejamento pronto, chega a hora de por a mão na massa! Confira o desenvolvimento na seção de mesmo nome.
+                            </p>
+
+                        </div>
+                    </div>
+                    
+                    <!--resultados-->
+                    <div class="cards-summary">
+                        <div class="header-cards-summary"> 
+                            <div>
+                                <p>Resultados</p>
+                            </div>
+                            <div>
+                                <a href="#anchor-results">
+                                    <img src="../static/img/icon-follow.svg">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="text-cards-summary">
+                            <p>
+                                Na seção “Resultados” localizam-se todas as versões do Eleitorado.com, desenvolvidas durante cada sprint.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dados do projeto -->
+                <div id="about-project">
+                    <!--introdução-->
+                    <div id="introduction">
+                        <div class="about-content">
+                            <div class="img-container">
+                                <img src="../static/img/flaticon-introduction.svg" alt="Introdução" >
+                            </div>
+                            <section>
+                                <h1 id="anchor-introduction">Introdução</h1>
+                                <p>
+                                    Esta aplicação foi desenvolvida com o propósito de suprir uma demanda dos cursos ministrados na FATEC de São José dos Campos: o projeto integrador.  Tal projeto tem a finalidade de envolver diversas matérias de forma prática com o desenvolvimento algum projeto, sendo um site para análise de dados eleitorais o projeto escolhido para o 1 semestre do curso de Desenvolvimento de Software Multiplataforma.
+                                </p>
+                            </section>
+                        </div>
+                    </div>
+                    
+                    <!--planejamento-->
+                    <div id="planning">
+                        <div class="about-content">
+                            <section>
+                                <h1 id="anchor-planning">Planejamento</h1>
+                                <p>
+                                    Para o desenvolvimento do projeto foi preciso a organização dos alunos em grupos, de 5 a 9 integrantes, seguindo a metodologia ágil do SCRUM. Logo, em cada grupo foi selecionado o integrante que desempenharia o papel de Scrum Master e os demais representariam o time de desenvolvimento.
+                                </p>
+                                <p>
+                                    Além dos grupos de alunos, foi contado também a presença de dois professores principais,  que foram responsáveis pela orientação dos alunos quanto ao processo (denominado "professor M2"), que também estava a frente dos Masters de cada grupo, e um professor que ficaria encarregado de representar um cliente, para qual os times devessem atender os desejos e requisições, claro, recebendo feedbacks em troca.
+                                </p>
+                            </section>
+                            <div class="img-container">
+                                <img src="../static/img/flaticon-planning.png" alt="Planejamento">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--desenvolvimento-->
+                    <div id="development">
+                        <div class="about-content">
+                            <div class="img-container">
+                                <img src="../static/img/flaticon-development.svg" alt="Desenvolvimento">
+                            </div>
+                            <section>
+                                <h1 id="anchor-development">Desenvolvimento</h1>
+                                <p>
+                                    Dada a largada, os times ficaram encarregados de todas as tarefas para o desenvolvimento de uma aplicação, desde o levantamento de requisitos até absorver os conhecimentos necessários para satisfazer os desejos do cliente e apresentar, com entregas parciais incrementais, o projeto a cada final de sprint.
+                                </p>
+                                <p></p>
+                                    Como a metodologia utilizada foi o SCRUM, foi definido que cada sprint (intervalo de tempo em que os grupos trabalhariam no projeto) seria de 3 semanas cada, totalizando 4 sprints até a entrega final do projeto.
+                                </p>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+
+                <!--resultados-->
+                <div id="results">
                     <section>
-                        <h1 id="anchor-introduction">Introdução</h1>
-                        <p>
-                            Esta aplicação foi desenvolvida com o propósito de suprir uma demanda dos cursos ministrados na FATEC de São José dos Campos: o projeto integrador.  Tal projeto tem a finalidade de envolver diversas matérias de forma prática com o desenvolvimento algum projeto, sendo um site para análise de dados eleitorais o projeto escolhido para o 1 semestre do curso de Desenvolvimento de Software Multiplataforma.
+                        <h1 id="anchor-results">Resultados</h2>
+                        <p id="results-intro">
+                            Como a cada final de sprint foi apresentado uma parte do projeto, é possível, através dos links abaixo, observar os esforços da equipe e seus resultados a cada 3 semanas, finalizando o projeto com 3 entregas parciais e a entrega final, que é a aplicação completa, atendendo a todos os requisitos levantados.
                         </p>
+
+                        <ul>
+                            <li>
+                                <a href="https://github.com/Equipe-01-DSM-2021/projeto-integrador-2021-1/tree/trunk/planejamento/sprint-1#topo" target="_blank">Entrega parcial da primeira sprint:</a> Protótipo navegável;
+                            </li>
+                            <li>
+                                <a href="https://github.com/Equipe-01-DSM-2021/projeto-integrador-2021-1/tree/trunk/planejamento/sprint-2#topo" target="_blank">Entrega parcial da segunda sprint:</a> Análise de dados com Jupyter Notebook;
+                            </li>
+                            <li>
+                                <a href="https://github.com/Equipe-01-DSM-2021/projeto-integrador-2021-1/tree/trunk/planejamento/sprint-3#topo" target="_blank">Entrega parcial da terceira sprint:</a> Site e mais análise de dados;
+                            </li>
+                            <li>
+                                <a href="https://github.com/Equipe-01-DSM-2021/projeto-integrador-2021-1/tree/trunk/planejamento/sprint-4#topo" target="_blank">Entrega final (quarta sprint):</a> Aplicação completa.
+                            </li>
+                        </ul>
                     </section>
                 </div>
             </div>
-            
-            <!--planejamento-->
-            <div id="planning">
-                <div class="about-content">
-                    <section>
-                        <h1 id="anchor-planning">Planejamento</h1>
-                        <p>
-                            Para o desenvolvimento do projeto foi preciso a organização dos alunos em grupos, de 5 a 9 integrantes, seguindo a metodologia ágil do SCRUM. Logo, em cada grupo foi selecionado o integrante que desempenharia o papel de Scrum Master e os demais representariam o time de desenvolvimento.
-                        </p>
-                        <p>
-                            Além dos grupos de alunos, foi contado também a presença de dois professores principais,  que foram responsáveis pela orientação dos alunos quanto ao processo (denominado "professor M2"), que também estava a frente dos Masters de cada grupo, e um professor que ficaria encarregado de representar um cliente, para qual os times devessem atender os desejos e requisições, claro, recebendo feedbacks em troca.
-                        </p>
-                    </section>
-                    <div class="img-container">
-                        <img src="../static/img/flaticon-planning.png" alt="Planejamento">
-                    </div>
-                </div>
-            </div>
+        </main>
 
-            <!--desenvolvimento-->
-            <div id="development">
-                <div class="about-content">
-                    <div class="img-container">
-                        <img src="../static/img/flaticon-development.svg" alt="Desenvolvimento">
-                    </div>
-                    <section>
-                        <h1 id="anchor-development">Desenvolvimento</h1>
-                        <p>
-                            Dada a largada, os times ficaram encarregados de todas as tarefas para o desenvolvimento de uma aplicação, desde o levantamento de requisitos até absorver os conhecimentos necessários para satisfazer os desejos do cliente e apresentar, com entregas parciais incrementais, o projeto a cada final de sprint.
-                        </p>
-                        <p></p>
-                            Como a metodologia utilizada foi o SCRUM, foi definido que cada sprint (intervalo de tempo em que os grupos trabalhariam no projeto) seria de 3 semanas cada, totalizando 4 sprints até a entrega final do projeto.
-                        </p>
-                    </section>
-                </div>
-            </div>
-        </div>
-
-        <!--resultados-->
-        <div id="results">
-            <section>
-                <h1 id="anchor-results">Resultados</h2>
-                <p id="results-intro">
-                    Como a cada final de sprint foi apresentado uma parte do projeto, é possível, através dos links abaixo, observar os esforços da equipe e seus resultados a cada 3 semanas, finalizando o projeto com 3 entregas parciais e a entrega final, que é a aplicação completa, atendendo a todos os requisitos levantados.
-                </p>
-
-                <ul>
-                    <li>
-                        <a href="https://github.com/Equipe-01-DSM-2021/projeto-integrador-2021-1/tree/trunk/planejamento/sprint-1#topo" target="_blank">Entrega parcial da primeira sprint:</a> Protótipo navegável;
-                    </li>
-                    <li>
-                        <a href="https://github.com/Equipe-01-DSM-2021/projeto-integrador-2021-1/tree/trunk/planejamento/sprint-2#topo" target="_blank">Entrega parcial da segunda sprint:</a> Análise de dados com Jupyter Notebook;
-                    </li>
-                    <li>
-                        <a href="https://github.com/Equipe-01-DSM-2021/projeto-integrador-2021-1/tree/trunk/planejamento/sprint-3#topo" target="_blank">Entrega parcial da terceira sprint:</a> Site e mais análise de dados;
-                    </li>
-                    <li>
-                        <a href="https://github.com/Equipe-01-DSM-2021/projeto-integrador-2021-1/tree/trunk/planejamento/sprint-4#topo" target="_blank">Entrega final (quarta sprint):</a> Aplicação completa.
-                    </li>
-                </ul>
-            </section>
-        </div>
-    </div>
-</main>
-
-  <!-- Modal de dúvidas frequentes -->
-  <div class="modal-overlay-help">
-    <div class="modal">
-      <div class="modal-header">
-        <h2>Dúvidas Rápidas</h2>
-        <img id="close" src="../static/img/icon-close.png" alt="Fechar janela" onclick="Modal.toggleHelp()" />
-      </div>
-
-      <div class="questions">
-        <div class="question">
-          <h3>Como fazer uma busca?</h3>
-          <p>Selecione uma região ou cidade no menu de busca,&nbsp;assim como o "Cargo" e o “Ano”,&nbsp;e clique no ícone da lupa.
-          </p>
-        </div>
-
-        <div class="question">
-          <h3>Como ampliar os gráficos?</h3>
-          <p>Clique no ícone de expandir,&nbsp;localizado no canto inferior direito de cada card.</p>
-        </div>
-
-        <div class="question">
-          <h3>Como exportar os dados?</h3>
-          <p>Clique no ícone de download,&nbsp;localizado no canto inferior direito de cada card.</p>
-        </div>
-
-        <div class="question">
-          <h3>Como comparar regiões?</h3>
-          <p>Há uma área dedicada à comparação entre regiões,&nbsp;<a href="/search-regions"> clique aqui</a> para fazer a busca.</p>
-        </div>
-
-      </div>
-      <small>Não encontrou o que procurava? Cheque o <a
-          href="https://github.com/Equipe-01-DSM-2021/projeto-integrador-2021-1" target="_blank"> Manual </a> </small>
-    </div>
-  </div>
-  <footer>
-    <a href="https://www.flaticon.com/packs/data-science-14?word=data%20science" target="_blank">Ícones feitos por Smashicons (www.flaticon.com)</a>
-  </footer>
-</body>
+        <footer>
+            <a href="https://www.flaticon.com/packs/data-science-14?word=data%20science" target="_blank">Ícones feitos por Smashicons (www.flaticon.com)</a>
+        </footer>
+    </body>
 </html>
