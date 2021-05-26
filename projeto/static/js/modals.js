@@ -1,5 +1,5 @@
 const Modal = {
-  toggleZoom(chartCod, chartTitle) {
+  toggleZoom(chartCod, chartTitle, labelStringY) {
     // Ativação do modal
     document.querySelector(".modal-overlay").classList.toggle("active");
 
@@ -37,9 +37,13 @@ const Modal = {
                 yAxes: [{
                     ticks: {
                         beginAtZero: true
+                    },
+                    scaleLabel: {
+                      display: true,
+                      labelString: labelStringY
                     }
-                }],
-            },
+                }]
+            }
         }
     });
 
