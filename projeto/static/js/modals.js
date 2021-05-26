@@ -1,7 +1,7 @@
 const Modal = {
 
   // MODAL ZOOM
-  toggleZoom(chartCod, chartTitle, labelStringY) {
+  toggleZoom(chartCod, chartTitle, labelStringY, chartType) {
     // Ativação do modal
     document.querySelector(".modal-overlay").classList.toggle("active");
 
@@ -19,7 +19,7 @@ const Modal = {
     Chart.defaults.global.defaultFontColor = "#50525f";
     var ctx = document.getElementById('chart-zoom').getContext('2d');
     var myChart = new Chart(ctx, {
-        type: 'bar',
+        type: chartType,
         data: {
             labels: global.dataKeys[chartCod],
             datasets: [{
