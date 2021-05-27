@@ -1,7 +1,9 @@
 from flask import Flask, render_template, request
 from flask import jsonify
-from utils.getData import SearchForColumn
-from utils.ageData import ageComparisonYoung, ageComparisonSenior, incomeComparison
+from utils.electorateData import citySearch
+from utils.ageComparison import ageComparisonYoung, ageComparisonSenior
+from utils.incomeComparison import incomeComparison
+from utils.evolutionComparison import evolutionComparison
 from flask import Flask
 from flask_cors import CORS
 from os import walk
@@ -53,10 +55,12 @@ def searchData():
     for path, _, files in walk('..\jupyter-notebooks\data'):
         pathData = str(path)
 
-    csvPath = pathData + f"\perfil_eleitorado_{year}.csv"
+    csvPaths = []
+    csvPaths.append(pathData + f"\perfil_eleitorado_{year}.csv")
+    csvPaths.append(pathData + f"\consulta_cand_2018_BRASIL.csv")
 
     # executando a busca e retornando o resultado
-    result = SearchForColumn(csvPath, city.upper())
+    result = citySearch(city.upper(), csvPaths)
 
     return jsonify(result)
 
@@ -83,7 +87,20 @@ def comparisonData():
     elif comparison == 'renda':
         csvPath = pathData + f"\cadastro_central_de_empresas.csv"
         result = incomeComparison(csvPath)
+    else:
+        csvPaths = []
+        csvPaths.append(pathData + f"\eleitorado_municipio_2014.csv")
+        csvPaths.append(pathData + f"\eleitorado_municipio_2016.csv")
+        csvPaths.append(pathData + f"\eleitorado_municipio_2018.csv")
+        csvPaths.append(pathData + f"\eleitorado_municipio_2020.csv")
 
+        if year == 2022:
+            csvPaths.append(pathData + f"\eleitorado_municipio_2022.csv")
+        elif year == 2024:
+            csvPaths.append(pathData + f"\eleitorado_municipio_2022.csv")
+            csvPaths.append(pathData + f"\eleitorado_municipio_2024.csv")
+
+        result = evolutionComparison(year, csvPaths)
     return jsonify(result)
 
 
