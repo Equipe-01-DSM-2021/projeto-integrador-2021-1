@@ -19,16 +19,16 @@ def citySearch(city, csvPaths):
 
     # Alterações necessárias
     ds_genero_string = df_result["DS_GENERO"].value_counts().to_json()
-    ds_grau_escolaridade_string = df_result["DS_GRAU_ESCOLARIDADE"].value_counts(
+    ds_grau_escolaridade = df_result["DS_GRAU_ESCOLARIDADE"].value_counts(
     ).to_json()
-    ds_estado_civil_string = df_result["DS_ESTADO_CIVIL"].value_counts(
+    ds_estado_civil = df_result["DS_ESTADO_CIVIL"].value_counts(
     ).to_json()
 
-    ds_faixa_etaria_string = df_result["DS_FAIXA_ETARIA"].value_counts(
+    ds_faixa_etaria = df_result["DS_FAIXA_ETARIA"].value_counts(
     ).to_json()
-    ds_faixa_etaria_string = ds_faixa_etaria_string.replace("  ", "")
+    ds_faixa_etaria = ds_faixa_etaria.replace("  ", "")
 
-    cards_eleitorado = '{' + f'"DS_GRAU_ESCOLARIDADE": {ds_grau_escolaridade_string}, "DS_ESTADO_CIVIL": {ds_estado_civil_string}, "DS_FAIXA_ETARIA": {ds_faixa_etaria_string}' + '}'
+    cards_eleitorado = '{' + f'"Escolaridade": {ds_grau_escolaridade}, "Estado_Civil": {ds_estado_civil}, "Faixa_Etaria": {ds_faixa_etaria}' + '}'
     eleitorado = cards_eleitorado.replace(
         '\n', ' ').replace('\r', '')
 
@@ -60,8 +60,8 @@ def citySearch(city, csvPaths):
     candidato = iter_csv_candidato.query(
         'DS_CARGO == "PRESIDENTE" and DS_SIT_TOT_TURNO == "ELEITO"').to_json()
 
-    cards = '{ "cards": [' + eleitorado + '], "cardCandidato": [' + \
-        candidato + '], "cardNomeSocial": [{' + nomeSocial + '}]}'
+    cards = '{ "cards": [' + eleitorado + '], "cardNomeSocial": [' + \
+        nomeSocial + '], "cardCandidato": [{' + candidato + '}]}'
 
     print(cards)
     return cards
