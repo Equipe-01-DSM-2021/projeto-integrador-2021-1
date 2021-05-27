@@ -7,6 +7,8 @@ from utils.evolutionComparison import evolutionComparison
 from flask import Flask
 from flask_cors import CORS
 from os import walk
+import datetime
+import numpy as np
 
 app = Flask(__name__)
 CORS(app)
@@ -57,7 +59,17 @@ def searchData():
 
     csvPaths = []
     csvPaths.append(pathData + f"\perfil_eleitorado_{year}.csv")
-    csvPaths.append(pathData + f"\consulta_cand_2018_BRASIL.csv")
+
+    # Carrega CSVs do ano eleitoral escolhido
+    federal = np.arange(1994, datetime.date.today().year+4, 4).tolist()
+    municipal = np.arange(1996, datetime.date.today().year+4, 4).tolist()
+
+    if int(year) in federal:
+        csvPaths.append(pathData + f'\consulta_cand_{year}_BRASIL.csv')
+    elif int(year) in municipal:
+        csvPaths.append(pathData + f'\consulta_cand_{year}_SP.csv')
+    else:
+        print("Escolha um ano válido! Volte ao início do notebook, altere o ano e rode aquela e esta célula novamente")
 
     # executando a busca e retornando o resultado
     result = citySearch(city.upper(), csvPaths)

@@ -48,23 +48,20 @@ def citySearch(city, csvPaths):
 
     # CANDIDATO ELEITO
     # Geração do CSV de candidato
-    # col_list_candidato = ["NR_TURNO", "NM_UE", "DS_CARGO",
-    #                       "NM_CANDIDATO", "SG_PARTIDO",
-    #                       "DS_SIT_TOT_TURNO", "ST_REELEICAO"]
+    col_list_candidato = ["NR_TURNO", "NM_UE", "DS_CARGO",
+                          "NM_CANDIDATO", "SG_PARTIDO",
+                          "DS_SIT_TOT_TURNO", "ST_REELEICAO"]
 
-    # iter_csv_candidato = pd.read_csv(csvPaths[0], usecols=col_list_candidato,
-    #                                  sep=';', encoding='iso-8859-1',
-    #                                  error_bad_lines=False)
+    iter_csv_candidato = pd.read_csv(csvPaths[1], usecols=col_list_candidato,
+                                     sep=';', encoding='iso-8859-1',
+                                     error_bad_lines=False)
 
     # # Gerando string
-    # candidato = iter_csv_candidato.query(
-    #     'DS_CARGO == "PRESIDENTE" and DS_SIT_TOT_TURNO == "ELEITO"').to_json()
+    candidato = iter_csv_candidato.query(
+        'DS_CARGO == "PRESIDENTE" and DS_SIT_TOT_TURNO == "ELEITO"').to_json()
 
-    # cards = '{ "cards": [' + eleitorado + '], "cardCandidato": [' + \
-    #     candidato + '], "cardNomeSocial": [{' + nomeSocial + '}]}'
-
-    cards = '{ "cards": [' + eleitorado + \
-        '], "cardNomeSocial": [{' + nomeSocial + '}]}'
+    cards = '{ "cards": [' + eleitorado + '], "cardCandidato": [' + \
+        candidato + '], "cardNomeSocial": [{' + nomeSocial + '}]}'
 
     print(cards)
     return cards
