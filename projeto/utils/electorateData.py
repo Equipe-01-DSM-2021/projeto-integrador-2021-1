@@ -28,7 +28,7 @@ def citySearch(city, csvPaths):
     ).to_json()
     ds_faixa_etaria_string = ds_faixa_etaria_string.replace("  ", "")
 
-    cards_eleitorado = '{' + f'"DS_GENERO": {ds_genero_string}, "DS_GRAU_ESCOLARIDADE": {ds_grau_escolaridade_string}, "DS_ESTADO_CIVIL": {ds_estado_civil_string}, "DS_FAIXA_ETARIA": {ds_faixa_etaria_string}' + '}'
+    cards_eleitorado = '{' + f'"DS_GRAU_ESCOLARIDADE": {ds_grau_escolaridade_string}, "DS_ESTADO_CIVIL": {ds_estado_civil_string}, "DS_FAIXA_ETARIA": {ds_faixa_etaria_string}' + '}'
     eleitorado = cards_eleitorado.replace(
         '\n', ' ').replace('\r', '')
 

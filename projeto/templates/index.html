@@ -364,51 +364,56 @@
             
             //configurando o gráfico
             contCanvas = 0;
+
+            // GERANDO CARDS DO ELEITORADO 
             data.cards.forEach(function(card){
-              Chart.defaults.global.defaultFontColor = "#ffff";
-              var ctx = document.getElementById("chart-" + contCanvas).getContext("2d");
-              var myChart = new Chart(ctx, {
-                type: "bar",
-                data: {
-                  labels: Object.keys(card),
-                  datasets: [
-                    {
-                      label: "Total",
-                      data: Object.values(card),
-                      backgroundColor: "rgba(154, 219, 249, 0.4)",
-                      borderColor: "rgba(154, 219, 249)",
-                      borderWidth: 1,
+              Object.keys(card).forEach(function(cardKey){
+
+                Chart.defaults.global.defaultFontColor = "#ffff";
+                var ctx = document.getElementById("chart-" + contCanvas).getContext("2d");
+                var myChart = new Chart(ctx, {
+                  type: "bar",
+                  data: {
+                    labels: Object.keys(card[cardKey]),
+                    datasets: [
+                      {
+                        label: "Total",
+                        data: Object.values(card[cardKey]),
+                        backgroundColor: "rgba(154, 219, 249, 0.4)",
+                        borderColor: "rgba(154, 219, 249)",
+                        borderWidth: 1,
+                      },
+                    ],
+                  },
+                  options: {
+                    legend: {
+                      display: false,
                     },
-                  ],
-                },
-                options: {
-                  legend: {
-                    display: false,
-                  },
-                  scales: {
-                    yAxes: [
-                      {
-                        ticks: {
-                          beginAtZero: true,
+                    scales: {
+                      yAxes: [
+                        {
+                          ticks: {
+                            beginAtZero: true,
+                          },
                         },
-                      },
-                    ],
-                    xAxes: [
-                      {
-                        display: false,
-                      },
-                    ],
+                      ],
+                      xAxes: [
+                        {
+                          display: false,
+                        },
+                      ],
+                    },
                   },
-                },
-              });
+                });
 
-              // Salvando os dados recebidos pelo back em variáveis globais
-              global.dataKeys.push(Object.keys(card));
-              global.dataValues.push(Object.values(card));
-              global.dataAll.push(card);
+                // Salvando os dados recebidos pelo back em variáveis globais
+                global.dataKeys.push(Object.keys(card[cardKey]));
+                global.dataValues.push(Object.values(card[cardKey]));
+                global.dataAll.push(card[cardKey]);
 
-              // Acrescentando 1 no contCanvas
-              contCanvas = contCanvas + 1;
+                // Acrescentando 1 no contCanvas
+                contCanvas = contCanvas + 1;
+              })
             });
 
             // verificando variáveis globais
