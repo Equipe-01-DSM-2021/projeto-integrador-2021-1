@@ -258,6 +258,15 @@
             results = document.getElementById("search-result");
             data = JSON.parse(data);
 
+            // Definindo nome social
+            data.cardNomeSocial.forEach(function(card){
+              Object.keys(card).forEach(function(cardKey){
+                objNomeSocial = card[cardKey]
+              })
+            })
+            nomeSocial = JSON.stringify(objNomeSocial)
+            console.log(nomeSocial)
+
             //zerando variáveis globais
             global.dataKeys = [];
             global.dataValues = [];
@@ -359,10 +368,25 @@
                   </div>
                 </div>
 
+                <div class="member">
+                    <h5>Uso de nome social</h5>
+                    <h6>` + nomeSocial + ` eleitores usaram nome social.</h5>
+                  <div class="icon-actions">
+                    <a id="data" href="https://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais-1/repositorio-de-dados-eleitorais" target="_blank">Fonte dos dados</a>
+                    <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
+                    <img
+                      id="download"
+                      src="../static/img/icon-download.svg"
+                      alt="Baixar"
+                      onclick="Modal.toggleDownload()"
+                    />
+                  </div>
+                </div>
+
               </div>
           `;
             
-            //configurando o gráfico
+            //zerando o contador que define o
             contCanvas = 0;
 
             // GERANDO CARDS DO ELEITORADO 
@@ -406,6 +430,12 @@
                   },
                 });
 
+
+                // GERANDO CARDS DE NOME SOCIAL
+                data.cardNomeSocial.forEach(function(card){
+                  
+                });
+
                 // Salvando os dados recebidos pelo back em variáveis globais
                 global.dataKeys.push(Object.keys(card[cardKey]));
                 global.dataValues.push(Object.values(card[cardKey]));
@@ -415,6 +445,9 @@
                 contCanvas = contCanvas + 1;
               })
             });
+
+            // Adicionando os dados do NOME SOCIAL na variável dataAll
+            global.dataAll.push(objNomeSocial);
 
             // verificando variáveis globais
             console.log(global.dataKeys)

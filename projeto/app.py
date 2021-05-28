@@ -50,7 +50,7 @@ def searchData():
     city = request.args.get('city')
     role = request.args.get('role')
     year = request.args.get('year')
-    print(f'Cidade: {city}, ano: {year}')
+    print(f'Cidade: {city}, ano: {year}, cargo: {role}')
 
     # apontando o arquivo para a busca (buscando o caminho)
     pathData = ''

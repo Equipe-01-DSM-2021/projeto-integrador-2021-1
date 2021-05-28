@@ -92,6 +92,18 @@
     font-weight: normal;
 }
 
+.icon-actions #data {
+    text-align: center;
+    text-decoration: none;
+    color:var(--color-primary);
+    font-family: Roboto, sans-serif;
+    font-size: 14px;
+}
+
+.icon-actions #data:hover {
+    filter: brightness(90%);
+}
+
 .graphic-description h2 {
     text-align: center;
 }
