@@ -1,7 +1,6 @@
 import pandas as pd
 
-
-def citySearch(city, csvPaths):
+def citySearch(city, cargoDesejado, csvPaths):
     # CARACTERÍSTICAS GERAIS DO ELEITORADO
     col_list_eleitorado = ["NM_MUNICIPIO", "DS_GENERO", "DS_GRAU_ESCOLARIDADE",
                            "QT_ELEITORES_INC_NM_SOCIAL", "DS_FAIXA_ETARIA", "DS_ESTADO_CIVIL"]
@@ -57,11 +56,29 @@ def citySearch(city, csvPaths):
                                      error_bad_lines=False)
 
     # # Gerando string
-    candidato = iter_csv_candidato.query(
-        'DS_CARGO == "PRESIDENTE" and DS_SIT_TOT_TURNO == "ELEITO"').to_json()
+
+    # Verificando cargo desejado e criando query a partir disso
+    if cargoDesejado == "GOVERNADOR":
+        candidato = iter_csv_candidato.query(
+            f'DS_CARGO == "{cargoDesejado}" and DS_SIT_TOT_TURNO == "ELEITO" and NM_UE == "SÃO PAULO"')
+
+    elif cargoDesejado == "PREFEITO":
+        candidato = iter_csv_candidato.query(
+            f'DS_CARGO == "{cargoDesejado}" and DS_SIT_TOT_TURNO == "ELEITO" and NM_UE == "{city}"')
+
+    else:
+        candidato = iter_csv_candidato.query(
+            f'DS_CARGO == "{cargoDesejado}" and DS_SIT_TOT_TURNO == "ELEITO"')     
+
+    candidato_result = candidato.drop(
+        columns=["NM_UE"], axis=1)
+    candidato_result = candidato_result.drop(
+        columns=["DS_SIT_TOT_TURNO"], axis=1).to_json()
+
+
 
     cards = '{ "cards": [' + eleitorado + '], "cardCandidato": [' + \
-        candidato + '], "cardNomeSocial": [{' + nomeSocial + '}]}'
+        candidato_result + '], "cardNomeSocial": [{' + nomeSocial + '}]}'
 
     print(cards)
     return cards
