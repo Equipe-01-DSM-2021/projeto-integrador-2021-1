@@ -135,7 +135,7 @@
               <div class="filter">
                 <label for="role">Cargo:</label>
                 <select name="role" id="role">
-                  <option value="default"></option>
+                  <option selected value="default"></option>
                   <option value="presidente">Presidente</option>
                   <option value="governador">Governador</option>
                   <option value="prefeito">Prefeito</option>
@@ -145,11 +145,11 @@
               <!-- Filtro de ano -->
               <div class="filter">
                 <label for="year">Ano:</label>
-                <select name="year" id="year">
-                  <option value="default"></option>
-                  <option value="2020">2020</option>
-                  <option value="2018">2018</option>
-                  <option value="2016">2016</option>
+                <select name="year" id="year" disabled>
+                  <option id='default' value="default" selected>Selecione um cargo primeiro!</option>
+                  <option id='year-vinte' value="2020">2020</option>
+                  <option id='year-dezoito' value="2018">2018</option>
+                  <option id='year-dezesseis' value="2016">2016</option>
                 </select>
               </div>
             </div>
@@ -208,7 +208,62 @@
     <!-- Script do Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
 
-    <script>
+    <script type="text/javascript">
+
+      // usando o jquery para filtrar os anos de acordo com os cargos selecionados
+      $(document).ready(function () {
+        $("#role").change(function(){ // 'change' identifica quando há mudanças no campo
+          var searchRole = $(this).val(); // salva o valor do campo na variável searchRole
+
+          switch (searchRole) {
+            case 'default': // Não permite valores vazios
+              $('#year').val("default").change();
+              $('#year').attr('disabled','disabled');
+              break;
+
+            case 'presidente':
+              // Configurações gerais
+              $('#default').hide();
+              $('#year').val("").change();
+              $('#year').removeAttr('disabled');
+
+              // Esconde anos que não terão esse tipo de eleição
+              $('#year-vinte, #year-dezesseis').hide();
+
+              // Exibe anos que terão esse tipo de eleição
+              $('#year-dezoito').show();
+              break;
+
+            case 'prefeito':
+              // Configurações gerais
+              $('#default').hide();
+              $('#year').val("").change();
+              $('#year').removeAttr('disabled');
+
+              // Esconde anos que não terão esse tipo de eleição
+              $('#year-dezoito').hide();
+
+              // Exibe anos que terão esse tipo de eleição
+              $('#year-vinte, #year-dezesseis').show();
+              break;
+
+            case 'governador':
+              // Configurações gerais
+              $('#default').hide();
+              $('#year').val("").change();
+              $('#year').removeAttr('disabled');
+
+              // Esconde anos que não terão esse tipo de eleição
+              $('#year-vinte, #year-dezesseis').hide();
+
+              // Exibe anos que terão esse tipo de eleição
+              $('#year-dezoito').show();
+              break;
+
+          }
+        });
+      });
+
       // variáveis globais
       function global() {
         var dataKeys = []; // Dados para zoom
@@ -238,6 +293,10 @@
 
         var roleField = document.querySelector("#role");
         var role = roleField.value;
+
+        // Limpa o que tiver no lugar dis resultados
+        results = document.getElementById("search-result");
+        results.innerHTML = '<p>Aguarde, a sua busca está sendo feita!</p>'
 
         //gerando os gráficos com os dados recebidos por json
         $.ajax({
@@ -300,7 +359,7 @@
                   <div class="graphic-description">
                     <!-- DADOS DO GRÁFICO -->
                     <h2>Escolaridade</h2>
-                    <a href="https://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais-1/repositorio-de-dados-eleitorais" target="_blank">Fonte dos dados</a>
+                    <a href="https://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais-1/repositorio-de-dados-eleitorais" target="_blank">Dados do TSE</a>
 
                     <div class="icon-actions">
                       <!-- Ícone de zoom -->
@@ -331,7 +390,7 @@
                   <div class="graphic-description">
                     <!-- DADOS DO GRÁFICO -->
                     <h2>Estado civil</h2>
-                    <a href="https://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais-1/repositorio-de-dados-eleitorais" target="_blank">Fonte dos dados</a>
+                    <a href="https://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais-1/repositorio-de-dados-eleitorais" target="_blank">Dados do TSE</a>
 
                     <div class="icon-actions">
                       <!-- Ícone de zoom -->
@@ -362,7 +421,7 @@
                   <div class="graphic-description">
                     <!-- DADOS DO GRÁFICO -->
                     <h2>Faixa etária</h2>
-                    <a href="https://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais-1/repositorio-de-dados-eleitorais" target="_blank">Fonte dos dados</a>
+                    <a href="https://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais-1/repositorio-de-dados-eleitorais" target="_blank">Dados do TSE</a>
 
                     <div class="icon-actions">
                       <!-- Ícone de zoom -->
@@ -387,7 +446,7 @@
                     <h5>Uso de nome social</h5>
                     <h6>` + nomeSocial + ` eleitores usaram nome social</h6>
                   <div class="icon-actions">
-                    <a id="data" href="https://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais-1/repositorio-de-dados-eleitorais" target="_blank">Fonte dos dados</a>
+                    <a id="data" href="https://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais-1/repositorio-de-dados-eleitorais" target="_blank">Dados do TSE</a>
                     <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
                     <img
                       id="download"
@@ -404,7 +463,7 @@
                     <h6>Ganhou a eleição no `+ dataCandidatos[0]+`o turno</h6>
                     <h6>Já era representante? `+ dataCandidatoReeleicao +`</h6>
                   <div class="icon-actions">
-                    <a id="data" href="https://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais-1/repositorio-de-dados-eleitorais" target="_blank">Fonte dos dados</a>
+                    <a id="data" href="https://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais-1/repositorio-de-dados-eleitorais" target="_blank">Dados do TSE</a>
                     <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
                     <img
                       id="download"

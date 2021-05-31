@@ -71,7 +71,7 @@
               </div>
               <!-- Filtro de ano -->
               <div class="filter">
-                <label for="year">Ano:</label>
+                <label id='labelYear' for="year">Ano:</label>
                 <select name="year" id="year">
                   <option value="default"></option>
                   <option value="2020">2020</option>
@@ -135,6 +135,27 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
 
     <script>
+      // usando o jquery para filtrar os anos de acordo com os cargos selecionados
+      $("#comparison").change(function(){ // 'change' identifica quando há mudanças no campo
+        var searchComparison = $(this).val(); // salva o valor do campo na variável searchRole
+
+        switch (searchComparison) {
+          case 'jovens':
+            $('#year, #labelYear').show();
+            break;
+          case 'idosos':
+            $('#year, #labelYear').show();
+            break;
+          case 'renda':
+            $('#year, #labelYear').hide();
+            break;
+          case 'evolucao':
+            $('#year, #labelYear').hide();
+            break;
+        }
+
+      });
+
       // variáveis globais
       function global() {
         var dataKeys = []; // Dados para zoom
@@ -169,6 +190,10 @@
         } else {
           typeChart = 'line';
         };
+      
+        // Limpa o que tiver no lugar dis resultados
+        results = document.getElementById("search-result");
+        results.innerHTML = '<p>Aguarde, a sua busca está sendo feita!</p>'
 
         $.ajax({
           url: "http://localhost:5000/data-regions?comparison=" + comparison + "&year=" + year,
@@ -209,7 +234,7 @@
                     <div class="graphic-description">
                       <!-- DADOS DO GRÁFICO -->
                       <h2>Litoral Norte</h2>
-                      <a href="https://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais-1/repositorio-de-dados-eleitorais" target="_blank">Fonte dos dados</a>
+                      <a href="https://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais-1/repositorio-de-dados-eleitorais" target="_blank">Dados do IBGE</a>
 
                       <div class="icon-actions">
                         <!-- Ícone de zoom -->
@@ -241,7 +266,7 @@
                     <div class="graphic-description">
                       <!-- DADOS DO GRÁFICO -->
                       <h2>Região Bragantina</h2>
-                      <a href="https://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais-1/repositorio-de-dados-eleitorais" target="_blank">Fonte dos dados</a>
+                      <a href="https://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais-1/repositorio-de-dados-eleitorais" target="_blank">Dados do IBGE</a>
 
                       <div class="icon-actions">
                         <!-- Ícone de zoom -->
@@ -273,7 +298,7 @@
                     <div class="graphic-description">
                       <!-- DADOS DO GRÁFICO -->
                       <h2>Serra da Mantiqueira</h2>
-                      <a href="https://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais-1/repositorio-de-dados-eleitorais" target="_blank">Fonte dos dados</a>
+                      <a href="https://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais-1/repositorio-de-dados-eleitorais" target="_blank">Dados do IBGE</a>
 
                       <div class="icon-actions">
                         <!-- Ícone de zoom -->
@@ -305,7 +330,7 @@
                     <div class="graphic-description">
                       <!-- DADOS DO GRÁFICO -->
                       <h2>Vale Histórico</h2>
-                      <a href="https://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais-1/repositorio-de-dados-eleitorais" target="_blank">Fonte dos dados</a>
+                      <a href="https://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais-1/repositorio-de-dados-eleitorais" target="_blank">Dados do IBGE</a>
 
                       <div class="icon-actions">
                         <!-- Ícone de zoom -->
@@ -337,7 +362,7 @@
                     <div class="graphic-description">
                       <!-- DADOS DO GRÁFICO -->
                       <h2>Vale do Paraíba</h2>
-                      <a href="https://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais-1/repositorio-de-dados-eleitorais" target="_blank">Fonte dos dados</a>
+                      <a href="https://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais-1/repositorio-de-dados-eleitorais" target="_blank">Dados do IBGE</a>
 
                       <div class="icon-actions">
                         <!-- Ícone de zoom -->
@@ -369,7 +394,7 @@
                     <div class="graphic-description">
                       <!-- DADOS DO GRÁFICO -->
                       <h2>Cobertura da Vanguarda</h2>
-                      <a href="https://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais-1/repositorio-de-dados-eleitorais" target="_blank">Fonte dos dados</a>
+                      <a href="https://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais-1/repositorio-de-dados-eleitorais" target="_blank">Dados do IBGE</a>
 
                       <div class="icon-actions">
                         <!-- Ícone de zoom -->
@@ -461,7 +486,7 @@
                     <div class="graphic-description">
                       <!-- DADOS DO GRÁFICO -->
                       <h2>Litoral Norte</h2>
-                      <a href="https://cidades.ibge.gov.br/brasil/sp/sao-jose-dos-campos/pesquisa/19/29765?localidade1=355410&localidade2=355030" target="_blank">Fonte dos dados</a>
+                      <a href="https://cidades.ibge.gov.br/brasil/sp/sao-jose-dos-campos/pesquisa/19/29765?localidade1=355410&localidade2=355030" target="_blank">Dados do IBGE</a>
 
                       <div class="icon-actions">
                         <!-- Ícone de zoom -->
@@ -493,7 +518,7 @@
                     <div class="graphic-description">
                       <!-- DADOS DO GRÁFICO -->
                       <h2>Região Bragantina</h2>
-                      <a href="https://cidades.ibge.gov.br/brasil/sp/sao-jose-dos-campos/pesquisa/19/29765?localidade1=355410&localidade2=355030" target="_blank">Fonte dos dados</a>
+                      <a href="https://cidades.ibge.gov.br/brasil/sp/sao-jose-dos-campos/pesquisa/19/29765?localidade1=355410&localidade2=355030" target="_blank">Dados do IBGE</a>
 
                       <div class="icon-actions">
                         <!-- Ícone de zoom -->
@@ -525,7 +550,7 @@
                     <div class="graphic-description">
                       <!-- DADOS DO GRÁFICO -->
                       <h2>Serra da Mantiqueira</h2>
-                      <a href="https://cidades.ibge.gov.br/brasil/sp/sao-jose-dos-campos/pesquisa/19/29765?localidade1=355410&localidade2=355030" target="_blank">Fonte dos dados</a>
+                      <a href="https://cidades.ibge.gov.br/brasil/sp/sao-jose-dos-campos/pesquisa/19/29765?localidade1=355410&localidade2=355030" target="_blank">Dados do IBGE</a>
 
                       <div class="icon-actions">
                         <!-- Ícone de zoom -->
@@ -557,7 +582,7 @@
                     <div class="graphic-description">
                       <!-- DADOS DO GRÁFICO -->
                       <h2>Vale Histórico</h2>
-                      <a href="https://cidades.ibge.gov.br/brasil/sp/sao-jose-dos-campos/pesquisa/19/29765?localidade1=355410&localidade2=355030" target="_blank">Fonte dos dados</a>
+                      <a href="https://cidades.ibge.gov.br/brasil/sp/sao-jose-dos-campos/pesquisa/19/29765?localidade1=355410&localidade2=355030" target="_blank">Dados do IBGE</a>
 
                       <div class="icon-actions">
                         <!-- Ícone de zoom -->
@@ -589,7 +614,7 @@
                     <div class="graphic-description">
                       <!-- DADOS DO GRÁFICO -->
                       <h2>Vale do Paraíba</h2>
-                      <a href="https://cidades.ibge.gov.br/brasil/sp/sao-jose-dos-campos/pesquisa/19/29765?localidade1=355410&localidade2=355030" target="_blank">Fonte dos dados</a>
+                      <a href="https://cidades.ibge.gov.br/brasil/sp/sao-jose-dos-campos/pesquisa/19/29765?localidade1=355410&localidade2=355030" target="_blank">Dados do IBGE</a>
 
                       <div class="icon-actions">
                         <!-- Ícone de zoom -->
@@ -621,7 +646,7 @@
                     <div class="graphic-description">
                       <!-- DADOS DO GRÁFICO -->
                       <h2>Cobertura da Vanguarda</h2>
-                      <a href="https://cidades.ibge.gov.br/brasil/sp/sao-jose-dos-campos/pesquisa/19/29765?localidade1=355410&localidade2=355030" target="_blank">Fonte dos dados</a>
+                      <a href="https://cidades.ibge.gov.br/brasil/sp/sao-jose-dos-campos/pesquisa/19/29765?localidade1=355410&localidade2=355030" target="_blank">Dados do IBGE</a>
 
                       <div class="icon-actions">
                         <!-- Ícone de zoom -->
@@ -713,7 +738,7 @@
                     <div class="graphic-description">
                       <!-- DADOS DO GRÁFICO -->
                       <h2>Litoral Norte</h2>
-                      <a href="https://cidades.ibge.gov.br/brasil/sp/sao-jose-dos-campos/pesquisa/19/29765?localidade1=355410&localidade2=355030" target="_blank">Fonte dos dados</a>
+                      <a href="https://cidades.ibge.gov.br/brasil/sp/sao-jose-dos-campos/pesquisa/19/29765?localidade1=355410&localidade2=355030" target="_blank">Dados do IBGE</a>
 
                       <div class="icon-actions">
                         <!-- Ícone de zoom -->
@@ -745,7 +770,7 @@
                     <div class="graphic-description">
                       <!-- DADOS DO GRÁFICO -->
                       <h2>Região Bragantina</h2>
-                      <a href="https://cidades.ibge.gov.br/brasil/sp/sao-jose-dos-campos/pesquisa/19/29765?localidade1=355410&localidade2=355030" target="_blank">Fonte dos dados</a>
+                      <a href="https://cidades.ibge.gov.br/brasil/sp/sao-jose-dos-campos/pesquisa/19/29765?localidade1=355410&localidade2=355030" target="_blank">Dados do IBGE</a>
 
                       <div class="icon-actions">
                         <!-- Ícone de zoom -->
@@ -777,7 +802,7 @@
                     <div class="graphic-description">
                       <!-- DADOS DO GRÁFICO -->
                       <h2>Serra da Mantiqueira</h2>
-                      <a href="https://cidades.ibge.gov.br/brasil/sp/sao-jose-dos-campos/pesquisa/19/29765?localidade1=355410&localidade2=355030" target="_blank">Fonte dos dados</a>
+                      <a href="https://cidades.ibge.gov.br/brasil/sp/sao-jose-dos-campos/pesquisa/19/29765?localidade1=355410&localidade2=355030" target="_blank">Dados do IBGE</a>
 
                       <div class="icon-actions">
                         <!-- Ícone de zoom -->
@@ -809,7 +834,7 @@
                     <div class="graphic-description">
                       <!-- DADOS DO GRÁFICO -->
                       <h2>Vale Histórico</h2>
-                      <a href="https://cidades.ibge.gov.br/brasil/sp/sao-jose-dos-campos/pesquisa/19/29765?localidade1=355410&localidade2=355030" target="_blank">Fonte dos dados</a>
+                      <a href="https://cidades.ibge.gov.br/brasil/sp/sao-jose-dos-campos/pesquisa/19/29765?localidade1=355410&localidade2=355030" target="_blank">Dados do IBGE</a>
 
                       <div class="icon-actions">
                         <!-- Ícone de zoom -->
@@ -841,7 +866,7 @@
                     <div class="graphic-description">
                       <!-- DADOS DO GRÁFICO -->
                       <h2>Vale do Paraíba</h2>
-                      <a href="https://cidades.ibge.gov.br/brasil/sp/sao-jose-dos-campos/pesquisa/19/29765?localidade1=355410&localidade2=355030" target="_blank">Fonte dos dados</a>
+                      <a href="https://cidades.ibge.gov.br/brasil/sp/sao-jose-dos-campos/pesquisa/19/29765?localidade1=355410&localidade2=355030" target="_blank">Dados do IBGE</a>
 
                       <div class="icon-actions">
                         <!-- Ícone de zoom -->
@@ -873,7 +898,7 @@
                     <div class="graphic-description">
                       <!-- DADOS DO GRÁFICO -->
                       <h2>Cobertura da Vanguarda</h2>
-                      <a href="https://cidades.ibge.gov.br/brasil/sp/sao-jose-dos-campos/pesquisa/19/29765?localidade1=355410&localidade2=355030" target="_blank">Fonte dos dados</a>
+                      <a href="https://cidades.ibge.gov.br/brasil/sp/sao-jose-dos-campos/pesquisa/19/29765?localidade1=355410&localidade2=355030" target="_blank">Dados do IBGE</a>
 
                       <div class="icon-actions">
                         <!-- Ícone de zoom -->

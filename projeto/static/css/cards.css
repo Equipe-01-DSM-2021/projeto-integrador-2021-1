@@ -106,18 +106,19 @@
 
 .graphic-description h2 {
     text-align: center;
+    line-height: 120%;
 }
 
 .graphic-description a {
     text-align: center;
     text-decoration: none;
-    color:var(--color-text-in-background);
+    color:var(--color-primary);
     font-family: Roboto, sans-serif;
     font-size: 14px;
 }
 
 .graphic-description a:hover {
-    color: var(--color-primary);
+    filter: brightness(90%);
 }
 
 .icon-actions {

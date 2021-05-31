@@ -1,6 +1,8 @@
 # Jupyter Notebook e CSVs
 jupyter-notebooks/data/*.pdf
 jupyter-notebooks/data/*.csv
+jupyter-notebooks/data/consulta_cand_2016.zip
+jupyter-notebooks/data/perfil_eleitorado_2016.zip
 jupyter-notebooks/.ipynb_checkpoints
 
 # Flask/Python
