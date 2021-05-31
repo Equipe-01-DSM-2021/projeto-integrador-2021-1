@@ -267,6 +267,21 @@
             nomeSocial = JSON.stringify(objNomeSocial)
             console.log(nomeSocial)
 
+            // Definindo os dados dos candidatos
+            dataCandidatos = []
+            data.cardCandidato.forEach(function(card){
+              Object.keys(card).forEach(function(cardKey){
+                dataCandidatos.push(card[cardKey]);
+              })
+            })
+            console.log(dataCandidatos)
+
+            if (dataCandidatos[4] == 'N') {
+              dataCandidatoReeleicao = 'Não'
+            } else {
+              dataCandidatoReeleicao = 'Sim, foi reeleito(a)'
+            }
+
             //zerando variáveis globais
             global.dataKeys = [];
             global.dataValues = [];
@@ -370,7 +385,24 @@
 
                 <div class="member">
                     <h5>Uso de nome social</h5>
-                    <h6>` + nomeSocial + ` eleitores usaram nome social.</h5>
+                    <h6>` + nomeSocial + ` eleitores usaram nome social</h6>
+                  <div class="icon-actions">
+                    <a id="data" href="https://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais-1/repositorio-de-dados-eleitorais" target="_blank">Fonte dos dados</a>
+                    <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
+                    <img
+                      id="download"
+                      src="../static/img/icon-download.svg"
+                      alt="Baixar"
+                      onclick="Modal.toggleDownload()"
+                    />
+                  </div>
+                </div>
+
+                <div class="member">
+                    <h5>Representante eleito</h5>
+                    <h6>Nome: `+ dataCandidatos[2] +` (`+ dataCandidatos[3] +`)</h6>
+                    <h6>Ganhou a eleição no `+ dataCandidatos[0]+`o turno</h6>
+                    <h6>Já era representante? `+ dataCandidatoReeleicao +`</h6>
                   <div class="icon-actions">
                     <a id="data" href="https://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais-1/repositorio-de-dados-eleitorais" target="_blank">Fonte dos dados</a>
                     <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
@@ -447,7 +479,10 @@
             });
 
             // Adicionando os dados do NOME SOCIAL na variável dataAll
-            global.dataAll.push(objNomeSocial);
+            global.dataAll.push(data.cardNomeSocial);
+
+            // Adicionando os dados do CANDIDATO na variável dataAll
+            global.dataAll.push(data.cardCandidato);
 
             // verificando variáveis globais
             console.log(global.dataKeys)
