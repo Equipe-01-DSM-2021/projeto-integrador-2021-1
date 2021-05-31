@@ -106,8 +106,9 @@ def ageComparisonYoung(year, csvPath):
         pct_jovens = abs_jovens / filtroEleitoresTotal
 
         # Gravando a cidade no dataframe acumulador
-        dft = pd.DataFrame({"Macrorregião": [CoberturaVanguarda[cidade]], "Município": [cidade], "Jovens_pct": [
-                           pct_jovens], "Jovens_abs": [abs_jovens]})
+        dft = pd.DataFrame({"Macrorregião": [CoberturaVanguarda[cidade]],
+                            "Município": [cidade], "Jovens_pct": [pct_jovens],
+                            "Jovens_abs": [abs_jovens]})
         dfm = dfm.append(dft)
 
     # Número de muncípios que aparecerão no ranking

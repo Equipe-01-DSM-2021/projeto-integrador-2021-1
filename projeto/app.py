@@ -72,7 +72,7 @@ def searchData():
         print("Escolha um ano válido! Volte ao início do notebook, altere o ano e rode aquela e esta célula novamente")
 
     # executando a busca e retornando o resultado
-    result = citySearch(city.upper(), csvPaths)
+    result = citySearch(city.upper(), role.upper(), csvPaths)
 
     return jsonify(result)
 

@@ -1,9 +1,11 @@
 import pandas as pd
 
-def citySearch(city, cargoDesejado, csvPaths):
+
+def citySearch(city, role, csvPaths):
     # CARACTERÍSTICAS GERAIS DO ELEITORADO
-    col_list_eleitorado = ["NM_MUNICIPIO", "DS_GENERO", "DS_GRAU_ESCOLARIDADE",
-                           "QT_ELEITORES_INC_NM_SOCIAL", "DS_FAIXA_ETARIA", "DS_ESTADO_CIVIL"]
+    col_list_eleitorado = ["NM_MUNICIPIO", "DS_GRAU_ESCOLARIDADE",
+                           "QT_ELEITORES_INC_NM_SOCIAL", "DS_FAIXA_ETARIA",
+                           "DS_ESTADO_CIVIL"]
 
     iter_csv_eleitorado = pd.read_csv(csvPaths[0], usecols=col_list_eleitorado,
                                       delimiter=";", encoding='iso-8859-1',
@@ -17,12 +19,10 @@ def citySearch(city, cargoDesejado, csvPaths):
     df_result.apply(pd.Series.value_counts, axis=1)
 
     # Alterações necessárias
-    ds_genero_string = df_result["DS_GENERO"].value_counts().to_json()
     ds_grau_escolaridade_string = df_result["DS_GRAU_ESCOLARIDADE"].value_counts(
     ).to_json()
     ds_estado_civil_string = df_result["DS_ESTADO_CIVIL"].value_counts(
     ).to_json()
-
     ds_faixa_etaria_string = df_result["DS_FAIXA_ETARIA"].value_counts(
     ).to_json()
     ds_faixa_etaria_string = ds_faixa_etaria_string.replace("  ", "")
@@ -58,24 +58,22 @@ def citySearch(city, cargoDesejado, csvPaths):
     # # Gerando string
 
     # Verificando cargo desejado e criando query a partir disso
-    if cargoDesejado == "GOVERNADOR":
+    if role == "GOVERNADOR":
         candidato = iter_csv_candidato.query(
-            f'DS_CARGO == "{cargoDesejado}" and DS_SIT_TOT_TURNO == "ELEITO" and NM_UE == "SÃO PAULO"')
+            f'DS_CARGO == "{role}" and DS_SIT_TOT_TURNO == "ELEITO" and NM_UE == "SÃO PAULO"')
 
-    elif cargoDesejado == "PREFEITO":
+    elif role == "PREFEITO":
         candidato = iter_csv_candidato.query(
-            f'DS_CARGO == "{cargoDesejado}" and DS_SIT_TOT_TURNO == "ELEITO" and NM_UE == "{city}"')
+            f'DS_CARGO == "{role}" and DS_SIT_TOT_TURNO == "ELEITO" and NM_UE == "{city}"')
 
     else:
         candidato = iter_csv_candidato.query(
-            f'DS_CARGO == "{cargoDesejado}" and DS_SIT_TOT_TURNO == "ELEITO"')     
+            f'DS_CARGO == "{role}" and DS_SIT_TOT_TURNO == "ELEITO"')
 
     candidato_result = candidato.drop(
-        columns=["NM_UE"], axis=1)
+        columns=["NM_UE"], axis=1).reset_index(drop=True)
     candidato_result = candidato_result.drop(
-        columns=["DS_SIT_TOT_TURNO"], axis=1).to_json()
-
-
+        columns=["DS_SIT_TOT_TURNO"], axis=1).squeeze().to_json()
 
     cards = '{ "cards": [' + eleitorado + '], "cardCandidato": [' + \
         candidato_result + '], "cardNomeSocial": [{' + nomeSocial + '}]}'
