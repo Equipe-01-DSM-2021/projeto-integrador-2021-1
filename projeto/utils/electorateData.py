@@ -21,10 +21,13 @@ def citySearch(city, role, csvPaths):
     # Alterações necessárias
     ds_grau_escolaridade_string = df_result["DS_GRAU_ESCOLARIDADE"].value_counts(
     ).to_json()
-    ds_estado_civil_string = df_result["DS_ESTADO_CIVIL"].value_counts(
-    ).to_json()
+
+    ds_estado_civil_string = df_result["DS_ESTADO_CIVIL"].value_counts()
+    ds_estado_civil_string = ds_estado_civil_string[:-1].to_json()
+
     ds_faixa_etaria_string = df_result["DS_FAIXA_ETARIA"].value_counts(
     ).to_json()
+
     ds_faixa_etaria_string = ds_faixa_etaria_string.replace("  ", "")
 
     cards_eleitorado = '{' + f'"DS_GRAU_ESCOLARIDADE": {ds_grau_escolaridade_string}, "DS_ESTADO_CIVIL": {ds_estado_civil_string}, "DS_FAIXA_ETARIA": {ds_faixa_etaria_string}' + '}'
@@ -49,7 +52,7 @@ def citySearch(city, role, csvPaths):
     # Geração do CSV de candidato
     col_list_candidato = ["NR_TURNO", "NM_UE", "DS_CARGO",
                           "NM_CANDIDATO", "SG_PARTIDO",
-                          "DS_SIT_TOT_TURNO", "ST_REELEICAO"]
+                          "DS_SIT_TOT_TURNO"]
 
     iter_csv_candidato = pd.read_csv(csvPaths[1], usecols=col_list_candidato,
                                      sep=';', encoding='iso-8859-1',
