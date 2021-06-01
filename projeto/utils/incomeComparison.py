@@ -90,7 +90,12 @@ def incomeComparison(csvPath):
         dfmc.query('Macrorregião == "REGIÃO BRAGANTINA"').Município.values)]
 
     # Média de salários mensais, por macrorregiões e cidades da cobertura da TV Vanguarda
-    vanguarda = paraiba = historico = litoral = serra = bragantina = []
+    vanguarda = []
+    paraiba = []
+    historico = []
+    litoral = []
+    serra = []
+    bragantina = []
 
     for n in list(range(2008, 2019)):
         vanguarda.append(df_vanguarda[str(n)].mean())
