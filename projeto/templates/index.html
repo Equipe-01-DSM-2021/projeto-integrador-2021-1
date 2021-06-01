@@ -62,7 +62,7 @@
               <div class="filter">
                 <label for="city">Cidade:</label>
                 <select name="city" id="city">
-                  <option value="default"></option>
+                  <option selected disabled value="default"></option>
                   <!-- Cidades do Vale do Paraíba -->
                   <option value="Aparecida">Aparecida</option>
                   <option value="Caçapava">Caçapava</option>
@@ -135,7 +135,7 @@
               <div class="filter">
                 <label for="role">Cargo:</label>
                 <select name="role" id="role">
-                  <option selected value="default"></option>
+                  <option selected disabled value="default"></option>
                   <option value="presidente">Presidente</option>
                   <option value="governador">Governador</option>
                   <option value="prefeito">Prefeito</option>
@@ -146,7 +146,7 @@
               <div class="filter">
                 <label for="year">Ano:</label>
                 <select name="year" id="year" disabled>
-                  <option id='default' value="default" selected>Selecione um cargo primeiro!</option>
+                  <option id='default' value="default" selected disabled>Selecione um cargo primeiro!</option>
                   <option id='year-vinte' value="2020">2020</option>
                   <option id='year-dezoito' value="2018">2018</option>
                   <option id='year-dezesseis' value="2016">2016</option>
@@ -298,77 +298,160 @@
         results = document.getElementById("search-result");
         results.innerHTML = '<p>Aguarde, a sua busca está sendo feita!</p>'
 
-        //gerando os gráficos com os dados recebidos por json
-        $.ajax({
-          url:
-            "http://localhost:5000/data?city=" +
-            city +
-            "&year=" +
-            year +
-            "&role=" +
-            role,
-          dataType: "json",
-          success: function (data) {
-            //div para mostrar os cards
-            phase = document.querySelector("#search-result p");
-            phase.innerHTML = "";
+        if (city == "default" || city == '' || year == 'default' || year == '' || role == 'default' || role == '') {
+          alert('Por favor, preencha todos os campos!')
+          results = document.getElementById("search-result");
+          results.innerHTML = '<p>Selecione os filtros e realize uma pesquisa!</p>'
+        } else {
+          //gerando os gráficos com os dados recebidos por json
+          $.ajax({
+            url:
+              "http://localhost:5000/data?city=" +
+              city +
+              "&year=" +
+              year +
+              "&role=" +
+              role,
+            dataType: "json",
+            success: function (data) {
+              //div para mostrar os cards
+              phase = document.querySelector("#search-result p");
+              phase.innerHTML = "";
 
-            //recebendo o json
-            results = document.getElementById("search-result");
-            data = JSON.parse(data);
+              //recebendo o json
+              results = document.getElementById("search-result");
+              data = JSON.parse(data);
 
-            // Definindo nome social
-            data.cardNomeSocial.forEach(function(card){
-              Object.keys(card).forEach(function(cardKey){
-                objNomeSocial = card[cardKey]
+              // Definindo nome social
+              data.cardNomeSocial.forEach(function(card){
+                Object.keys(card).forEach(function(cardKey){
+                  objNomeSocial = card[cardKey]
+                })
               })
-            })
-            nomeSocial = JSON.stringify(objNomeSocial)
-            console.log(nomeSocial)
+              nomeSocial = JSON.stringify(objNomeSocial)
+              console.log(nomeSocial)
 
-            // Definindo os dados dos candidatos
-            dataCandidatos = []
-            data.cardCandidato.forEach(function(card){
-              Object.keys(card).forEach(function(cardKey){
-                dataCandidatos.push(card[cardKey]);
+              // Definindo os dados dos candidatos
+              dataCandidatos = []
+              data.cardCandidato.forEach(function(card){
+                Object.keys(card).forEach(function(cardKey){
+                  dataCandidatos.push(card[cardKey]);
+                })
               })
-            })
-            console.log(dataCandidatos)
+              console.log(dataCandidatos)
 
-            if (dataCandidatos[4] == 'N') {
-              dataCandidatoReeleicao = 'Não'
-            } else {
-              dataCandidatoReeleicao = 'Sim, foi reeleito(a)'
-            }
+              if (dataCandidatos[4] == 'N') {
+                dataCandidatoReeleicao = 'Não'
+              } else {
+                dataCandidatoReeleicao = 'Sim, foi reeleito(a)'
+              }
 
-            //zerando variáveis globais
-            global.dataKeys = [];
-            global.dataValues = [];
-            global.dataAll = [];
+              //zerando variáveis globais
+              global.dataKeys = [];
+              global.dataValues = [];
+              global.dataAll = [];
 
-            // Inserindo o HTML do gráfico
-            results.innerHTML = `
-              <div class="result">
-                <div class="card">
-                  <div class="graphic">
-                    <div class="graphic-normal">
-                      <!-- CANVAS DO GRÁFICO -->
-                      <canvas id="chart-0" width="150px" height="140px"></canvas>
+              // Inserindo o HTML do gráfico
+              results.innerHTML = `
+                <div class="result">
+                  <div class="card">
+                    <div class="graphic">
+                      <div class="graphic-normal">
+                        <!-- CANVAS DO GRÁFICO -->
+                        <canvas id="chart-0" width="150px" height="140px"></canvas>
+                      </div>
+                    </div>
+                    <div class="graphic-description">
+                      <!-- DADOS DO GRÁFICO -->
+                      <h2>Escolaridade</h2>
+                      <a href="https://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais-1/repositorio-de-dados-eleitorais" target="_blank">Dados do TSE</a>
+
+                      <div class="icon-actions">
+                        <!-- Ícone de zoom -->
+                        <img
+                          id="zoom"
+                          src="../static/img/icon-zoom.svg"
+                          alt="Aumentar gráfico"
+                          onclick="Modal.toggleZoom(0, 'Quantidade de eleitores por grau de escolaridade', 'Quantidade de Eleitores', 'bar', 0)"
+                        />
+                        <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
+                        <img
+                          id="download"
+                          src="../static/img/icon-download.svg"
+                          alt="Baixar"
+                          onclick="Modal.toggleDownload()"
+                        />
+                      </div>
                     </div>
                   </div>
-                  <div class="graphic-description">
-                    <!-- DADOS DO GRÁFICO -->
-                    <h2>Escolaridade</h2>
-                    <a href="https://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais-1/repositorio-de-dados-eleitorais" target="_blank">Dados do TSE</a>
 
+                  <div class="card">
+                    <div class="graphic">
+                      <div class="graphic-normal">
+                        <!-- CANVAS DO GRÁFICO -->
+                        <canvas id="chart-1" width="150px" height="140px"></canvas>
+                      </div>
+                    </div>
+                    <div class="graphic-description">
+                      <!-- DADOS DO GRÁFICO -->
+                      <h2>Estado civil</h2>
+                      <a href="https://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais-1/repositorio-de-dados-eleitorais" target="_blank">Dados do TSE</a>
+
+                      <div class="icon-actions">
+                        <!-- Ícone de zoom -->
+                        <img
+                          id="zoom"
+                          src="../static/img/icon-zoom.svg"
+                          alt="Aumentar gráfico"
+                          onclick="Modal.toggleZoom(1, 'Quantidade de eleitores por estado civil', 'Quantidade de Eleitores', 'bar', 0);"
+                        />
+                        <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
+                        <img
+                          id="download"
+                          src="../static/img/icon-download.svg"
+                          alt="Baixar"
+                          onclick="Modal.toggleDownload()"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="card">
+                    <div class="graphic">
+                      <div class="graphic-normal">
+                        <!-- CANVAS DO GRÁFICO -->
+                        <canvas id="chart-2" width="150px" height="140px"></canvas>
+                      </div>
+                    </div>
+                    <div class="graphic-description">
+                      <!-- DADOS DO GRÁFICO -->
+                      <h2>Faixa etária</h2>
+                      <a href="https://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais-1/repositorio-de-dados-eleitorais" target="_blank">Dados do TSE</a>
+
+                      <div class="icon-actions">
+                        <!-- Ícone de zoom -->
+                        <img
+                          id="zoom"
+                          src="../static/img/icon-zoom.svg"
+                          alt="Aumentar gráfico"
+                          onclick="Modal.toggleZoom(2, 'Quantidade de eleitores por faixa etária', 'Quantidade de Eleitores', 'bar', 0)"
+                        />
+                        <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
+                        <img
+                          id="download"
+                          src="../static/img/icon-download.svg"
+                          alt="Baixar"
+                          onclick="Modal.toggleDownload()"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="member">
+                      <h5>Uso de nome social</h5>
+                      <h6>` + nomeSocial + ` eleitores usaram nome social</h6>
                     <div class="icon-actions">
-                      <!-- Ícone de zoom -->
-                      <img
-                        id="zoom"
-                        src="../static/img/icon-zoom.svg"
-                        alt="Aumentar gráfico"
-                        onclick="Modal.toggleZoom(0, 'Quantidade de eleitores por grau de escolaridade', 'Quantidade de Eleitores', 'bar')"
-                      />
+                      <a id="data" href="https://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais-1/repositorio-de-dados-eleitorais" target="_blank">Dados do TSE</a>
                       <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
                       <img
                         id="download"
@@ -378,28 +461,13 @@
                       />
                     </div>
                   </div>
-                </div>
 
-                <div class="card">
-                  <div class="graphic">
-                    <div class="graphic-normal">
-                      <!-- CANVAS DO GRÁFICO -->
-                      <canvas id="chart-1" width="150px" height="140px"></canvas>
-                    </div>
-                  </div>
-                  <div class="graphic-description">
-                    <!-- DADOS DO GRÁFICO -->
-                    <h2>Estado civil</h2>
-                    <a href="https://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais-1/repositorio-de-dados-eleitorais" target="_blank">Dados do TSE</a>
-
+                  <div class="member">
+                      <h5>Representante eleito</h5>
+                      <h6>Nome: `+ dataCandidatos[2] +` (`+ dataCandidatos[3] +`)</h6>
+                      <h6>Ganhou a eleição no `+ dataCandidatos[0]+`o turno</h6>
                     <div class="icon-actions">
-                      <!-- Ícone de zoom -->
-                      <img
-                        id="zoom"
-                        src="../static/img/icon-zoom.svg"
-                        alt="Aumentar gráfico"
-                        onclick="Modal.toggleZoom(1, 'Quantidade de eleitores por estado civil', 'Quantidade de Eleitores', 'bar');"
-                      />
+                      <a id="data" href="https://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais-1/repositorio-de-dados-eleitorais" target="_blank">Dados do TSE</a>
                       <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
                       <img
                         id="download"
@@ -409,146 +477,93 @@
                       />
                     </div>
                   </div>
+
                 </div>
+            `;
+              
+              //zerando o contador que define o
+              contCanvas = 0;
 
-                <div class="card">
-                  <div class="graphic">
-                    <div class="graphic-normal">
-                      <!-- CANVAS DO GRÁFICO -->
-                      <canvas id="chart-2" width="150px" height="140px"></canvas>
-                    </div>
-                  </div>
-                  <div class="graphic-description">
-                    <!-- DADOS DO GRÁFICO -->
-                    <h2>Faixa etária</h2>
-                    <a href="https://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais-1/repositorio-de-dados-eleitorais" target="_blank">Dados do TSE</a>
+              // GERANDO CARDS DO ELEITORADO 
+              data.cards.forEach(function(card){
+                Object.keys(card).forEach(function(cardKey){
 
-                    <div class="icon-actions">
-                      <!-- Ícone de zoom -->
-                      <img
-                        id="zoom"
-                        src="../static/img/icon-zoom.svg"
-                        alt="Aumentar gráfico"
-                        onclick="Modal.toggleZoom(2, 'Quantidade de eleitores por faixa etária', 'Quantidade de Eleitores', 'bar')"
-                      />
-                      <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
-                      <img
-                        id="download"
-                        src="../static/img/icon-download.svg"
-                        alt="Baixar"
-                        onclick="Modal.toggleDownload()"
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                <div class="member">
-                    <h5>Uso de nome social</h5>
-                    <h6>` + nomeSocial + ` eleitores usaram nome social</h6>
-                  <div class="icon-actions">
-                    <a id="data" href="https://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais-1/repositorio-de-dados-eleitorais" target="_blank">Dados do TSE</a>
-                    <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
-                    <img
-                      id="download"
-                      src="../static/img/icon-download.svg"
-                      alt="Baixar"
-                      onclick="Modal.toggleDownload()"
-                    />
-                  </div>
-                </div>
-
-                <div class="member">
-                    <h5>Representante eleito</h5>
-                    <h6>Nome: `+ dataCandidatos[2] +` (`+ dataCandidatos[3] +`)</h6>
-                    <h6>Ganhou a eleição no `+ dataCandidatos[0]+`o turno</h6>
-                    <h6>Já era representante? `+ dataCandidatoReeleicao +`</h6>
-                  <div class="icon-actions">
-                    <a id="data" href="https://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais-1/repositorio-de-dados-eleitorais" target="_blank">Dados do TSE</a>
-                    <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
-                    <img
-                      id="download"
-                      src="../static/img/icon-download.svg"
-                      alt="Baixar"
-                      onclick="Modal.toggleDownload()"
-                    />
-                  </div>
-                </div>
-
-              </div>
-          `;
-            
-            //zerando o contador que define o
-            contCanvas = 0;
-
-            // GERANDO CARDS DO ELEITORADO 
-            data.cards.forEach(function(card){
-              Object.keys(card).forEach(function(cardKey){
-
-                Chart.defaults.global.defaultFontColor = "#ffff";
-                var ctx = document.getElementById("chart-" + contCanvas).getContext("2d");
-                var myChart = new Chart(ctx, {
-                  type: "bar",
-                  data: {
-                    labels: Object.keys(card[cardKey]),
-                    datasets: [
-                      {
-                        label: "Total",
-                        data: Object.values(card[cardKey]),
-                        backgroundColor: "rgba(154, 219, 249, 0.4)",
-                        borderColor: "rgba(154, 219, 249)",
-                        borderWidth: 1,
+                  Chart.defaults.global.defaultFontColor = "#ffff";
+                  var ctx = document.getElementById("chart-" + contCanvas).getContext("2d");
+                  var myChart = new Chart(ctx, {
+                    type: "bar",
+                    data: {
+                      labels: Object.keys(card[cardKey]),
+                      datasets: [
+                        {
+                          data: Object.values(card[cardKey]),
+                          backgroundColor: "rgba(154, 219, 249, 0.4)",
+                          borderColor: "rgba(154, 219, 249)",
+                          borderWidth: 1,
+                          datalabels: {
+                            align: '',
+                            anchor: ''
+                          }
+                        },
+                      ],
+                    },
+                    options: {
+                      plugins: {
+                        datalabels: {
+                          color: '',
+                          font: {},
+                          formatter: {}
+                        }
                       },
-                    ],
-                  },
-                  options: {
-                    legend: {
-                      display: false,
-                    },
-                    scales: {
-                      yAxes: [
-                        {
-                          ticks: {
-                            beginAtZero: true,
+                      legend: {
+                        display: false,
+                      },
+                      scales: {
+                        yAxes: [
+                          {
+                            ticks: {
+                              beginAtZero: true,
+                            },
                           },
-                        },
-                      ],
-                      xAxes: [
-                        {
-                          display: false,
-                        },
-                      ],
+                        ],
+                        xAxes: [
+                          {
+                            display: false,
+                          },
+                        ],
+                      },
                     },
-                  },
-                });
+                  });
 
 
-                // GERANDO CARDS DE NOME SOCIAL
-                data.cardNomeSocial.forEach(function(card){
-                  
-                });
+                  // GERANDO CARDS DE NOME SOCIAL
+                  data.cardNomeSocial.forEach(function(card){
+                    
+                  });
 
-                // Salvando os dados recebidos pelo back em variáveis globais
-                global.dataKeys.push(Object.keys(card[cardKey]));
-                global.dataValues.push(Object.values(card[cardKey]));
-                global.dataAll.push(card[cardKey]);
+                  // Salvando os dados recebidos pelo back em variáveis globais
+                  global.dataKeys.push(Object.keys(card[cardKey]));
+                  global.dataValues.push(Object.values(card[cardKey]));
+                  global.dataAll.push(card[cardKey]);
 
-                // Acrescentando 1 no contCanvas
-                contCanvas = contCanvas + 1;
-              })
-            });
+                  // Acrescentando 1 no contCanvas
+                  contCanvas = contCanvas + 1;
+                })
+              });
 
-            // Adicionando os dados do NOME SOCIAL na variável dataAll
-            global.dataAll.push(data.cardNomeSocial);
+              // Adicionando os dados do NOME SOCIAL na variável dataAll
+              global.dataAll.push(data.cardNomeSocial);
 
-            // Adicionando os dados do CANDIDATO na variável dataAll
-            global.dataAll.push(data.cardCandidato);
+              // Adicionando os dados do CANDIDATO na variável dataAll
+              global.dataAll.push(data.cardCandidato);
 
-            // verificando variáveis globais
-            console.log(global.dataKeys)
-            console.log(global.dataValues)
-            console.log(global.dataAll)
-          },
-        });
+              // verificando variáveis globais
+              console.log(global.dataKeys)
+              console.log(global.dataValues)
+              console.log(global.dataAll)
+            },
+          });
+        }
       }
     </script>
   </body>
