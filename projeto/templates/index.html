@@ -340,12 +340,6 @@
               })
               console.log(dataCandidatos)
 
-              if (dataCandidatos[4] == 'N') {
-                dataCandidatoReeleicao = 'Não'
-              } else {
-                dataCandidatoReeleicao = 'Sim, foi reeleito(a)'
-              }
-
               //zerando variáveis globais
               global.dataKeys = [];
               global.dataValues = [];
@@ -379,7 +373,7 @@
                           id="download"
                           src="../static/img/icon-download.svg"
                           alt="Baixar"
-                          onclick="Modal.toggleDownload()"
+                          onclick="Modal.toggleDownload(0, 'grau-escolaridade')"
                         />
                       </div>
                     </div>
@@ -410,7 +404,7 @@
                           id="download"
                           src="../static/img/icon-download.svg"
                           alt="Baixar"
-                          onclick="Modal.toggleDownload()"
+                          onclick="Modal.toggleDownload(1, 'estado-civil')"
                         />
                       </div>
                     </div>
@@ -441,7 +435,7 @@
                           id="download"
                           src="../static/img/icon-download.svg"
                           alt="Baixar"
-                          onclick="Modal.toggleDownload()"
+                          onclick="Modal.toggleDownload(2, 'faixa-etaria')"
                         />
                       </div>
                     </div>
@@ -457,7 +451,7 @@
                         id="download"
                         src="../static/img/icon-download.svg"
                         alt="Baixar"
-                        onclick="Modal.toggleDownload()"
+                        onclick="Modal.toggleDownload(3, 'nome-social')"
                       />
                     </div>
                   </div>
@@ -473,7 +467,7 @@
                         id="download"
                         src="../static/img/icon-download.svg"
                         alt="Baixar"
-                        onclick="Modal.toggleDownload()"
+                        onclick="Modal.toggleDownload(4, 'representante-eleito')"
                       />
                     </div>
                   </div>
@@ -535,12 +529,6 @@
                     },
                   });
 
-
-                  // GERANDO CARDS DE NOME SOCIAL
-                  data.cardNomeSocial.forEach(function(card){
-                    
-                  });
-
                   // Salvando os dados recebidos pelo back em variáveis globais
                   global.dataKeys.push(Object.keys(card[cardKey]));
                   global.dataValues.push(Object.values(card[cardKey]));
@@ -552,10 +540,10 @@
               });
 
               // Adicionando os dados do NOME SOCIAL na variável dataAll
-              global.dataAll.push(data.cardNomeSocial);
+              global.dataAll.push(data.cardNomeSocial[0]);
 
               // Adicionando os dados do CANDIDATO na variável dataAll
-              global.dataAll.push(data.cardCandidato);
+              global.dataAll.push(data.cardCandidato[0]);
 
               // verificando variáveis globais
               console.log(global.dataKeys)

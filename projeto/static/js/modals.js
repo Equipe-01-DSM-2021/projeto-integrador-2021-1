@@ -113,8 +113,107 @@ const Modal = {
     }
   },
 
-  // MODAL DOWNLOAD
-  toggleDownload() {
-    document.querySelector(".tooltip").classList.toggle("active");
+  // MODAL DOWNLOAD GERAL
+  toggleDownload(chartID, dataName) {
+
+    // FUNÇÃO PARA BAIXAR O CSV
+    function download(csv) {
+      //const blob = new Blob([csv], { type:'text/csv;charset=UTF-8' });
+      //const url = window.URL.createObjectURL(blob);
+      const url = 'data:text/csv;charset=utf-8,' + encodeURI(csv)
+
+      const a = document.createElement('a');
+      a.setAttribute('hidden', '');
+      a.setAttribute('href', url);
+      a.setAttribute('download', `${dataName}.csv`);
+
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    }
+
+    // FUNÇÃO PARA GERAR O CSV
+    function create(headers, colums) {
+      var csv = []
+
+      // adicionando headers
+      csv.push(headers.join(';'))
+
+      // adicionando colunas
+      var valuesColums = []
+      colums.forEach(function(value){
+        valuesColums.push(String(value))
+      })
+      csv.push(valuesColums.join(';'))
+
+      return csv.join('\n')
+    }
+    
+    // Recebendo valores
+    data = global.dataAll[chartID]
+    headers = Object.keys(data)
+    colums = Object.values(data)
+    
+    // Acionando as funções
+    csv = create(headers, colums)
+    download(csv)
+  },
+
+  // MODAL DOWNLOAD COMPARAÇÃO POR IDADE (o formato do json é diferente)
+  toggleDownloadAge(chartID, dataName) {
+
+    // FUNÇÃO PARA BAIXAR O CSV
+    function download(csv) {
+      //const blob = new Blob([csv], { type:'text/csv;charset=UTF-8' });
+      //const url = window.URL.createObjectURL(blob);
+      const url = 'data:text/csv;charset=utf-8,' + encodeURI(csv)
+
+      const a = document.createElement('a');
+      a.setAttribute('hidden', '');
+      a.setAttribute('href', url);
+      a.setAttribute('download', `${dataName}.csv`);
+
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    }
+
+    // FUNÇÃO PARA GERAR O CSV
+    function create(headers, colums, porcentage) {
+      var csv = []
+
+      // adicionando headers
+      csv.push(headers.join(';'))
+
+      // adicionando linha do valor absoluto
+      var valuesColums = []
+      colums.forEach(function(value){
+        valuesColums.push(String(value))
+      })
+      csv.push(valuesColums.join(';'))
+
+      // adicionando linha da porcentagem
+      var valuesPorcentage = []
+      porcentage.forEach(function(value){
+        valuesPorcentage.push(String(value))
+      })
+      csv.push(valuesPorcentage.join(';'))
+
+      return csv.join('\n')
+    }
+
+    // Recebendo valores
+    data = global.dataAll[chartID]
+    headers = Object.keys(data)
+    colums = Object.values(data)
+    
+    // Recebendo valores
+    headers = global.dataKeys[chartID]
+    colums = global.dataValues[chartID]
+    porcentage = global.dataPorcentage[chartID]
+    
+    // Acionando as funções
+    csv = create(headers, colums, porcentage)
+    download(csv)
   },
 };
