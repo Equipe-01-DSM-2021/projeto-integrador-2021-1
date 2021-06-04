@@ -3,129 +3,140 @@ import pandas as pd
 
 def citySearch(city, role, csvPaths):
     # CARACTERÍSTICAS GERAIS DO ELEITORADO
-    col_list_eleitorado = ["NM_MUNICIPIO", "DS_GRAU_ESCOLARIDADE",
+    col_list_electorate = ["NM_MUNICIPIO", "DS_GRAU_ESCOLARIDADE",
                            "QT_ELEITORES_INC_NM_SOCIAL", "DS_FAIXA_ETARIA",
                            "DS_ESTADO_CIVIL"]
 
-    iter_csv_eleitorado = pd.read_csv(csvPaths[0], usecols=col_list_eleitorado,
+    iter_csv_electorate = pd.read_csv(csvPaths[0], usecols=col_list_electorate,
                                       delimiter=";", encoding='iso-8859-1',
                                       error_bad_lines=False)
 
     # Remove a coluna da cidade
-    df_result = iter_csv_eleitorado.loc[iter_csv_eleitorado["NM_MUNICIPIO"] == city].drop(
+    df_result = iter_csv_electorate.loc[iter_csv_electorate["NM_MUNICIPIO"] == city].drop(
         columns=["NM_MUNICIPIO"], axis=1)
 
     # Converte para json
     df_result.apply(pd.Series.value_counts, axis=1)
 
-    # Alterações necessárias
-    ds_grau_escolaridade_string = df_result["DS_GRAU_ESCOLARIDADE"].value_counts(
-    ).to_json()
-
-    ds_estado_civil_string = df_result["DS_ESTADO_CIVIL"].value_counts()
-    ds_estado_civil_string = ds_estado_civil_string[:-1].to_json()
-
-    ds_faixa_etaria_string = df_result["DS_FAIXA_ETARIA"].value_counts().to_json()
-
-    ds_faixa_etaria_string = ds_faixa_etaria_string.replace("  ", "")
-
-
-    col_abstencao = ["NR_TURNO", "NM_MUNICIPIO", 
-                 "QT_APTOS", "QT_COMPARECIMENTO", "QT_ABSTENCAO"]
-
-    # DataFrame da abstenção de eleitores
-    iter_csv_abstencao = pd.read_csv(csvPaths[2], 
-                usecols=col_abstencao,    
-                sep=';', 
-                encoding='iso-8859-1',
-                error_bad_lines=False)
-
-    ds_comparecimento_string = comparecimento_eleitorado(iter_csv_abstencao, city)
-
-    cards_eleitorado = '{' + f'"DS_GRAU_ESCOLARIDADE": {ds_grau_escolaridade_string}, "DS_ESTADO_CIVIL": {ds_estado_civil_string}, "DS_FAIXA_ETARIA": {ds_faixa_etaria_string}, {ds_comparecimento_string}' + '}'
-
-    eleitorado = cards_eleitorado.replace(
-        '\n', ' ').replace('\r', '')
-
-
-    # NOME SOCIAL
-    total_eleitores_nomesocial = 0  # Iniciando a variável
-    df_nomesocial = df_result.groupby('QT_ELEITORES_INC_NM_SOCIAL')[
-        'QT_ELEITORES_INC_NM_SOCIAL'].sum()
-
-    # Somando a quantidade de eleitores com nome social em cada grupo
-    for index_nomesocial in range(len(df_nomesocial)):
-        total_eleitores_nomesocial += df_nomesocial.index[index_nomesocial] * \
-            df_nomesocial.values[index_nomesocial]
-
-    qntString = str(total_eleitores_nomesocial)
-    # Gerando string do nome social
-    nomeSocial = f'"quantidade": {qntString}'
+    # capturando os dados
+    electorate = electorate_data(df_result, city)
+    social_name = social_name_data(df_result)
 
     # CANDIDATO ELEITO
     # Geração do CSV de candidato
-    col_list_candidato = ["NR_TURNO", "NM_UE", "DS_CARGO",
+    col_list_candidate = ["NR_TURNO", "NM_UE", "DS_CARGO",
                           "NM_CANDIDATO", "SG_PARTIDO",
                           "DS_SIT_TOT_TURNO"]
 
-    iter_csv_candidato = pd.read_csv(csvPaths[1], usecols=col_list_candidato,
+    iter_csv_candidate = pd.read_csv(csvPaths[2], usecols=col_list_candidate,
                                      sep=';', encoding='iso-8859-1',
                                      error_bad_lines=False)
 
-    # # Gerando string
+    # capturando os dados
+    candidate = elected_candidate_data(iter_csv_candidate, city, role)
 
-    # Verificando cargo desejado e criando query a partir disso
-    if role == "GOVERNADOR":
-        candidato = iter_csv_candidato.query(
-            f'DS_CARGO == "{role}" and DS_SIT_TOT_TURNO == "ELEITO" and NM_UE == "SÃO PAULO"')
+    # COMPARECIMENTO E ABSTENÇÃO
+    col_list_attendance_abstention = ["NR_TURNO", "NM_MUNICIPIO",
+                                      "QT_APTOS", "QT_COMPARECIMENTO", "QT_ABSTENCAO"]
 
-    elif role == "PREFEITO":
-        candidato = iter_csv_candidato.query(
-            f'DS_CARGO == "{role}" and DS_SIT_TOT_TURNO == "ELEITO" and NM_UE == "{city}"')
+    iter_csv_attendance_abstention = pd.read_csv(csvPaths[1],
+                                                 usecols=col_list_attendance_abstention,
+                                                 sep=';',
+                                                 encoding='iso-8859-1',
+                                                 error_bad_lines=False)
 
-    else:
-        candidato = iter_csv_candidato.query(
-            f'DS_CARGO == "{role}" and DS_SIT_TOT_TURNO == "ELEITO"')
+    # capturando os dados
+    attendance_abstention = attendance_abstention_data(
+        iter_csv_attendance_abstention, city)
 
-    candidato_result = candidato.drop(
-        columns=["NM_UE"], axis=1).reset_index(drop=True)
-    candidato_result = candidato_result.drop(
-        columns=["DS_SIT_TOT_TURNO"], axis=1).squeeze().to_json()
-
-    cards = '{ "cards": [' + eleitorado + '], "cardCandidato": [' + \
-        candidato_result + '], "cardNomeSocial": [{' + nomeSocial + '}]}'
+    cards = '{ "cards": [' + electorate + '], "cardCandidato": [' + \
+        candidate + '], "cardNomeSocial": [{' + social_name + \
+        '}], "cardComparecimento": [' + attendance_abstention + ']}'
 
     print(cards)
     return cards
 
 
+def electorate_data(df_result, city):
+    schooling = df_result["DS_GRAU_ESCOLARIDADE"].value_counts(
+    ).to_json()
+
+    marital_status = df_result["DS_ESTADO_CIVIL"].value_counts()
+    marital_status = marital_status[:-1].to_json()
+
+    age_group = df_result["DS_FAIXA_ETARIA"].value_counts(
+    ).to_json()
+
+    age_group = age_group.replace("  ", "")
+
+    electorate_cards = '{' + f'"DS_GRAU_ESCOLARIDADE": {schooling}, "DS_ESTADO_CIVIL": {marital_status}, "DS_FAIXA_ETARIA": {age_group}' + '}'
+
+    electorate = electorate_cards.replace(
+        '\n', ' ').replace('\r', '')
+
+    return electorate
 
 
-def comparecimento_eleitorado(iter_csv, city):
-    abstencao_municipio = iter_csv.query(f'NM_MUNICIPIO == "{city.upper()}"')
+def social_name_data(df_result):
+    # NOME SOCIAL
+    social_name_total = 0  # Iniciando a variável
+    df_social_name = df_result.groupby('QT_ELEITORES_INC_NM_SOCIAL')[
+        'QT_ELEITORES_INC_NM_SOCIAL'].sum()
+
+    # Somando a quantidade de eleitores com nome social em cada grupo
+    for index_social_name in range(len(df_social_name)):
+        social_name_total += df_social_name.index[index_social_name] * \
+            df_social_name.values[index_social_name]
+
+    amount = str(social_name_total)
+    # Gerando string do nome social
+    social_name = f'"quantidade": {amount}'
+
+    return social_name
+
+
+def elected_candidate_data(iter_csv, city, role):
+    # função para buscar os dados do candidato eleito
+
+    # Verificando cargo desejado e criando query a partir disso
+    if role == "GOVERNADOR":
+        candidate = iter_csv.query(
+            f'DS_CARGO == "{role}" and DS_SIT_TOT_TURNO == "ELEITO" and NM_UE == "SÃO PAULO"')
+
+    elif role == "PREFEITO":
+        candidate = iter_csv.query(
+            f'DS_CARGO == "{role}" and DS_SIT_TOT_TURNO == "ELEITO" and NM_UE == "{city}"')
+
+    else:
+        candidate = iter_csv.query(
+            f'DS_CARGO == "{role}" and DS_SIT_TOT_TURNO == "ELEITO"')
+
+    candidate_result = candidate.drop(
+        columns=["NM_UE"], axis=1).reset_index(drop=True)
+    candidate_result = candidate_result.drop(
+        columns=["DS_SIT_TOT_TURNO"], axis=1).squeeze().to_json()
+
+    return candidate_result
+
+
+def attendance_abstention_data(iter_csv, city):
+    # função para buscar os dados sobre comparecimento e abstenção
+
+    abstention_city = iter_csv.query(f'NM_MUNICIPIO == "{city.upper()}"')
 
     # Avaliando abstenções no primeiro turno
-    primeiro_turno_data = abstencao_municipio.query('NR_TURNO == 1')
-    comparecimento_primeiro_turno = primeiro_turno_data.QT_COMPARECIMENTO.sum()
-    abstencao_primeiro_turno = primeiro_turno_data.QT_ABSTENCAO.sum()
+    first_round_data = abstention_city.query('NR_TURNO == 1')
+    attendance_first_round = first_round_data.QT_COMPARECIMENTO.sum()
+    abstention_first_round = first_round_data.QT_ABSTENCAO.sum()
 
     # Avaliando abstenções no segundo turno
-    segundo_turno_data = abstencao_municipio.query('NR_TURNO == 2')
-    comparecimento_segundo_turno = segundo_turno_data.QT_COMPARECIMENTO.sum()
-    abstencao_segundo_turno = segundo_turno_data.QT_ABSTENCAO.sum()
+    second_round_data = abstention_city.query('NR_TURNO == 2')
+    attendance_second_round = second_round_data.QT_COMPARECIMENTO.sum()
+    abstention_second_round = second_round_data.QT_ABSTENCAO.sum()
 
-    # Calculando os valores do primeiro turno
-    total_eleitores_primeiro_turno = comparecimento_primeiro_turno + abstencao_primeiro_turno
-    comparecimento_primeiro_turno_pct = comparecimento_primeiro_turno / total_eleitores_primeiro_turno
-    abstencao_primeiro_turno_pct = abstencao_primeiro_turno / total_eleitores_primeiro_turno
+    attendance_abstention_result = '{"comparecimento_primeiro_turno": ' + str(
+        attendance_first_round) + ',"abstencao_primeiro_turno":' + str(abstention_first_round) + \
+        '}, {"comparecimento_segundo_turno": ' + str(attendance_second_round) + \
+        ', "abstencao_segundo_turno":' + str(abstention_first_round) + '}'
 
-    # Calculando os valores do segundo turno
-    total_eleitores_segundo_turno = comparecimento_segundo_turno + abstencao_segundo_turno
-    comparecimento_segundo_turno_pct = comparecimento_segundo_turno / total_eleitores_segundo_turno
-    abstencao_segundo_turno_pct = abstencao_segundo_turno / total_eleitores_segundo_turno
-
-    string_completa = '"QT_COMPARECIMENTO": {"primeiro_turno": '+ str(total_eleitores_primeiro_turno) + ',"segundo_turno":' + str(total_eleitores_segundo_turno) + "}"
-
-    return string_completa
-
-
+    return attendance_abstention_result

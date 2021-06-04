@@ -13,39 +13,35 @@ import numpy as np
 app = Flask(__name__)
 CORS(app)
 
-# página inicial
-
 
 @app.route('/')
 def index():
+    # página inicial
     return render_template('index.html')
-
-# página sobre o projeto
 
 
 @app.route('/project')
 def project():
+    # página sobre o projeto
     return render_template('project.html')
-
-# página sobre nós
 
 
 @app.route('/about-us')
 def about():
+    # página sobre nós
     return render_template('about-us.html')
-
-# página de comparação entre regiões
 
 
 @app.route('/search-region')
 def regions():
+    # página de comparação entre regiões
     return render_template('regions.html')
-
-# rota para armazenar os resultados da busca
 
 
 @app.route('/data')
 def searchData():
+    # armazenamento dos resultados da busca
+
     # capturando os parâmetros para a busca
     city = request.args.get('city')
     role = request.args.get('role')
@@ -59,6 +55,7 @@ def searchData():
 
     csvPaths = []
     csvPaths.append(pathData + f"\perfil_eleitorado_{year}.csv")
+    csvPaths.append(pathData + f"\perfil_comparecimento_abstencao_{year}.csv")
 
     # Carrega CSVs do ano eleitoral escolhido
     federal = np.arange(1994, datetime.date.today().year+4, 4).tolist()
@@ -79,6 +76,8 @@ def searchData():
 
 @app.route('/data-regions')
 def comparisonData():
+    # armazenamento dos resultados da comparação
+
     # capturando os parâmetros para a busca
     comparison = request.args.get('comparison')
     year = request.args.get('year')
