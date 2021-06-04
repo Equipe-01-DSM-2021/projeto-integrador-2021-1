@@ -269,6 +269,9 @@
         var dataKeys = []; // Dados para zoom
         var dataValues = []; // Dados para zoom
         var dataAll = []; // Dados para exportação
+
+        var dataComparecimento = [] // Uso no zoom
+        var objComparecimento = [] // Uso apenas na exportação
       }
 
       // Função de limpar pesquisa
@@ -472,6 +475,37 @@
                     </div>
                   </div>
 
+                  <div class="card">
+                    <div class="graphic">
+                      <div class="graphic-normal">
+                        <!-- CANVAS DO GRÁFICO -->
+                        <canvas id="chart-4" width="150px" height="140px"></canvas>
+                      </div>
+                    </div>
+                    <div class="graphic-description">
+                      <!-- DADOS DO GRÁFICO -->
+                      <h2>Comparecimento às urnas</h2>
+                      <a href="https://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais-1/repositorio-de-dados-eleitorais" target="_blank">Dados do TSE</a>
+
+                      <div class="icon-actions">
+                        <!-- Ícone de zoom -->
+                        <img
+                          id="zoom"
+                          src="../static/img/icon-zoom.svg"
+                          alt="Aumentar gráfico"
+                          onclick="Modal.toggleZoom(4, 'Quantidade de eleitores que compareceram às urnas', 'Quantidade de Eleitores', 'bar', 2);"
+                        />
+                        <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
+                        <img
+                          id="download"
+                          src="../static/img/icon-download.svg"
+                          alt="Baixar"
+                          onclick="Modal.toggleDownloadUrnas(1, 'comparecimento-urnas')"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
                 </div>
             `;
               
@@ -544,6 +578,75 @@
 
               // Adicionando os dados do CANDIDATO na variável dataAll
               global.dataAll.push(data.cardCandidato[0]);
+
+              // GERANDO CARDS DO COMPARECIMENTO ÀS URNAS 
+              valuesComparecimentoUrnas = []
+              data.cardComparecimento.forEach(function(card){
+                valuesComparecimentoUrnas.push(Object.values(card))
+                console.log(card)
+              })
+              global.dataComparecimento = valuesComparecimentoUrnas;
+
+              Chart.defaults.global.defaultFontColor = "#ffff";
+              var ctx = document.getElementById("chart-4").getContext("2d");
+              var myChart = new Chart(ctx, {
+                type: "bar",
+                data: {
+                  labels: ['Comparecimento', 'Abstenção'],
+                  datasets: [
+                    {
+                      label: '1 Turno',
+                      data: valuesComparecimentoUrnas[0],
+                      backgroundColor: "rgba(154, 219, 249, 0.4)",
+                      borderColor: "rgba(154, 219, 249)",
+                      borderWidth: 1,
+                      datalabels: {
+                        align: '',
+                        anchor: ''
+                      }
+                    }, {
+                      label: '2 Turno',
+                      data: valuesComparecimentoUrnas[1],
+                      backgroundColor: "rgba(192, 192, 192, 0.4)",
+                      borderColor: "rgba(192, 192, 192)",
+                      borderWidth: 1,
+                      datalabels: {
+                        align: '',
+                        anchor: ''
+                      }
+                    }
+                  ],
+                },
+                options: {
+                  plugins: {
+                    datalabels: {
+                      color: '',
+                      font: {},
+                      formatter: {}
+                    }
+                  },
+                  legend: {
+                    display: false,
+                  },
+                  scales: {
+                    yAxes: [
+                      {
+                        ticks: {
+                          beginAtZero: true,
+                        },
+                      },
+                    ],
+                    xAxes: [
+                      {
+                        display: false,
+                      },
+                    ],
+                  },
+                },
+              });
+
+              global.objComparecimento = data.cardComparecimento
+              console.log(global.objComparecimento)
 
               // verificando variáveis globais
               console.log(global.dataKeys)

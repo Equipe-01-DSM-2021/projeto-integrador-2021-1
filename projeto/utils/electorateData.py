@@ -137,6 +137,6 @@ def attendance_abstention_data(iter_csv, city):
     attendance_abstention_result = '{"comparecimento_primeiro_turno": ' + str(
         attendance_first_round) + ',"abstencao_primeiro_turno":' + str(abstention_first_round) + \
         '}, {"comparecimento_segundo_turno": ' + str(attendance_second_round) + \
-        ', "abstencao_segundo_turno":' + str(abstention_first_round) + '}'
+        ', "abstencao_segundo_turno":' + str(abstention_second_round) + '}'
 
     return attendance_abstention_result
