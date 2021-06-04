@@ -25,14 +25,28 @@ def citySearch(city, role, csvPaths):
     ds_estado_civil_string = df_result["DS_ESTADO_CIVIL"].value_counts()
     ds_estado_civil_string = ds_estado_civil_string[:-1].to_json()
 
-    ds_faixa_etaria_string = df_result["DS_FAIXA_ETARIA"].value_counts(
-    ).to_json()
+    ds_faixa_etaria_string = df_result["DS_FAIXA_ETARIA"].value_counts().to_json()
 
     ds_faixa_etaria_string = ds_faixa_etaria_string.replace("  ", "")
 
-    cards_eleitorado = '{' + f'"DS_GRAU_ESCOLARIDADE": {ds_grau_escolaridade_string}, "DS_ESTADO_CIVIL": {ds_estado_civil_string}, "DS_FAIXA_ETARIA": {ds_faixa_etaria_string}' + '}'
+
+    col_abstencao = ["NR_TURNO", "NM_MUNICIPIO", 
+                 "QT_APTOS", "QT_COMPARECIMENTO", "QT_ABSTENCAO"]
+
+    # DataFrame da abstenção de eleitores
+    iter_csv_abstencao = pd.read_csv(csvPaths[2], 
+                usecols=col_abstencao,    
+                sep=';', 
+                encoding='iso-8859-1',
+                error_bad_lines=False)
+
+    ds_comparecimento_string = comparecimento_eleitorado(iter_csv_abstencao, city)
+
+    cards_eleitorado = '{' + f'"DS_GRAU_ESCOLARIDADE": {ds_grau_escolaridade_string}, "DS_ESTADO_CIVIL": {ds_estado_civil_string}, "DS_FAIXA_ETARIA": {ds_faixa_etaria_string}, {ds_comparecimento_string}' + '}'
+
     eleitorado = cards_eleitorado.replace(
         '\n', ' ').replace('\r', '')
+
 
     # NOME SOCIAL
     total_eleitores_nomesocial = 0  # Iniciando a variável
@@ -83,3 +97,35 @@ def citySearch(city, role, csvPaths):
 
     print(cards)
     return cards
+
+
+
+
+def comparecimento_eleitorado(iter_csv, city):
+    abstencao_municipio = iter_csv.query(f'NM_MUNICIPIO == "{city.upper()}"')
+
+    # Avaliando abstenções no primeiro turno
+    primeiro_turno_data = abstencao_municipio.query('NR_TURNO == 1')
+    comparecimento_primeiro_turno = primeiro_turno_data.QT_COMPARECIMENTO.sum()
+    abstencao_primeiro_turno = primeiro_turno_data.QT_ABSTENCAO.sum()
+
+    # Avaliando abstenções no segundo turno
+    segundo_turno_data = abstencao_municipio.query('NR_TURNO == 2')
+    comparecimento_segundo_turno = segundo_turno_data.QT_COMPARECIMENTO.sum()
+    abstencao_segundo_turno = segundo_turno_data.QT_ABSTENCAO.sum()
+
+    # Calculando os valores do primeiro turno
+    total_eleitores_primeiro_turno = comparecimento_primeiro_turno + abstencao_primeiro_turno
+    comparecimento_primeiro_turno_pct = comparecimento_primeiro_turno / total_eleitores_primeiro_turno
+    abstencao_primeiro_turno_pct = abstencao_primeiro_turno / total_eleitores_primeiro_turno
+
+    # Calculando os valores do segundo turno
+    total_eleitores_segundo_turno = comparecimento_segundo_turno + abstencao_segundo_turno
+    comparecimento_segundo_turno_pct = comparecimento_segundo_turno / total_eleitores_segundo_turno
+    abstencao_segundo_turno_pct = abstencao_segundo_turno / total_eleitores_segundo_turno
+
+    string_completa = '"QT_COMPARECIMENTO": {"primeiro_turno": '+ str(total_eleitores_primeiro_turno) + ',"segundo_turno":' + str(total_eleitores_segundo_turno) + "}"
+
+    return string_completa
+
+
