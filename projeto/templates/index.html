@@ -147,9 +147,10 @@
                 <label for="year">Ano:</label>
                 <select name="year" id="year" disabled>
                   <option id='default' value="default" selected disabled>Selecione um cargo primeiro!</option>
+                  <option id='year-vinte-quatro' value="2024">2024</option>
+                  <option id='year-vinte-dois' value="2022">2022</option>
                   <option id='year-vinte' value="2020">2020</option>
                   <option id='year-dezoito' value="2018">2018</option>
-                  <option id='year-dezesseis' value="2016">2016</option>
                 </select>
               </div>
             </div>
@@ -228,10 +229,10 @@
               $('#year').removeAttr('disabled');
 
               // Esconde anos que não terão esse tipo de eleição
-              $('#year-vinte, #year-dezesseis').hide();
+              $('#year-vinte, #year-vinte-quatro').hide();
 
               // Exibe anos que terão esse tipo de eleição
-              $('#year-dezoito').show();
+              $('#year-vinte-dois, #year-dezoito').show();
               break;
 
             case 'prefeito':
@@ -241,10 +242,10 @@
               $('#year').removeAttr('disabled');
 
               // Esconde anos que não terão esse tipo de eleição
-              $('#year-dezoito').hide();
+              $('#year-dezoito, #year-vinte-dois').hide();
 
               // Exibe anos que terão esse tipo de eleição
-              $('#year-vinte, #year-dezesseis').show();
+              $('#year-vinte, #year-vinte-quatro').show();
               break;
 
             case 'governador':
@@ -254,10 +255,10 @@
               $('#year').removeAttr('disabled');
 
               // Esconde anos que não terão esse tipo de eleição
-              $('#year-vinte, #year-dezesseis').hide();
+              $('#year-vinte, #year-vinte-quatro').hide();
 
               // Exibe anos que terão esse tipo de eleição
-              $('#year-dezoito').show();
+              $('#year-vinte-dois, #year-dezoito').show();
               break;
 
           }
@@ -309,12 +310,7 @@
           //gerando os gráficos com os dados recebidos por json
           $.ajax({
             url:
-              "http://localhost:5000/data?city=" +
-              city +
-              "&year=" +
-              year +
-              "&role=" +
-              role,
+              "http://localhost:5000/data?city=" + city + "&year=" + year + "&role=" + role,
             dataType: "json",
             success: function (data) {
               //div para mostrar os cards
@@ -376,7 +372,7 @@
                           id="download"
                           src="../static/img/icon-download.svg"
                           alt="Baixar"
-                          onclick="Modal.toggleDownload(0, 'grau-escolaridade')"
+                          onclick="Modal.toggleDownload(0, 'grau-escolaridade-${city}-${year}')"
                         />
                       </div>
                     </div>
@@ -407,7 +403,7 @@
                           id="download"
                           src="../static/img/icon-download.svg"
                           alt="Baixar"
-                          onclick="Modal.toggleDownload(1, 'estado-civil')"
+                          onclick="Modal.toggleDownload(1, 'estado-civil-${city}-${year}')"
                         />
                       </div>
                     </div>
@@ -438,7 +434,7 @@
                           id="download"
                           src="../static/img/icon-download.svg"
                           alt="Baixar"
-                          onclick="Modal.toggleDownload(2, 'faixa-etaria')"
+                          onclick="Modal.toggleDownload(2, 'faixa-etaria-${city}-${year}')"
                         />
                       </div>
                     </div>
@@ -454,7 +450,7 @@
                         id="download"
                         src="../static/img/icon-download.svg"
                         alt="Baixar"
-                        onclick="Modal.toggleDownload(3, 'nome-social')"
+                        onclick="Modal.toggleDownload(3, 'nome-social-${city}-${year}')"
                       />
                     </div>
                   </div>
@@ -470,7 +466,7 @@
                         id="download"
                         src="../static/img/icon-download.svg"
                         alt="Baixar"
-                        onclick="Modal.toggleDownload(4, 'representante-eleito')"
+                        onclick="Modal.toggleDownload(4, 'representante-eleito-${city}-${year}')"
                       />
                     </div>
                   </div>
@@ -500,7 +496,7 @@
                           id="download"
                           src="../static/img/icon-download.svg"
                           alt="Baixar"
-                          onclick="Modal.toggleDownloadUrnas(1, 'comparecimento-urnas')"
+                          onclick="Modal.toggleDownloadUrnas(1, 'comparecimento-urnas-${city}-${year}')"
                         />
                       </div>
                     </div>
