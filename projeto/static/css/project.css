@@ -3,15 +3,15 @@
 /*-------------------------*/
 
 #project {
-    font-weight: bold;
-    padding-bottom: 3px;
-    border-color: var(--color-primary);
-    border-style: none none solid none;
-    border-width: 3px;
+  font-weight: bold;
+  padding-bottom: 3px;
+  border-color: var(--color-primary);
+  border-style: none none solid none;
+  border-width: 3px;
 }
 
 #content {
-    margin-top: 7%;
+  margin-top: 7%;
 }
 
 /*-------------------------*/
@@ -19,23 +19,23 @@
 /*-------------------------*/
 
 #content h1 {
-    font-style: normal;
-    font-weight: bold;
-    font-size: 24px;
-    color: var(--color-text-in-background);
-    padding-left: 11px;
-    border-style: none none none solid;
-    border-width: 4px;
-    border-radius: 3px;
-    border-color: var(--color-primary);
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  color: var(--color-text-in-background);
+  padding-left: 11px;
+  border-style: none none none solid;
+  border-width: 4px;
+  border-radius: 3px;
+  border-color: var(--color-primary);
 }
 
 #content h2 {
-    font-style: normal;
-    font-weight: 600;
-    font-size: 20px;
-    line-height: 33px;
-    color: var(--color-text-in-background);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 33px;
+  color: var(--color-text-in-background);
 }
 
 /*-------------------------*/
@@ -43,9 +43,9 @@
 /*-------------------------*/
 
 #summary {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 21px;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 21px;
 }
 
 /*----------------------------------------*/
@@ -53,51 +53,52 @@
 /*----------------------------------------*/
 
 #about-project {
-    margin-top: 21px;
+  margin-top: 21px;
 }
 
 .img-container {
-    display: flex;
-    justify-content: center;
-    width: 497px;
+  display: flex;
+  justify-content: center;
+  width: 497px;
 }
 
-.img-container img{
-    margin-left: auto;
-    margin-right: auto;
-}
-
-#about-project .about-content {
-    display: flex;
-    justify-content: space-between;
+.img-container img {
+  margin: auto;
+  align-self: center;
 }
 
 #about-project .about-content {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
+}
+
+#about-project .about-content {
+  display: flex;
+  justify-content: space-between;
 }
 
 .about-content {
-    padding: 0;
-    margin-top: 50px;  
+  padding: 0;
+  margin-top: 50px;
 }
 
-.about-content section{
-    width: 497px;
+.about-content section {
+  width: 45%;
 }
 
-.about-content p{
-    margin-top: 10px;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 18px;
-    line-height: 30px;
-    color: var(--color-text-in-background);
+section p,
+#results li {
+  margin-top: 10px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 30px;
+  color: var(--color-text-in-background);
 }
 
 #planning img {
-    width: 325px;
-    height: 325px;
+  width: 325px;
+  height: 325px;
 }
 
 /*----------------------------------------------------*/
@@ -105,24 +106,28 @@
 /*----------------------------------------------------*/
 
 #results h1 {
-    margin-top: 30px;
+  margin-top: 30px;
 }
 
 #results-intro {
-    margin-top: 10px;
-    margin-bottom: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#results li {
+  margin-left: 25px;
 }
 
 #results a {
-    font-style: normal;
-    font-weight: normal;
-    font-size: 18px;
-    line-height: 30px;
-    color: var(--color-primary);
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 30px;
+  color: var(--color-primary);
 }
 
 #results a:hover {
-    color: var(--color-a-hover);
+  color: var(--color-a-hover);
 }
 
 /*------*/
@@ -130,27 +135,27 @@
 /*------*/
 
 footer {
-    width: 100%;
-    height: 72px;
-    background: var(--color-secondary);
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    padding: 20px 7%;
-    box-shadow: 2px 0px 14px 0px #3c3d3f40;
-    top: 0;
-    overflow: hidden;
-    margin-top: 70px;
+  width: 100%;
+  height: 72px;
+  background: var(--color-secondary);
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  padding: 20px 7%;
+  box-shadow: 2px 0px 14px 0px #3c3d3f40;
+  top: 0;
+  overflow: hidden;
+  margin-top: 70px;
 }
 
 footer a {
-    font-style: normal;
-    font-weight: normal;
-    font-size: 18px;
-    line-height: 30px;
-    color: var(--color-primary);
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 30px;
+  color: var(--color-primary);
 }
 
 footer a:hover {
-    color: var(--color-a-hover);
+  color: var(--color-a-hover);
 }

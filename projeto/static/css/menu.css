@@ -19,6 +19,10 @@ header {
   align-items: center;
 }
 
+#logo img {
+  width: 190px;
+}
+
 header h1 {
   color: var(--color-primary);
   font-size: 18px;
@@ -44,6 +48,9 @@ nav a {
 
 /*hover*/
 
-#start:hover, #project:hover, #us:hover, #help:hover {
+#start:hover,
+#project:hover,
+#us:hover,
+#help:hover {
   color: var(--color-primary);
 }

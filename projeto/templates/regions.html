@@ -76,7 +76,6 @@
                   <option selected disabled value="default"></option>
                   <option value="2020">2020</option>
                   <option value="2018">2018</option>
-                  <option value="2016">2016</option>
                 </select>
               </div>
             </div>
@@ -269,7 +268,7 @@
                             id="download"
                             src="../static/img/icon-download.svg"
                             alt="Baixar"
-                            onclick="Modal.toggleDownloadAge(0, 'idade-litoral-norte')"
+                            onclick="Modal.toggleDownloadAge(0, 'idade-litoral-norte-${year}')"
                           />
                         </div>
                       </div>
@@ -301,7 +300,7 @@
                             id="download"
                             src="../static/img/icon-download.svg"
                             alt="Baixar"
-                            onclick="Modal.toggleDownloadAge(1, 'idade-regiao-bragantina')"
+                            onclick="Modal.toggleDownloadAge(1, 'idade-regiao-bragantina-${year}')"
                           />
                         </div>
                       </div>
@@ -333,7 +332,7 @@
                             id="download"
                             src="../static/img/icon-download.svg"
                             alt="Baixar"
-                            onclick="Modal.toggleDownloadAge(2, 'idade-serra-mantiqueira')"
+                            onclick="Modal.toggleDownloadAge(2, 'idade-serra-mantiqueira-${year}')"
                           />
                         </div>
                       </div>
@@ -365,7 +364,7 @@
                             id="download"
                             src="../static/img/icon-download.svg"
                             alt="Baixar"
-                            onclick="Modal.toggleDownloadAge(3, 'idade-vale-historico')"
+                            onclick="Modal.toggleDownloadAge(3, 'idade-vale-historico-${year}')"
                           />
                         </div>
                       </div>
@@ -397,7 +396,7 @@
                             id="download"
                             src="../static/img/icon-download.svg"
                             alt="Baixar"
-                            onclick="Modal.toggleDownloadAge(4, 'idade-vale-paraiba')"
+                            onclick="Modal.toggleDownloadAge(4, 'idade-vale-paraiba-${year}')"
                           />
                         </div>
                       </div>
@@ -429,7 +428,7 @@
                             id="download"
                             src="../static/img/icon-download.svg"
                             alt="Baixar"
-                            onclick="Modal.toggleDownloadAge(5, 'idade-vanguarda')"
+                            onclick="Modal.toggleDownloadAge(5, 'idade-vanguarda-${year}')"
                           />
                         </div>
                       </div>
@@ -524,7 +523,7 @@
                             id="zoom"
                             src="../static/img/icon-zoom.svg"
                             alt="Aumentar gráfico"
-                            onclick="Modal.toggleZoom(0, 'Média salarial de 2008 a 2018 do Litoral Norte', 'Salários mínimos', 'line', 0)"
+                            onclick="Modal.toggleZoom(0, 'Média salarial do Litoral Norte a partir de 2008', 'Salários mínimos', 'line', 0)"
                           />
 
                           <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
@@ -556,7 +555,7 @@
                             id="zoom"
                             src="../static/img/icon-zoom.svg"
                             alt="Aumentar gráfico"
-                            onclick="Modal.toggleZoom(1, 'Média salarial de 2008 a 2018 da Região Bragantina', 'Salários mínimos', 'line', 0)"
+                            onclick="Modal.toggleZoom(1, 'Média salarial da Região Bragantina a partir de 2008', 'Salários mínimos', 'line', 0)"
                           />
 
                           <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
@@ -588,7 +587,7 @@
                             id="zoom"
                             src="../static/img/icon-zoom.svg"
                             alt="Aumentar gráfico"
-                            onclick="Modal.toggleZoom(2, 'Média salarial de 2008 a 2018 da Serra da Mantiqueira', 'Salários mínimos', 'line', 0)"
+                            onclick="Modal.toggleZoom(2, 'Média salarial da Serra da Mantiqueira a partir de 2008', 'Salários mínimos', 'line', 0)"
                           />
 
                           <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
@@ -620,7 +619,7 @@
                             id="zoom"
                             src="../static/img/icon-zoom.svg"
                             alt="Aumentar gráfico"
-                            onclick="Modal.toggleZoom(3, 'Média salarial de 2008 a 2018 do Vale Histórico', 'Salários mínimos', 'line', 0)"
+                            onclick="Modal.toggleZoom(3, 'Média salarial do Vale Histórico a partir de 2008', 'Salários mínimos', 'line', 0)"
                           />
 
                           <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
@@ -652,7 +651,7 @@
                             id="zoom"
                             src="../static/img/icon-zoom.svg"
                             alt="Aumentar gráfico"
-                            onclick="Modal.toggleZoom(4, 'Média salarial de 2008 a 2018 do Vale do Paraíba', 'Salários mínimos', 'line', 0)"
+                            onclick="Modal.toggleZoom(4, 'Média salarial do Vale do Paraíba a partir de 2008', 'Salários mínimos', 'line', 0)"
                           />
 
                           <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
@@ -684,7 +683,7 @@
                             id="zoom"
                             src="../static/img/icon-zoom.svg"
                             alt="Aumentar gráfico"
-                            onclick="Modal.toggleZoom(5, 'Média salarial de 2008 a 2018 da Cobertura da Vanguarda', 'Salários mínimos', 'line', 0)"
+                            onclick="Modal.toggleZoom(5, 'Média salarial da Cobertura da Vanguarda a partir de 2008', 'Salários mínimos', 'line', 0)"
                           />
 
                           <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
@@ -692,7 +691,7 @@
                             id="download"
                             src="../static/img/icon-download.svg"
                             alt="Baixar"
-                            onclick="Modal.toggleDownload(5, 'salario-vanguarda)"
+                            onclick="Modal.toggleDownload(5, 'salario-vanguarda')"
                           />
                         </div>
                       </div>
@@ -786,7 +785,7 @@
                             id="zoom"
                             src="../static/img/icon-zoom.svg"
                             alt="Aumentar gráfico"
-                            onclick="Modal.toggleZoom(0, 'Evolução do número de eleitores do Litoral Norte', 'Quantidade de eleitores', 'line', 0)"
+                            onclick="Modal.toggleZoom(0, 'Evolução da quantidade de eleitores do Litoral Norte', 'Quantidade de eleitores', 'line', 0)"
                           />
 
                           <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
@@ -818,7 +817,7 @@
                             id="zoom"
                             src="../static/img/icon-zoom.svg"
                             alt="Aumentar gráfico"
-                            onclick="Modal.toggleZoom(1, 'Evolução do número de eleitores da Região Bragantina', 'Quantidade de eleitores', 'line', 0)"
+                            onclick="Modal.toggleZoom(1, 'Evolução da quantidade de eleitores da Região Bragantina', 'Quantidade de eleitores', 'line', 0)"
                           />
 
                           <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
@@ -850,7 +849,7 @@
                             id="zoom"
                             src="../static/img/icon-zoom.svg"
                             alt="Aumentar gráfico"
-                            onclick="Modal.toggleZoom(2, 'Evolução do número de eleitores da Serra da Mantiqueira', 'Quantidade de eleitores', 'line', 0)"
+                            onclick="Modal.toggleZoom(2, 'Evolução da quantidade de eleitores da Serra da Mantiqueira', 'Quantidade de eleitores', 'line', 0)"
                           />
 
                           <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
@@ -882,7 +881,7 @@
                             id="zoom"
                             src="../static/img/icon-zoom.svg"
                             alt="Aumentar gráfico"
-                            onclick="Modal.toggleZoom(3, 'Evolução do número de eleitores do Vale Histórico', 'Quantidade de eleitores', 'line', 0)"
+                            onclick="Modal.toggleZoom(3, 'Evolução da quantidade de eleitores do Vale Histórico', 'Quantidade de eleitores', 'line', 0)"
                           />
 
                           <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
@@ -914,7 +913,7 @@
                             id="zoom"
                             src="../static/img/icon-zoom.svg"
                             alt="Aumentar gráfico"
-                            onclick="Modal.toggleZoom(4, 'Evolução do número de eleitores do Vale do Paraíba', 'Quantidade de eleitores', 'line', 0)"
+                            onclick="Modal.toggleZoom(4, 'Evolução da quantidade de eleitores do Vale do Paraíba', 'Quantidade de eleitores', 'line', 0)"
                           />
 
                           <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
@@ -946,7 +945,7 @@
                             id="zoom"
                             src="../static/img/icon-zoom.svg"
                             alt="Aumentar gráfico"
-                            onclick="Modal.toggleZoom(5, 'Evolução do número de eleitores da Cobertura da Vanguarda', 'Quantidade de eleitores', 'line', 0)"
+                            onclick="Modal.toggleZoom(5, 'Evolução da quantidade de eleitores da Cobertura da Vanguarda', 'Quantidade de eleitores', 'line', 0)"
                           />
 
                           <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
