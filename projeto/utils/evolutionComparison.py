@@ -74,25 +74,12 @@ def evolutionComparison(year, csvPaths):
                                  encoding='iso-8859-1', sep=';', error_bad_lines=False)
     eleitorado2020 = pd.read_csv(csvPaths[3], usecols=col_evolucaoeleitorado,
                                  encoding='iso-8859-1', sep=';', error_bad_lines=False)
-    if year == 2022:
-        eleitorado2022 = pd.read_csv(csvPaths[4], usecols=col_evolucaoeleitorado,
-                                     encoding='iso-8859-1', sep=';', error_bad_lines=False)
-    if year == 2024:
-        eleitorado2022 = pd.read_csv(csvPaths[4], usecols=col_evolucaoeleitorado,
-                                     encoding='iso-8859-1', sep=';', error_bad_lines=False)
-        eleitorado2024 = pd.read_csv(csvPaths[5], usecols=col_evolucaoeleitorado,
-                                     encoding='iso-8859-1', sep=';', error_bad_lines=False)
 
     # Filtrando, pela estado de SP:
     elei2014 = eleitorado2014.loc[eleitorado2014['SG_UF'] == 'SP']
     elei2016 = eleitorado2016.loc[eleitorado2016['SG_UF'] == 'SP']
     elei2018 = eleitorado2018.loc[eleitorado2018['SG_UF'] == 'SP']
     elei2020 = eleitorado2020.loc[eleitorado2020['SG_UF'] == 'SP']
-    if year == 2022:
-        elei2022 = eleitorado2022.loc[eleitorado2022['SG_UF'] == 'SP']
-    elif year == 2024:
-        elei2022 = eleitorado2022.loc[eleitorado2022['SG_UF'] == 'SP']
-        elei2024 = eleitorado2024.loc[eleitorado2024['SG_UF'] == 'SP']
 
     # Filtro por macrorregiões da cobertura da TV Vanguarda:
     cobertura_vanguarda = dfmc.Município.values
@@ -157,46 +144,6 @@ def evolutionComparison(year, csvPaths):
                                == tuple(regiao_bragantina)]
     regiaob2020 = elei2020.loc[elei2020['NM_MUNICIPIO']
                                == tuple(regiao_bragantina)]
-
-    if year == 2022:
-        vanguarda2022 = elei2022.loc[elei2022['NM_MUNICIPIO'] == tuple(
-            cobertura_vanguarda)]
-        valep2022 = elei2022.loc[elei2022['NM_MUNICIPIO']
-                                 == tuple(vale_do_paraiba)]
-        valeh2022 = elei2022.loc[elei2022['NM_MUNICIPIO']
-                                 == tuple(vale_historico)]
-        litoraln2022 = elei2022.loc[elei2022['NM_MUNICIPIO'] == tuple(
-            litoral_norte)]
-        serram2022 = elei2022.loc[elei2022['NM_MUNICIPIO'] == tuple(
-            serra_da_mantiqueira)]
-        regiaob2022 = elei2022.loc[elei2022['NM_MUNICIPIO'] == tuple(
-            regiao_bragantina)]
-
-    elif year == 2024:
-        vanguarda2022 = elei2022.loc[elei2022['NM_MUNICIPIO'] == tuple(
-            cobertura_vanguarda)]
-        vanguarda2024 = elei2024.loc[elei2024['NM_MUNICIPIO'] == tuple(
-            cobertura_vanguarda)]
-        valep2022 = elei2022.loc[elei2022['NM_MUNICIPIO']
-                                 == tuple(vale_do_paraiba)]
-        valep2024 = elei2024.loc[elei2024['NM_MUNICIPIO']
-                                 == tuple(vale_do_paraiba)]
-        valeh2022 = elei2022.loc[elei2022['NM_MUNICIPIO']
-                                 == tuple(vale_historico)]
-        valeh2024 = elei2024.loc[elei2024['NM_MUNICIPIO']
-                                 == tuple(vale_historico)]
-        litoraln2022 = elei2022.loc[elei2022['NM_MUNICIPIO'] == tuple(
-            litoral_norte)]
-        litoraln2024 = elei2024.loc[elei2024['NM_MUNICIPIO'] == tuple(
-            litoral_norte)]
-        serram2022 = elei2022.loc[elei2022['NM_MUNICIPIO'] == tuple(
-            serra_da_mantiqueira)]
-        serram2024 = elei2024.loc[elei2024['NM_MUNICIPIO'] == tuple(
-            serra_da_mantiqueira)]
-        regiaob2022 = elei2022.loc[elei2022['NM_MUNICIPIO'] == tuple(
-            regiao_bragantina)]
-        regiaob2024 = elei2024.loc[elei2024['NM_MUNICIPIO'] == tuple(
-            regiao_bragantina)]
 
     # Preenchendo os DataFrames com dados de cada região:
     for x in cobertura_vanguarda:
@@ -276,177 +223,39 @@ def evolutionComparison(year, csvPaths):
     for x in regiao_bragantina:
         regiaob2020 = regiaob2020.append(
             elei2020.loc[elei2020['NM_MUNICIPIO'] == x])
-    if year == 2022:
-        for x in cobertura_vanguarda:
-            vanguarda2022 = vanguarda2022.append(
-                elei2022.loc[elei2022['NM_MUNICIPIO'] == x])
-        for x in vale_do_paraiba:
-            valep2022 = valep2022.append(
-                elei2022.loc[elei2022['NM_MUNICIPIO'] == x])
-        for x in vale_historico:
-            valeh2022 = valeh2022.append(
-                elei2022.loc[elei2022['NM_MUNICIPIO'] == x])
-        for x in litoral_norte:
-            litoraln2022 = litoraln2022.append(
-                elei2022.loc[elei2022['NM_MUNICIPIO'] == x])
-        for x in serra_da_mantiqueira:
-            serram2022 = serram2022.append(
-                elei2022.loc[elei2022['NM_MUNICIPIO'] == x])
-        for x in regiao_bragantina:
-            regiaob2022 = regiaob2022.append(
-                elei2022.loc[elei2022['NM_MUNICIPIO'] == x])
-
-    elif year == 2024:
-        for x in cobertura_vanguarda:
-            vanguarda2022 = vanguarda2022.append(
-                elei2022.loc[elei2022['NM_MUNICIPIO'] == x])
-        for x in vale_do_paraiba:
-            valep2022 = valep2022.append(
-                elei2022.loc[elei2022['NM_MUNICIPIO'] == x])
-        for x in vale_historico:
-            valeh2022 = valeh2022.append(
-                elei2022.loc[elei2022['NM_MUNICIPIO'] == x])
-        for x in litoral_norte:
-            litoraln2022 = litoraln2022.append(
-                elei2022.loc[elei2022['NM_MUNICIPIO'] == x])
-        for x in serra_da_mantiqueira:
-            serram2022 = serram2022.append(
-                elei2022.loc[elei2022['NM_MUNICIPIO'] == x])
-        for x in regiao_bragantina:
-            regiaob2022 = regiaob2022.append(
-                elei2022.loc[elei2022['NM_MUNICIPIO'] == x])
-
-        for x in cobertura_vanguarda:
-            vanguarda2024 = vanguarda2024.append(
-                elei2024.loc[elei2024['NM_MUNICIPIO'] == x])
-        for x in vale_do_paraiba:
-            valep2024 = valep2024.append(
-                elei2024.loc[elei2024['NM_MUNICIPIO'] == x])
-        for x in vale_historico:
-            valeh2024 = valeh2024.append(
-                elei2024.loc[elei2024['NM_MUNICIPIO'] == x])
-        for x in litoral_norte:
-            litoraln2024 = litoraln2024.append(
-                elei2024.loc[elei2024['NM_MUNICIPIO'] == x])
-        for x in serra_da_mantiqueira:
-            serram2024 = serram2024.append(
-                elei2024.loc[elei2024['NM_MUNICIPIO'] == x])
-        for x in regiao_bragantina:
-            regiaob2024 = regiaob2024.append(
-                elei2024.loc[elei2024['NM_MUNICIPIO'] == x])
 
     # Estruturando a resposta da função
-    if year == 2022:
-        dados_vanguarda = {"2014": int(vanguarda2014[['QTD_ELEITORES']].sum(axis=0)),
-                           "2016": int(vanguarda2016[['QTD_ELEITORES']].sum(axis=0)),
-                           "2018": int(vanguarda2018[['QTD_ELEITORES']].sum(axis=0)),
-                           "2020": int(vanguarda2020[['QTD_ELEITORES']].sum(axis=0)),
-                           "2022": int(vanguarda2022[['QTD_ELEITORES']].sum(axis=0))}
+    dados_vanguarda = {"2014": int(vanguarda2014[['QTD_ELEITORES']].sum(axis=0)),
+                       "2016": int(
+        vanguarda2016[['QTD_ELEITORES']].sum(axis=0)),
+        "2018": int(
+        vanguarda2018[['QTD_ELEITORES']].sum(axis=0)),
+        "2020":  int(vanguarda2020[['QTD_ELEITORES']].sum(axis=0))}
 
-        dados_valep = {"2014": int(valep2014[['QTD_ELEITORES']].sum(axis=0)),
-                       "2016": int(valep2016[['QTD_ELEITORES']].sum(axis=0)),
-                       "2018": int(valep2018[['QTD_ELEITORES']].sum(axis=0)),
-                       "2020": int(valep2020[['QTD_ELEITORES']].sum(axis=0)),
-                       "2022": int(valep2022[['QTD_ELEITORES']].sum(axis=0))}
+    dados_valep = {"2014": int(valep2014[['QTD_ELEITORES']].sum(axis=0)),
+                   "2016": int(valep2016[['QTD_ELEITORES']].sum(axis=0)),
+                   "2018": int(valep2018[['QTD_ELEITORES']].sum(axis=0)),
+                   "2020": int(valep2020[['QTD_ELEITORES']].sum(axis=0))}
 
-        dados_valeh = {"2014": int(valeh2014[['QTD_ELEITORES']].sum(axis=0)),
-                       "2016": int(valeh2016[['QTD_ELEITORES']].sum(axis=0)),
-                       "2018": int(valeh2018[['QTD_ELEITORES']].sum(axis=0)),
-                       "2020": int(valeh2020[['QTD_ELEITORES']].sum(axis=0)),
-                       "2022": int(valeh2022[['QTD_ELEITORES']].sum(axis=0))}
+    dados_valeh = {"2014": int(valeh2014[['QTD_ELEITORES']].sum(axis=0)),
+                   "2016": int(valeh2016[['QTD_ELEITORES']].sum(axis=0)),
+                   "2018": int(valeh2018[['QTD_ELEITORES']].sum(axis=0)),
+                   "2020": int(valeh2020[['QTD_ELEITORES']].sum(axis=0))}
 
-        dados_litoraln = {"2014": int(litoraln2014[['QTD_ELEITORES']].sum(axis=0)),
-                          "2016": int(litoraln2016[['QTD_ELEITORES']].sum(axis=0)),
-                          "2018": int(litoraln2018[['QTD_ELEITORES']].sum(axis=0)),
-                          "2020": int(litoraln2020[['QTD_ELEITORES']].sum(axis=0)),
-                          "2022": int(litoraln2022[['QTD_ELEITORES']].sum(axis=0))}
+    dados_litoraln = {"2014": int(litoraln2014[['QTD_ELEITORES']].sum(axis=0)),
+                      "2016": int(litoraln2016[['QTD_ELEITORES']].sum(axis=0)),
+                      "2018": int(litoraln2018[['QTD_ELEITORES']].sum(axis=0)),
+                      "2020": int(litoraln2020[['QTD_ELEITORES']].sum(axis=0))}
 
-        dados_serram = {"2014": int(serram2014[['QTD_ELEITORES']].sum(axis=0)),
-                        "2016": int(serram2016[['QTD_ELEITORES']].sum(axis=0)),
-                        "2018": int(serram2018[['QTD_ELEITORES']].sum(axis=0)),
-                        "2020": int(serram2020[['QTD_ELEITORES']].sum(axis=0)),
-                        "2022": int(serram2022[['QTD_ELEITORES']].sum(axis=0))}
+    dados_serram = {"2014": int(serram2014[['QTD_ELEITORES']].sum(axis=0)),
+                    "2016": int(serram2016[['QTD_ELEITORES']].sum(axis=0)),
+                    "2018": int(serram2018[['QTD_ELEITORES']].sum(axis=0)),
+                    "2020": int(serram2020[['QTD_ELEITORES']].sum(axis=0))}
 
-        dados_regiaob = {"2014": int(regiaob2014[['QTD_ELEITORES']].sum(axis=0)),
-                         "2016": int(regiaob2016[['QTD_ELEITORES']].sum(axis=0)),
-                         "2018": int(regiaob2018[['QTD_ELEITORES']].sum(axis=0)),
-                         "2020": int(regiaob2020[['QTD_ELEITORES']].sum(axis=0)),
-                         "2022": int(regiaob2022[['QTD_ELEITORES']].sum(axis=0))}
-
-    elif year == 2024:
-        dados_vanguarda = {"2014": int(vanguarda2014[['QTD_ELEITORES']].sum(axis=0)),
-                           "2016": int(vanguarda2016[['QTD_ELEITORES']].sum(axis=0)),
-                           "2018": int(vanguarda2018[['QTD_ELEITORES']].sum(axis=0)),
-                           "2020": int(vanguarda2020[['QTD_ELEITORES']].sum(axis=0)),
-                           "2022": int(vanguarda2022[['QTD_ELEITORES']].sum(axis=0)),
-                           "2024": int(vanguarda2024[['QTD_ELEITORES']].sum(axis=0))}
-
-        dados_valep = {"2014": int(valep2014[['QTD_ELEITORES']].sum(axis=0)),
-                       "2016": int(valep2016[['QTD_ELEITORES']].sum(axis=0)),
-                       "2018": int(valep2018[['QTD_ELEITORES']].sum(axis=0)),
-                       "2020": int(valep2020[['QTD_ELEITORES']].sum(axis=0)),
-                       "2022": int(valep2022[['QTD_ELEITORES']].sum(axis=0)),
-                       "2024": int(valep2024[['QTD_ELEITORES']].sum(axis=0))}
-
-        dados_valeh = {"2014": int(valeh2014[['QTD_ELEITORES']].sum(axis=0)),
-                       "2016": int(valeh2016[['QTD_ELEITORES']].sum(axis=0)),
-                       "2018": int(valeh2018[['QTD_ELEITORES']].sum(axis=0)),
-                       "2020": int(valeh2020[['QTD_ELEITORES']].sum(axis=0)),
-                       "2022": int(valeh2022[['QTD_ELEITORES']].sum(axis=0)),
-                       "2024": int(valeh2024[['QTD_ELEITORES']].sum(axis=0))}
-
-        dados_litoraln = {"2014": int(litoraln2014[['QTD_ELEITORES']].sum(axis=0)),
-                          "2016": int(litoraln2016[['QTD_ELEITORES']].sum(axis=0)),
-                          "2018": int(litoraln2018[['QTD_ELEITORES']].sum(axis=0)),
-                          "2020": int(litoraln2020[['QTD_ELEITORES']].sum(axis=0)),
-                          "2022": int(litoraln2022[['QTD_ELEITORES']].sum(axis=0)),
-                          "2024": int(litoraln2024[['QTD_ELEITORES']].sum(axis=0))}
-
-        dados_serram = {"2014": int(serram2014[['QTD_ELEITORES']].sum(axis=0)),
-                        "2016": int(serram2016[['QTD_ELEITORES']].sum(axis=0)),
-                        "2018": int(serram2018[['QTD_ELEITORES']].sum(axis=0)),
-                        "2020": int(serram2020[['QTD_ELEITORES']].sum(axis=0)),
-                        "2022": int(serram2022[['QTD_ELEITORES']].sum(axis=0)),
-                        "2024": int(serram2024[['QTD_ELEITORES']].sum(axis=0))}
-
-        dados_regiaob = {"2014": int(regiaob2014[['QTD_ELEITORES']].sum(axis=0)),
-                         "2016": int(regiaob2016[['QTD_ELEITORES']].sum(axis=0)),
-                         "2018": int(regiaob2018[['QTD_ELEITORES']].sum(axis=0)),
-                         "2020": int(regiaob2020[['QTD_ELEITORES']].sum(axis=0)),
-                         "2022": int(regiaob2022[['QTD_ELEITORES']].sum(axis=0)),
-                         "2024": int(regiaob2024[['QTD_ELEITORES']].sum(axis=0))}
-    else:
-        dados_vanguarda = {"2014": int(vanguarda2014[['QTD_ELEITORES']].sum(axis=0)),
-                           "2016": int(
-                           vanguarda2016[['QTD_ELEITORES']].sum(axis=0)),
-                           "2018": int(
-                           vanguarda2018[['QTD_ELEITORES']].sum(axis=0)),
-                           "2020":  int(vanguarda2020[['QTD_ELEITORES']].sum(axis=0))}
-
-        dados_valep = {"2014": int(valep2014[['QTD_ELEITORES']].sum(axis=0)),
-                       "2016": int(valep2016[['QTD_ELEITORES']].sum(axis=0)),
-                       "2018": int(valep2018[['QTD_ELEITORES']].sum(axis=0)),
-                       "2020": int(valep2020[['QTD_ELEITORES']].sum(axis=0))}
-
-        dados_valeh = {"2014": int(valeh2014[['QTD_ELEITORES']].sum(axis=0)),
-                       "2016": int(valeh2016[['QTD_ELEITORES']].sum(axis=0)),
-                       "2018": int(valeh2018[['QTD_ELEITORES']].sum(axis=0)),
-                       "2020": int(valeh2020[['QTD_ELEITORES']].sum(axis=0))}
-
-        dados_litoraln = {"2014": int(litoraln2014[['QTD_ELEITORES']].sum(axis=0)),
-                          "2016": int(litoraln2016[['QTD_ELEITORES']].sum(axis=0)),
-                          "2018": int(litoraln2018[['QTD_ELEITORES']].sum(axis=0)),
-                          "2020": int(litoraln2020[['QTD_ELEITORES']].sum(axis=0))}
-
-        dados_serram = {"2014": int(serram2014[['QTD_ELEITORES']].sum(axis=0)),
-                        "2016": int(serram2016[['QTD_ELEITORES']].sum(axis=0)),
-                        "2018": int(serram2018[['QTD_ELEITORES']].sum(axis=0)),
-                        "2020": int(serram2020[['QTD_ELEITORES']].sum(axis=0))}
-
-        dados_regiaob = {"2014": int(regiaob2014[['QTD_ELEITORES']].sum(axis=0)),
-                         "2016": int(regiaob2016[['QTD_ELEITORES']].sum(axis=0)),
-                         "2018": int(regiaob2018[['QTD_ELEITORES']].sum(axis=0)),
-                         "2020": int(regiaob2020[['QTD_ELEITORES']].sum(axis=0))}
+    dados_regiaob = {"2014": int(regiaob2014[['QTD_ELEITORES']].sum(axis=0)),
+                     "2016": int(regiaob2016[['QTD_ELEITORES']].sum(axis=0)),
+                     "2018": int(regiaob2018[['QTD_ELEITORES']].sum(axis=0)),
+                     "2020": int(regiaob2020[['QTD_ELEITORES']].sum(axis=0))}
 
     cards = {"Vanguarda": dados_vanguarda, "ValeParaiba": dados_valep,
              "ValeHistorico": dados_valeh, "Litoral": dados_litoraln,

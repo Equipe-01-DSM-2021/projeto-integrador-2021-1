@@ -74,8 +74,8 @@
                 <label id='labelYear' for="year">Ano:</label>
                 <select name="year" id="year">
                   <option selected disabled value="default"></option>
-                  <option value="2020">2024</option>
-                  <option value="2020">2022</option>
+                  <option value="2024">2024</option>
+                  <option value="2022">2022</option>
                   <option value="2020">2020</option>
                   <option value="2018">2018</option>
                 </select>
@@ -221,817 +221,829 @@
               //div para mostrar os cards
               phase = document.querySelector("#search-result p");
               phase.innerHTML = "";
+              
               results = document.getElementById('search-result')
-
               //recebendo o json
               data = JSON.parse(JSON.stringify(data));
-              console.log(data)
 
-              //zerando variáveis globais
-              global.dataKeys = [];
-              global.dataValues = [];
-              global.dataAll = [];
-              global.dataPorcentage = []
+              if (Object.keys(data).length != 1) {
 
-              var typeChart = ""
+                //zerando variáveis globais
+                global.dataKeys = [];
+                global.dataValues = [];
+                global.dataAll = [];
+                global.dataPorcentage = []
 
-              // PESQUISA POR JOVENS OU IDOSOS
-              if (comparison == "jovens" || comparison == "idosos") {
+                var typeChart = ""
 
-                // Definindo o tipo de gráfico
-                typeChart = 'bar';
+                // PESQUISA POR JOVENS OU IDOSOS
+                if (comparison == "jovens" || comparison == "idosos") {
 
-                // Inserindo o HTML do gráfico
-                results.innerHTML = `
-                  <div class="result">
-                    <div class="card">
-                      <div class="graphic">
-                        <div class="graphic-normal">
-                          <!-- CANVAS DO GRÁFICO -->
-                          <canvas id="chart-0" width="150px" height="140px"></canvas>
+                  // Definindo o tipo de gráfico
+                  typeChart = 'bar';
+
+                  // Inserindo o HTML do gráfico
+                  results.innerHTML = `
+                    <div class="result">
+                      <div class="card">
+                        <div class="graphic">
+                          <div class="graphic-normal">
+                            <!-- CANVAS DO GRÁFICO -->
+                            <canvas id="chart-0" width="150px" height="140px"></canvas>
+                          </div>
+                        </div>
+                        <div class="graphic-description">
+                          <!-- DADOS DO GRÁFICO -->
+                          <h2>Litoral Norte</h2>
+                          <a href="https://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais-1/repositorio-de-dados-eleitorais" target="_blank">Dados do IBGE</a>
+
+                          <div class="icon-actions">
+                            <!-- Ícone de zoom -->
+                            <img
+                              id="zoom"
+                              src="../static/img/icon-zoom.svg"
+                              alt="Aumentar gráfico"
+                              onclick="Modal.toggleZoom(0, 'Região do Litoral Norte', 'Quantidade de eleitores', 'bar', 1)"
+                            />
+
+                            <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
+                            <img
+                              id="download"
+                              src="../static/img/icon-download.svg"
+                              alt="Baixar"
+                              onclick="Modal.toggleDownloadAge(0, 'idade-litoral-norte-${year}')"
+                            />
+                          </div>
                         </div>
                       </div>
-                      <div class="graphic-description">
-                        <!-- DADOS DO GRÁFICO -->
-                        <h2>Litoral Norte</h2>
-                        <a href="https://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais-1/repositorio-de-dados-eleitorais" target="_blank">Dados do IBGE</a>
 
-                        <div class="icon-actions">
-                          <!-- Ícone de zoom -->
-                          <img
-                            id="zoom"
-                            src="../static/img/icon-zoom.svg"
-                            alt="Aumentar gráfico"
-                            onclick="Modal.toggleZoom(0, 'Região do Litoral Norte', 'Quantidade de eleitores', 'bar', 1)"
-                          />
+                      <div class="card">
+                        <div class="graphic">
+                          <div class="graphic-normal">
+                            <!-- CANVAS DO GRÁFICO -->
+                            <canvas id="chart-1" width="150px" height="140px"></canvas>
+                          </div>
+                        </div>
+                        <div class="graphic-description">
+                          <!-- DADOS DO GRÁFICO -->
+                          <h2>Região Bragantina</h2>
+                          <a href="https://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais-1/repositorio-de-dados-eleitorais" target="_blank">Dados do IBGE</a>
 
-                          <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
-                          <img
-                            id="download"
-                            src="../static/img/icon-download.svg"
-                            alt="Baixar"
-                            onclick="Modal.toggleDownloadAge(0, 'idade-litoral-norte-${year}')"
-                          />
+                          <div class="icon-actions">
+                            <!-- Ícone de zoom -->
+                            <img
+                              id="zoom"
+                              src="../static/img/icon-zoom.svg"
+                              alt="Aumentar gráfico"
+                              onclick="Modal.toggleZoom(1, 'Região Bragantina', 'Quantidade de eleitores', 'bar', 1)"
+                            />
+
+                            <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
+                            <img
+                              id="download"
+                              src="../static/img/icon-download.svg"
+                              alt="Baixar"
+                              onclick="Modal.toggleDownloadAge(1, 'idade-regiao-bragantina-${year}')"
+                            />
+                          </div>
                         </div>
                       </div>
+
+                      <div class="card">
+                        <div class="graphic">
+                          <div class="graphic-normal">
+                            <!-- CANVAS DO GRÁFICO -->
+                            <canvas id="chart-2" width="150px" height="140px"></canvas>
+                          </div>
+                        </div>
+                        <div class="graphic-description">
+                          <!-- DADOS DO GRÁFICO -->
+                          <h2>Serra da Mantiqueira</h2>
+                          <a href="https://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais-1/repositorio-de-dados-eleitorais" target="_blank">Dados do IBGE</a>
+
+                          <div class="icon-actions">
+                            <!-- Ícone de zoom -->
+                            <img
+                              id="zoom"
+                              src="../static/img/icon-zoom.svg"
+                              alt="Aumentar gráfico"
+                              onclick="Modal.toggleZoom(2, 'Região da Serra da Mantiqueira', 'Quantidade de eleitores', 'bar', 1)"
+                            />
+
+                            <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
+                            <img
+                              id="download"
+                              src="../static/img/icon-download.svg"
+                              alt="Baixar"
+                              onclick="Modal.toggleDownloadAge(2, 'idade-serra-mantiqueira-${year}')"
+                            />
+                          </div>
+                        </div>
+                      </div>              
+
+                      <div class="card">
+                        <div class="graphic">
+                          <div class="graphic-normal">
+                            <!-- CANVAS DO GRÁFICO -->
+                            <canvas id="chart-3" width="150px" height="140px"></canvas>
+                          </div>
+                        </div>
+                        <div class="graphic-description">
+                          <!-- DADOS DO GRÁFICO -->
+                          <h2>Vale Histórico</h2>
+                          <a href="https://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais-1/repositorio-de-dados-eleitorais" target="_blank">Dados do IBGE</a>
+
+                          <div class="icon-actions">
+                            <!-- Ícone de zoom -->
+                            <img
+                              id="zoom"
+                              src="../static/img/icon-zoom.svg"
+                              alt="Aumentar gráfico"
+                              onclick="Modal.toggleZoom(3, 'Região do Vale Histórico', 'Quantidade de eleitores', 'bar', 1)"
+                            />
+
+                            <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
+                            <img
+                              id="download"
+                              src="../static/img/icon-download.svg"
+                              alt="Baixar"
+                              onclick="Modal.toggleDownloadAge(3, 'idade-vale-historico-${year}')"
+                            />
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="card">
+                        <div class="graphic">
+                          <div class="graphic-normal">
+                            <!-- CANVAS DO GRÁFICO -->
+                            <canvas id="chart-4" width="150px" height="140px"></canvas>
+                          </div>
+                        </div>
+                        <div class="graphic-description">
+                          <!-- DADOS DO GRÁFICO -->
+                          <h2>Vale do Paraíba</h2>
+                          <a href="https://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais-1/repositorio-de-dados-eleitorais" target="_blank">Dados do IBGE</a>
+
+                          <div class="icon-actions">
+                            <!-- Ícone de zoom -->
+                            <img
+                              id="zoom"
+                              src="../static/img/icon-zoom.svg"
+                              alt="Aumentar gráfico"
+                              onclick="Modal.toggleZoom(4, 'Região do Vale do Paraíba', 'Quantidade de Eleitores', 'bar', 1)"
+                            />
+
+                            <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
+                            <img
+                              id="download"
+                              src="../static/img/icon-download.svg"
+                              alt="Baixar"
+                              onclick="Modal.toggleDownloadAge(4, 'idade-vale-paraiba-${year}')"
+                            />
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="card">
+                        <div class="graphic">
+                          <div class="graphic-normal">
+                            <!-- CANVAS DO GRÁFICO -->
+                            <canvas id="chart-5" width="150px" height="140px"></canvas>
+                          </div>
+                        </div>
+                        <div class="graphic-description">
+                          <!-- DADOS DO GRÁFICO -->
+                          <h2>Cobertura da Vanguarda</h2>
+                          <a href="https://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais-1/repositorio-de-dados-eleitorais" target="_blank">Dados do IBGE</a>
+
+                          <div class="icon-actions">
+                            <!-- Ícone de zoom -->
+                            <img
+                              id="zoom"
+                              src="../static/img/icon-zoom.svg"
+                              alt="Aumentar gráfico"
+                              onclick="Modal.toggleZoom(5, 'Cobertura da Vanguarda', 'Quantidade de eleitores', 'bar', 1)"
+                            />
+
+                            <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
+                            <img
+                              id="download"
+                              src="../static/img/icon-download.svg"
+                              alt="Baixar"
+                              onclick="Modal.toggleDownloadAge(5, 'idade-vanguarda-${year}')"
+                            />
+                          </div>
+                        </div>
+                      </div>
+
                     </div>
+                  `;
 
-                    <div class="card">
-                      <div class="graphic">
-                        <div class="graphic-normal">
-                          <!-- CANVAS DO GRÁFICO -->
-                          <canvas id="chart-1" width="150px" height="140px"></canvas>
-                        </div>
-                      </div>
-                      <div class="graphic-description">
-                        <!-- DADOS DO GRÁFICO -->
-                        <h2>Região Bragantina</h2>
-                        <a href="https://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais-1/repositorio-de-dados-eleitorais" target="_blank">Dados do IBGE</a>
-
-                        <div class="icon-actions">
-                          <!-- Ícone de zoom -->
-                          <img
-                            id="zoom"
-                            src="../static/img/icon-zoom.svg"
-                            alt="Aumentar gráfico"
-                            onclick="Modal.toggleZoom(1, 'Região Bragantina', 'Quantidade de eleitores', 'bar', 1)"
-                          />
-
-                          <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
-                          <img
-                            id="download"
-                            src="../static/img/icon-download.svg"
-                            alt="Baixar"
-                            onclick="Modal.toggleDownloadAge(1, 'idade-regiao-bragantina-${year}')"
-                          />
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="card">
-                      <div class="graphic">
-                        <div class="graphic-normal">
-                          <!-- CANVAS DO GRÁFICO -->
-                          <canvas id="chart-2" width="150px" height="140px"></canvas>
-                        </div>
-                      </div>
-                      <div class="graphic-description">
-                        <!-- DADOS DO GRÁFICO -->
-                        <h2>Serra da Mantiqueira</h2>
-                        <a href="https://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais-1/repositorio-de-dados-eleitorais" target="_blank">Dados do IBGE</a>
-
-                        <div class="icon-actions">
-                          <!-- Ícone de zoom -->
-                          <img
-                            id="zoom"
-                            src="../static/img/icon-zoom.svg"
-                            alt="Aumentar gráfico"
-                            onclick="Modal.toggleZoom(2, 'Região da Serra da Mantiqueira', 'Quantidade de eleitores', 'bar', 1)"
-                          />
-
-                          <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
-                          <img
-                            id="download"
-                            src="../static/img/icon-download.svg"
-                            alt="Baixar"
-                            onclick="Modal.toggleDownloadAge(2, 'idade-serra-mantiqueira-${year}')"
-                          />
-                        </div>
-                      </div>
-                    </div>              
-
-                    <div class="card">
-                      <div class="graphic">
-                        <div class="graphic-normal">
-                          <!-- CANVAS DO GRÁFICO -->
-                          <canvas id="chart-3" width="150px" height="140px"></canvas>
-                        </div>
-                      </div>
-                      <div class="graphic-description">
-                        <!-- DADOS DO GRÁFICO -->
-                        <h2>Vale Histórico</h2>
-                        <a href="https://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais-1/repositorio-de-dados-eleitorais" target="_blank">Dados do IBGE</a>
-
-                        <div class="icon-actions">
-                          <!-- Ícone de zoom -->
-                          <img
-                            id="zoom"
-                            src="../static/img/icon-zoom.svg"
-                            alt="Aumentar gráfico"
-                            onclick="Modal.toggleZoom(3, 'Região do Vale Histórico', 'Quantidade de eleitores', 'bar', 1)"
-                          />
-
-                          <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
-                          <img
-                            id="download"
-                            src="../static/img/icon-download.svg"
-                            alt="Baixar"
-                            onclick="Modal.toggleDownloadAge(3, 'idade-vale-historico-${year}')"
-                          />
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="card">
-                      <div class="graphic">
-                        <div class="graphic-normal">
-                          <!-- CANVAS DO GRÁFICO -->
-                          <canvas id="chart-4" width="150px" height="140px"></canvas>
-                        </div>
-                      </div>
-                      <div class="graphic-description">
-                        <!-- DADOS DO GRÁFICO -->
-                        <h2>Vale do Paraíba</h2>
-                        <a href="https://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais-1/repositorio-de-dados-eleitorais" target="_blank">Dados do IBGE</a>
-
-                        <div class="icon-actions">
-                          <!-- Ícone de zoom -->
-                          <img
-                            id="zoom"
-                            src="../static/img/icon-zoom.svg"
-                            alt="Aumentar gráfico"
-                            onclick="Modal.toggleZoom(4, 'Região do Vale do Paraíba', 'Quantidade de Eleitores', 'bar', 1)"
-                          />
-
-                          <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
-                          <img
-                            id="download"
-                            src="../static/img/icon-download.svg"
-                            alt="Baixar"
-                            onclick="Modal.toggleDownloadAge(4, 'idade-vale-paraiba-${year}')"
-                          />
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="card">
-                      <div class="graphic">
-                        <div class="graphic-normal">
-                          <!-- CANVAS DO GRÁFICO -->
-                          <canvas id="chart-5" width="150px" height="140px"></canvas>
-                        </div>
-                      </div>
-                      <div class="graphic-description">
-                        <!-- DADOS DO GRÁFICO -->
-                        <h2>Cobertura da Vanguarda</h2>
-                        <a href="https://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais-1/repositorio-de-dados-eleitorais" target="_blank">Dados do IBGE</a>
-
-                        <div class="icon-actions">
-                          <!-- Ícone de zoom -->
-                          <img
-                            id="zoom"
-                            src="../static/img/icon-zoom.svg"
-                            alt="Aumentar gráfico"
-                            onclick="Modal.toggleZoom(5, 'Cobertura da Vanguarda', 'Quantidade de eleitores', 'bar', 1)"
-                          />
-
-                          <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
-                          <img
-                            id="download"
-                            src="../static/img/icon-download.svg"
-                            alt="Baixar"
-                            onclick="Modal.toggleDownloadAge(5, 'idade-vanguarda-${year}')"
-                          />
-                        </div>
-                      </div>
-                    </div>
-
-                  </div>
-                `;
-
-                //configurando o gráfico
-                var contCanvas = 0;
-                Object.keys(data).forEach(function(card){
-                  Chart.defaults.global.defaultFontColor = "#ffff";
-                  var ctx = document.getElementById("chart-" + contCanvas).getContext("2d");
-                  var myChart = new Chart(ctx, {
-                    type: typeChart,
-                    data: {
-                      labels: data[card]['Cidades'],
-                      datasets: [
-                        {
-                          data: data[card]['Quantia'],
-                          backgroundColor: "rgba(154, 219, 249, 0.4)",
-                          borderColor: "rgba(154, 219, 249)",
-                          borderWidth: 1,
+                  //configurando o gráfico
+                  var contCanvas = 0;
+                  Object.keys(data).forEach(function(card){
+                    Chart.defaults.global.defaultFontColor = "#ffff";
+                    var ctx = document.getElementById("chart-" + contCanvas).getContext("2d");
+                    var myChart = new Chart(ctx, {
+                      type: typeChart,
+                      data: {
+                        labels: data[card]['Cidades'],
+                        datasets: [
+                          {
+                            data: data[card]['Quantia'],
+                            backgroundColor: "rgba(154, 219, 249, 0.4)",
+                            borderColor: "rgba(154, 219, 249)",
+                            borderWidth: 1,
+                            datalabels: {
+                              align: '',
+                              anchor: ''
+                            }
+                          },
+                        ],
+                      },
+                      options: {
+                        plugins: {
                           datalabels: {
-                            align: '',
-                            anchor: ''
+                            color: '',
+                            font: {},
+                            formatter: {}
                           }
                         },
-                      ],
-                    },
-                    options: {
-                      plugins: {
-                        datalabels: {
-                          color: '',
-                          font: {},
-                          formatter: {}
-                        }
-                      },
-                      legend: {
-                        display: false,
-                      },
-                      scales: {
-                        yAxes: [
-                          {
-                            ticks: {
-                              beginAtZero: true,
+                        legend: {
+                          display: false,
+                        },
+                        scales: {
+                          yAxes: [
+                            {
+                              ticks: {
+                                beginAtZero: true,
+                              },
                             },
-                          },
-                        ],
-                        xAxes: [
+                          ],
+                          xAxes: [
+                            {
+                              display: false,
+                            },
+                          ],
+                        },
+                      },
+                    })
+
+                    // Salvando os dados recebidos pelo back em variáveis globais
+                    global.dataKeys.push(data[card]['Cidades']);
+                    global.dataValues.push(data[card]['Quantia']);
+                    global.dataPorcentage.push(data[card]['Porcentagem']);
+                    global.dataAll.push(data[card]);
+
+                    // Acrescentando 1 no contCanvas
+                    contCanvas = contCanvas + 1;
+                  });
+
+                // PESQUISA POR RENDA
+                } else if (comparison == "renda") { 
+                  // Definindo o tipo de gráfico
+                  typeChart = 'line';
+
+                  // Inserindo o HTML do gráfico
+                  results.innerHTML = `
+                    <div class="result">
+                      <div class="card">
+                        <div class="graphic">
+                          <div class="graphic-normal">
+                            <!-- CANVAS DO GRÁFICO -->
+                            <canvas id="chart-0" width="150px" height="140px"></canvas>
+                          </div>
+                        </div>
+                        <div class="graphic-description">
+                          <!-- DADOS DO GRÁFICO -->
+                          <h2>Litoral Norte</h2>
+                          <a href="https://cidades.ibge.gov.br/brasil/sp/sao-jose-dos-campos/pesquisa/19/29765?localidade1=355410&localidade2=355030" target="_blank">Dados do IBGE</a>
+
+                          <div class="icon-actions">
+                            <!-- Ícone de zoom -->
+                            <img
+                              id="zoom"
+                              src="../static/img/icon-zoom.svg"
+                              alt="Aumentar gráfico"
+                              onclick="Modal.toggleZoom(0, 'Média salarial do Litoral Norte a partir de 2008', 'Salários mínimos', 'line', 0)"
+                            />
+
+                            <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
+                            <img
+                              id="download"
+                              src="../static/img/icon-download.svg"
+                              alt="Baixar"
+                              onclick="Modal.toggleDownload(0, 'salario-litoral-norte')"
+                            />
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="card">
+                        <div class="graphic">
+                          <div class="graphic-normal">
+                            <!-- CANVAS DO GRÁFICO -->
+                            <canvas id="chart-1" width="150px" height="140px"></canvas>
+                          </div>
+                        </div>
+                        <div class="graphic-description">
+                          <!-- DADOS DO GRÁFICO -->
+                          <h2>Região Bragantina</h2>
+                          <a href="https://cidades.ibge.gov.br/brasil/sp/sao-jose-dos-campos/pesquisa/19/29765?localidade1=355410&localidade2=355030" target="_blank">Dados do IBGE</a>
+
+                          <div class="icon-actions">
+                            <!-- Ícone de zoom -->
+                            <img
+                              id="zoom"
+                              src="../static/img/icon-zoom.svg"
+                              alt="Aumentar gráfico"
+                              onclick="Modal.toggleZoom(1, 'Média salarial da Região Bragantina a partir de 2008', 'Salários mínimos', 'line', 0)"
+                            />
+
+                            <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
+                            <img
+                              id="download"
+                              src="../static/img/icon-download.svg"
+                              alt="Baixar"
+                              onclick="Modal.toggleDownload(1, 'salario-regiao-bragantina')"
+                            />
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="card">
+                        <div class="graphic">
+                          <div class="graphic-normal">
+                            <!-- CANVAS DO GRÁFICO -->
+                            <canvas id="chart-2" width="150px" height="140px"></canvas>
+                          </div>
+                        </div>
+                        <div class="graphic-description">
+                          <!-- DADOS DO GRÁFICO -->
+                          <h2>Serra da Mantiqueira</h2>
+                          <a href="https://cidades.ibge.gov.br/brasil/sp/sao-jose-dos-campos/pesquisa/19/29765?localidade1=355410&localidade2=355030" target="_blank">Dados do IBGE</a>
+
+                          <div class="icon-actions">
+                            <!-- Ícone de zoom -->
+                            <img
+                              id="zoom"
+                              src="../static/img/icon-zoom.svg"
+                              alt="Aumentar gráfico"
+                              onclick="Modal.toggleZoom(2, 'Média salarial da Serra da Mantiqueira a partir de 2008', 'Salários mínimos', 'line', 0)"
+                            />
+
+                            <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
+                            <img
+                              id="download"
+                              src="../static/img/icon-download.svg"
+                              alt="Baixar"
+                              onclick="Modal.toggleDownload(2, 'salario-serra-mantiqueira')"
+                            />
+                          </div>
+                        </div>
+                      </div>              
+
+                      <div class="card">
+                        <div class="graphic">
+                          <div class="graphic-normal">
+                            <!-- CANVAS DO GRÁFICO -->
+                            <canvas id="chart-3" width="150px" height="140px"></canvas>
+                          </div>
+                        </div>
+                        <div class="graphic-description">
+                          <!-- DADOS DO GRÁFICO -->
+                          <h2>Vale Histórico</h2>
+                          <a href="https://cidades.ibge.gov.br/brasil/sp/sao-jose-dos-campos/pesquisa/19/29765?localidade1=355410&localidade2=355030" target="_blank">Dados do IBGE</a>
+
+                          <div class="icon-actions">
+                            <!-- Ícone de zoom -->
+                            <img
+                              id="zoom"
+                              src="../static/img/icon-zoom.svg"
+                              alt="Aumentar gráfico"
+                              onclick="Modal.toggleZoom(3, 'Média salarial do Vale Histórico a partir de 2008', 'Salários mínimos', 'line', 0)"
+                            />
+
+                            <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
+                            <img
+                              id="download"
+                              src="../static/img/icon-download.svg"
+                              alt="Baixar"
+                              onclick="Modal.toggleDownload(3, 'salario-vale-historico')"
+                            />
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="card">
+                        <div class="graphic">
+                          <div class="graphic-normal">
+                            <!-- CANVAS DO GRÁFICO -->
+                            <canvas id="chart-4" width="150px" height="140px"></canvas>
+                          </div>
+                        </div>
+                        <div class="graphic-description">
+                          <!-- DADOS DO GRÁFICO -->
+                          <h2>Vale do Paraíba</h2>
+                          <a href="https://cidades.ibge.gov.br/brasil/sp/sao-jose-dos-campos/pesquisa/19/29765?localidade1=355410&localidade2=355030" target="_blank">Dados do IBGE</a>
+
+                          <div class="icon-actions">
+                            <!-- Ícone de zoom -->
+                            <img
+                              id="zoom"
+                              src="../static/img/icon-zoom.svg"
+                              alt="Aumentar gráfico"
+                              onclick="Modal.toggleZoom(4, 'Média salarial do Vale do Paraíba a partir de 2008', 'Salários mínimos', 'line', 0)"
+                            />
+
+                            <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
+                            <img
+                              id="download"
+                              src="../static/img/icon-download.svg"
+                              alt="Baixar"
+                              onclick="Modal.toggleDownload(4, 'salario-vale-paraiba')"
+                            />
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="card">
+                        <div class="graphic">
+                          <div class="graphic-normal">
+                            <!-- CANVAS DO GRÁFICO -->
+                            <canvas id="chart-5" width="150px" height="140px"></canvas>
+                          </div>
+                        </div>
+                        <div class="graphic-description">
+                          <!-- DADOS DO GRÁFICO -->
+                          <h2>Cobertura da Vanguarda</h2>
+                          <a href="https://cidades.ibge.gov.br/brasil/sp/sao-jose-dos-campos/pesquisa/19/29765?localidade1=355410&localidade2=355030" target="_blank">Dados do IBGE</a>
+
+                          <div class="icon-actions">
+                            <!-- Ícone de zoom -->
+                            <img
+                              id="zoom"
+                              src="../static/img/icon-zoom.svg"
+                              alt="Aumentar gráfico"
+                              onclick="Modal.toggleZoom(5, 'Média salarial da Cobertura da Vanguarda a partir de 2008', 'Salários mínimos', 'line', 0)"
+                            />
+
+                            <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
+                            <img
+                              id="download"
+                              src="../static/img/icon-download.svg"
+                              alt="Baixar"
+                              onclick="Modal.toggleDownload(5, 'salario-vanguarda')"
+                            />
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                  `;
+
+                  //configurando o gráfico
+                  var contCanvas = 0;
+                  Object.keys(data).forEach(function(card){
+                    Chart.defaults.global.defaultFontColor = "#ffff";
+                    var ctx = document.getElementById("chart-" + contCanvas).getContext("2d");
+                    var myChart = new Chart(ctx, {
+                      type: typeChart,
+                      data: {
+                        labels: Object.keys(data[card]),
+                        datasets: [
                           {
-                            display: false,
+                            data: Object.values(data[card]),
+                            backgroundColor: "rgba(154, 219, 249, 0.4)",
+                            borderColor: "rgba(154, 219, 249)",
+                            borderWidth: 1,
+                            datalabels: {
+                              align: '',
+                              anchor: ''
+                            }
                           },
                         ],
                       },
-                    },
-                  })
-
-                  // Salvando os dados recebidos pelo back em variáveis globais
-                  global.dataKeys.push(data[card]['Cidades']);
-                  global.dataValues.push(data[card]['Quantia']);
-                  global.dataPorcentage.push(data[card]['Porcentagem']);
-                  global.dataAll.push(data[card]);
-
-                  // Acrescentando 1 no contCanvas
-                  contCanvas = contCanvas + 1;
-                });
-
-              // PESQUISA POR RENDA
-              } else if (comparison == "renda") { 
-                // Definindo o tipo de gráfico
-                typeChart = 'line';
-
-                // Inserindo o HTML do gráfico
-                results.innerHTML = `
-                  <div class="result">
-                    <div class="card">
-                      <div class="graphic">
-                        <div class="graphic-normal">
-                          <!-- CANVAS DO GRÁFICO -->
-                          <canvas id="chart-0" width="150px" height="140px"></canvas>
-                        </div>
-                      </div>
-                      <div class="graphic-description">
-                        <!-- DADOS DO GRÁFICO -->
-                        <h2>Litoral Norte</h2>
-                        <a href="https://cidades.ibge.gov.br/brasil/sp/sao-jose-dos-campos/pesquisa/19/29765?localidade1=355410&localidade2=355030" target="_blank">Dados do IBGE</a>
-
-                        <div class="icon-actions">
-                          <!-- Ícone de zoom -->
-                          <img
-                            id="zoom"
-                            src="../static/img/icon-zoom.svg"
-                            alt="Aumentar gráfico"
-                            onclick="Modal.toggleZoom(0, 'Média salarial do Litoral Norte a partir de 2008', 'Salários mínimos', 'line', 0)"
-                          />
-
-                          <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
-                          <img
-                            id="download"
-                            src="../static/img/icon-download.svg"
-                            alt="Baixar"
-                            onclick="Modal.toggleDownload(0, 'salario-litoral-norte')"
-                          />
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="card">
-                      <div class="graphic">
-                        <div class="graphic-normal">
-                          <!-- CANVAS DO GRÁFICO -->
-                          <canvas id="chart-1" width="150px" height="140px"></canvas>
-                        </div>
-                      </div>
-                      <div class="graphic-description">
-                        <!-- DADOS DO GRÁFICO -->
-                        <h2>Região Bragantina</h2>
-                        <a href="https://cidades.ibge.gov.br/brasil/sp/sao-jose-dos-campos/pesquisa/19/29765?localidade1=355410&localidade2=355030" target="_blank">Dados do IBGE</a>
-
-                        <div class="icon-actions">
-                          <!-- Ícone de zoom -->
-                          <img
-                            id="zoom"
-                            src="../static/img/icon-zoom.svg"
-                            alt="Aumentar gráfico"
-                            onclick="Modal.toggleZoom(1, 'Média salarial da Região Bragantina a partir de 2008', 'Salários mínimos', 'line', 0)"
-                          />
-
-                          <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
-                          <img
-                            id="download"
-                            src="../static/img/icon-download.svg"
-                            alt="Baixar"
-                            onclick="Modal.toggleDownload(1, 'salario-regiao-bragantina')"
-                          />
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="card">
-                      <div class="graphic">
-                        <div class="graphic-normal">
-                          <!-- CANVAS DO GRÁFICO -->
-                          <canvas id="chart-2" width="150px" height="140px"></canvas>
-                        </div>
-                      </div>
-                      <div class="graphic-description">
-                        <!-- DADOS DO GRÁFICO -->
-                        <h2>Serra da Mantiqueira</h2>
-                        <a href="https://cidades.ibge.gov.br/brasil/sp/sao-jose-dos-campos/pesquisa/19/29765?localidade1=355410&localidade2=355030" target="_blank">Dados do IBGE</a>
-
-                        <div class="icon-actions">
-                          <!-- Ícone de zoom -->
-                          <img
-                            id="zoom"
-                            src="../static/img/icon-zoom.svg"
-                            alt="Aumentar gráfico"
-                            onclick="Modal.toggleZoom(2, 'Média salarial da Serra da Mantiqueira a partir de 2008', 'Salários mínimos', 'line', 0)"
-                          />
-
-                          <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
-                          <img
-                            id="download"
-                            src="../static/img/icon-download.svg"
-                            alt="Baixar"
-                            onclick="Modal.toggleDownload(2, 'salario-serra-mantiqueira')"
-                          />
-                        </div>
-                      </div>
-                    </div>              
-
-                    <div class="card">
-                      <div class="graphic">
-                        <div class="graphic-normal">
-                          <!-- CANVAS DO GRÁFICO -->
-                          <canvas id="chart-3" width="150px" height="140px"></canvas>
-                        </div>
-                      </div>
-                      <div class="graphic-description">
-                        <!-- DADOS DO GRÁFICO -->
-                        <h2>Vale Histórico</h2>
-                        <a href="https://cidades.ibge.gov.br/brasil/sp/sao-jose-dos-campos/pesquisa/19/29765?localidade1=355410&localidade2=355030" target="_blank">Dados do IBGE</a>
-
-                        <div class="icon-actions">
-                          <!-- Ícone de zoom -->
-                          <img
-                            id="zoom"
-                            src="../static/img/icon-zoom.svg"
-                            alt="Aumentar gráfico"
-                            onclick="Modal.toggleZoom(3, 'Média salarial do Vale Histórico a partir de 2008', 'Salários mínimos', 'line', 0)"
-                          />
-
-                          <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
-                          <img
-                            id="download"
-                            src="../static/img/icon-download.svg"
-                            alt="Baixar"
-                            onclick="Modal.toggleDownload(3, 'salario-vale-historico')"
-                          />
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="card">
-                      <div class="graphic">
-                        <div class="graphic-normal">
-                          <!-- CANVAS DO GRÁFICO -->
-                          <canvas id="chart-4" width="150px" height="140px"></canvas>
-                        </div>
-                      </div>
-                      <div class="graphic-description">
-                        <!-- DADOS DO GRÁFICO -->
-                        <h2>Vale do Paraíba</h2>
-                        <a href="https://cidades.ibge.gov.br/brasil/sp/sao-jose-dos-campos/pesquisa/19/29765?localidade1=355410&localidade2=355030" target="_blank">Dados do IBGE</a>
-
-                        <div class="icon-actions">
-                          <!-- Ícone de zoom -->
-                          <img
-                            id="zoom"
-                            src="../static/img/icon-zoom.svg"
-                            alt="Aumentar gráfico"
-                            onclick="Modal.toggleZoom(4, 'Média salarial do Vale do Paraíba a partir de 2008', 'Salários mínimos', 'line', 0)"
-                          />
-
-                          <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
-                          <img
-                            id="download"
-                            src="../static/img/icon-download.svg"
-                            alt="Baixar"
-                            onclick="Modal.toggleDownload(4, 'salario-vale-paraiba')"
-                          />
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="card">
-                      <div class="graphic">
-                        <div class="graphic-normal">
-                          <!-- CANVAS DO GRÁFICO -->
-                          <canvas id="chart-5" width="150px" height="140px"></canvas>
-                        </div>
-                      </div>
-                      <div class="graphic-description">
-                        <!-- DADOS DO GRÁFICO -->
-                        <h2>Cobertura da Vanguarda</h2>
-                        <a href="https://cidades.ibge.gov.br/brasil/sp/sao-jose-dos-campos/pesquisa/19/29765?localidade1=355410&localidade2=355030" target="_blank">Dados do IBGE</a>
-
-                        <div class="icon-actions">
-                          <!-- Ícone de zoom -->
-                          <img
-                            id="zoom"
-                            src="../static/img/icon-zoom.svg"
-                            alt="Aumentar gráfico"
-                            onclick="Modal.toggleZoom(5, 'Média salarial da Cobertura da Vanguarda a partir de 2008', 'Salários mínimos', 'line', 0)"
-                          />
-
-                          <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
-                          <img
-                            id="download"
-                            src="../static/img/icon-download.svg"
-                            alt="Baixar"
-                            onclick="Modal.toggleDownload(5, 'salario-vanguarda')"
-                          />
-                        </div>
-                      </div>
-                    </div>
-
-                  </div>
-                `;
-
-                //configurando o gráfico
-                var contCanvas = 0;
-                Object.keys(data).forEach(function(card){
-                  Chart.defaults.global.defaultFontColor = "#ffff";
-                  var ctx = document.getElementById("chart-" + contCanvas).getContext("2d");
-                  var myChart = new Chart(ctx, {
-                    type: typeChart,
-                    data: {
-                      labels: Object.keys(data[card]),
-                      datasets: [
-                        {
-                          data: Object.values(data[card]),
-                          backgroundColor: "rgba(154, 219, 249, 0.4)",
-                          borderColor: "rgba(154, 219, 249)",
-                          borderWidth: 1,
+                      options: {
+                        plugins: {
                           datalabels: {
-                            align: '',
-                            anchor: ''
+                            color: '',
+                            font: {},
+                            formatter: {}
                           }
                         },
-                      ],
-                    },
-                    options: {
-                      plugins: {
-                        datalabels: {
-                          color: '',
-                          font: {},
-                          formatter: {}
-                        }
-                      },
-                      legend: {
-                        display: false,
-                      },
-                      scales: {
-                        yAxes: [
-                          {
-                            ticks: {
-                              beginAtZero: true,
+                        legend: {
+                          display: false,
+                        },
+                        scales: {
+                          yAxes: [
+                            {
+                              ticks: {
+                                beginAtZero: true,
+                              },
                             },
-                          },
-                        ],
-                        xAxes: [
-                          {
-                            display: false,
-                          },
-                        ],
+                          ],
+                          xAxes: [
+                            {
+                              display: false,
+                            },
+                          ],
+                        },
                       },
-                    },
+                    })
+
+                    // Salvando os dados recebidos pelo back em variáveis globais
+                    global.dataKeys.push(Object.keys(data[card]));
+                    global.dataValues.push(Object.values(data[card]));
+                    global.dataAll.push(data[card]);
+
+                    // Acrescentando 1 no contCanvas
+                    contCanvas = contCanvas + 1;
                   })
 
-                  // Salvando os dados recebidos pelo back em variáveis globais
-                  global.dataKeys.push(Object.keys(data[card]));
-                  global.dataValues.push(Object.values(data[card]));
-                  global.dataAll.push(data[card]);
+                // PESQUISA POR EVOLUÇÃO DO ELEITORADO
+                }else {
+                  // Definindo o tipo de gráfico
+                  typeChart = 'line';
 
-                  // Acrescentando 1 no contCanvas
-                  contCanvas = contCanvas + 1;
-                })
+                  // Inserindo o HTML do gráfico
+                  results.innerHTML = `
+                    <div class="result">
+                      <div class="card">
+                        <div class="graphic">
+                          <div class="graphic-normal">
+                            <!-- CANVAS DO GRÁFICO -->
+                            <canvas id="chart-0" width="150px" height="140px"></canvas>
+                          </div>
+                        </div>
+                        <div class="graphic-description">
+                          <!-- DADOS DO GRÁFICO -->
+                          <h2>Litoral Norte</h2>
+                          <a href="https://cidades.ibge.gov.br/brasil/sp/sao-jose-dos-campos/pesquisa/19/29765?localidade1=355410&localidade2=355030" target="_blank">Dados do IBGE</a>
 
-              // PESQUISA POR EVOLUÇÃO DO ELEITORADO
-              }else {
-                // Definindo o tipo de gráfico
-                typeChart = 'line';
+                          <div class="icon-actions">
+                            <!-- Ícone de zoom -->
+                            <img
+                              id="zoom"
+                              src="../static/img/icon-zoom.svg"
+                              alt="Aumentar gráfico"
+                              onclick="Modal.toggleZoom(0, 'Evolução da quantidade de eleitores do Litoral Norte', 'Quantidade de eleitores', 'line', 0)"
+                            />
 
-                // Inserindo o HTML do gráfico
-                results.innerHTML = `
-                  <div class="result">
-                    <div class="card">
-                      <div class="graphic">
-                        <div class="graphic-normal">
-                          <!-- CANVAS DO GRÁFICO -->
-                          <canvas id="chart-0" width="150px" height="140px"></canvas>
+                            <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
+                            <img
+                              id="download"
+                              src="../static/img/icon-download.svg"
+                              alt="Baixar"
+                              onclick="Modal.toggleDownload(0, 'evolucao-litoral-norte')"
+                            />
+                          </div>
                         </div>
                       </div>
-                      <div class="graphic-description">
-                        <!-- DADOS DO GRÁFICO -->
-                        <h2>Litoral Norte</h2>
-                        <a href="https://cidades.ibge.gov.br/brasil/sp/sao-jose-dos-campos/pesquisa/19/29765?localidade1=355410&localidade2=355030" target="_blank">Dados do IBGE</a>
 
-                        <div class="icon-actions">
-                          <!-- Ícone de zoom -->
-                          <img
-                            id="zoom"
-                            src="../static/img/icon-zoom.svg"
-                            alt="Aumentar gráfico"
-                            onclick="Modal.toggleZoom(0, 'Evolução da quantidade de eleitores do Litoral Norte', 'Quantidade de eleitores', 'line', 0)"
-                          />
+                      <div class="card">
+                        <div class="graphic">
+                          <div class="graphic-normal">
+                            <!-- CANVAS DO GRÁFICO -->
+                            <canvas id="chart-1" width="150px" height="140px"></canvas>
+                          </div>
+                        </div>
+                        <div class="graphic-description">
+                          <!-- DADOS DO GRÁFICO -->
+                          <h2>Região Bragantina</h2>
+                          <a href="https://cidades.ibge.gov.br/brasil/sp/sao-jose-dos-campos/pesquisa/19/29765?localidade1=355410&localidade2=355030" target="_blank">Dados do IBGE</a>
 
-                          <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
-                          <img
-                            id="download"
-                            src="../static/img/icon-download.svg"
-                            alt="Baixar"
-                            onclick="Modal.toggleDownload(0, 'evolucao-litoral-norte')"
-                          />
+                          <div class="icon-actions">
+                            <!-- Ícone de zoom -->
+                            <img
+                              id="zoom"
+                              src="../static/img/icon-zoom.svg"
+                              alt="Aumentar gráfico"
+                              onclick="Modal.toggleZoom(1, 'Evolução da quantidade de eleitores da Região Bragantina', 'Quantidade de eleitores', 'line', 0)"
+                            />
+
+                            <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
+                            <img
+                              id="download"
+                              src="../static/img/icon-download.svg"
+                              alt="Baixar"
+                              onclick="Modal.toggleDownload(1, 'evolucao-regiao-bragantina')"
+                            />
+                          </div>
                         </div>
                       </div>
+
+                      <div class="card">
+                        <div class="graphic">
+                          <div class="graphic-normal">
+                            <!-- CANVAS DO GRÁFICO -->
+                            <canvas id="chart-2" width="150px" height="140px"></canvas>
+                          </div>
+                        </div>
+                        <div class="graphic-description">
+                          <!-- DADOS DO GRÁFICO -->
+                          <h2>Serra da Mantiqueira</h2>
+                          <a href="https://cidades.ibge.gov.br/brasil/sp/sao-jose-dos-campos/pesquisa/19/29765?localidade1=355410&localidade2=355030" target="_blank">Dados do IBGE</a>
+
+                          <div class="icon-actions">
+                            <!-- Ícone de zoom -->
+                            <img
+                              id="zoom"
+                              src="../static/img/icon-zoom.svg"
+                              alt="Aumentar gráfico"
+                              onclick="Modal.toggleZoom(2, 'Evolução da quantidade de eleitores da Serra da Mantiqueira', 'Quantidade de eleitores', 'line', 0)"
+                            />
+
+                            <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
+                            <img
+                              id="download"
+                              src="../static/img/icon-download.svg"
+                              alt="Baixar"
+                              onclick="Modal.toggleDownload(2, 'evolucao-serra-mantiqueira')"
+                            />
+                          </div>
+                        </div>
+                      </div>              
+
+                      <div class="card">
+                        <div class="graphic">
+                          <div class="graphic-normal">
+                            <!-- CANVAS DO GRÁFICO -->
+                            <canvas id="chart-3" width="150px" height="140px"></canvas>
+                          </div>
+                        </div>
+                        <div class="graphic-description">
+                          <!-- DADOS DO GRÁFICO -->
+                          <h2>Vale Histórico</h2>
+                          <a href="https://cidades.ibge.gov.br/brasil/sp/sao-jose-dos-campos/pesquisa/19/29765?localidade1=355410&localidade2=355030" target="_blank">Dados do IBGE</a>
+
+                          <div class="icon-actions">
+                            <!-- Ícone de zoom -->
+                            <img
+                              id="zoom"
+                              src="../static/img/icon-zoom.svg"
+                              alt="Aumentar gráfico"
+                              onclick="Modal.toggleZoom(3, 'Evolução da quantidade de eleitores do Vale Histórico', 'Quantidade de eleitores', 'line', 0)"
+                            />
+
+                            <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
+                            <img
+                              id="download"
+                              src="../static/img/icon-download.svg"
+                              alt="Baixar"
+                              onclick="Modal.toggleDownload(3, 'evolucao-vale-historico')"
+                            />
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="card">
+                        <div class="graphic">
+                          <div class="graphic-normal">
+                            <!-- CANVAS DO GRÁFICO -->
+                            <canvas id="chart-4" width="150px" height="140px"></canvas>
+                          </div>
+                        </div>
+                        <div class="graphic-description">
+                          <!-- DADOS DO GRÁFICO -->
+                          <h2>Vale do Paraíba</h2>
+                          <a href="https://cidades.ibge.gov.br/brasil/sp/sao-jose-dos-campos/pesquisa/19/29765?localidade1=355410&localidade2=355030" target="_blank">Dados do IBGE</a>
+
+                          <div class="icon-actions">
+                            <!-- Ícone de zoom -->
+                            <img
+                              id="zoom"
+                              src="../static/img/icon-zoom.svg"
+                              alt="Aumentar gráfico"
+                              onclick="Modal.toggleZoom(4, 'Evolução da quantidade de eleitores do Vale do Paraíba', 'Quantidade de eleitores', 'line', 0)"
+                            />
+
+                            <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
+                            <img
+                              id="download"
+                              src="../static/img/icon-download.svg"
+                              alt="Baixar"
+                              onclick="Modal.toggleDownload(4, 'evolucao-vale-paraiba')"
+                            />
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="card">
+                        <div class="graphic">
+                          <div class="graphic-normal">
+                            <!-- CANVAS DO GRÁFICO -->
+                            <canvas id="chart-5" width="150px" height="140px"></canvas>
+                          </div>
+                        </div>
+                        <div class="graphic-description">
+                          <!-- DADOS DO GRÁFICO -->
+                          <h2>Cobertura da Vanguarda</h2>
+                          <a href="https://cidades.ibge.gov.br/brasil/sp/sao-jose-dos-campos/pesquisa/19/29765?localidade1=355410&localidade2=355030" target="_blank">Dados do IBGE</a>
+
+                          <div class="icon-actions">
+                            <!-- Ícone de zoom -->
+                            <img
+                              id="zoom"
+                              src="../static/img/icon-zoom.svg"
+                              alt="Aumentar gráfico"
+                              onclick="Modal.toggleZoom(5, 'Evolução da quantidade de eleitores da Cobertura da Vanguarda', 'Quantidade de eleitores', 'line', 0)"
+                            />
+
+                            <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
+                            <img
+                              id="download"
+                              src="../static/img/icon-download.svg"
+                              alt="Baixar"
+                              onclick="Modal.toggleDownload(5, 'evolucao-vanguarda')"
+                            />
+                          </div>
+                        </div>
+                      </div>
+
                     </div>
+                  `;
 
-                    <div class="card">
-                      <div class="graphic">
-                        <div class="graphic-normal">
-                          <!-- CANVAS DO GRÁFICO -->
-                          <canvas id="chart-1" width="150px" height="140px"></canvas>
-                        </div>
-                      </div>
-                      <div class="graphic-description">
-                        <!-- DADOS DO GRÁFICO -->
-                        <h2>Região Bragantina</h2>
-                        <a href="https://cidades.ibge.gov.br/brasil/sp/sao-jose-dos-campos/pesquisa/19/29765?localidade1=355410&localidade2=355030" target="_blank">Dados do IBGE</a>
-
-                        <div class="icon-actions">
-                          <!-- Ícone de zoom -->
-                          <img
-                            id="zoom"
-                            src="../static/img/icon-zoom.svg"
-                            alt="Aumentar gráfico"
-                            onclick="Modal.toggleZoom(1, 'Evolução da quantidade de eleitores da Região Bragantina', 'Quantidade de eleitores', 'line', 0)"
-                          />
-
-                          <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
-                          <img
-                            id="download"
-                            src="../static/img/icon-download.svg"
-                            alt="Baixar"
-                            onclick="Modal.toggleDownload(1, 'evolucao-regiao-bragantina')"
-                          />
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="card">
-                      <div class="graphic">
-                        <div class="graphic-normal">
-                          <!-- CANVAS DO GRÁFICO -->
-                          <canvas id="chart-2" width="150px" height="140px"></canvas>
-                        </div>
-                      </div>
-                      <div class="graphic-description">
-                        <!-- DADOS DO GRÁFICO -->
-                        <h2>Serra da Mantiqueira</h2>
-                        <a href="https://cidades.ibge.gov.br/brasil/sp/sao-jose-dos-campos/pesquisa/19/29765?localidade1=355410&localidade2=355030" target="_blank">Dados do IBGE</a>
-
-                        <div class="icon-actions">
-                          <!-- Ícone de zoom -->
-                          <img
-                            id="zoom"
-                            src="../static/img/icon-zoom.svg"
-                            alt="Aumentar gráfico"
-                            onclick="Modal.toggleZoom(2, 'Evolução da quantidade de eleitores da Serra da Mantiqueira', 'Quantidade de eleitores', 'line', 0)"
-                          />
-
-                          <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
-                          <img
-                            id="download"
-                            src="../static/img/icon-download.svg"
-                            alt="Baixar"
-                            onclick="Modal.toggleDownload(2, 'evolucao-serra-mantiqueira')"
-                          />
-                        </div>
-                      </div>
-                    </div>              
-
-                    <div class="card">
-                      <div class="graphic">
-                        <div class="graphic-normal">
-                          <!-- CANVAS DO GRÁFICO -->
-                          <canvas id="chart-3" width="150px" height="140px"></canvas>
-                        </div>
-                      </div>
-                      <div class="graphic-description">
-                        <!-- DADOS DO GRÁFICO -->
-                        <h2>Vale Histórico</h2>
-                        <a href="https://cidades.ibge.gov.br/brasil/sp/sao-jose-dos-campos/pesquisa/19/29765?localidade1=355410&localidade2=355030" target="_blank">Dados do IBGE</a>
-
-                        <div class="icon-actions">
-                          <!-- Ícone de zoom -->
-                          <img
-                            id="zoom"
-                            src="../static/img/icon-zoom.svg"
-                            alt="Aumentar gráfico"
-                            onclick="Modal.toggleZoom(3, 'Evolução da quantidade de eleitores do Vale Histórico', 'Quantidade de eleitores', 'line', 0)"
-                          />
-
-                          <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
-                          <img
-                            id="download"
-                            src="../static/img/icon-download.svg"
-                            alt="Baixar"
-                            onclick="Modal.toggleDownload(3, 'evolucao-vale-historico')"
-                          />
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="card">
-                      <div class="graphic">
-                        <div class="graphic-normal">
-                          <!-- CANVAS DO GRÁFICO -->
-                          <canvas id="chart-4" width="150px" height="140px"></canvas>
-                        </div>
-                      </div>
-                      <div class="graphic-description">
-                        <!-- DADOS DO GRÁFICO -->
-                        <h2>Vale do Paraíba</h2>
-                        <a href="https://cidades.ibge.gov.br/brasil/sp/sao-jose-dos-campos/pesquisa/19/29765?localidade1=355410&localidade2=355030" target="_blank">Dados do IBGE</a>
-
-                        <div class="icon-actions">
-                          <!-- Ícone de zoom -->
-                          <img
-                            id="zoom"
-                            src="../static/img/icon-zoom.svg"
-                            alt="Aumentar gráfico"
-                            onclick="Modal.toggleZoom(4, 'Evolução da quantidade de eleitores do Vale do Paraíba', 'Quantidade de eleitores', 'line', 0)"
-                          />
-
-                          <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
-                          <img
-                            id="download"
-                            src="../static/img/icon-download.svg"
-                            alt="Baixar"
-                            onclick="Modal.toggleDownload(4, 'evolucao-vale-paraiba')"
-                          />
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="card">
-                      <div class="graphic">
-                        <div class="graphic-normal">
-                          <!-- CANVAS DO GRÁFICO -->
-                          <canvas id="chart-5" width="150px" height="140px"></canvas>
-                        </div>
-                      </div>
-                      <div class="graphic-description">
-                        <!-- DADOS DO GRÁFICO -->
-                        <h2>Cobertura da Vanguarda</h2>
-                        <a href="https://cidades.ibge.gov.br/brasil/sp/sao-jose-dos-campos/pesquisa/19/29765?localidade1=355410&localidade2=355030" target="_blank">Dados do IBGE</a>
-
-                        <div class="icon-actions">
-                          <!-- Ícone de zoom -->
-                          <img
-                            id="zoom"
-                            src="../static/img/icon-zoom.svg"
-                            alt="Aumentar gráfico"
-                            onclick="Modal.toggleZoom(5, 'Evolução da quantidade de eleitores da Cobertura da Vanguarda', 'Quantidade de eleitores', 'line', 0)"
-                          />
-
-                          <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
-                          <img
-                            id="download"
-                            src="../static/img/icon-download.svg"
-                            alt="Baixar"
-                            onclick="Modal.toggleDownload(5, 'evolucao-vanguarda')"
-                          />
-                        </div>
-                      </div>
-                    </div>
-
-                  </div>
-                `;
-
-                //configurando o gráfico
-                var contCanvas = 0;
-                Object.keys(data).forEach(function(card){
-                  Chart.defaults.global.defaultFontColor = "#ffff";
-                  var ctx = document.getElementById("chart-" + contCanvas).getContext("2d");
-                  var myChart = new Chart(ctx, {
-                    type: typeChart,
-                    data: {
-                      labels: Object.keys(data[card]),
-                      datasets: [
-                        {
-                          data: Object.values(data[card]),
-                          backgroundColor: "rgba(154, 219, 249, 0.4)",
-                          borderColor: "rgba(154, 219, 249)",
-                          borderWidth: 1,
+                  //configurando o gráfico
+                  var contCanvas = 0;
+                  Object.keys(data).forEach(function(card){
+                    Chart.defaults.global.defaultFontColor = "#ffff";
+                    var ctx = document.getElementById("chart-" + contCanvas).getContext("2d");
+                    var myChart = new Chart(ctx, {
+                      type: typeChart,
+                      data: {
+                        labels: Object.keys(data[card]),
+                        datasets: [
+                          {
+                            data: Object.values(data[card]),
+                            backgroundColor: "rgba(154, 219, 249, 0.4)",
+                            borderColor: "rgba(154, 219, 249)",
+                            borderWidth: 1,
+                            datalabels: {
+                              align: '',
+                              anchor: ''
+                            }
+                          },
+                        ],
+                      },
+                      options: {
+                        plugins: {
                           datalabels: {
-                            align: '',
-                            anchor: ''
+                            color: '',
+                            font: {},
+                            formatter: {}
                           }
                         },
-                      ],
-                    },
-                    options: {
-                      plugins: {
-                        datalabels: {
-                          color: '',
-                          font: {},
-                          formatter: {}
-                        }
-                      },
-                      legend: {
-                        display: false,
-                      },
-                      scales: {
-                        yAxes: [
-                          {
-                            ticks: {
-                              beginAtZero: true,
+                        legend: {
+                          display: false,
+                        },
+                        scales: {
+                          yAxes: [
+                            {
+                              ticks: {
+                                beginAtZero: true,
+                              },
                             },
-                          },
-                        ],
-                        xAxes: [
-                          {
-                            display: false,
-                          },
-                        ],
+                          ],
+                          xAxes: [
+                            {
+                              display: false,
+                            },
+                          ],
+                        },
                       },
-                    },
+                    })
+
+                    // Salvando os dados recebidos pelo back em variáveis globais
+                    global.dataKeys.push(Object.keys(data[card]));
+                    global.dataValues.push(Object.values(data[card]));
+                    global.dataAll.push(data[card]);
+
+                    // Acrescentando 1 no contCanvas
+                    contCanvas = contCanvas + 1;
                   })
 
-                  // Salvando os dados recebidos pelo back em variáveis globais
-                  global.dataKeys.push(Object.keys(data[card]));
-                  global.dataValues.push(Object.values(data[card]));
-                  global.dataAll.push(data[card]);
+                };
 
-                  // Acrescentando 1 no contCanvas
-                  contCanvas = contCanvas + 1;
-                })
+                // verificando variáveis globais
+                console.log(global.dataKeys)
+                console.log(global.dataValues)
+                console.log(global.dataAll)
+                console.log(global.dataPorcentage)
+              
+              } else {
 
-              };
+                var csvList = ""
+                for (var i = 0; i < data.length; i++) {
+                  csvList += `<li>${data[i]}</li>`
+                }
 
-              // verificando variáveis globais
-              console.log(global.dataKeys)
-              console.log(global.dataValues)
-              console.log(global.dataAll)
-              console.log(global.dataPorcentage)
+                phase.innerHTML = ""
+                phase.innerHTML = `Os seguintes CSVs precisam estar na pasta "jupyter-notebooks/data": <ul>${csvList}</ul>`               
+              }
             }
-          })
+          });
         }
       }
     </script>

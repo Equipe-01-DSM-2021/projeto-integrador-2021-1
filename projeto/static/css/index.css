@@ -25,3 +25,13 @@
   margin: 10% auto;
   cursor: context-menu;
 }
+
+#search-result p ul {
+  color: #9396a9;
+  font-weight: 300;
+  font-size: 22px;
+  text-align: center;
+  margin: 10px auto auto auto;
+  cursor: context-menu;
+  list-style-type: none;
+}

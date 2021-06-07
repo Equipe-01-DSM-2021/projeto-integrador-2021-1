@@ -317,338 +317,351 @@
               phase = document.querySelector("#search-result p");
               phase.innerHTML = "";
 
-              //recebendo o json
-              results = document.getElementById("search-result");
-              data = JSON.parse(data);
+              try {
+                //recebendo o json
+                results = document.getElementById("search-result");
+                data = JSON.parse(data);
 
-              // Definindo nome social
-              data.cardNomeSocial.forEach(function(card){
-                Object.keys(card).forEach(function(cardKey){
-                  objNomeSocial = card[cardKey]
+                // Definindo nome social
+                data.cardNomeSocial.forEach(function(card){
+                  Object.keys(card).forEach(function(cardKey){
+                    objNomeSocial = card[cardKey]
+                  })
                 })
-              })
-              nomeSocial = JSON.stringify(objNomeSocial)
-              console.log(nomeSocial)
+                nomeSocial = JSON.stringify(objNomeSocial)
+                console.log(nomeSocial)
 
-              // Definindo os dados dos candidatos
-              dataCandidatos = []
-              data.cardCandidato.forEach(function(card){
-                Object.keys(card).forEach(function(cardKey){
-                  dataCandidatos.push(card[cardKey]);
+                // Definindo os dados dos candidatos
+                dataCandidatos = []
+                data.cardCandidato.forEach(function(card){
+                  Object.keys(card).forEach(function(cardKey){
+                    dataCandidatos.push(card[cardKey]);
+                  })
                 })
-              })
-              console.log(dataCandidatos)
+                console.log(dataCandidatos)
 
-              //zerando variáveis globais
-              global.dataKeys = [];
-              global.dataValues = [];
-              global.dataAll = [];
+                //zerando variáveis globais
+                global.dataKeys = [];
+                global.dataValues = [];
+                global.dataAll = [];
 
-              // Inserindo o HTML do gráfico
-              results.innerHTML = `
-                <div class="result">
-                  <div class="card">
-                    <div class="graphic">
-                      <div class="graphic-normal">
-                        <!-- CANVAS DO GRÁFICO -->
-                        <canvas id="chart-0" width="150px" height="140px"></canvas>
+                // Inserindo o HTML do gráfico
+                results.innerHTML = `
+                  <div class="result">
+                    <div class="card">
+                      <div class="graphic">
+                        <div class="graphic-normal">
+                          <!-- CANVAS DO GRÁFICO -->
+                          <canvas id="chart-0" width="150px" height="140px"></canvas>
+                        </div>
+                      </div>
+                      <div class="graphic-description">
+                        <!-- DADOS DO GRÁFICO -->
+                        <h2>Escolaridade</h2>
+                        <a href="https://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais-1/repositorio-de-dados-eleitorais" target="_blank">Dados do TSE</a>
+
+                        <div class="icon-actions">
+                          <!-- Ícone de zoom -->
+                          <img
+                            id="zoom"
+                            src="../static/img/icon-zoom.svg"
+                            alt="Aumentar gráfico"
+                            onclick="Modal.toggleZoom(0, 'Quantidade de eleitores por grau de escolaridade', 'Quantidade de Eleitores', 'bar', 0)"
+                          />
+                          <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
+                          <img
+                            id="download"
+                            src="../static/img/icon-download.svg"
+                            alt="Baixar"
+                            onclick="Modal.toggleDownload(0, 'grau-escolaridade-${city}-${year}')"
+                          />
+                        </div>
                       </div>
                     </div>
-                    <div class="graphic-description">
-                      <!-- DADOS DO GRÁFICO -->
-                      <h2>Escolaridade</h2>
-                      <a href="https://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais-1/repositorio-de-dados-eleitorais" target="_blank">Dados do TSE</a>
 
+                    <div class="card">
+                      <div class="graphic">
+                        <div class="graphic-normal">
+                          <!-- CANVAS DO GRÁFICO -->
+                          <canvas id="chart-1" width="150px" height="140px"></canvas>
+                        </div>
+                      </div>
+                      <div class="graphic-description">
+                        <!-- DADOS DO GRÁFICO -->
+                        <h2>Estado civil</h2>
+                        <a href="https://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais-1/repositorio-de-dados-eleitorais" target="_blank">Dados do TSE</a>
+
+                        <div class="icon-actions">
+                          <!-- Ícone de zoom -->
+                          <img
+                            id="zoom"
+                            src="../static/img/icon-zoom.svg"
+                            alt="Aumentar gráfico"
+                            onclick="Modal.toggleZoom(1, 'Quantidade de eleitores por estado civil', 'Quantidade de Eleitores', 'bar', 0);"
+                          />
+                          <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
+                          <img
+                            id="download"
+                            src="../static/img/icon-download.svg"
+                            alt="Baixar"
+                            onclick="Modal.toggleDownload(1, 'estado-civil-${city}-${year}')"
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="card">
+                      <div class="graphic">
+                        <div class="graphic-normal">
+                          <!-- CANVAS DO GRÁFICO -->
+                          <canvas id="chart-2" width="150px" height="140px"></canvas>
+                        </div>
+                      </div>
+                      <div class="graphic-description">
+                        <!-- DADOS DO GRÁFICO -->
+                        <h2>Faixa etária</h2>
+                        <a href="https://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais-1/repositorio-de-dados-eleitorais" target="_blank">Dados do TSE</a>
+
+                        <div class="icon-actions">
+                          <!-- Ícone de zoom -->
+                          <img
+                            id="zoom"
+                            src="../static/img/icon-zoom.svg"
+                            alt="Aumentar gráfico"
+                            onclick="Modal.toggleZoom(2, 'Quantidade de eleitores por faixa etária', 'Quantidade de Eleitores', 'bar', 0)"
+                          />
+                          <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
+                          <img
+                            id="download"
+                            src="../static/img/icon-download.svg"
+                            alt="Baixar"
+                            onclick="Modal.toggleDownload(2, 'faixa-etaria-${city}-${year}')"
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="member">
+                        <h5>Uso de nome social</h5>
+                        <h6>` + nomeSocial + ` eleitores usaram nome social</h6>
                       <div class="icon-actions">
-                        <!-- Ícone de zoom -->
-                        <img
-                          id="zoom"
-                          src="../static/img/icon-zoom.svg"
-                          alt="Aumentar gráfico"
-                          onclick="Modal.toggleZoom(0, 'Quantidade de eleitores por grau de escolaridade', 'Quantidade de Eleitores', 'bar', 0)"
-                        />
+                        <a id="data" href="https://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais-1/repositorio-de-dados-eleitorais" target="_blank">Dados do TSE</a>
                         <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
                         <img
                           id="download"
                           src="../static/img/icon-download.svg"
                           alt="Baixar"
-                          onclick="Modal.toggleDownload(0, 'grau-escolaridade-${city}-${year}')"
+                          onclick="Modal.toggleDownload(3, 'nome-social-${city}-${year}')"
                         />
                       </div>
                     </div>
-                  </div>
 
-                  <div class="card">
-                    <div class="graphic">
-                      <div class="graphic-normal">
-                        <!-- CANVAS DO GRÁFICO -->
-                        <canvas id="chart-1" width="150px" height="140px"></canvas>
-                      </div>
-                    </div>
-                    <div class="graphic-description">
-                      <!-- DADOS DO GRÁFICO -->
-                      <h2>Estado civil</h2>
-                      <a href="https://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais-1/repositorio-de-dados-eleitorais" target="_blank">Dados do TSE</a>
-
+                    <div class="member">
+                        <h5>Representante eleito</h5>
+                        <h6>Nome: `+ dataCandidatos[2] +` (`+ dataCandidatos[3] +`)</h6>
+                        <h6>Ganhou a eleição no `+ dataCandidatos[0]+`o turno</h6>
                       <div class="icon-actions">
-                        <!-- Ícone de zoom -->
-                        <img
-                          id="zoom"
-                          src="../static/img/icon-zoom.svg"
-                          alt="Aumentar gráfico"
-                          onclick="Modal.toggleZoom(1, 'Quantidade de eleitores por estado civil', 'Quantidade de Eleitores', 'bar', 0);"
-                        />
+                        <a id="data" href="https://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais-1/repositorio-de-dados-eleitorais" target="_blank">Dados do TSE</a>
                         <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
                         <img
                           id="download"
                           src="../static/img/icon-download.svg"
                           alt="Baixar"
-                          onclick="Modal.toggleDownload(1, 'estado-civil-${city}-${year}')"
+                          onclick="Modal.toggleDownload(4, 'representante-eleito-${city}-${year}')"
                         />
                       </div>
                     </div>
-                  </div>
 
-                  <div class="card">
-                    <div class="graphic">
-                      <div class="graphic-normal">
-                        <!-- CANVAS DO GRÁFICO -->
-                        <canvas id="chart-2" width="150px" height="140px"></canvas>
+                    <div class="card">
+                      <div class="graphic">
+                        <div class="graphic-normal">
+                          <!-- CANVAS DO GRÁFICO -->
+                          <canvas id="chart-4" width="150px" height="140px"></canvas>
+                        </div>
+                      </div>
+                      <div class="graphic-description">
+                        <!-- DADOS DO GRÁFICO -->
+                        <h2>Comparecimento às urnas</h2>
+                        <a href="https://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais-1/repositorio-de-dados-eleitorais" target="_blank">Dados do TSE</a>
+
+                        <div class="icon-actions">
+                          <!-- Ícone de zoom -->
+                          <img
+                            id="zoom"
+                            src="../static/img/icon-zoom.svg"
+                            alt="Aumentar gráfico"
+                            onclick="Modal.toggleZoom(4, 'Quantidade de eleitores que compareceram às urnas', 'Quantidade de Eleitores', 'bar', 2);"
+                          />
+                          <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
+                          <img
+                            id="download"
+                            src="../static/img/icon-download.svg"
+                            alt="Baixar"
+                            onclick="Modal.toggleDownloadUrnas(1, 'comparecimento-urnas-${city}-${year}')"
+                          />
+                        </div>
                       </div>
                     </div>
-                    <div class="graphic-description">
-                      <!-- DADOS DO GRÁFICO -->
-                      <h2>Faixa etária</h2>
-                      <a href="https://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais-1/repositorio-de-dados-eleitorais" target="_blank">Dados do TSE</a>
 
-                      <div class="icon-actions">
-                        <!-- Ícone de zoom -->
-                        <img
-                          id="zoom"
-                          src="../static/img/icon-zoom.svg"
-                          alt="Aumentar gráfico"
-                          onclick="Modal.toggleZoom(2, 'Quantidade de eleitores por faixa etária', 'Quantidade de Eleitores', 'bar', 0)"
-                        />
-                        <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
-                        <img
-                          id="download"
-                          src="../static/img/icon-download.svg"
-                          alt="Baixar"
-                          onclick="Modal.toggleDownload(2, 'faixa-etaria-${city}-${year}')"
-                        />
-                      </div>
-                    </div>
                   </div>
+                `;
+                
+                //zerando o contador que define o
+                contCanvas = 0;
 
-                  <div class="member">
-                      <h5>Uso de nome social</h5>
-                      <h6>` + nomeSocial + ` eleitores usaram nome social</h6>
-                    <div class="icon-actions">
-                      <a id="data" href="https://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais-1/repositorio-de-dados-eleitorais" target="_blank">Dados do TSE</a>
-                      <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
-                      <img
-                        id="download"
-                        src="../static/img/icon-download.svg"
-                        alt="Baixar"
-                        onclick="Modal.toggleDownload(3, 'nome-social-${city}-${year}')"
-                      />
-                    </div>
-                  </div>
+                // GERANDO CARDS DO ELEITORADO 
+                data.cards.forEach(function(card){
+                  Object.keys(card).forEach(function(cardKey){
 
-                  <div class="member">
-                      <h5>Representante eleito</h5>
-                      <h6>Nome: `+ dataCandidatos[2] +` (`+ dataCandidatos[3] +`)</h6>
-                      <h6>Ganhou a eleição no `+ dataCandidatos[0]+`o turno</h6>
-                    <div class="icon-actions">
-                      <a id="data" href="https://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais-1/repositorio-de-dados-eleitorais" target="_blank">Dados do TSE</a>
-                      <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
-                      <img
-                        id="download"
-                        src="../static/img/icon-download.svg"
-                        alt="Baixar"
-                        onclick="Modal.toggleDownload(4, 'representante-eleito-${city}-${year}')"
-                      />
-                    </div>
-                  </div>
-
-                  <div class="card">
-                    <div class="graphic">
-                      <div class="graphic-normal">
-                        <!-- CANVAS DO GRÁFICO -->
-                        <canvas id="chart-4" width="150px" height="140px"></canvas>
-                      </div>
-                    </div>
-                    <div class="graphic-description">
-                      <!-- DADOS DO GRÁFICO -->
-                      <h2>Comparecimento às urnas</h2>
-                      <a href="https://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais-1/repositorio-de-dados-eleitorais" target="_blank">Dados do TSE</a>
-
-                      <div class="icon-actions">
-                        <!-- Ícone de zoom -->
-                        <img
-                          id="zoom"
-                          src="../static/img/icon-zoom.svg"
-                          alt="Aumentar gráfico"
-                          onclick="Modal.toggleZoom(4, 'Quantidade de eleitores que compareceram às urnas', 'Quantidade de Eleitores', 'bar', 2);"
-                        />
-                        <!-- Ícone de download. Ao ser clicado: seleção do formato para download do resultado -->
-                        <img
-                          id="download"
-                          src="../static/img/icon-download.svg"
-                          alt="Baixar"
-                          onclick="Modal.toggleDownloadUrnas(1, 'comparecimento-urnas-${city}-${year}')"
-                        />
-                      </div>
-                    </div>
-                  </div>
-
-                </div>
-            `;
-              
-              //zerando o contador que define o
-              contCanvas = 0;
-
-              // GERANDO CARDS DO ELEITORADO 
-              data.cards.forEach(function(card){
-                Object.keys(card).forEach(function(cardKey){
-
-                  Chart.defaults.global.defaultFontColor = "#ffff";
-                  var ctx = document.getElementById("chart-" + contCanvas).getContext("2d");
-                  var myChart = new Chart(ctx, {
-                    type: "bar",
-                    data: {
-                      labels: Object.keys(card[cardKey]),
-                      datasets: [
-                        {
-                          data: Object.values(card[cardKey]),
-                          backgroundColor: "rgba(154, 219, 249, 0.4)",
-                          borderColor: "rgba(154, 219, 249)",
-                          borderWidth: 1,
+                    Chart.defaults.global.defaultFontColor = "#ffff";
+                    var ctx = document.getElementById("chart-" + contCanvas).getContext("2d");
+                    var myChart = new Chart(ctx, {
+                      type: "bar",
+                      data: {
+                        labels: Object.keys(card[cardKey]),
+                        datasets: [
+                          {
+                            data: Object.values(card[cardKey]),
+                            backgroundColor: "rgba(154, 219, 249, 0.4)",
+                            borderColor: "rgba(154, 219, 249)",
+                            borderWidth: 1,
+                            datalabels: {
+                              align: '',
+                              anchor: ''
+                            }
+                          },
+                        ],
+                      },
+                      options: {
+                        plugins: {
                           datalabels: {
-                            align: '',
-                            anchor: ''
+                            color: '',
+                            font: {},
+                            formatter: {}
                           }
+                        },
+                        legend: {
+                          display: false,
+                        },
+                        scales: {
+                          yAxes: [
+                            {
+                              ticks: {
+                                beginAtZero: true,
+                              },
+                            },
+                          ],
+                          xAxes: [
+                            {
+                              display: false,
+                            },
+                          ],
+                        },
+                      },
+                    });
+
+                    // Salvando os dados recebidos pelo back em variáveis globais
+                    global.dataKeys.push(Object.keys(card[cardKey]));
+                    global.dataValues.push(Object.values(card[cardKey]));
+                    global.dataAll.push(card[cardKey]);
+
+                    // Acrescentando 1 no contCanvas
+                    contCanvas = contCanvas + 1;
+                  })
+                });
+
+                // Adicionando os dados do NOME SOCIAL na variável dataAll
+                global.dataAll.push(data.cardNomeSocial[0]);
+
+                // Adicionando os dados do CANDIDATO na variável dataAll
+                global.dataAll.push(data.cardCandidato[0]);
+
+                // GERANDO CARDS DO COMPARECIMENTO ÀS URNAS 
+                valuesComparecimentoUrnas = []
+                data.cardComparecimento.forEach(function(card){
+                  valuesComparecimentoUrnas.push(Object.values(card))
+                  console.log(card)
+                })
+                global.dataComparecimento = valuesComparecimentoUrnas;
+
+                Chart.defaults.global.defaultFontColor = "#ffff";
+                var ctx = document.getElementById("chart-4").getContext("2d");
+                var myChart = new Chart(ctx, {
+                  type: "bar",
+                  data: {
+                    labels: ['Comparecimento', 'Abstenção'],
+                    datasets: [
+                      {
+                        label: '1 Turno',
+                        data: valuesComparecimentoUrnas[0],
+                        backgroundColor: "rgba(154, 219, 249, 0.4)",
+                        borderColor: "rgba(154, 219, 249)",
+                        borderWidth: 1,
+                        datalabels: {
+                          align: '',
+                          anchor: ''
+                        }
+                      }, {
+                        label: '2 Turno',
+                        data: valuesComparecimentoUrnas[1],
+                        backgroundColor: "rgba(192, 192, 192, 0.4)",
+                        borderColor: "rgba(192, 192, 192)",
+                        borderWidth: 1,
+                        datalabels: {
+                          align: '',
+                          anchor: ''
+                        }
+                      }
+                    ],
+                  },
+                  options: {
+                    plugins: {
+                      datalabels: {
+                        color: '',
+                        font: {},
+                        formatter: {}
+                      }
+                    },
+                    legend: {
+                      display: false,
+                    },
+                    scales: {
+                      yAxes: [
+                        {
+                          ticks: {
+                            beginAtZero: true,
+                          },
+                        },
+                      ],
+                      xAxes: [
+                        {
+                          display: false,
                         },
                       ],
                     },
-                    options: {
-                      plugins: {
-                        datalabels: {
-                          color: '',
-                          font: {},
-                          formatter: {}
-                        }
-                      },
-                      legend: {
-                        display: false,
-                      },
-                      scales: {
-                        yAxes: [
-                          {
-                            ticks: {
-                              beginAtZero: true,
-                            },
-                          },
-                        ],
-                        xAxes: [
-                          {
-                            display: false,
-                          },
-                        ],
-                      },
-                    },
-                  });
-
-                  // Salvando os dados recebidos pelo back em variáveis globais
-                  global.dataKeys.push(Object.keys(card[cardKey]));
-                  global.dataValues.push(Object.values(card[cardKey]));
-                  global.dataAll.push(card[cardKey]);
-
-                  // Acrescentando 1 no contCanvas
-                  contCanvas = contCanvas + 1;
-                })
-              });
-
-              // Adicionando os dados do NOME SOCIAL na variável dataAll
-              global.dataAll.push(data.cardNomeSocial[0]);
-
-              // Adicionando os dados do CANDIDATO na variável dataAll
-              global.dataAll.push(data.cardCandidato[0]);
-
-              // GERANDO CARDS DO COMPARECIMENTO ÀS URNAS 
-              valuesComparecimentoUrnas = []
-              data.cardComparecimento.forEach(function(card){
-                valuesComparecimentoUrnas.push(Object.values(card))
-                console.log(card)
-              })
-              global.dataComparecimento = valuesComparecimentoUrnas;
-
-              Chart.defaults.global.defaultFontColor = "#ffff";
-              var ctx = document.getElementById("chart-4").getContext("2d");
-              var myChart = new Chart(ctx, {
-                type: "bar",
-                data: {
-                  labels: ['Comparecimento', 'Abstenção'],
-                  datasets: [
-                    {
-                      label: '1 Turno',
-                      data: valuesComparecimentoUrnas[0],
-                      backgroundColor: "rgba(154, 219, 249, 0.4)",
-                      borderColor: "rgba(154, 219, 249)",
-                      borderWidth: 1,
-                      datalabels: {
-                        align: '',
-                        anchor: ''
-                      }
-                    }, {
-                      label: '2 Turno',
-                      data: valuesComparecimentoUrnas[1],
-                      backgroundColor: "rgba(192, 192, 192, 0.4)",
-                      borderColor: "rgba(192, 192, 192)",
-                      borderWidth: 1,
-                      datalabels: {
-                        align: '',
-                        anchor: ''
-                      }
-                    }
-                  ],
-                },
-                options: {
-                  plugins: {
-                    datalabels: {
-                      color: '',
-                      font: {},
-                      formatter: {}
-                    }
                   },
-                  legend: {
-                    display: false,
-                  },
-                  scales: {
-                    yAxes: [
-                      {
-                        ticks: {
-                          beginAtZero: true,
-                        },
-                      },
-                    ],
-                    xAxes: [
-                      {
-                        display: false,
-                      },
-                    ],
-                  },
-                },
-              });
+                });
 
-              global.objComparecimento = data.cardComparecimento
-              console.log(global.objComparecimento)
+                global.objComparecimento = data.cardComparecimento
+                console.log(global.objComparecimento)
 
-              // verificando variáveis globais
-              console.log(global.dataKeys)
-              console.log(global.dataValues)
-              console.log(global.dataAll)
-            },
+                // verificando variáveis globais
+                console.log(global.dataKeys)
+                console.log(global.dataValues)
+                console.log(global.dataAll)
+
+            } catch (error) {
+              console.log(data)
+
+              var csvList = ""
+              for (var i = 0; i < data.length; i++) {
+                csvList += `<li>${data[i]}</li>`
+              }
+
+              phase.innerHTML = ""
+              phase.innerHTML = `Os seguintes CSVs precisam estar na pasta "jupyter-notebooks/data": <ul>${csvList}</ul>`               
+            }
+          }
           });
         }
       }

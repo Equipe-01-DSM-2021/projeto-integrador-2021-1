@@ -8,7 +8,7 @@ const Modal = {
     canvas = document.getElementById("canvas");
     canvas.innerHTML = "";
     canvas.innerHTML =
-      '<canvas id="chart-zoom" width="90%" height="100%"></canvas>';
+      '<canvas id="chart-zoom" width="auto" height="auto"></canvas>';
 
     // configurando o modal
     title = document.getElementById("chartTitle");

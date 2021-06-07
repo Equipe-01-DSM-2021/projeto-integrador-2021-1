@@ -54,24 +54,41 @@ def searchData():
         pathData = str(path)
 
     csvPaths = []
-    csvPaths.append(pathData + f"\perfil_eleitorado_{year}.csv")
-    csvPaths.append(pathData + f"\perfil_comparecimento_abstencao_{year}.csv")
+    response = []
+
+    if checkFileExistance(pathData + f"\perfil_eleitorado_{year}.csv"):
+        csvPaths.append(pathData + f"\perfil_eleitorado_{year}.csv")
+    else:
+        response.append(f"Perfil do eleitorado de {year}")
+
+    if checkFileExistance(pathData + f"\perfil_comparecimento_abstencao_{year}.csv"):
+        csvPaths.append(
+            pathData + f"\perfil_comparecimento_abstencao_{year}.csv")
+    else:
+        response.append(f"Comparecimento e abstenção de {year}")
 
     # Carrega CSVs do ano eleitoral escolhido
     federal = np.arange(1994, datetime.date.today().year+4, 4).tolist()
     municipal = np.arange(1996, datetime.date.today().year+4, 4).tolist()
 
     if int(year) in federal:
-        csvPaths.append(pathData + f'\consulta_cand_{year}_BRASIL.csv')
-    elif int(year) in municipal:
-        csvPaths.append(pathData + f'\consulta_cand_{year}_SP.csv')
+        if checkFileExistance(pathData + f"\consulta_cand_{year}_BRASIL.csv"):
+            csvPaths.append(pathData + f"\consulta_cand_{year}_BRASIL.csv")
+        else:
+            response.append(f"Candidatos de {year}")
+
+    if int(year) in municipal:
+        if checkFileExistance(pathData + f"\consulta_cand_{year}_SP.csv"):
+            csvPaths.append(pathData + f"\consulta_cand_{year}_SP.csv")
+        else:
+            response.append(f"Candidatos de {year}")
+
+    if len(response) == 0:
+        # executando a busca e retornando o resultado
+        result = citySearch(city.upper(), role.upper(), csvPaths)
+        return jsonify(result)
     else:
-        print("Escolha um ano válido! Volte ao início do notebook, altere o ano e rode aquela e esta célula novamente")
-
-    # executando a busca e retornando o resultado
-    result = citySearch(city.upper(), role.upper(), csvPaths)
-
-    return jsonify(result)
+        return jsonify(response)
 
 
 @app.route('/data-regions')
@@ -88,13 +105,26 @@ def comparisonData():
     for path, _, files in walk('..\jupyter-notebooks\data'):
         pathData = str(path)
 
-    csvPath = pathData + f"\perfil_eleitorado_{year}.csv"
+    # variável que acumula os arquivos que não existem
+    response = []
 
     # executando a busca e retornando o resultado
     if comparison == 'jovens':
-        result = ageComparisonYoung(year, csvPath)
+        csvPath = pathData + f"\perfil_eleitorado_{year}.csv"
+        if checkFileExistance(csvPath):
+            result = ageComparisonYoung(year, csvPath)
+        else:
+            response.append(f"Perfil do eleitorado de {year}")
+            return jsonify(response)
+
     elif comparison == 'idosos':
-        result = ageComparisonSenior(year, csvPath)
+        csvPath = pathData + f"\perfil_eleitorado_{year}.csv"
+        if checkFileExistance(csvPath):
+            result = ageComparisonSenior(year, csvPath)
+        else:
+            response.append(f"Perfil do eleitorado de {year}")
+            return jsonify(response)
+
     elif comparison == 'renda':
         csvPath = pathData + f"\cadastro_central_de_empresas.csv"
         result = incomeComparison(csvPath)
@@ -105,14 +135,19 @@ def comparisonData():
         csvPaths.append(pathData + f"\eleitorado_municipio_2018.csv")
         csvPaths.append(pathData + f"\eleitorado_municipio_2020.csv")
 
-        if year == 2022:
-            csvPaths.append(pathData + f"\eleitorado_municipio_2022.csv")
-        elif year == 2024:
-            csvPaths.append(pathData + f"\eleitorado_municipio_2022.csv")
-            csvPaths.append(pathData + f"\eleitorado_municipio_2024.csv")
-
         result = evolutionComparison(year, csvPaths)
     return jsonify(result)
+
+
+def checkFileExistance(filePath):
+    # função que verifica a existência dos CSVs necessários para a busca
+    try:
+        with open(filePath, 'r') as f:
+            return True
+    except FileNotFoundError as e:
+        return False
+    except IOError as e:
+        return False
 
 
 if __name__ == "__main__":
