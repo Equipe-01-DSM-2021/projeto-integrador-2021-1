@@ -3,7 +3,7 @@
 <h1 align="center"> Análise de Dados Eleitorais </h1>
 
 <p align="center"> 
-    <a href="#analise">Gráficos interessantes</a> &nbsp | &nbsp 
+    <a href="#analise">Análises de interesse</a> &nbsp | &nbsp 
     <a href="#notebook">Manipulando o notebook</a> &nbsp | &nbsp 
     <a href="#dados">Os dados</a> &nbsp | &nbsp 
     <a href="#equipe">Responsáveis</a>
@@ -13,13 +13,13 @@ A análise de dados se faz importante para descobrir padrões ou relações entr
 
 <span id="analise">
 
-## :bar_chart: Gráficos interessantes
+## :bar_chart: Análises de interesse
 
-A análise de dados foi feita através do Jupyter Notebook, onde focamos em atender os requisitos que o cliente declarou e ainda mais, e, com isso, obtivemos alguns resultados interessantes quanto à renda dos eleitores e sua evolução em quantidade, além das cidades com as maiores percentagens de eleitores jovens e idosos em cada região e estatísticas também sobre o quanto foi gasto por eleitor por cada candidato em suas campanhas. Nas demonstrações abaixo, a cidade principal da análise foi "São José dos Campos", no ano de 2020, mas também, para comparações, foram usadas cidades como "Taubaté" e "Jacareí".
+A análise de dados foi feita através do Jupyter Notebook, onde focamos em atender os requisitos que o cliente declarou, com isso obtivemos alguns resultados interessantes quanto à renda dos eleitores e sua evolução em quantidade, além das cidades com as maiores percentagens de eleitores jovens e idosos em cada região e estatísticas também sobre o quanto foi gasto por eleitor por cada candidato em suas campanhas.
 
 <br>
 
-### Verificação das cidades com mais jovens e mais idosos na região
+### Verificação das cidades com mais jovens na região
 
 <div align="center">
   <img src="./img/idoso-jovem.jpg" alt="Cidades 'mais velhas' e 'mais novas'">
@@ -57,7 +57,7 @@ A análise de dados foi feita através do Jupyter Notebook, onde focamos em aten
 
 Para interagir com o Jupyter Notebook desenvolvido, tem-se 2 opções:
 
-- Use [este link]() para ver as análises, mas sem poder alterar as variáveis (como cidade ou ano), pois o GitHub não suporta a visualização devido à biblioteca Python que usamos para gerar os gráficos;
+- Use [este link](https://nbviewer.jupyter.org/github/Equipe-01-DSM-2021/projeto-integrador-2021-1/blob/c0de58609ce020459126b7dee2df843f553fe933/jupyter-notebooks/AnaliseDadosEleitorais.ipynb) para ver as análises, mas sem poder alterar as variáveis (como cidade ou ano), pois o GitHub não suporta a visualização devido à biblioteca Python que usamos para gerar os gráficos;
 - Depois de baixar este repositório e ter o [Python](https://www.python.org/downloads/) instalado, siga este passo a passo para abrir o Notebook localmente em seu dispositivo:
 
 ```powershell
@@ -125,7 +125,7 @@ Aplicamos a base de dados do IBGE na análise que diz respeito à renda dos elei
 Nossa equipe é composta por 6 integrantes, onde todos colaboraram com o desenvolvimento do Jupyter Notebook, mas 3 tomaram a frente nestas tarefas e merecem destaque. São eles:
 
 - Adriano Andrade Almeida
-  - Responsável pela viabilidade de algumas análises e desenvolvimento da análise sobre as cidades com mais eleitores jovens e idosos de cada região;
+  - Responsável pela integração do notebook, viabilidade de algumas análises e desenvolvimento da análise sobre as cidades com mais eleitores jovens e idosos de cada região;
 - Ana Carolina dos Santos
   - Responsável pela manipulação da biblioteca Plotly para geração de gráficos e desenvolvimento das análise sobre a renda do eleitorado e sobre a análise que diz respeito à prestação de contas dos candidatos;
 - Caio Vitor Dias
