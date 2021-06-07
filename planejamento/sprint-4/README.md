@@ -42,6 +42,12 @@ O notebook também permite o controle sobre algumas variáveis dentro do ambient
   <img src="demo-jupyter.gif" alt="Análises do Jupyter Notebook">
 </div>
 
+E a exportação no notebook:
+
+<div align="center">
+  <img src="demo-jupyter-exportacao.gif" alt="Análises do Jupyter Notebook">
+</div>
+
 Para visualizar o notebook completo, use [este link](https://nbviewer.jupyter.org/github/Equipe-01-DSM-2021/projeto-integrador-2021-1/blob/c0de58609ce020459126b7dee2df843f553fe933/jupyter-notebooks/AnaliseDadosEleitorais.ipynb), que infelizmente não permite a alteração de variáveis (como cidade ou ano), ou siga o passo a passo descrito no tópico abaixo para rodar a aplicação localmente, que promove total manipulação das variáveis.
 
 ### Rodando localmente o notebook
