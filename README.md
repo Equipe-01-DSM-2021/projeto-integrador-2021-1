@@ -2,10 +2,6 @@
 
 <h1 align="center"> FATEC Profº Jessen Vidal, SJC - 1º Semestre DSM </h1>
 
-<h4 align="center"> 
-	🚧  Projeto em desenvolvimento  🚧
-</h4>
-
 <p align="center">
     <a href="#sobre">Sobre</a> | 
     <a href="#backlogs">Backlogs</a> | 
@@ -23,19 +19,37 @@
 
 Tem por objetivo proporcionar à "TV Vanguarda" um site de análise de dados com a exibição de estatísticas do eleitorado localizado dentro de sua cobertura no Estado de São Paulo, podendo obter diversas características, como gráficos e tabelas de estado civil, escolaridade e faixa etária, além de informações sobre renda e evolução na quantidade de eleitores, tanto no âmbito municipal (de cada cidade) quanto macro-regiões, como o Vale do Paraíba.
 
-_Projeto integrador baseado em metodologia ágil (SCRUM), procurando desenvolver Proatividade, Autonomia, Colaboração e Entrega de resultados_
+> _Projeto baseado na metodologia ágil SCRUM, procurando desenvolver a Proatividade, Autonomia, Colaboração e Entrega de Resultados dos envolvidos_ <br>
+> Status do Projeto: Concluído :heavy_check_mark:
 
-> Status do Projeto: Em andamento
+### Executando a aplicação
+
+Depois de baixar o [Python](https://www.python.org/downloads/) e clonar o repositório (ou baixá-lo):
+
+```powershell
+# Acesse a pasta do projeto por meio do terminal
+ cd projeto
+
+# Instale as dependências
+ pip install -r requirements.txt
+
+# Execute a aplicação
+ python app.py
+
+# O site estará disponível através do link: http://localhost:5000/
+```
+
+**OBS.:** Para executar o notebook desenvolvido para análise de dados, vide o passo a passo [deste tópico](https://github.com/Equipe-01-DSM-2021/projeto-integrador-2021-1/tree/trunk/jupyter-notebooks#notebook).
 
 ### Entregas de Sprints
 
-Cada entrega será realizada a partir da criação de uma **tag**. Observe a relação a seguir:
+Cada entrega foi realizada a partir da criação de uma **tag**. Observe a relação a seguir:
 | Sprint| Tag | Lançamento | Status | Histórico |
 |:-----:|:-------------:|:----------:|:---------:|:---------:|
 | 01 | [sprint-01](https://github.com/Equipe-01-DSM-2021/projeto-integrador-2021-1/releases/tag/sprint-01) | 28/03/2021 | Entregue | [ver relatório](/planejamento/sprint-1/README.md) |
 | 02 | [sprint-02](https://github.com/Equipe-01-DSM-2021/projeto-integrador-2021-1/releases/tag/sprint-02) | 18/04/2021 | Entregue | [ver relatório](/planejamento/sprint-2/README.md) |
 | 03 | [sprint-03](https://github.com/Equipe-01-DSM-2021/projeto-integrador-2021-1/releases/tag/sprint-03) | 16/05/2021 | Entregue | [ver relatório](/planejamento/sprint-3/README.md) |
-| 04 | Em breve... | 05/06/2021 | Planejada | Em breve... |
+| 04 | [sprint-04](https://github.com/Equipe-01-DSM-2021/projeto-integrador-2021-1/releases/tag/sprint-04) | 06/06/2021 | Entregue | [ver relatório](/planejamento/sprint-4/README.md) |
 
 → [Voltar ao topo](#topo)
 
@@ -55,18 +69,18 @@ Cada entrega será realizada a partir da criação de uma **tag**. Observe a rel
 | RF 04  | Exportação dos resultados da busca                                             |    #06     |
 | RF 05  | Verificação da renda média do eleitorado                                       |    #03     |
 | RF 06  | Comparação renda média do Vale do Paraíba com outras regiões                   |    #05     |
-| RF 07  | Geração de estatísticas sobre comparecimento e ausência às urnas               | #11 e #12  |
-| RF 08  | Geração de estatísticas sobre a evolução da quantidade de eleitores            |    #13     |
+| RF 07  | Geração de estatísticas sobre comparecimento e ausência às urnas               |    #11     |
+| RF 08  | Geração de estatísticas sobre a evolução da quantidade de eleitores            |    #12     |
 
 #### Requisitos Não Funcionais
 
 | Código | Item                                 | User Story |
 | :----: | :----------------------------------- | :--------: |
 | RFN 01 | Passível de atualizações             |    #07     |
-| RFN 02 | Implementação do back-end em Python  |    #09     |
+| RFN 02 | Implementação do backend em Python   |    #09     |
 | RFN 03 | Codificação de fácil compreensão     |    #08     |
 | RFN 04 | Documentação                         |    #10     |
-| RFN 05 | Análise de dados em Jupyter Notebook |    #14     |
+| RFN 05 | Análise de dados em Jupyter Notebook |    #13     |
 
 → [Voltar ao topo](#topo)
 
@@ -88,7 +102,7 @@ Cada entrega será realizada a partir da criação de uma **tag**. Observe a rel
 | :------------------------: | :----------------------------------------------------------------------------- | :--------: |
 |           RF 01            | Geração de estatísticas sobre eleitorado                                       |    #01     |
 |           RF 02            | Verificação características do eleitorado de acordo com o representante eleito |    #02     |
-|           RF 07            | Geração de estatísticas sobre comparecimento e ausência às urnas               | #11 e #12  |
+|           RF 07            | Geração de estatísticas sobre comparecimento e ausência às urnas               |    #11     |
 
 #### Sprint 3
 
@@ -97,7 +111,7 @@ Cada entrega será realizada a partir da criação de uma **tag**. Observe a rel
 |           RF 03            | Verificação das cidades com mais jovens e mais idosos na região |    #04     |
 |           RF 05            | Verificação da renda média do eleitorado                        |    #03     |
 |           RF 06            | Comparação da renda média do Vale do Paraíba com outras regiões |    #05     |
-|           RF 08            | Verificação da evolução na quantidade de eleitores              |    #13     |
+|           RF 08            | Verificação da evolução na quantidade de eleitores              |    #12     |
 
 #### Sprint 4
 
@@ -107,7 +121,7 @@ Cada entrega será realizada a partir da criação de uma **tag**. Observe a rel
 
 - **OBS:** Para a quarta sprint, os maiores esforços estarão no desenvolvimento do site e aplicação de melhorias na análise de dados (Jupyter Notebook).
 
-:round_pushpin: Para ver o planejamento completo das sprints, como entregas, tarefas e prazos, assim como estatísticas do time, [clique aqui](/planejamento).
+:round_pushpin: Para ver o planejamento completo das sprints, como conteúdo das entregas, tarefas e prazos, bem como estatísticas do time, [clique aqui](/planejamento).
 
 → [Voltar ao topo](#topo)
 
@@ -129,10 +143,9 @@ Informações informais sobre as funções do sistema (como uma única tarefa po
 |  #08   | Jornalista | Quer entender o código                                                                                                                                   | Fazer customizações                                 |
 |  #09   | Jornalista | Quer que o back-end seja feito em Python                                                                                                                 | Fazer customizações                                 |
 |  #10   | Jornalista | Quer ler uma documentação simples                                                                                                                        | Saber usar a aplicação                              |
-|  #11   | Jornalista | Quer saber a percentagem de eleitores justificados da última eleição                                                                                     | Obter conteúdo para sua matéria                     |
-|  #12   | Jornalista | Quer saber a percentagem de eleitores ausentes da última eleição                                                                                         | Obter conteúdo para sua matéria                     |
-|  #13   | Jornalista | Quer saber a evolução do número de eleitores                                                                                                             | Obter conteúdo para sua matéria                     |
-|  #14   | Jornalista | Quer a análise de dados feita em Jupyter Notebook                                                                                                        | Obter visualização prévia das estatísticas          |
+|  #11   | Jornalista | Quer saber a percentagem de eleitores ausentes da última eleição                                                                                         | Obter conteúdo para sua matéria                     |
+|  #12   | Jornalista | Quer saber a evolução do número de eleitores                                                                                                             | Obter conteúdo para sua matéria                     |
+|  #13   | Jornalista | Quer a análise de dados feita em Jupyter Notebook                                                                                                        | Obter visualização prévia das estatísticas          |
 
 → [Voltar ao topo](#topo)
 
@@ -169,7 +182,7 @@ As seguintes ferramentas, linguagens, bibliotecas e tecnologias foram usadas na 
 - [Chart.js](https://www.chartjs.org/): Geração de gráficos (site)
 - [Visual Studio Code](https://code.visualstudio.com/): Codificação
 - [Discord](https://discord.com/): Comunicação
-- [GitHub](https://github.com/): Versionamento
+- [GitHub](https://github.com/): Versionamento e documentação
 - [Google Sheets](https://www.google.com/sheets/about/): Acompanhamento do gráfico de burndown
 
 → [Voltar ao topo](#topo)
