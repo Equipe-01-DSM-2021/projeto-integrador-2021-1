@@ -7,7 +7,7 @@
     <a href="#backlogs">Backlogs</a> | 
     <a href="#user-stories">User Stories</a> | 
     <a href="#prototipo">Protótipo</a> | 
-    <a href="#tecnologias">Tecnologias</a>
+    <a href="#tecnologias">Tecnologias</a> | 
     <a href="#equipe">Equipe</a> | 
     <a href="#final">Apresentação Final</a> | 
     <a href="#licenca">Licença</a>
@@ -19,8 +19,8 @@
 
 Tem por objetivo proporcionar à "TV Vanguarda" um site de análise de dados com a exibição de estatísticas do eleitorado localizado dentro de sua cobertura no Estado de São Paulo, podendo obter diversas características, como gráficos e tabelas de estado civil, escolaridade e faixa etária, além de informações sobre renda e evolução na quantidade de eleitores, tanto no âmbito municipal (de cada cidade) quanto macro-regiões, como o Vale do Paraíba.
 
-> _Projeto baseado na metodologia ágil SCRUM, procurando desenvolver a Proatividade, Autonomia, Colaboração e Entrega de Resultados dos envolvidos_ <br>
-> Status do Projeto: Concluído :heavy_check_mark:
+> _Projeto baseado na metodologia ágil SCRUM, procurando desenvolver a Proatividade, Autonomia, Colaboração e Entrega de Resultados dos envolvidos_ <br><br>
+> **Status do Projeto: Concluído** :heavy_check_mark:
 
 ### Executando a aplicação
 
@@ -206,11 +206,7 @@ As seguintes ferramentas, linguagens, bibliotecas e tecnologias foram usadas na 
 
 ## :clapper: Apresentação Final do Projeto
 
-Clique no link abaixo para visualizar o vídeo final do projeto:
-
-> Vídeo (Em breve)
-
-→ [Voltar ao topo](#topo)
+Clique [aqui](https://www.youtube.com/watch?v=Cb4jzDQmYTY) para visualizar o vídeo final do projeto.
 
 <span id="licenca">
 
