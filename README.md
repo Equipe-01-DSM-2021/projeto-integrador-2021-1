@@ -194,7 +194,7 @@ As seguintes ferramentas, linguagens, bibliotecas e tecnologias foram usadas na 
 |    Função    | Nome                     |                               LinkedIn                                |                     GitHub                     |
 | :----------: | :----------------------- | :-------------------------------------------------------------------: | :--------------------------------------------: |
 | Scrum Master | Maria Gabriela G.S. Reis |      [LinkedIn](https://www.linkedin.com/in/mariagabrielareis/)       | [GitHub](https://github.com/MariaGabrielaReis) |
-|   Dev Team   | Adriano Andrade Almeida  |         [LinkedIn](https://www.linkedin.com/in/aeroadriano/)          |    [GitHub](https://github.com/aeroadriano)    |
+|   Dev Team   | Adriano Almeida          |         [LinkedIn](https://www.linkedin.com/in/aeroadriano/)          |    [GitHub](https://github.com/aeroadriano)    |
 |   Dev Team   | Ana Carolina dos Santos  |     [LinkedIn](https://www.linkedin.com/in/ana-santos-856436145/)     |      [GitHub](https://github.com/annakks)      |
 |   Dev Team   | Antônio A.R. Nepomuceno  | [LinkedIn](https://www.linkedin.com/in/antonio-nepomuceno-04943720a/) |      [GitHub](https://github.com/Nepoun)       |
 |   Dev Team   | Caio Vitor Dias          |         [LinkedIn](https://www.linkedin.com/in/caio-vitor-c1)         |  [GitHub](https://github.com/CaioVitorDias1)   |
